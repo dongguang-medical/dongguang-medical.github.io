@@ -14,6 +14,7 @@ DG.search = (function () {
     var grid = document.getElementById('search-grid');
     var empty = document.getElementById('search-empty');
 
+    document.body.classList.remove('on-home');
     DG.utils.showView('view-search');
     DG.utils.setTitle(['搜尋：' + query]);
     DG.catalog.updateSidebarActive(null);
