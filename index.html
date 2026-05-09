@@ -3,362 +3,399 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>東光醫療器材 — 專業醫療輔具服務</title>
-  <script>
-    (function () {
-      if (location.protocol === 'file:') return;
-      var segs = location.pathname.split('/').filter(Boolean);
-      var routeRoots = { category: 1, product: 1, search: 1 };
-      var base = (segs.length > 0 && !routeRoots[segs[0]]) ? '/' + segs[0] + '/' : '/';
-      var el = document.createElement('base');
-      el.href = base;
-      document.head.appendChild(el);
-    })();
-  </script>
-  <meta name="description" content="東光醫療器材 SINCE 1992 — 提供醫療器材租賃、販售、補助諮詢及批發零售服務，服務台灣超過30年">
+  <title>台南東光儀器 — 醫療輔具租賃</title>
+  <meta name="description" content="台南東光儀器醫療輔具租賃，秉持認真、負責、專業的態度超過二十年，提供行動輔具、衛浴輔具、臥床輔具、呼吸輔具租賃及販售服務。台南市東區崇德路677號，電話 (06) 290-7244。">
   <link rel="icon" href="assets/images/logo.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/design-system.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/service-page.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/intro.css">
 </head>
-<body class="on-home">
+<body>
 
   <!-- ===== HEADER ===== -->
-  <header id="site-header">
-    <div class="header-inner">
-      <button class="hamburger" id="hamburger-btn" aria-label="開啟選單" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <a href="." class="site-logo" aria-label="東光醫療器材 首頁">
-        <img src="assets/images/logo.jpg" alt="東光醫療器材">
-        <div class="site-logo-text">
-          <span class="site-name">東光醫療器材</span>
-          <span class="site-sub">SINCE 1992</span>
+  <header class="intro-header">
+    <div class="intro-header-inner">
+      <a href="#top" class="intro-logo" aria-label="台南東光儀器 首頁">
+        <img src="assets/images/logo.jpg" alt="台南東光儀器">
+        <div>
+          <div class="intro-logo-name">台南東光儀器</div>
+          <div class="intro-logo-sub">醫療輔具租賃</div>
         </div>
       </a>
 
-      <!-- 服務導覽 (首頁顯示) -->
-      <nav class="header-nav" id="header-nav" aria-label="服務導覽">
-        <button type="button" class="header-nav-link" onclick="DG.sp.scrollTo('sp-services')">服務項目</button>
-        <button type="button" class="header-nav-link" onclick="DG.sp.scrollTo('sp-equipment')">輔具類型</button>
-        <button type="button" class="header-nav-link" onclick="DG.sp.scrollTo('sp-about')">關於我們</button>
-        <button type="button" class="header-nav-link" onclick="DG.sp.scrollTo('sp-contact')">聯絡我們</button>
+      <nav class="intro-nav" aria-label="主要導覽">
+        <a href="#about">關於我們</a>
+        <a href="#services">服務項目</a>
+        <a href="#equipment">輔具類型</a>
+        <a href="#contact">聯絡我們</a>
       </nav>
 
-      <!-- 商品搜尋 (目錄頁顯示) -->
-      <div class="header-search" id="header-search">
-        <input type="search" id="search-input" placeholder="搜尋商品..." autocomplete="off" aria-label="搜尋商品">
-        <button id="search-btn" aria-label="搜尋">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </button>
-      </div>
-
-      <!-- 商品目錄按鈕 (首頁顯示) -->
-      <a href="category/行動輔具" class="btn-catalog" id="catalog-btn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="7" height="7"/><rect x="15" y="3" width="7" height="7"/><rect x="2" y="14" width="7" height="7"/><rect x="15" y="14" width="7" height="7"/></svg>
-        商品目錄
+      <a href="tel:062907244" class="intro-header-phone">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+        (06) 290-7244
       </a>
+
+      <button class="intro-hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- ===== PAGE LAYOUT ===== -->
-  <div class="page-layout">
+  <!-- Mobile Nav -->
+  <nav class="intro-nav-mobile" id="mobile-nav" aria-label="行動版導覽">
+    <a href="#about" onclick="closeMobileNav()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      關於我們
+    </a>
+    <a href="#services" onclick="closeMobileNav()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      服務項目
+    </a>
+    <a href="#equipment" onclick="closeMobileNav()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M7 17v-5l5-2 2 4h3"/></svg>
+      輔具類型
+    </a>
+    <a href="#contact" onclick="closeMobileNav()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+      聯絡我們
+    </a>
+  </nav>
 
-    <!-- SIDEBAR (目錄頁使用) -->
-    <aside id="sidebar" aria-label="商品分類">
-      <div class="sidebar-inner">
-        <div class="sidebar-header">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          商品分類
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="intro-hero" id="top">
+      <div class="intro-hero-inner">
+        <img src="assets/images/logo.jpg" alt="台南東光儀器" class="intro-hero-logo">
+        <div class="intro-hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          超過二十年專業服務
         </div>
-        <nav id="category-tree" aria-label="商品分類導覽">
-          <div class="sidebar-loading">載入中...</div>
-        </nav>
-      </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main id="main-content">
-
-      <!-- Breadcrumb (目錄頁使用) -->
-      <nav id="breadcrumb" aria-label="麵包屑導覽" hidden></nav>
-
-      <!-- VIEW: 首頁 (服務介紹) -->
-      <div id="view-home" class="view active">
-
-        <!-- ── HERO ── -->
-        <section class="sp-hero" id="sp-hero">
-          <div class="sp-container">
-            <img src="assets/images/logo.jpg" alt="東光醫療器材" class="sp-hero-logo">
-            <div class="sp-hero-text">
-              <h1>東光醫療器材</h1>
-              <p class="sp-hero-year">SINCE 1992</p>
-              <p class="sp-hero-desc">認真・負責・專業<br>您健康照護的好鄰居、好朋友</p>
-              <div class="sp-hero-actions">
-                <a href="tel:0424050660" class="btn-primary sp-btn-lg">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-                  立即致電諮詢
-                </a>
-                <button type="button" class="sp-btn-outline-white" onclick="DG.sp.scrollTo('sp-services')">了解服務項目</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ── 服務項目 ── -->
-        <section class="sp-section" id="sp-services">
-          <div class="sp-container">
-            <div class="sp-heading">
-              <h2>我們的服務</h2>
-              <p>提供全方位醫療器材服務，滿足您與家人的各種需求</p>
-            </div>
-            <div class="sp-services-grid">
-
-              <div class="sp-service-card">
-                <div class="sp-service-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-                </div>
-                <h3>器材租賃</h3>
-                <p>各類醫療輔具提供短期或長期租賃方案，彈性靈活，減輕一次性購買負擔，適合術後復健或臨時照護需求。</p>
-              </div>
-
-              <div class="sp-service-card">
-                <div class="sp-service-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                </div>
-                <h3>器材販售</h3>
-                <p>提供行動、衛浴、臥床、呼吸等各類醫療器材直接採購服務，品項齊全、品質有保障，現貨諮詢歡迎來電。</p>
-              </div>
-
-              <div class="sp-service-card">
-                <div class="sp-service-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </div>
-                <h3>補助申請諮詢</h3>
-                <p>專業評估輔具補助資格，協助符合條件的民眾申請政府長照補助，讓您以最優惠的價格取得所需器材。</p>
-              </div>
-
-              <div class="sp-service-card">
-                <div class="sp-service-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                </div>
-                <h3>批發零售</h3>
-                <p>醫療耗材批發零售，價格合理透明，適合醫療機構、照護中心或個人大量採購，歡迎來電洽詢報價。</p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        <!-- ── 輔具類型 ── -->
-        <section class="sp-section sp-section-alt" id="sp-equipment">
-          <div class="sp-container">
-            <div class="sp-heading">
-              <h2>輔具服務類型</h2>
-              <p>涵蓋日常生活所需各類醫療輔具，租賃與販售皆有提供</p>
-            </div>
-            <div class="sp-equipment-grid">
-
-              <a class="sp-equipment-card" href="category/行動輔具">
-                <div class="sp-equipment-icon">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M7 17v-5l5-2 2 4h3"/></svg>
-                </div>
-                <h3>行動輔具</h3>
-                <p>輪椅・助行器・拐杖・輔助踏車</p>
-                <span class="sp-equipment-more">瀏覽商品 →</span>
-              </a>
-
-              <a class="sp-equipment-card" href="category/衛浴安全">
-                <div class="sp-equipment-icon">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3v2.25"/><line x1="4" y1="20" x2="4" y2="22"/><line x1="20" y1="20" x2="20" y2="22"/></svg>
-                </div>
-                <h3>衛浴安全</h3>
-                <p>安全扶手・洗澡椅・防滑墊・沐浴床</p>
-                <span class="sp-equipment-more">瀏覽商品 →</span>
-              </a>
-
-              <a class="sp-equipment-card" href="category/居家照護">
-                <div class="sp-equipment-icon">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 20h20"/><path d="M2 12V6a2 2 0 0 1 2-2h4"/><rect x="10" y="6" width="12" height="6" rx="1"/></svg>
-                </div>
-                <h3>居家照護</h3>
-                <p>氣墊床・電動床・護理床・床邊護欄</p>
-                <span class="sp-equipment-more">瀏覽商品 →</span>
-              </a>
-
-            </div>
-          </div>
-        </section>
-
-        <!-- ── 關於我們 ── -->
-        <section class="sp-section" id="sp-about">
-          <div class="sp-container">
-            <div class="sp-about-layout">
-              <div class="sp-about-text">
-                <div class="sp-section-label">關於東光</div>
-                <h2>三十年專業，守護您的健康</h2>
-                <p>自1992年創立以來，東光醫療器材始終以「認真、負責、專業」的理念，持續為台灣家庭提供優質的醫療器材服務。我們深知每位顧客背後，都有需要被細心照顧的家人。</p>
-                <p>無論是術後復健、長期臥床照護，或是行動不便的日常生活輔助，我們都能提供合適的解決方案，讓您在最有保障的環境下，選購或租用您所需要的醫療器材。</p>
-                <a href="tel:0424050660" class="btn-primary sp-about-cta">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-                  04-2405-0660
-                </a>
-              </div>
-              <div class="sp-stats">
-                <div class="sp-stat">
-                  <span class="sp-stat-num">30<sup>+</sup></span>
-                  <span class="sp-stat-label">年專業服務</span>
-                </div>
-                <div class="sp-stat">
-                  <span class="sp-stat-num">4</span>
-                  <span class="sp-stat-label">大輔具類型</span>
-                </div>
-                <div class="sp-stat">
-                  <span class="sp-stat-num">認真</span>
-                  <span class="sp-stat-label">負責・專業</span>
-                </div>
-                <div class="sp-stat">
-                  <span class="sp-stat-num">補助</span>
-                  <span class="sp-stat-label">申請諮詢</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ── 聯絡我們 ── -->
-        <section class="sp-section sp-section-alt" id="sp-contact">
-          <div class="sp-container">
-            <div class="sp-heading">
-              <h2>聯絡我們</h2>
-              <p>歡迎來電或親自到訪，讓我們為您提供最專業的建議</p>
-            </div>
-            <div class="sp-contact-grid">
-
-              <a href="tel:0424050660" class="sp-contact-card sp-contact-card-link">
-                <div class="sp-contact-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-                </div>
-                <h3>電話</h3>
-                <p>04-2405-0660</p>
-              </a>
-
-              <div class="sp-contact-card">
-                <div class="sp-contact-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <h3>營業時間</h3>
-                <p>週一至週五<br>09:00 – 18:00</p>
-              </div>
-
-              <a href="mailto:service@dongguang.com.tw" class="sp-contact-card sp-contact-card-link">
-                <div class="sp-contact-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </div>
-                <h3>電子郵件</h3>
-                <p>service@dongguang.com.tw</p>
-              </a>
-
-              <div class="sp-contact-card">
-                <div class="sp-contact-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <h3>地址</h3>
-                <p>台中市大里區<br>大德街 79、81 號</p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-      </div><!-- end view-home -->
-
-      <!-- VIEW: 商品目錄 -->
-      <div id="view-catalog" class="view" hidden>
-        <div class="catalog-header">
-          <h2 id="catalog-title"></h2>
-          <span id="catalog-count" class="catalog-count"></span>
+        <h1>台南東光儀器<br>醫療輔具租賃</h1>
+        <p class="intro-hero-sub">您健康照護的最佳夥伴</p>
+        <div class="intro-hero-values">
+          <span>認真</span>
+          <span>負責</span>
+          <span>專業</span>
         </div>
-        <div id="product-grid" class="product-grid"></div>
-      </div>
-
-      <!-- VIEW: 商品詳情 -->
-      <div id="view-product" class="view" hidden>
-        <div id="product-detail-container"></div>
-      </div>
-
-      <!-- VIEW: 搜尋結果 -->
-      <div id="view-search" class="view" hidden>
-        <div class="catalog-header">
-          <h2 id="search-title"></h2>
-          <span id="search-count" class="catalog-count"></span>
-        </div>
-        <div id="search-grid" class="product-grid"></div>
-        <div id="search-empty" class="empty-state" hidden>
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <p>找不到符合的商品</p>
-          <p class="empty-hint">請試試其他關鍵字</p>
+        <div class="intro-hero-actions">
+          <a href="tel:062907244" class="btn-hero-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+            立即致電諮詢
+          </a>
+          <a href="#about" class="btn-hero-outline">
+            了解更多
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
         </div>
       </div>
+    </section>
 
-    </main>
-  </div>
+    <!-- ===== ABOUT ===== -->
+    <section class="intro-section" id="about">
+      <div class="intro-container">
+        <div class="intro-about-layout">
+          <div class="intro-about-text">
+            <div class="intro-about-label">關於東光</div>
+            <h2>二十年用心，守護您與家人的健康</h2>
+            <p>台南東光儀器自創立以來，始終以「認真、負責、專業」的精神，為台南地區的家庭提供優質的居家醫療照護器材服務。我們深知每位顧客背後，都有需要被細心照顧的家人。</p>
+            <p>無論是術後復健、長期照護，或是日常行動輔助，我們都能提供最合適的解決方案。從租賃、販售到政府補助諮詢，東光儀器是您最值得信賴的醫療器材夥伴。</p>
+            <div class="intro-values">
+              <div class="intro-value-item">
+                <div class="intro-value-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <div class="intro-value-text">
+                  <strong>認真</strong>
+                  <span>每一位顧客的需求，我們都認真對待</span>
+                </div>
+              </div>
+              <div class="intro-value-item">
+                <div class="intro-value-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="intro-value-text">
+                  <strong>負責</strong>
+                  <span>售後服務完善，讓您安心使用</span>
+                </div>
+              </div>
+              <div class="intro-value-item">
+                <div class="intro-value-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <div class="intro-value-text">
+                  <strong>專業</strong>
+                  <span>專業知識為您提供最合適的建議</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="intro-stats">
+            <div class="intro-stat-card">
+              <span class="intro-stat-num">20<sup>+</sup></span>
+              <span class="intro-stat-label">年專業服務</span>
+            </div>
+            <div class="intro-stat-card">
+              <span class="intro-stat-num">4</span>
+              <span class="intro-stat-label">大輔具類型</span>
+            </div>
+            <div class="intro-stat-card">
+              <span class="intro-stat-num">租賃</span>
+              <span class="intro-stat-label">彈性方案</span>
+            </div>
+            <div class="intro-stat-card">
+              <span class="intro-stat-num">補助</span>
+              <span class="intro-stat-label">申請諮詢</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="intro-section intro-section-alt" id="services">
+      <div class="intro-container">
+        <div class="intro-heading">
+          <div class="intro-heading-label">我們的服務</div>
+          <h2>全方位醫療器材服務</h2>
+          <p>提供居家醫療照護器材租賃及販售、輔具補助諮詢、醫用耗材批發零售，滿足您與家人的各種需求</p>
+        </div>
+        <div class="intro-services-grid">
+
+          <div class="intro-service-card">
+            <div class="intro-service-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+            </div>
+            <h3>器材租賃及販售</h3>
+            <p>提供各式居家醫療照護器材短期或長期租賃，也可直接購買。彈性方案滿足術後復健、長期照護等不同需求，歡迎來電洽詢。</p>
+          </div>
+
+          <div class="intro-service-card">
+            <div class="intro-service-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="12" y1="7" x2="12" y2="13"/></svg>
+            </div>
+            <h3>輔具補助諮詢</h3>
+            <p>專業評估輔具補助資格，協助符合條件的民眾申請政府長照補助，讓您以最優惠的價格取得所需醫療器材，減輕家庭負擔。</p>
+          </div>
+
+          <div class="intro-service-card">
+            <div class="intro-service-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3>醫用耗材批發零售</h3>
+            <p>醫療耗材批發零售，價格合理透明。適合醫療機構、照護中心或個人大量採購，歡迎來電洽詢批發報價。</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EQUIPMENT ===== -->
+    <section class="intro-section" id="equipment">
+      <div class="intro-container">
+        <div class="intro-heading">
+          <div class="intro-heading-label">輔具類型</div>
+          <h2>四大輔具服務類型</h2>
+          <p>涵蓋日常生活所需各類醫療輔具，租賃與販售皆有提供，圖片僅供參考，實品請依現場為主</p>
+        </div>
+        <div class="intro-equipment-grid">
+
+          <div class="intro-equipment-card">
+            <div class="intro-equipment-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M7 17v-5l5-2 2 4h3"/></svg>
+            </div>
+            <h3>行動輔具</h3>
+            <p>輪椅・助行器<br>拐杖・輔助踏車</p>
+          </div>
+
+          <div class="intro-equipment-card">
+            <div class="intro-equipment-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3v2.25"/><line x1="4" y1="20" x2="4" y2="22"/><line x1="20" y1="20" x2="20" y2="22"/></svg>
+            </div>
+            <h3>衛浴輔具</h3>
+            <p>洗澡椅・安全扶手<br>防滑墊・沐浴床</p>
+          </div>
+
+          <div class="intro-equipment-card">
+            <div class="intro-equipment-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 20h20"/><path d="M2 12V6a2 2 0 0 1 2-2h4"/><rect x="10" y="6" width="12" height="6" rx="1"/></svg>
+            </div>
+            <h3>臥床輔具</h3>
+            <p>氣墊床・護理床<br>床邊護欄・移位腰帶</p>
+          </div>
+
+          <div class="intro-equipment-card">
+            <div class="intro-equipment-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 2 5 6 5 10c0 3 1.5 5.5 3.5 7H15.5C17.5 15.5 19 13 19 10c0-4-3-8-7-8z"/><path d="M9 21h6"/><path d="M12 17v4"/><path d="M8 12c1-1.5 2-2 4-2s3 .5 4 2"/></svg>
+            </div>
+            <h3>呼吸輔具</h3>
+            <p>氧氣機・抽痰機<br>製氧機・呼吸器</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="intro-section intro-section-alt" id="contact">
+      <div class="intro-container">
+        <div class="intro-heading">
+          <div class="intro-heading-label">聯絡我們</div>
+          <h2>歡迎來電或親自到訪</h2>
+          <p>位於台南市立醫院對面，交通便利，歡迎您攜帶家人前來了解適合的器材方案</p>
+        </div>
+        <div class="intro-contact-grid">
+
+          <div class="intro-contact-info">
+
+            <div class="intro-contact-item">
+              <div class="intro-contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+              </div>
+              <div class="intro-contact-body">
+                <h4>洽詢電話</h4>
+                <a href="tel:062907244">(06) 290-7244</a>
+              </div>
+            </div>
+
+            <div class="intro-contact-item">
+              <div class="intro-contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="intro-contact-body">
+                <h4>公司地址</h4>
+                <p>701 台南市東區崇德路 677 &amp; 679 號</p>
+                <p class="contact-note">（台南市立醫院對面）</p>
+              </div>
+            </div>
+
+            <div class="intro-contact-item">
+              <div class="intro-contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="intro-contact-body">
+                <h4>營業時間</h4>
+                <p>週一至週六　9:30 AM – 10:00 PM</p>
+                <p>週日　10:00 AM – 5:00 PM</p>
+              </div>
+            </div>
+
+            <div class="intro-contact-item">
+              <div class="intro-contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="intro-contact-body">
+                <h4>電子信箱</h4>
+                <a href="mailto:t2907244@seed.net.tw">t2907244@seed.net.tw</a>
+              </div>
+            </div>
+
+            <div class="intro-contact-item">
+              <div class="intro-contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="intro-contact-body">
+                <h4>社群與即時通訊</h4>
+                <div class="intro-social-row">
+                  <a href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener" class="intro-social-btn intro-social-fb">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    Facebook
+                  </a>
+                  <a href="https://line.me/ti/p/~062907244" target="_blank" rel="noopener" class="intro-social-btn intro-social-line">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 10.2C22 5.4 17.5 1.5 12 1.5S2 5.4 2 10.2c0 4.3 3.8 8 9.1 8.6.4.1.9.3 1 .6.1.3.1.7 0 1l-.2.9c-.1.3-.3 1.3 1.1.7 1.4-.6 7.6-4.5 10.4-7.6 1.9-2.1 2.6-4.2 2.6-4.2z"/></svg>
+                    LINE ID: 062907244
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="intro-map">
+            <iframe
+              src="https://maps.google.com/maps?q=701%E5%8F%B0%E5%8D%97%E5%B8%82%E6%9D%B1%E5%8D%80%E5%B4%87%E5%BE%B7%E8%B7%AF677%E8%99%9F&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              title="台南東光儀器地址地圖"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer id="site-footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <img src="assets/images/logo.jpg" alt="東光醫療器材" class="footer-logo">
-        <p class="footer-tagline">專業醫療器材服務<br>SINCE 1992</p>
+  <footer class="intro-footer">
+    <div class="intro-footer-inner">
+      <div class="intro-footer-col">
+        <div class="intro-footer-brand">
+          <img src="assets/images/logo.jpg" alt="台南東光儀器">
+          <div class="intro-footer-brand-name">台南東光儀器<br>醫療輔具租賃</div>
+        </div>
+        <p class="intro-footer-tagline">認真・負責・專業<br>超過二十年，守護您的健康</p>
       </div>
-      <div class="footer-col">
-        <h3>聯絡資訊</h3>
-        <ul class="footer-info">
+      <div class="intro-footer-col">
+        <h4>聯絡資訊</h4>
+        <ul>
           <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-            04-2405-0660
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+            <a href="tel:062907244">(06) 290-7244</a>
           </li>
           <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            週一至週五 09:00–18:00
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:t2907244@seed.net.tw">t2907244@seed.net.tw</a>
           </li>
           <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            service@dongguang.com.tw
-          </li>
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            台中市大里區大德街79、81號
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            701 台南市東區崇德路 677 &amp; 679 號
           </li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h3>商品分類</h3>
-        <nav id="footer-nav" aria-label="頁尾分類導覽"></nav>
+      <div class="intro-footer-col">
+        <h4>營業時間</h4>
+        <ul>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            週一至週六　9:30 AM – 10:00 PM
+          </li>
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            週日　10:00 AM – 5:00 PM
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 東光醫療器材有限公司 SINCE 1992. All Rights Reserved.</p>
+    <div class="intro-footer-bottom">
+      <span>© 台南東光儀器醫療輔具租賃. All Rights Reserved.</span>
+      <a href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener">Facebook</a>
     </div>
   </footer>
 
-  <!-- Mobile sidebar overlay -->
-  <div id="sidebar-overlay" class="sidebar-overlay" hidden aria-hidden="true"></div>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
 
-  <!-- Scripts -->
-  <script src="assets/js/utils.js"></script>
-  <script src="assets/js/router.js"></script>
-  <script src="assets/js/catalog.js"></script>
-  <script src="assets/js/search.js"></script>
-  <script src="assets/js/product.js"></script>
-  <script src="assets/js/service-page.js"></script>
-  <script src="assets/js/app.js"></script>
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        closeMobileNav();
+      }
+    });
+  </script>
 
 </body>
 </html>
