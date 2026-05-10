@@ -195,44 +195,68 @@
     <!-- ===== EQUIPMENT ===== -->
     <section class="intro-section" id="equipment">
       <div class="intro-container">
-        <div class="intro-heading">
-          <div class="intro-heading-label">輔具類型</div>
-          <h2>四大輔具服務類型</h2>
-          <p>涵蓋日常生活所需各類醫療輔具，租賃與販售皆有提供，圖片僅供參考，實品請依現場為主</p>
-        </div>
-        <div class="intro-equipment-grid">
+        <div class="intro-equip-wrapper" id="equip-wrapper">
 
-          <div class="intro-equipment-card">
-            <div class="intro-equipment-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M7 17v-5l5-2 2 4h3"/></svg>
-            </div>
-            <h3>行動輔具</h3>
-            <p>輪椅・助行器<br>拐杖・輔助踏車</p>
-          </div>
+            <!-- 面板 1：四大類別總覽 -->
+            <div class="intro-equip-panel" id="equip-overview-panel">
+              <div class="intro-heading">
+                <div class="intro-heading-label">輔具類型</div>
+                <h2>四大輔具服務類型</h2>
+                <p>涵蓋日常生活所需各類醫療輔具，租賃與販售皆有提供，圖片僅供參考，實品請依現場為主</p>
+              </div>
+              <div class="intro-equipment-grid">
 
-          <div class="intro-equipment-card">
-            <div class="intro-equipment-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3v2.25"/><line x1="4" y1="20" x2="4" y2="22"/><line x1="20" y1="20" x2="20" y2="22"/></svg>
-            </div>
-            <h3>衛浴輔具</h3>
-            <p>洗澡椅・安全扶手<br>防滑墊・沐浴床</p>
-          </div>
+                <div class="intro-equipment-card" data-gallery="mobility">
+                  <div class="intro-equipment-photo">
+                    <img src="assets/images/products/mobility-wheelchair.jpeg" alt="輪椅">
+                  </div>
+                  <h3>行動輔具</h3>
+                  <p>輪椅・助行器<br>拐杖・輔助踏車</p>
+                  <span class="intro-equipment-more">查看更多 →</span>
+                </div>
 
-          <div class="intro-equipment-card">
-            <div class="intro-equipment-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 20h20"/><path d="M2 12V6a2 2 0 0 1 2-2h4"/><rect x="10" y="6" width="12" height="6" rx="1"/></svg>
-            </div>
-            <h3>臥床輔具</h3>
-            <p>氣墊床・護理床<br>床邊護欄・移位腰帶</p>
-          </div>
+                <div class="intro-equipment-card" data-gallery="bathroom">
+                  <div class="intro-equipment-photo">
+                    <img src="assets/images/products/bathroom-commode-folding.jpeg" alt="洗澡椅">
+                  </div>
+                  <h3>衛浴輔具</h3>
+                  <p>洗澡椅・安全扶手<br>防滑墊・沐浴床</p>
+                  <span class="intro-equipment-more">查看更多 →</span>
+                </div>
 
-          <div class="intro-equipment-card">
-            <div class="intro-equipment-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 2 5 6 5 10c0 3 1.5 5.5 3.5 7H15.5C17.5 15.5 19 13 19 10c0-4-3-8-7-8z"/><path d="M9 21h6"/><path d="M12 17v4"/><path d="M8 12c1-1.5 2-2 4-2s3 .5 4 2"/></svg>
+                <div class="intro-equipment-card" data-gallery="bed">
+                  <div class="intro-equipment-photo">
+                    <img src="assets/images/products/bed-nursing.jpeg" alt="護理床">
+                  </div>
+                  <h3>臥床輔具</h3>
+                  <p>氣墊床・護理床<br>床邊護欄・移位腰帶</p>
+                  <span class="intro-equipment-more">查看更多 →</span>
+                </div>
+
+                <div class="intro-equipment-card" data-gallery="respiratory">
+                  <div class="intro-equipment-photo">
+                    <img src="assets/images/products/respiratory-suction.jpeg" alt="抽痰機">
+                  </div>
+                  <h3>呼吸輔具</h3>
+                  <p>氧氣機・抽痰機<br>製氧機・呼吸器</p>
+                  <span class="intro-equipment-more">查看更多 →</span>
+                </div>
+
+              </div>
             </div>
-            <h3>呼吸輔具</h3>
-            <p>氧氣機・抽痰機<br>製氧機・呼吸器</p>
-          </div>
+
+            <!-- 面板 2：單一類別詳細圖庫 -->
+            <div class="intro-equip-panel" id="equip-detail-panel">
+              <div class="intro-equip-detail-header">
+                <div class="intro-equip-breadcrumb">
+                  <span class="intro-equip-bc-parent" id="equip-back">輔具類型</span>
+                  <span class="intro-equip-bc-sep">›</span>
+                  <span class="intro-equip-bc-current" id="equip-detail-title"></span>
+                </div>
+                <p class="intro-equip-note">圖片僅供參考，實品請依現場為主</p>
+              </div>
+              <div class="intro-equipment-grid" id="equip-detail-grid"></div>
+            </div>
 
         </div>
       </div>
@@ -390,6 +414,7 @@
   </footer>
 
   <script>
+    /* ── Mobile nav ── */
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
 
@@ -408,6 +433,92 @@
         closeMobileNav();
       }
     });
+
+    /* ── Equipment gallery – view switch ── */
+    const galleries = {
+      mobility: {
+        title: '行動輔具',
+        items: [
+          { src: 'assets/images/products/mobility-wheelchair.jpeg',           label: '標準輪椅' },
+          { src: 'assets/images/products/mobility-wheelchair-orthopedic.jpg', label: '骨科輪椅' },
+          { src: 'assets/images/products/mobility-wheelchair-reclining.jpg',  label: '躺式輪椅' },
+          { src: 'assets/images/products/mobility-walker.jpg',                label: '助行器' },
+          { src: 'assets/images/products/mobility-quad-cane.jpg',             label: '四腳拐' },
+          { src: 'assets/images/products/mobility-crutches.jpg',              label: '腋下拐' },
+        ]
+      },
+      bathroom: {
+        title: '衛浴輔具',
+        items: [
+          { src: 'assets/images/products/bathroom-commode-folding.jpeg', label: '便器椅' },
+          { src: 'assets/images/products/bathroom-commode-wheeled.jpg',  label: '有輪便器椅' },
+          { src: 'assets/images/products/bathroom-shower-stool.jpg',     label: '洗澡椅' },
+        ]
+      },
+      bed: {
+        title: '臥床輔具',
+        items: [
+          { src: 'assets/images/products/bed-nursing.jpeg',     label: '護理床' },
+          { src: 'assets/images/products/bed-air-mattress.jpg', label: '氣墊床' },
+          { src: 'assets/images/products/bed-iv-stand.jpg',     label: '點滴架' },
+        ]
+      },
+      respiratory: {
+        title: '呼吸輔具',
+        items: [
+          { src: 'assets/images/products/respiratory-suction.jpeg',             label: '抽痰機' },
+          { src: 'assets/images/products/respiratory-oxygen-concentrator.png',  label: '製氧機' },
+          { src: 'assets/images/products/respiratory-oximeter.jpg',             label: '血氧機' },
+          { src: 'assets/images/products/respiratory-nebulizer.jpg',            label: '噴霧機' },
+        ]
+      }
+    };
+
+    const equipWrapper     = document.getElementById('equip-wrapper');
+    const equipOverviewPanel = document.getElementById('equip-overview-panel');
+    const equipDetailPanel = document.getElementById('equip-detail-panel');
+    const equipTitle       = document.getElementById('equip-detail-title');
+    const equipGrid        = document.getElementById('equip-detail-grid');
+
+    document.querySelectorAll('[data-gallery]').forEach(card => {
+      card.addEventListener('click', () => {
+        const data = galleries[card.dataset.gallery];
+        if (!data) return;
+
+        /* 計算卡片中心相對 wrapper 的位置（作為展開原點）*/
+        const wRect = equipWrapper.getBoundingClientRect();
+        const cRect = card.getBoundingClientRect();
+        const ox = ((cRect.left + cRect.width  / 2) - wRect.left) / wRect.width  * 100;
+        const oy = ((cRect.top  + cRect.height / 2) - wRect.top ) / wRect.height * 100;
+        equipDetailPanel.style.setProperty('--origin-x', `${ox}%`);
+        equipDetailPanel.style.setProperty('--origin-y', `${oy}%`);
+
+        /* 填入內容 */
+        equipTitle.textContent = data.title;
+        equipGrid.innerHTML = data.items.map(item => `
+          <div class="intro-equipment-card">
+            <div class="intro-equipment-photo">
+              <img src="${item.src}" alt="${item.label}" loading="lazy">
+            </div>
+            <h3>${item.label}</h3>
+          </div>
+        `).join('');
+
+        /* 鎖定 wrapper 高度，切換狀態 */
+        equipWrapper.style.minHeight = equipWrapper.offsetHeight + 'px';
+        equipWrapper.classList.add('show-detail');
+        document.getElementById('equipment').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    function goBack() {
+      equipWrapper.classList.remove('show-detail');
+      setTimeout(() => { equipWrapper.style.minHeight = ''; }, 460);
+      document.getElementById('equipment').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('equip-back').addEventListener('click', goBack);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') goBack(); });
   </script>
 
 </body>

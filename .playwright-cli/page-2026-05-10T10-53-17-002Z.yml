@@ -1,0 +1,228 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "東光醫療器材 首頁" [ref=e4] [cursor=pointer]:
+        - /url: "#top"
+        - img "東光醫療器材" [ref=e5]
+        - generic [ref=e6]:
+          - generic [ref=e7]: 東光醫療器材
+          - generic [ref=e8]: 醫療輔具租賃
+      - navigation "主要導覽" [ref=e9]:
+        - link "關於我們" [ref=e10] [cursor=pointer]:
+          - /url: "#about"
+        - link "服務項目" [ref=e11] [cursor=pointer]:
+          - /url: "#services"
+        - link "輔具類型" [ref=e12] [cursor=pointer]:
+          - /url: "#equipment"
+        - link "聯絡我們" [ref=e13] [cursor=pointer]:
+          - /url: "#contact"
+      - link "(06) 290-7244" [ref=e14] [cursor=pointer]:
+        - /url: tel:062907244
+        - img [ref=e15]
+        - text: (06) 290-7244
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - img "東光醫療器材" [ref=e20]
+      - generic [ref=e21]:
+        - img [ref=e22]
+        - text: 超過二十年專業服務
+      - heading "台南東光醫療器材" [level=1] [ref=e24]
+      - paragraph [ref=e25]: 您健康照護的最佳夥伴
+      - generic [ref=e26]:
+        - generic [ref=e27]: 認真
+        - generic [ref=e28]: 負責
+        - generic [ref=e29]: 專業
+      - generic [ref=e30]:
+        - link "立即致電諮詢" [ref=e31] [cursor=pointer]:
+          - /url: tel:062907244
+          - img [ref=e32]
+          - text: 立即致電諮詢
+        - link "了解更多" [ref=e34] [cursor=pointer]:
+          - /url: "#about"
+          - text: 了解更多
+          - img [ref=e35]
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - generic [ref=e41]: 關於東光
+        - heading "二十年用心，守護您與家人的健康" [level=2] [ref=e42]
+        - paragraph [ref=e43]: 東光醫療器材自創立以來，始終以「認真、負責、專業」的精神，為台南地區的家庭提供優質的居家醫療照護器材服務。我們深知每位顧客背後，都有需要被細心照顧的家人。
+        - paragraph [ref=e44]: 無論是術後復健、長期照護，或是日常行動輔助，我們都能提供最合適的解決方案。從租賃、販售到政府補助諮詢，東光醫療器材是您最值得信賴的醫療器材夥伴。
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - img [ref=e48]
+            - generic [ref=e50]:
+              - strong [ref=e51]: 認真
+              - text: 每一位顧客的需求，我們都認真對待
+          - generic [ref=e52]:
+            - img [ref=e54]
+            - generic [ref=e56]:
+              - strong [ref=e57]: 負責
+              - text: 售後服務完善，讓您安心使用
+          - generic [ref=e58]:
+            - img [ref=e60]
+            - generic [ref=e63]:
+              - strong [ref=e64]: 專業
+              - text: 專業知識為您提供最合適的建議
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - text: "20"
+            - superscript [ref=e68]: +
+          - text: 年專業服務
+        - generic [ref=e69]:
+          - generic [ref=e70]: "4"
+          - text: 大輔具類型
+        - generic [ref=e71]:
+          - generic [ref=e72]: 租賃
+          - text: 彈性方案
+        - generic [ref=e73]:
+          - generic [ref=e74]: 補助
+          - text: 申請諮詢
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]: 我們的服務
+        - heading "全方位醫療器材服務" [level=2] [ref=e79]
+        - paragraph [ref=e80]: 提供居家醫療照護器材租賃及販售、輔具補助諮詢、醫用耗材批發零售，滿足您與家人的各種需求
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - img [ref=e84]
+          - heading "器材租賃及販售" [level=3] [ref=e87]
+          - paragraph [ref=e88]: 提供各式居家醫療照護器材短期或長期租賃，也可直接購買。彈性方案滿足術後復健、長期照護等不同需求，歡迎來電洽詢。
+        - generic [ref=e89]:
+          - img [ref=e91]
+          - heading "輔具補助諮詢" [level=3] [ref=e93]
+          - paragraph [ref=e94]: 專業評估輔具補助資格，協助符合條件的民眾申請政府長照補助，讓您以最優惠的價格取得所需醫療器材，減輕家庭負擔。
+        - generic [ref=e95]:
+          - img [ref=e97]
+          - heading "醫用耗材批發零售" [level=3] [ref=e100]
+          - paragraph [ref=e101]: 醫療耗材批發零售，價格合理透明。適合醫療機構、照護中心或個人大量採購，歡迎來電洽詢批發報價。
+    - generic [ref=e105]:
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - generic [ref=e108]: 輔具類型
+          - heading "四大輔具服務類型" [level=2] [ref=e109]
+          - paragraph [ref=e110]: 涵蓋日常生活所需各類醫療輔具，租賃與販售皆有提供，圖片僅供參考，實品請依現場為主
+        - generic [ref=e111]:
+          - generic [ref=e112] [cursor=pointer]:
+            - img "輪椅" [ref=e114]
+            - heading "行動輔具" [level=3] [ref=e115]
+            - paragraph [ref=e116]:
+              - text: 輪椅・助行器
+              - text: 拐杖・輔助踏車
+            - generic [ref=e117]: 查看更多 →
+          - generic [ref=e118] [cursor=pointer]:
+            - img "洗澡椅" [ref=e120]
+            - heading "衛浴輔具" [level=3] [ref=e121]
+            - paragraph [ref=e122]:
+              - text: 洗澡椅・安全扶手
+              - text: 防滑墊・沐浴床
+            - generic [ref=e123]: 查看更多 →
+          - generic [ref=e124] [cursor=pointer]:
+            - img "護理床" [ref=e126]
+            - heading "臥床輔具" [level=3] [ref=e127]
+            - paragraph [ref=e128]:
+              - text: 氣墊床・護理床
+              - text: 床邊護欄・移位腰帶
+            - generic [ref=e129]: 查看更多 →
+          - generic [ref=e130] [cursor=pointer]:
+            - img "抽痰機" [ref=e132]
+            - heading "呼吸輔具" [level=3] [ref=e133]
+            - paragraph [ref=e134]:
+              - text: 氧氣機・抽痰機
+              - text: 製氧機・呼吸器
+            - generic [ref=e135]: 查看更多 →
+      - generic [ref=e137]:
+        - button "回到輔具類型" [ref=e138] [cursor=pointer]:
+          - img [ref=e139]
+          - text: 回到輔具類型
+        - heading [level=2]
+        - paragraph [ref=e141]: 圖片僅供參考，實品請依現場為主
+    - generic [ref=e143]:
+      - generic [ref=e144]:
+        - generic [ref=e145]: 聯絡我們
+        - heading "歡迎來電或親自到訪" [level=2] [ref=e146]
+        - paragraph [ref=e147]: 位於台南市立醫院對面，交通便利，歡迎您攜帶家人前來了解適合的器材方案
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - generic [ref=e150]:
+            - img [ref=e152]
+            - generic [ref=e155]:
+              - heading "營業時間" [level=4] [ref=e156]
+              - generic [ref=e157]:
+                - generic [ref=e158]:
+                  - generic [ref=e159]: 週一 – 週六
+                  - generic [ref=e160]: 9:30 – 22:00
+                - generic [ref=e161]:
+                  - generic [ref=e162]: 週日
+                  - generic [ref=e163]: 10:00 – 17:00
+          - link "洽詢電話 (06) 290-7244" [ref=e164] [cursor=pointer]:
+            - /url: tel:062907244
+            - img [ref=e166]
+            - generic [ref=e168]:
+              - heading "洽詢電話" [level=4] [ref=e169]
+              - paragraph [ref=e170]: (06) 290-7244
+          - link "電子信箱 t2907244@seed.net.tw" [ref=e171] [cursor=pointer]:
+            - /url: mailto:t2907244@seed.net.tw
+            - img [ref=e173]
+            - generic [ref=e176]:
+              - heading "電子信箱" [level=4] [ref=e177]
+              - paragraph [ref=e178]: t2907244@seed.net.tw
+          - link "Facebook 東光醫療器材" [ref=e179] [cursor=pointer]:
+            - /url: https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/
+            - img [ref=e181]
+            - generic [ref=e183]:
+              - heading "Facebook" [level=4] [ref=e184]
+              - paragraph [ref=e185]: 東光醫療器材
+          - 'link "LINE ID: 062907244" [ref=e186] [cursor=pointer]':
+            - /url: https://line.me/ti/p/~062907244
+            - img [ref=e188]
+            - generic [ref=e190]:
+              - heading "LINE" [level=4] [ref=e191]
+              - paragraph [ref=e192]: "ID: 062907244"
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - img [ref=e196]
+            - generic [ref=e199]:
+              - heading "地址" [level=4] [ref=e200]
+              - paragraph [ref=e201]: 701 台南市東區崇德路 677 & 679 號
+              - generic [ref=e202]: 📍 台南市立醫院對面
+          - iframe [ref=e204]:
+            
+  - contentinfo [ref=e205]:
+    - generic [ref=e206]:
+      - generic [ref=e207]:
+        - generic [ref=e208]:
+          - img "東光醫療器材" [ref=e209]
+          - generic [ref=e210]:
+            - text: 東光醫療器材
+            - text: 醫療輔具租賃
+        - paragraph [ref=e211]:
+          - text: 認真・負責・專業
+          - text: 超過二十年，守護您的健康
+      - generic [ref=e212]:
+        - heading "聯絡資訊" [level=4] [ref=e213]
+        - list [ref=e214]:
+          - listitem [ref=e215]:
+            - img [ref=e216]
+            - link "(06) 290-7244" [ref=e218] [cursor=pointer]:
+              - /url: tel:062907244
+          - listitem [ref=e219]:
+            - img [ref=e220]
+            - link "t2907244@seed.net.tw" [ref=e223] [cursor=pointer]:
+              - /url: mailto:t2907244@seed.net.tw
+          - listitem [ref=e224]:
+            - img [ref=e225]
+            - text: 701 台南市東區崇德路 677 & 679 號
+      - generic [ref=e228]:
+        - heading "營業時間" [level=4] [ref=e229]
+        - list [ref=e230]:
+          - listitem [ref=e231]:
+            - img [ref=e232]
+            - text: 週一至週六 9:30 AM – 10:00 PM
+          - listitem [ref=e235]:
+            - img [ref=e236]
+            - text: 週日 10:00 AM – 5:00 PM
+    - generic [ref=e239]:
+      - generic [ref=e240]: © 台南東光醫療器材醫療輔具租賃. All Rights Reserved.
+      - link "Facebook" [ref=e241] [cursor=pointer]:
+        - /url: https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/
