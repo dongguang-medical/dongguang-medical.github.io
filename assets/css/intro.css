@@ -15,7 +15,7 @@
 .intro-header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
   height: 100%;
   display: flex;
   align-items: center;
@@ -822,6 +822,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  .intro-header-inner { padding: 0 16px; }
   .intro-nav,
   .intro-header-phone { display: none; }
   .intro-hamburger { display: flex; }
