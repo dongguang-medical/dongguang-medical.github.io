@@ -1,2 +1,4 @@
 screenshots/
 scripts/
+.playwright-cli/
+.claude/
