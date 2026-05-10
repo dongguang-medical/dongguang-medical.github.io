@@ -29,6 +29,7 @@
         <a href="#about">關於我們</a>
         <a href="#services">服務項目</a>
         <a href="#equipment">輔具類型</a>
+        <a href="#reviews">顧客好評</a>
         <a href="#contact">聯絡我們</a>
       </nav>
 
@@ -56,6 +57,10 @@
     <a href="#equipment" onclick="closeMobileNav()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l3 3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M7 17v-5l5-2 2 4h3"/></svg>
       輔具類型
+    </a>
+    <a href="#reviews" onclick="closeMobileNav()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      顧客好評
     </a>
     <a href="#contact" onclick="closeMobileNav()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
@@ -262,8 +267,67 @@
       </div>
     </section>
 
+    <!-- ===== REVIEWS ===== -->
+    <section class="intro-section intro-section-alt" id="reviews">
+      <div class="intro-container">
+        <div class="intro-heading">
+          <div class="intro-heading-label">顧客好評</div>
+          <h2>他們這樣說</h2>
+          <p>來自 Google 的真實評論，感謝每一位給予支持的顧客</p>
+        </div>
+        <div class="intro-reviews-grid">
+
+          <div class="intro-review-card">
+            <div class="intro-review-header">
+              <div class="intro-review-avatar">J</div>
+              <div>
+                <div class="intro-review-name">Hujomomo Jomo</div>
+                <div class="intro-review-meta">在地嚮導・26 則評論</div>
+              </div>
+            </div>
+            <div class="intro-review-stars">★★★★★</div>
+            <p class="intro-review-text">購買了氣墊床下的薄床墊，送到府後還貼心的幫忙更換。更貼心的是還幫忙把厚床墊搬到2樓放。爸媽一直誇2個小老闆人真的很好，服務也親切。之後有任何需要，會再次光臨東光儀器。謝謝你們。</p>
+            <div class="intro-review-time">2 個月前</div>
+          </div>
+
+          <div class="intro-review-card">
+            <div class="intro-review-header">
+              <div class="intro-review-avatar">M</div>
+              <div>
+                <div class="intro-review-name">Miranda Sheng</div>
+                <div class="intro-review-meta">在地嚮導・14 則評論</div>
+              </div>
+            </div>
+            <div class="intro-review-stars">★★★★<span class="intro-review-star-empty">★</span></div>
+            <p class="intro-review-text">服務週到、熱誠友善、專業用心，對家裡的長輩很有耐心講解，不嫌麻煩再三確認才施工，很值得信賴的店家。</p>
+            <div class="intro-review-time">3 個月前</div>
+          </div>
+
+          <div class="intro-review-card">
+            <div class="intro-review-header">
+              <div class="intro-review-avatar">周</div>
+              <div>
+                <div class="intro-review-name">周子閎</div>
+                <div class="intro-review-meta">109 則評論・311 張相片</div>
+              </div>
+            </div>
+            <div class="intro-review-stars">★★★★★</div>
+            <p class="intro-review-text">小老闆帥帥的很有禮貌，也順利買到這款有魔鬼氈的三吋彈力繃帶。價格實惠，坊間兩卷的價格在這裡可買到三捲。當然，還是祝大家保重身體囉！</p>
+            <div class="intro-review-time">7 年前</div>
+          </div>
+
+        </div>
+        <div class="intro-reviews-cta">
+          <a href="https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA" target="_blank" rel="noopener" class="intro-reviews-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            查看更多 Google 評論
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== CONTACT ===== -->
-    <section class="intro-section intro-section-alt" id="contact">
+    <section class="intro-section" id="contact">
       <div class="intro-container">
         <div class="intro-heading">
           <div class="intro-heading-label">聯絡我們</div>
@@ -339,7 +403,7 @@
 
           <!-- 右：地址 + 地圖 -->
           <div class="intro-contact-right">
-            <div class="intro-map-address">
+            <a href="https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA" target="_blank" rel="noopener" class="intro-map-address intro-map-address-link">
               <div class="intro-cc-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
@@ -348,10 +412,10 @@
                 <p>701 台南市東區崇德路 677 &amp; 679 號</p>
                 <span class="intro-cc-landmark">📍 台南市立醫院對面</span>
               </div>
-            </div>
+            </a>
             <div class="intro-map">
               <iframe
-                src="https://maps.google.com/maps?q=701%E5%8F%B0%E5%8D%97%E5%B8%82%E6%9D%B1%E5%8D%80%E5%B4%87%E5%BE%B7%E8%B7%AF677%E8%99%9F&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=%E6%9D%B1%E5%85%89%E5%84%80%E5%99%A8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 title="東光醫療器材地址地圖"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
@@ -395,14 +459,14 @@
       </div>
       <div class="intro-footer-col">
         <h4>營業時間</h4>
-        <ul>
+        <ul class="intro-footer-hours">
           <li>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            週一至週六　9:30 AM – 10:00 PM
+            <span class="fh-day">週一至週六</span><span class="fh-time">9:30 AM – 10:00 PM</span>
           </li>
           <li>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            週日　10:00 AM – 5:00 PM
+            <span class="fh-day">週日</span><span class="fh-time">10:00 AM – 5:00 PM</span>
           </li>
         </ul>
       </div>
