@@ -670,6 +670,7 @@
 
 .intro-cc-icon-fb { background: #e8f0fe; color: #1877F2; }
 .intro-cc-icon-line { background: #e6f9ee; color: #06C755; }
+.intro-cc-icon-shopee { background: #fff0ee; color: #EE4D2D; }
 
 .intro-cc-body {
   flex: 1;
@@ -753,7 +754,7 @@
 .intro-map iframe {
   display: block;
   width: 100%;
-  height: 420px;
+  height: 320px;
   border: none;
 }
 
