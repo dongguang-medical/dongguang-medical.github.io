@@ -594,7 +594,8 @@
     document.getElementById('equip-back').addEventListener('click', goBack);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') goBack(); });
 
-    /* ── Visitor counter ── */
+    /* ── Visitor counter (only on production) ── */
+    if (location.hostname !== '127.0.0.1' && location.hostname !== 'localhost')
     fetch('https://api.counterapi.dev/v1/dongguang-medical/website/up')
       .then(r => r.json())
       .then(d => {
