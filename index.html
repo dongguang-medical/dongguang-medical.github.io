@@ -483,7 +483,7 @@
     </div>
     <div class="intro-footer-bottom">
       <span>© 台南東光醫療器材醫療輔具租賃. All Rights Reserved.</span>
-      <a href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener">Facebook</a>
+      <span id="visitor-count" style="display:none">瀏覽次數：<span id="visitor-num">—</span></span>
     </div>
   </footer>
 
@@ -593,6 +593,17 @@
 
     document.getElementById('equip-back').addEventListener('click', goBack);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') goBack(); });
+
+    /* ── Visitor counter ── */
+    fetch('https://api.counterapi.dev/v1/dongguang-medical/website/up')
+      .then(r => r.json())
+      .then(d => {
+        if (d && d.count != null) {
+          document.getElementById('visitor-num').textContent = d.count.toLocaleString();
+          document.getElementById('visitor-count').style.display = 'inline';
+        }
+      })
+      .catch(() => {});
   </script>
 
 </body>
