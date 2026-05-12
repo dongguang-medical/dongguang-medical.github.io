@@ -15,6 +15,7 @@ DG.product = (function () {
       return;
     }
 
+    document.body.classList.remove('on-home');
     DG.utils.showView('view-product');
     DG.catalog.renderBreadcrumb(pathSegments, 'product');
     DG.catalog.updateSidebarActive(pathSegments.slice(0, -1).join('/'));

@@ -93,6 +93,7 @@ DG.catalog = (function () {
   /* ── Homepage ─────────────────────────────────────── */
 
   function showHome() {
+    document.body.classList.add('on-home');
     DG.utils.setTitle([]);
     DG.utils.showView('view-home');
     updateSidebarActive(null);
@@ -136,6 +137,7 @@ DG.catalog = (function () {
   /* ── Category view ────────────────────────────────── */
 
   function showCategory(pathSegments) {
+    document.body.classList.remove('on-home');
     if (!DG.app.index) return;
 
     var grid = document.getElementById('product-grid');

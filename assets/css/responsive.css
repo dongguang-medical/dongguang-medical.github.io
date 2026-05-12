@@ -2,6 +2,64 @@
    RESPONSIVE — Tablet and Mobile breakpoints
    ===================================================== */
 
+/* =====================================================
+   SERVICE PAGE RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1023px) {
+  .sp-about-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .sp-hero-text h1 { font-size: 32px; }
+
+  .header-nav { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  .sp-hero {
+    padding: 60px var(--space-5) 68px;
+  }
+
+  .sp-hero-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .sp-hero-text h1 { font-size: 26px; }
+  .sp-hero-desc { font-size: var(--font-size-base); }
+
+  .sp-section { padding: 52px 0; }
+
+  .sp-heading h2 { font-size: var(--font-size-xl); }
+
+  .sp-services-grid,
+  .sp-equipment-grid,
+  .sp-contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sp-stats { grid-template-columns: 1fr 1fr; }
+
+  .sp-btn-outline-white,
+  .sp-btn-lg { padding: var(--space-3) var(--space-5) !important; }
+
+  .btn-catalog { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .sp-services-grid,
+  .sp-equipment-grid,
+  .sp-contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   CATALOG RESPONSIVE (original rules below)
+   ===================================================== */
+
 /* ===== TABLET (768px – 1023px) ===== */
 @media (max-width: 1023px) {
   .page-layout {

@@ -1,0 +1,462 @@
+/* =====================================================
+   SERVICE PAGE — Hero, Services, Equipment, About, Contact
+   ===================================================== */
+
+/* ── 首頁模式下的佈局調整 ── */
+body.on-home .page-layout {
+  padding: 0;
+  gap: 0;
+  max-width: 100%;
+}
+
+body.on-home #main-content {
+  min-width: 100%;
+  scroll-margin-top: 0;
+}
+
+body.on-home #sidebar {
+  display: none;
+}
+
+/* ── Header 導覽切換 ── */
+.header-nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+
+.header-nav-link {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  white-space: nowrap;
+}
+
+.header-nav-link:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btn-catalog {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-accent);
+  color: #1A1A1A;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-catalog:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-1px);
+}
+
+/* 首頁：顯示 nav + catalog btn，隱藏 search */
+body.on-home .header-nav        { display: flex; }
+body.on-home .header-search     { display: none; }
+body.on-home .btn-catalog       { display: inline-flex; }
+
+/* 目錄頁：顯示 search，隱藏 nav + catalog btn */
+body:not(.on-home) .header-nav  { display: none; }
+body:not(.on-home) .header-search {
+  display: flex;
+  margin-left: auto;
+}
+body:not(.on-home) .btn-catalog { display: none; }
+
+/* ── 共用容器 ── */
+.sp-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* ── 共用 Section ── */
+.sp-section {
+  padding: 72px 0;
+  background: var(--color-surface);
+}
+
+.sp-section-alt {
+  background: var(--color-bg);
+}
+
+.sp-heading {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.sp-heading h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+  position: relative;
+  display: inline-block;
+}
+
+.sp-heading h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  margin: var(--space-3) auto 0;
+}
+
+.sp-heading p {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-4);
+}
+
+/* ── HERO ── */
+.sp-hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-white);
+  padding: 88px var(--space-6) 96px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sp-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(245,197,24,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.sp-container { position: relative; }
+
+.sp-hero-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--color-accent);
+  margin: 0 auto var(--space-6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.sp-hero-text h1 {
+  font-size: 42px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-2);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sp-hero-year {
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--space-5);
+}
+
+.sp-hero-desc {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.9;
+  margin-bottom: var(--space-8);
+}
+
+.sp-hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sp-btn-lg {
+  padding: var(--space-3) var(--space-8) !important;
+  font-size: var(--font-size-base) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sp-btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-full);
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  font-family: inherit;
+  padding: var(--space-3) var(--space-8);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.sp-btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+/* ── 服務項目 ── */
+.sp-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-5);
+}
+
+.sp-service-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.sp-service-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.sp-service-icon {
+  width: 68px;
+  height: 68px;
+  background: var(--color-primary-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-5);
+  color: var(--color-primary);
+  transition: background var(--transition-fast);
+}
+
+.sp-service-card:hover .sp-service-icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.sp-service-card h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.sp-service-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+/* ── 輔具類型 ── */
+.sp-equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+}
+
+.sp-equipment-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sp-equipment-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+  border-color: var(--color-primary-light);
+}
+
+.sp-equipment-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-5);
+  color: var(--color-white);
+  transition: transform var(--transition-fast);
+}
+
+.sp-equipment-card:hover .sp-equipment-icon {
+  transform: scale(1.06);
+}
+
+.sp-equipment-card h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.sp-equipment-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  line-height: 1.7;
+}
+
+.sp-equipment-more {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── 關於我們 ── */
+.sp-about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.sp-section-label {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  background: var(--color-primary-pale);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.sp-about-text h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-5);
+  line-height: 1.4;
+}
+
+.sp-about-text p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+  margin-bottom: var(--space-4);
+}
+
+.sp-about-cta {
+  margin-top: var(--space-2);
+  display: inline-flex;
+}
+
+.sp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.sp-stat {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border-top: 3px solid var(--color-primary);
+  border: 1px solid var(--color-border-light);
+  border-top: 3px solid var(--color-primary);
+}
+
+.sp-stat-num {
+  display: block;
+  font-size: 34px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+}
+
+.sp-stat-num sup {
+  font-size: 18px;
+}
+
+.sp-stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: block;
+}
+
+/* ── 聯絡我們 ── */
+.sp-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-5);
+}
+
+.sp-contact-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sp-contact-card-link:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+  border-color: var(--color-primary-light);
+}
+
+.sp-contact-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--color-primary-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+  color: var(--color-primary);
+}
+
+.sp-contact-card-link:hover .sp-contact-icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.sp-contact-card h3 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.sp-contact-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+}
+
