@@ -1,0 +1,123 @@
+# ============================================================
+# 東光醫療器材 — Sveltia CMS 商品管理後台設定
+# Sveltia CMS 相容 Decap CMS 設定格式（本檔即採用該語法）
+# ============================================================
+
+backend:
+  name: github
+  repo: dongguang-medical/dongguang-medical.github.io
+  branch: main
+  # base_url：GitHub OAuth 代理（Cloudflare Worker）的網址。
+  # ⚠️ 以下為 placeholder，待 OAuth 代理架好後填入實際 Worker 網址，
+  #    例如 https://sveltia-cms-auth.<你的子網域>.workers.dev
+  #    詳見 docs/後台部署設定.md
+  base_url: https://REPLACE-WITH-OAUTH-WORKER.workers.dev
+
+# 網站資訊（後台右上角可快速開啟正式網站）
+site_url: https://dongguang-medical.github.io
+display_url: https://dongguang-medical.github.io
+
+# 圖片上傳位置
+media_folder: assets/uploads        # 存進 repo 的實際資料夾
+public_folder: /assets/uploads      # 網頁上引用的公開路徑
+
+# 檔名（slug）產生規則：轉成 ASCII、去除重音符號，
+# 避免產生中文檔名（中文商品名交由下方 collection 的 slug 樣板處理）
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: products
+    label: 商品
+    label_singular: 商品
+    folder: content/products
+    create: true
+    delete: true
+    format: frontmatter        # YAML frontmatter + Markdown 內文
+    extension: md
+    identifier_field: name
+    summary: "{{name}}｜{{category}}"
+    sortable_fields: [name, category]
+    # 檔名樣板：日期 + 短亂數 ID，保證是英文/數字檔名，
+    # 不會因中文商品名產生中文檔名（{{uuid_short}} 為 Sveltia 支援的標籤）
+    slug: "{{year}}{{month}}{{day}}-{{uuid_short}}"
+    # 保持介面極簡：關閉編輯預覽面板（網站無對應預覽樣板，開著只會佔空間）
+    editor:
+      preview: false
+    fields:
+      - label: 商品名稱
+        name: name
+        widget: string
+        required: true
+        hint: 顯示在網站上的商品名稱
+
+      - label: 分類
+        name: category
+        widget: select
+        required: true
+        options:
+          - 行動輔具
+          - 衛浴輔具
+          - 臥床輔具
+          - 呼吸輔具
+
+      - label: 子分類
+        name: subcategory
+        widget: string
+        required: false
+        hint: 選填，例：輪椅、氣墊床
+
+      - label: 售價
+        name: price
+        widget: string
+        required: false
+        hint: 例 NT$3,500，留空會顯示「歡迎洽詢」
+
+      - label: 品牌
+        name: brand
+        widget: string
+        required: false
+
+      - label: 標籤
+        name: tags
+        widget: list
+        required: false
+        hint: 例：保固一年、可申請補助（一次一個，可加多個）
+
+      - label: 規格
+        name: specs
+        widget: list
+        required: false
+        label_singular: 規格
+        summary: "{{fields.label}}：{{fields.value}}"
+        fields:
+          - label: 項目
+            name: label
+            widget: string
+          - label: 數值
+            name: value
+            widget: string
+
+      - label: 商品照片
+        name: images
+        widget: list
+        required: false
+        label_singular: 照片
+        hint: 第一張會作為封面。建議每張 500KB 以內。
+        field:
+          label: 照片
+          name: image
+          widget: image
+
+      - label: 上架顯示
+        name: published
+        widget: boolean
+        default: true
+        hint: 關閉後商品不會出現在網站上（不用刪除商品）
+
+      - label: 商品說明
+        name: body
+        widget: markdown
+        required: false
