@@ -47,24 +47,15 @@ PHONE_TEL = "062907244"
 
 # 九大分類（固定順序）：名稱、簡介、代表圖
 CATEGORIES = [
-    ("行動輔具", "輪椅、電動代步車、助行器、拐杖與相關配件",
-     "assets/images/products/mobility-wheelchair.jpeg"),
-    ("臥床照護", "電動照護床、氣墊床、移位輔具、管路與臥床照護用品",
-     "assets/images/products/bed-nursing.jpeg"),
-    ("衛浴與居家安全", "便盆椅、洗澡椅、安全扶手、無障礙改善與沐浴清潔",
-     "assets/images/products/bathroom-commode-folding.jpeg"),
-    ("呼吸照護", "氧氣製造機、抽痰機、噴霧器、陽壓呼吸器與洗鼻器",
-     "assets/images/products/respiratory-suction.jpeg"),
-    ("健康量測", "血壓計、血糖機、體溫計、血氧濃度計等居家量測儀器",
-     "assets/images/placeholder.svg"),
-    ("復健理療", "熱敷墊、電療機、紅外線治療儀、復健器材與護具",
-     "assets/images/placeholder.svg"),
-    ("照護耗材", "成人紙尿褲、看護墊、敷料人工皮、紗布棉棒等消耗品",
-     "assets/images/placeholder.svg"),
-    ("營養保健", "成人營養補充、特殊配方與血糖管理營養品",
-     "assets/images/placeholder.svg"),
-    ("其他", "診所與醫護設備、急救器材、醫療器械與居家生活用品",
-     "assets/images/placeholder.svg"),
+    ("行動輔具", "輪椅、電動代步車、助行器、拐杖與相關配件"),
+    ("臥床照護", "電動照護床、氣墊床、移位輔具、管路與臥床照護用品"),
+    ("衛浴與居家安全", "便盆椅、洗澡椅、安全扶手、無障礙改善與沐浴清潔"),
+    ("呼吸照護", "氧氣製造機、抽痰機、噴霧器、陽壓呼吸器與洗鼻器"),
+    ("健康量測", "血壓計、血糖機、體溫計、血氧濃度計等居家量測儀器"),
+    ("復健理療", "熱敷墊、電療機、紅外線治療儀、復健器材與護具"),
+    ("照護耗材", "成人紙尿褲、看護墊、敷料人工皮、紗布棉棒等消耗品"),
+    ("營養保健", "成人營養補充、特殊配方與血糖管理營養品"),
+    ("其他", "診所與醫護設備、急救器材、醫療器械與居家生活用品"),
 ]
 CATEGORY_NAMES = [c[0] for c in CATEGORIES]
 
@@ -904,7 +895,7 @@ def build_home_page(products):
             <h3>{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
             <p>{esc(desc)}</p>
             <span class="intro-cat-more">瀏覽商品 →</span>
-          </a>""" for name, desc, _cover in CATEGORIES)
+          </a>""" for name, desc in CATEGORIES)
 
     main = f"""    <div class="cat-section home-screen1">
       <div class="cat-container">
@@ -1002,7 +993,7 @@ def build_catalog_redirect():
 
 
 def build_category_pages(products):
-    for cat_name, cat_desc, _cover in CATEGORIES:
+    for cat_name, cat_desc in CATEGORIES:
         items = [p for p in products if p["category"] == cat_name]
         cat_url = url_path(f"category/{cat_name}/")
         subs = NAV_SUBS.get(cat_name, [])
