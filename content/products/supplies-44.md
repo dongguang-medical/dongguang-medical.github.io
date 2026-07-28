@@ -1,7 +1,7 @@
 ---
 name: 福爾FORA 福爾血糖試片採血針 50片裝
 taxonomy: 照護耗材/血糖試紙與採血針
-price: 850
+price: ""
 brand: 福爾
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$850/原NT$1299
+specs: []
 images: []
 published: false
 source: import

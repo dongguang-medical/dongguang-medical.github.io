@@ -1,7 +1,7 @@
 ---
 name: NISSEI 日本精密 保固2+2年 MT-300J
 taxonomy: 健康量測/體溫計
-price: 2180
+price: ""
 brand: 日本精密
 offering:
   - 門市洽詢

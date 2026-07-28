@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YH090-1 不鏽鋼腳架(弧型墊) 皮墊
 taxonomy: 其他/診所與醫護設備
-price: 2200
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -18,8 +18,6 @@ specs:
     value: 不鏽鋼
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$2200/原NT$2500
 images: []
 published: false
 source: import

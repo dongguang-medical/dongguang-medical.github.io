@@ -1,7 +1,7 @@
 ---
 name: 美利馳 merits C1 涼感舒緩座墊 氣墊座
 taxonomy: 行動輔具/輪椅座墊
-price: 3700
+price: ""
 brand: 美利馳
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "16吋：40x40x8cm: NT$3700 ｜ 18吋：45x40x8cm: NT$3700"
+    value: "16吋：40x40x8cm｜18吋：45x40x8cm"
 images: []
 published: false
 source: import

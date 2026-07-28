@@ -1,7 +1,7 @@
 ---
 name: 晉宇 A字折收洗澡椅 JY-312 鋁合金洗澡椅 沐浴椅
 taxonomy: 衛浴與居家安全/洗澡椅
-price: 2500
+price: ""
 brand: 晉宇
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: JY-312
   - label: 材質
     value: 鋁合金
-  - label: 規格選項
-    value: NT$2500/原NT$2770
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: JUST 4U 強生 TV-109 山型防水翻身腳墊
 taxonomy: 臥床照護/擺位枕
-price: 3872
+price: ""
 brand: 強生
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: TV-109
   - label: 產品特點
     value: TV-109 ／ 山型防水翻身腳墊 （防水外套，外套可以清洗）
-  - label: 規格選項
-    value: NT$3872/原NT$4400
 images: []
 published: false
 source: import

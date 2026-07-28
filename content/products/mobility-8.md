@@ -1,7 +1,7 @@
 ---
 name: FZK 富士康 助行器專用座墊
 taxonomy: 行動輔具/助行器配件
-price: 750
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$750/原NT$900
+specs: []
 images: []
 published: false
 source: import

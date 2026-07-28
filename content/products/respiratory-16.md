@@ -1,7 +1,7 @@
 ---
 name: NIDEK 耐德克 氧氣製造機8L
 taxonomy: 呼吸照護/氧氣製造機
-price: 57000
+price: ""
 brand: 耐德克
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ tags:
 specs:
   - label: 產地
     value: 美國製造
-  - label: 規格選項
-    value: NT$57000/原NT$61000
 images: []
 published: false
 source: import

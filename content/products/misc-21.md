@@ -1,7 +1,7 @@
 ---
 name: 換藥碗 CD碗 不銹鋼碗 高消碗 不鏽鋼藥杯
 taxonomy: 其他/醫療器械
-price: 100
+price: ""
 brand: ""
 offering:
   - 門市洽詢

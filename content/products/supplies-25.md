@@ -1,7 +1,7 @@
 ---
 name: 易立爽 新包裝 替換式紙尿片 28片/包 易力爽
 taxonomy: 照護耗材/紙尿片
-price: 1350
+price: ""
 brand: 易立爽
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$1350/原NT$1550
+specs: []
 images: []
 published: false
 source: import

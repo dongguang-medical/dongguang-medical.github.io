@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 福康照護抽痰機 VC-701抽痰機
 taxonomy: 呼吸照護/抽痰機
-price: 4800
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: VC701
   - label: 產品特點
     value: 此款可申請補助，歡迎詢問
-  - label: 規格選項
-    value: NT$4800/原NT$6000
 images: []
 published: false
 source: import

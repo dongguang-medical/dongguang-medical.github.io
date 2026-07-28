@@ -1,7 +1,7 @@
 ---
 name: karma 康揚 旅弧 KM-2501 KM2501
 taxonomy: 行動輔具/輪椅
-price: 10800
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -22,7 +22,7 @@ specs:
   - label: 產品特點
     value: 補助項目輪椅-B款（輕量化量產型）
   - label: 規格選項
-    value: "ABS輪椅餐桌＋不鏽鋼保鮮盒: NT$10800｜多功能立體圍兜＋不鏽鋼保鮮盒: NT$10800｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒: NT$10800｜輪椅置物袋＋不鏽鋼保鮮盒: NT$10800…等"
+    value: "ABS輪椅餐桌＋不鏽鋼保鮮盒｜多功能立體圍兜＋不鏽鋼保鮮盒｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒｜輪椅置物袋＋不鏽鋼保鮮盒…等"
 images: []
 published: false
 source: import

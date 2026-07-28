@@ -1,7 +1,7 @@
 ---
 name: 均佳 鐵製輪椅 JW-001 長照輔具補助 手動輪椅
 taxonomy: 行動輔具/輪椅
-price: 3980
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢
@@ -18,8 +18,6 @@ specs:
     value: JW-001
   - label: 產品特點
     value: 符合補助項目輪椅A款、長照補助
-  - label: 規格選項
-    value: NT$3980/原NT$4200
 images: []
 published: false
 source: import

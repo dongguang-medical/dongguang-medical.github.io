@@ -1,7 +1,7 @@
 ---
 name: 保固2年 洗澡椅 無靠背 沐浴椅 輔具補助 防滑椅
 taxonomy: 衛浴與居家安全/洗澡椅
-price: 850
+price: ""
 brand: 豐鎰
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: ANS-01
   - label: 材質
     value: 鋁合金
-  - label: 規格選項
-    value: NT$850/原NT$900
 images: []
 published: false
 source: import

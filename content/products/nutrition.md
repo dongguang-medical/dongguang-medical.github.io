@@ -1,7 +1,7 @@
 ---
 name: DH 享便暢 益生菌 30包/盒
 taxonomy: 營養保健/成人營養補充
-price: 980
+price: ""
 brand: 享便暢
 offering:
   - 門市洽詢

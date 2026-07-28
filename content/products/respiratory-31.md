@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 iX Auto 正壓呼吸器
 taxonomy: 呼吸照護/陽壓呼吸器
-price: 48000
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

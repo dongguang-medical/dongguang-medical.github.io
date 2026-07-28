@@ -1,7 +1,7 @@
 ---
 name: 保固兩年 鋁合金拐杖椅 手杖拐杖椅 排隊族 折疊椅
 taxonomy: 行動輔具/拐杖
-price: 580
+price: ""
 brand: ""
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: 鋁合金
   - label: 收納方式
     value: 可折疊
-  - label: 規格選項
-    value: NT$580/原NT$660
 images: []
 published: false
 source: import

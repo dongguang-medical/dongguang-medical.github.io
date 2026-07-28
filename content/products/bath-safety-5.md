@@ -1,7 +1,7 @@
 ---
 name: 純水濕巾 99.9%純水 15*20CM 80抽 濕紙巾
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: 35
+price: ""
 brand: ""
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$35/原NT$40
+specs: []
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 富士康 FZK-3428 鋁合金一般助行器 ㄇ字型助行器
 taxonomy: 行動輔具/助行器
-price: 900
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: FZK-3428
   - label: 材質
     value: 鋁合金
-  - label: 規格選項
-    value: NT$900/原NT$1200
 images: []
 published: false
 source: import

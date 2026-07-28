@@ -1,7 +1,7 @@
 ---
 name: 康揚 輕鬆行100 EZ Walker 助步車 助行車
 taxonomy: 行動輔具/助行車
-price: 3750
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -14,10 +14,6 @@ tags:
 specs:
   - label: 收納方式
     value: 可收合
-  - label: 產品特點
-    value: 可申請補助，補助約2100元
-  - label: 規格選項
-    value: NT$3750/原NT$4000
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 赫麗敷 防水透氣護膜 (4.5x300cm) PU膜
 taxonomy: 照護耗材/敷料與人工皮
-price: 310
+price: ""
 brand: 赫麗敷
 offering:
   - 門市洽詢

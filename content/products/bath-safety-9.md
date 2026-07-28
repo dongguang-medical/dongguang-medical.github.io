@@ -1,7 +1,7 @@
 ---
 name: 親淨沐浴床PSB-01 原床沐浴專用 免移位 洗澡床
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: 14500
+price: ""
 brand: 親淨
 offering:
   - 門市洽詢

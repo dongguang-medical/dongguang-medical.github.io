@@ -1,7 +1,7 @@
 ---
 name: 康揚鋁合金輪椅 潛隨挺502 KM-5000.2
 taxonomy: 行動輔具/輪椅
-price: 21800
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅B款、附加功能A+B；符合身障補助：輕量化量產型；輪椅附加功能｜具利於移位功能+具仰躺功能
   - label: 規格選項
-    value: "ABS輪椅餐桌 / 多功能立體圍兜: NT$21800/原NT$25000｜ABS輪椅餐桌 / 輪椅置物袋: NT$21800/原NT$25000…等"
+    value: "ABS輪椅餐桌 / 多功能立體圍兜｜ABS輪椅餐桌 / 輪椅置物袋…等"
 images: []
 published: false
 source: import

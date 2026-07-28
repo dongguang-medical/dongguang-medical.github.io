@@ -1,7 +1,7 @@
 ---
 name: 安輔 AF-A301E 三馬達電動養護床
 taxonomy: 臥床照護/電動照護床
-price: 22000
+price: ""
 brand: 安輔
 offering:
   - 門市洽詢

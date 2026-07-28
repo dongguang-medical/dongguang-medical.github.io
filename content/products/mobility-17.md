@@ -1,7 +1,7 @@
 ---
 name: 勁好 輪椅雨衣 輪椅斗篷
 taxonomy: 行動輔具/輪椅配件
-price: 438
+price: ""
 brand: 勁好
 offering:
   - 門市洽詢

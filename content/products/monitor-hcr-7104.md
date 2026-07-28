@@ -1,7 +1,7 @@
 ---
 name: OMRON歐姆龍 HCR-7104 電子手臂血壓計
 taxonomy: 健康量測/血壓計
-price: 1980
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢

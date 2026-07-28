@@ -1,7 +1,7 @@
 ---
 name: UMED 優美洗鼻器 手動洗鼻器
 taxonomy: 呼吸照護/洗鼻器
-price: 470
+price: ""
 brand: 優美
 offering:
   - 門市洽詢

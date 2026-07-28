@@ -1,7 +1,7 @@
 ---
 name: 蓓莉雅 勤達 適復樂 2*2 3*3 4*4
 taxonomy: 照護耗材/紗布棉棒
-price: 5
+price: ""
 brand: 蓓莉雅
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 滅菌狀態
     value: 已滅菌
   - label: 規格選項
-    value: "不織布 / 2X2: NT$5 ｜ 不織布 / 3X3: NT$7 ｜ 不織布 / 4X4: NT$9 ｜ 純紗 / 2X2: NT$7 ｜ 純紗 / 3X3: NT$11 ｜ 純紗 / 4X4: NT$14"
+    value: "不織布 / 2X2｜不織布 / 3X3｜不織布 / 4X4｜純紗 / 2X2｜純紗 / 3X3｜純紗 / 4X4"
 images: []
 published: false
 source: import

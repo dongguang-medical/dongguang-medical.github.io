@@ -1,7 +1,7 @@
 ---
 name: 保衛 加厚型乒乓約束手套
 taxonomy: 臥床照護/約束與安全帶
-price: 150
+price: ""
 brand: 保衛
 offering:
   - 線上選購

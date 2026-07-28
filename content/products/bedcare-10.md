@@ -1,7 +1,7 @@
 ---
 name: 愛恩特 交替式氣墊床 touch 2400
 taxonomy: 臥床照護/氣墊床
-price: 21000
+price: ""
 brand: 愛恩特
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 蓓莉雅 普通棉棒 口腔棉棒 沖洗棉棒 100入/包
 taxonomy: 照護耗材/紗布棉棒
-price: 20
+price: ""
 brand: 蓓莉雅
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 滅菌狀態
     value: 未滅菌
   - label: 規格選項
-    value: "普通棉棒100入: NT$20 ｜ 口腔棉棒100入: NT$22 ｜ 沖洗棉棒100入: NT$60"
+    value: "普通棉棒100入｜口腔棉棒100入｜沖洗棉棒100入"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: FORA福爾 噴霧治療器 霧化器 TD-7012
 taxonomy: 呼吸照護/噴霧器
-price: 1500
+price: ""
 brand: 福爾
 offering:
   - 門市洽詢
@@ -13,8 +13,6 @@ tags:
 specs:
   - label: 型號
     value: TD-7012
-  - label: 規格選項
-    value: NT$1500/原NT$1799
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: LUCY 品正 附輪折疊便器椅 鋁合金馬桶椅 收合便盆椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 3600
+price: ""
 brand: 品正
 offering:
   - 門市洽詢
@@ -22,7 +22,7 @@ specs:
   - label: 產品特點
     value: 固定扶手，踏板可上收
   - label: 規格選項
-    value: "綠色: NT$3600 ｜ 藍色: NT$3600"
+    value: "綠色｜藍色"
 images: []
 published: false
 source: import

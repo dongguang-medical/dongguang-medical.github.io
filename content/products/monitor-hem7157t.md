@@ -1,7 +1,7 @@
 ---
 name: OMRON 歐姆龍 HEM7157T 藍牙血壓計
 taxonomy: 健康量測/血壓計
-price: 2280
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ specs:
     value: HEM7157T
   - label: 連線功能
     value: 支援藍牙傳輸
-  - label: 規格選項
-    value: NT$2280/原NT$2580
 images: []
 published: false
 source: import

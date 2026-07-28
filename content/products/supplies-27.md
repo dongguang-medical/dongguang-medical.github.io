@@ -1,7 +1,7 @@
 ---
 name: 包大人 看護墊XL號 60x90cm)8片x12包/箱
 taxonomy: 照護耗材/看護墊
-price: 1068
+price: ""
 brand: 包大人
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 艾你優遠紅外線治療儀EQ-A718
 taxonomy: 復健理療/紅外線治療儀
-price: 18800
+price: ""
 brand: 艾你優
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: A718
-  - label: 規格選項
-    value: NT$18800/原NT$20800
 images: []
 published: false
 source: import

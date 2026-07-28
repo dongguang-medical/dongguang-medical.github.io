@@ -1,7 +1,7 @@
 ---
 name: 美利馳 Merits P108A 樂行II
 taxonomy: 行動輔具/電動輪椅與代步車
-price: 62800
+price: ""
 brand: 美利馳
 offering:
   - 門市洽詢
@@ -19,7 +19,7 @@ specs:
   - label: 驅動方式
     value: 電動
   - label: 規格選項
-    value: "橘色 / 16吋: NT$62800 ｜ 橘色 / 18吋: NT$62800 ｜ 棕色 / 16吋: NT$62800 ｜ 棕色 / 18吋: NT$62800"
+    value: "橘色 / 16吋｜橘色 / 18吋｜棕色 / 16吋｜棕色 / 18吋"
 images: []
 published: false
 source: import

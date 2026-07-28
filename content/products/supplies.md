@@ -1,7 +1,7 @@
 ---
 name: 安適看護墊 超大型 10片裝 12包/箱 保潔墊 尿墊
 taxonomy: 照護耗材/看護墊
-price: 1450
+price: ""
 brand: 安適
 offering:
   - 門市洽詢

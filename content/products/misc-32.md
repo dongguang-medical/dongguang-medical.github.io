@@ -1,7 +1,7 @@
 ---
 name: 木製壓舌板（未滅菌）
 taxonomy: 其他/醫療器械
-price: 45
+price: ""
 brand: ""
 offering:
   - 線上選購

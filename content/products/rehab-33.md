@@ -1,7 +1,7 @@
 ---
 name: 復健球 握力球
 taxonomy: 復健理療/復健器材
-price: 40
+price: ""
 brand: ""
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: NOVA 光星 3021AL 摺疊手杖
 taxonomy: 行動輔具/拐杖
-price: 800
+price: ""
 brand: 光星
 offering:
   - 門市洽詢

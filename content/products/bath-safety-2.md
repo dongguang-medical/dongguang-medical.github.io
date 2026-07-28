@@ -1,7 +1,7 @@
 ---
 name: 均佳 JCS-G202鋁合金便盆椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 2800
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢

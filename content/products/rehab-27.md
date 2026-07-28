@@ -1,7 +1,7 @@
 ---
 name: 井上 紅外線治療儀JS300T
 taxonomy: 復健理療/紅外線治療儀
-price: 1440
+price: ""
 brand: 井上
 offering:
   - 門市洽詢

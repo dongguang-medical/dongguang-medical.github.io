@@ -1,7 +1,7 @@
 ---
 name: 貝斯美德 FL-70126
 taxonomy: 呼吸照護/製氧機配件
-price: 70
+price: ""
 brand: 貝斯美德
 offering:
   - 門市洽詢

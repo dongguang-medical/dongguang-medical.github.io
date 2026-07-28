@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 全罩式面罩 WiZARD320
 taxonomy: 呼吸照護/陽壓呼吸器配件
-price: 3950
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

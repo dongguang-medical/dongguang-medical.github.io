@@ -1,7 +1,7 @@
 ---
 name: 貝斯美德 氧氣延長管連結頭
 taxonomy: 呼吸照護/製氧機配件
-price: 20
+price: ""
 brand: 貝斯美德
 offering:
   - 門市洽詢

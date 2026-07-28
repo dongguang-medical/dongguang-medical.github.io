@@ -1,7 +1,7 @@
 ---
 name: 三花 華新 抽痰包 50入（滅菌）附無菌手套
 taxonomy: 呼吸照護/抽痰機耗材
-price: 239
+price: ""
 brand: 三花
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 佳貝固慎体恆膳高纖配方 1800g
 taxonomy: 營養保健/特殊配方營養
-price: 950
+price: ""
 brand: 佳貝固
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$950/原NT$1000
+specs: []
 images: []
 published: false
 source: import

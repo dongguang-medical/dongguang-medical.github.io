@@ -1,7 +1,7 @@
 ---
 name: 伽瑪 張口棒(含咬) 含咬棒 送海棉牙刷1支
 taxonomy: 臥床照護/口腔照護
-price: 55
+price: ""
 brand: 伽瑪
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$55/原NT$60
+specs: []
 images: []
 published: false
 source: import

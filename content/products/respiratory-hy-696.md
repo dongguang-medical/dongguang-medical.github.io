@@ -1,7 +1,7 @@
 ---
 name: 佳貝恩噴霧器 鼻腔清潔多功能機 噴霧治療器 蒸鼻機
 taxonomy: 呼吸照護/噴霧器
-price: 3180
+price: ""
 brand: 佳貝恩
 offering:
   - 門市洽詢

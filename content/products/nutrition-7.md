@@ -1,7 +1,7 @@
 ---
 name: 水解膠原蛋白 200g
 taxonomy: 營養保健/成人營養補充
-price: 1300
+price: ""
 brand: ""
 offering:
   - 門市洽詢

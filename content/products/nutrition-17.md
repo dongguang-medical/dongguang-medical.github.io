@@ -1,7 +1,7 @@
 ---
 name: 桂格 完膳 新均護營養素
 taxonomy: 營養保健/特殊配方營養
-price: 1200
+price: ""
 brand: 桂格
 offering:
   - 門市洽詢

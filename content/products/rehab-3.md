@@ -1,7 +1,7 @@
 ---
 name: Conwell 康威利 5921
 taxonomy: 復健理療/復健鞋
-price: 6000
+price: ""
 brand: 康威利
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "S: NT$6000 ｜ M: NT$6000 ｜ L: NT$6000 ｜ XL: NT$6000"
+    value: "S｜M｜L｜XL"
 images: []
 published: false
 source: import

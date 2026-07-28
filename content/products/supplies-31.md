@@ -1,7 +1,7 @@
 ---
 name: 1+1片裝 FORA 福爾 人工皮 親水性膚料
 taxonomy: 照護耗材/敷料與人工皮
-price: 95
+price: ""
 brand: 福爾
 offering:
   - 門市洽詢

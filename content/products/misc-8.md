@@ -1,7 +1,7 @@
 ---
 name: SOHO BACK 舒活透氣雙背墊
 taxonomy: 其他/居家生活用品
-price: 230
+price: ""
 brand: soho-back
 offering:
   - 線上選購
@@ -17,7 +17,7 @@ specs:
   - label: 產地
     value: 台灣製造
   - label: 規格選項
-    value: "靠墊＋黑色網布套: NT$1110 ｜ 靠墊: NT$880 ｜ 黑色網布套: NT$230"
+    value: "靠墊＋黑色網布套｜靠墊｜黑色網布套"
 images:
   - /assets/uploads/misc-8-1.jpg
   - /assets/uploads/misc-8-2.jpg

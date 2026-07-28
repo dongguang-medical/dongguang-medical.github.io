@@ -1,7 +1,7 @@
 ---
 name: 維格 VITA-VIGOR
 taxonomy: 營養保健/成人營養補充
-price: 900
+price: ""
 brand: 維格
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 產品特點
     value: "高單位維他命C錠1000mg,緩慢釋放7~10小時持續吸收,一罐60錠"
   - label: 規格選項
-    value: "1罐: NT$900 ｜ 6+1罐(贈): NT$5400"
+    value: "1罐｜6+1罐(贈)"
 images: []
 published: false
 source: import

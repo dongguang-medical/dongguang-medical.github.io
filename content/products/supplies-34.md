@@ -1,7 +1,7 @@
 ---
 name: Coloplast 康樂保 康惠爾親水性敷料 人工皮
 taxonomy: 照護耗材/敷料與人工皮
-price: 187
+price: ""
 brand: 康樂保
 offering:
   - 門市洽詢

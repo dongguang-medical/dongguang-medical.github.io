@@ -1,7 +1,7 @@
 ---
 name: 善鼻脈動式洗鼻器 SH101N 洗鼻機 動力式鼻沖洗器
 taxonomy: 呼吸照護/洗鼻器
-price: 3900
+price: ""
 brand: 善鼻
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 產品特點
     value: 公司貨，保固1 年
   - label: 規格選項
-    value: "大人*1+小孩*2: NT$3900 ｜ 大人*3: NT$3900 ｜ 小孩*3: NT$3900 ｜ 大人*2+小孩*1: NT$3900"
+    value: "大人*1+小孩*2｜大人*3｜小孩*3｜大人*2+小孩*1"
 images: []
 published: false
 source: import

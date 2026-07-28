@@ -1,7 +1,7 @@
 ---
 name: OMRON 歐姆龍 HEM7156 電子血壓計
 taxonomy: 健康量測/血壓計
-price: 1980
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: HEM7156
-  - label: 規格選項
-    value: NT$1980/原NT$2580
 images: []
 published: false
 source: import

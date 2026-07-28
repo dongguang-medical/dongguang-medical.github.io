@@ -1,7 +1,7 @@
 ---
 name: 耀宏 手壓式不鏽鋼點滴架 YH084-1 附手推把
 taxonomy: 其他/診所與醫護設備
-price: 2500
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢

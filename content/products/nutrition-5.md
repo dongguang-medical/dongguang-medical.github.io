@@ -1,7 +1,7 @@
 ---
 name: Azohel 安得好 潤喉錠 95粒/盒 喉糖
 taxonomy: 營養保健/成人營養補充
-price: 198
+price: ""
 brand: 安得好
 offering:
   - 門市洽詢

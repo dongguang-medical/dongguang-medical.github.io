@@ -1,7 +1,7 @@
 ---
 name: NISSEI 迷你耳溫槍專用耳套 MT-2020
 taxonomy: 健康量測/體溫計配件
-price: 180
+price: ""
 brand: 日本精密
 offering:
   - 門市洽詢

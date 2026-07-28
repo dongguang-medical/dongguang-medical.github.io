@@ -1,7 +1,7 @@
 ---
 name: 愛民 I-M EO-308 網狀手臂吊帶
 taxonomy: 復健理療/護具
-price: 120
+price: ""
 brand: 愛民
 offering:
   - 線上選購

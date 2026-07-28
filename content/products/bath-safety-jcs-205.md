@@ -1,7 +1,7 @@
 ---
 name: 均佳 JCS-205 鋁合金有輪洗澡便器椅加推手 洗澡椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 3800
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢

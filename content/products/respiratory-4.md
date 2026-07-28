@@ -1,7 +1,7 @@
 ---
 name: 嘉南 氧氣流量錶
 taxonomy: 呼吸照護/製氧機配件
-price: 1700
+price: ""
 brand: 嘉南
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 維格
 taxonomy: 營養保健/成人營養補充
-price: 800
+price: ""
 brand: 維格
 offering:
   - 門市洽詢

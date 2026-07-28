@@ -1,7 +1,7 @@
 ---
 name: 雃博 APEX 福康抽痰機 連接管與過濾器
 taxonomy: 呼吸照護/抽痰機耗材
-price: 100
+price: ""
 brand: 雃博
 offering:
   - 線上選購

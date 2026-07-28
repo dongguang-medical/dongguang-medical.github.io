@@ -1,7 +1,7 @@
 ---
 name: 均佳 便盆椅坐墊
 taxonomy: 衛浴與居家安全/便盆椅配件
-price: 170
+price: ""
 brand: 均佳
 offering:
   - 線上選購
@@ -13,7 +13,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "便盆(均佳便盆椅專用): NT$170 ｜ 中空坐墊: NT$350 ｜ U型座墊: NT$500 ｜ 子母坐墊: NT$600"
+    value: "便盆(均佳便盆椅專用)｜中空坐墊｜U型座墊｜子母坐墊"
 images:
   - /assets/uploads/bath-safety-10-1.jpg
 published: true

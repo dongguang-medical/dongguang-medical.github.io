@@ -1,7 +1,7 @@
 ---
 name: 杰奇反穿衣 無束口 病人服 隔離衣 不分男女 單一尺寸
 taxonomy: 臥床照護/照護衣物
-price: 550
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

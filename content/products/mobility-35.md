@@ -1,7 +1,7 @@
 ---
 name: 好家 鋁合金四腳拐 拐杖 手杖 助行器 大爪
 taxonomy: 行動輔具/拐杖
-price: 670
+price: ""
 brand: 好家
 offering:
   - 門市洽詢
@@ -16,7 +16,7 @@ specs:
   - label: 材質
     value: 鋁合金
   - label: 規格選項
-    value: "B201BR 小四腳拐: NT$670/原NT$760 ｜ B202BR 大四腳拐: NT$670/原NT$760"
+    value: "B201BR 小四腳拐｜B202BR 大四腳拐"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 鴻祥 石蠟浴 HS-233 蠟療機
 taxonomy: 復健理療/冷熱敷用品
-price: 4200
+price: ""
 brand: 鴻祥
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ specs:
     value: HS-233
   - label: 產品特點
     value: 台灣製造
-  - label: 規格選項
-    value: NT$4200/原NT$4500
 images: []
 published: false
 source: import

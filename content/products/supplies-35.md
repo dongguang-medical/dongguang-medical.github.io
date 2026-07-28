@@ -1,7 +1,7 @@
 ---
 name: Coloplast
 taxonomy: 照護耗材/敷料與人工皮
-price: 187
+price: ""
 brand: 康樂保
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "33410 : 10X10cm: NT$187/原NT$219 ｜ 33413 : 15X15cm: NT$425/原NT$499 ｜ 33416 : 20X20cm: NT$714/原NT$799"
+    value: "33410 : 10X10cm｜33413 : 15X15cm｜33416 : 20X20cm"
 images: []
 published: false
 source: import

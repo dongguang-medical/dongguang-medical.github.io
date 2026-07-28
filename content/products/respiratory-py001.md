@@ -1,7 +1,7 @@
 ---
 name: 雃博攜帶式噴霧器 PY001 雅博攜帶式噴霧機 蒸鼻機
 taxonomy: 呼吸照護/噴霧器
-price: 2800
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

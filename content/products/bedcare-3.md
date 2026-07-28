@@ -1,7 +1,7 @@
 ---
 name: 日本製 CLEARDENT 矽膠軟質舌苔刮 可麗淨舌苔刮
 taxonomy: 臥床照護/口腔照護
-price: 195
+price: ""
 brand: 可麗淨
 offering:
   - 門市洽詢
@@ -16,7 +16,7 @@ specs:
   - label: 產地
     value: 日本製造
   - label: 規格選項
-    value: "藍: NT$195 ｜ 黃: NT$195 ｜ 粉: NT$195 ｜ 綠: NT$195"
+    value: "藍｜黃｜粉｜綠"
 images: []
 published: false
 source: import

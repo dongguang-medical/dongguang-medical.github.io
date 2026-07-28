@@ -1,7 +1,7 @@
 ---
 name: 護利好 副木腳 膝副木
 taxonomy: 復健理療/護具
-price: 700
+price: ""
 brand: 護利好
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "膝副木 50cm: NT$900 ｜ 肘副木35cm: NT$700"
+    value: "膝副木 50cm｜肘副木35cm"
 images: []
 published: false
 source: import

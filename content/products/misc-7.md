@@ -1,7 +1,7 @@
 ---
 name: 元康 陳年檜木薄荷精油 8ml 台灣製造
 taxonomy: 其他/居家生活用品
-price: 100
+price: ""
 brand: 元康
 offering:
   - 門市洽詢
@@ -13,8 +13,6 @@ tags:
 specs:
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$100/原NT$120
 images: []
 published: false
 source: import

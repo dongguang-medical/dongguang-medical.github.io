@@ -1,7 +1,7 @@
 ---
 name: 怡氧 氧氣製造機5L 附噴霧功能
 taxonomy: 呼吸照護/氧氣製造機
-price: 27000
+price: ""
 brand: 怡氧
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ tags:
 specs:
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$27000/原NT$30000
 images: []
 published: false
 source: import

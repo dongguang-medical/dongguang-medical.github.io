@@ -1,7 +1,7 @@
 ---
 name: 太平洋引流袋 腎臟造口引流袋PCN 500mL
 taxonomy: 臥床照護/管路照護用品
-price: 70
+price: ""
 brand: 太平洋
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: M04056
-  - label: 規格選項
-    value: NT$70/原NT$100
 images: []
 published: false
 source: import

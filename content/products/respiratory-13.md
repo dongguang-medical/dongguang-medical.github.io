@@ -1,7 +1,7 @@
 ---
 name: AIRSEP 亞適氧氣濃縮機(NewLife
 taxonomy: 呼吸照護/氧氣製造機
-price: 85000
+price: ""
 brand: 亞適
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ tags:
 specs:
   - label: 產地
     value: 美國製造
-  - label: 規格選項
-    value: NT$85000/原NT$92000
 images: []
 published: false
 source: import

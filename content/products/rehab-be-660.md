@@ -1,7 +1,7 @@
 ---
 name: 貝斯美德 電療機 低週波治療機 2組輸出頻道(4貼片)
 taxonomy: 復健理療/電療機
-price: 1600
+price: ""
 brand: 貝斯美德
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 耀宏 站立訓練桌(附皮帶)YH228
 taxonomy: 復健理療/復健器材
-price: 11000
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ specs:
     value: YH228
   - label: 產品特點
     value: "- 整台為木製站立箱、皮製皮帶1條。；★不含推拉箱，需另加購。；★顏色以實品為準"
-  - label: 規格選項
-    value: NT$11000/原NT$13000
 images: []
 published: false
 source: import

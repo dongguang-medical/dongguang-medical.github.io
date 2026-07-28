@@ -1,7 +1,7 @@
 ---
 name: Besmed 貝斯美德 呼吸器管路 呼吸管路 O2蛇管
 taxonomy: 呼吸照護/陽壓呼吸器配件
-price: 10
+price: ""
 brand: 貝斯美德
 offering:
   - 門市洽詢

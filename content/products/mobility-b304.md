@@ -1,7 +1,7 @@
 ---
 name: 好家 鋁合金折疊拐 B304 醫療用手杖 老人拐 單拐
 taxonomy: 行動輔具/拐杖
-price: 270
+price: ""
 brand: 好家
 offering:
   - 門市洽詢

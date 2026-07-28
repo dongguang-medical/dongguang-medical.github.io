@@ -1,7 +1,7 @@
 ---
 name: 杰奇 安全固定帶 約束帶 扣式安全帶 輪椅約束 黑扣
 taxonomy: 臥床照護/約束與安全帶
-price: 450
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

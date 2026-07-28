@@ -1,7 +1,7 @@
 ---
 name: 瑞盛 手指型血氧濃度計
 taxonomy: 健康量測/血氧濃度計
-price: 3500
+price: ""
 brand: 瑞盛
 offering:
   - 門市洽詢

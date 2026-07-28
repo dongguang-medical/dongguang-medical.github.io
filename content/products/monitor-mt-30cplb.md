@@ -1,7 +1,7 @@
 ---
 name: 日本精密 NISSEI MT-30CPLB 迷你耳溫槍
 taxonomy: 健康量測/體溫計
-price: 1580
+price: ""
 brand: 日本精密
 offering:
   - 線上選購
@@ -15,7 +15,7 @@ specs:
   - label: 型號
     value: MT-30CPLB
   - label: 規格選項
-    value: "櫻花粉: NT$1580 ｜ 天空藍: NT$1580"
+    value: "櫻花粉｜天空藍"
 images:
   - /assets/uploads/monitor-mt-30cplb-1.jpg
   - /assets/uploads/monitor-mt-30cplb-2.jpg

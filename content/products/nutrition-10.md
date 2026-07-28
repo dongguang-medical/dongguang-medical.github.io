@@ -1,7 +1,7 @@
 ---
 name: 立舒爽蜂膠喉片 喉錠 20錠 口腔舒緩 喉糖
 taxonomy: 營養保健/成人營養補充
-price: 108
+price: ""
 brand: 立舒爽
 offering:
   - 門市洽詢

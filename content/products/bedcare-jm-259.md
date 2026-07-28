@@ -1,7 +1,7 @@
 ---
 name: 杰奇 JM 便利腿帶 肢體裝具
 taxonomy: 臥床照護/約束與安全帶
-price: 350
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: JM-259
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$350/原NT$450
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: PHILIPS飛利浦 紅外線治療儀燈泡
 taxonomy: 復健理療/紅外線治療儀
-price: 600
+price: ""
 brand: 飛利浦
 offering:
   - 門市洽詢

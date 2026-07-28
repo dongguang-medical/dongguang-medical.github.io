@@ -1,7 +1,7 @@
 ---
 name: JM 杰奇臀型減壓座墊 輪椅減壓座墊 坐墊 輪椅座墊
 taxonomy: 行動輔具/輪椅座墊
-price: 1350
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

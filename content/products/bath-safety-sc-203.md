@@ -1,7 +1,7 @@
 ---
 name: LUCY 浴室防滑 SC-203 鋁製有輪
 taxonomy: 衛浴與居家安全/便盆椅
-price: 4300
+price: ""
 brand: 品正
 offering:
   - 門市洽詢
@@ -19,7 +19,7 @@ specs:
   - label: 產品特點
     value: 扶手可伸縮，踏板可上收
   - label: 規格選項
-    value: "綠色: NT$4300 ｜ 藍色: NT$4300"
+    value: "綠色｜藍色"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 好家 鋁合金腋下拐杖 B401 一組2入 鋁製腋下拐杖
 taxonomy: 行動輔具/拐杖
-price: 850
+price: ""
 brand: 好家
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 材質
     value: 鋁合金
   - label: 規格選項
-    value: "S: 126~152公分: NT$850 ｜ M：152~175公分: NT$850 ｜ L：175~198公分: NT$850"
+    value: "S: 126~152公分｜M：152~175公分｜L：175~198公分"
 images: []
 published: false
 source: import

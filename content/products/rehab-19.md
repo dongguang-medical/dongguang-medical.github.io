@@ -1,7 +1,7 @@
 ---
 name: 麗臺amor BtNPN植物奈米貼片涼感6片入涼感貼片
 taxonomy: 復健理療/冷熱敷用品
-price: 300
+price: ""
 brand: 麗臺
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$300/原NT$450
+specs: []
 images: []
 published: false
 source: import

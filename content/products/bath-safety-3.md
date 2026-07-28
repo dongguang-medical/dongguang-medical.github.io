@@ -1,7 +1,7 @@
 ---
 name: Nova 光星 Luxi 歐式馬桶增高座
 taxonomy: 衛浴與居家安全/起身與防跌輔具
-price: 2520
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$2520/原NT$2800
+specs: []
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 杰奇 自黏扣止血帶
 taxonomy: 其他/急救器材
-price: 80
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

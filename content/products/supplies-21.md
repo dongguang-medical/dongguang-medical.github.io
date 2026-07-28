@@ -1,7 +1,7 @@
 ---
 name: 金安心 夜用長效型 成人紙尿褲 XL-XXL 特大號
 taxonomy: 照護耗材/成人紙尿褲
-price: 235
+price: ""
 brand: 金安心
 offering:
   - 門市洽詢

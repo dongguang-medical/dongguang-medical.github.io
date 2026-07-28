@@ -1,7 +1,7 @@
 ---
 name: Miami J頸圈 邁阿密頸圈 奧索 軀幹裝具 護頸
 taxonomy: 復健理療/護具
-price: 4000
+price: ""
 brand: 奧索
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 型號
     value: MJ250
   - label: 規格選項
-    value: "MJ250（適一般女性）: NT$4000 ｜ MJ300（適一般成年男性）: NT$4000"
+    value: "MJ250（適一般女性）｜MJ300（適一般成年男性）"
 images: []
 published: false
 source: import

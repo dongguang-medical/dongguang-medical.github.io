@@ -1,7 +1,7 @@
 ---
 name: 富士康 輪椅頭靠組 可調角度 16至20吋輪椅通用
 taxonomy: 行動輔具/輪椅配件
-price: 1000
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢

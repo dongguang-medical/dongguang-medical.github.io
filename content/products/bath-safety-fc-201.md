@@ -1,7 +1,7 @@
 ---
 name: Lucy 品正 鋁合金馬桶椅 FC-201 鋁合金便器椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 1980
+price: ""
 brand: 品正
 offering:
   - 門市洽詢
@@ -23,7 +23,7 @@ specs:
   - label: 收納方式
     value: 可收合
   - label: 規格選項
-    value: "藍色 / 圓孔坐墊: NT$1980 ｜ 藍色 / 子母軟墊: NT$2230 ｜ 綠色 / 圓孔坐墊: NT$1980 ｜ 綠色 / 子母軟墊: NT$2230"
+    value: "藍色 / 圓孔坐墊｜藍色 / 子母軟墊｜綠色 / 圓孔坐墊｜綠色 / 子母軟墊"
 images: []
 published: false
 source: import

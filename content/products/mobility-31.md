@@ -1,7 +1,7 @@
 ---
 name: 保固2年 豐鎰 鋁合金萬向單手拐 拐杖 手杖 助行器
 taxonomy: 行動輔具/拐杖
-price: 630
+price: ""
 brand: 豐鎰
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ tags:
 specs:
   - label: 材質
     value: 鋁合金
-  - label: 規格選項
-    value: NT$630/原NT$700
 images: []
 published: false
 source: import

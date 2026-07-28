@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YH230推拉箱 YH228站立桌專用皮帶
 taxonomy: 復健理療/復健器材
-price: 1200
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 產品特點
     value: "- 推拉箱整台為木製材質。；-站立桌專用皮帶長約153x寬約6公分；★顏色以實品為準"
   - label: 規格選項
-    value: "推拉箱(1入): NT$1200 ｜ 皮帶(1入): NT$2200"
+    value: "推拉箱(1入)｜皮帶(1入)"
 images: []
 published: false
 source: import

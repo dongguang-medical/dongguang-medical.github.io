@@ -1,7 +1,7 @@
 ---
 name: Karma 康揚專用攜車袋
 taxonomy: 行動輔具/輪椅配件
-price: 790
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢

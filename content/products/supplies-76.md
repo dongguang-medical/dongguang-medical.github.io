@@ -1,7 +1,7 @@
 ---
 name: 蓓莉雅 滅菌紗布 3x6／4x8 10片入
 taxonomy: 照護耗材/紗布棉棒
-price: 30
+price: ""
 brand: 蓓莉雅
 offering:
   - 線上選購

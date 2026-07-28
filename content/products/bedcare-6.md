@@ -1,7 +1,7 @@
 ---
 name: 醫療床床墊 病床床墊 醫院床墊 護理床床墊 病床專用床墊
 taxonomy: 臥床照護/床墊
-price: 2900
+price: ""
 brand: ""
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 產品特點
     value: 適合大部分單人醫療床，厚度10公分，另有厚度5公分可另外預定。；實品可能會有有色差，商品圖僅供參考，請以實物為準，謝謝
-  - label: 規格選項
-    value: NT$2900/原NT$3200
 images: []
 published: false
 source: import

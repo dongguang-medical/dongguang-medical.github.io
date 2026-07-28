@@ -1,7 +1,7 @@
 ---
 name: 瑞特 GM700SB
 taxonomy: 健康量測/血糖機
-price: 1880
+price: ""
 brand: 瑞特
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: GM700SB
-  - label: 規格選項
-    value: NT$1880/原NT$3300
 images: []
 published: false
 source: import

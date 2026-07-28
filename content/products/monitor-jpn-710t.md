@@ -1,7 +1,7 @@
 ---
 name: OMRON 歐姆龍 JPN-710T 藍牙血壓計
 taxonomy: 健康量測/血壓計
-price: 4580
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: 日本製造
   - label: 連線功能
     value: 支援藍牙傳輸
-  - label: 規格選項
-    value: NT$4580/原NT$5280
 images: []
 published: false
 source: import

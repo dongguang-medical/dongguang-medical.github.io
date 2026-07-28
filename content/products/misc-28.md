@@ -1,7 +1,7 @@
 ---
 name: 萊禮 CPR急救面膜 36片/盒
 taxonomy: 其他/急救器材
-price: 550
+price: ""
 brand: 萊禮
 offering:
   - 線上選購

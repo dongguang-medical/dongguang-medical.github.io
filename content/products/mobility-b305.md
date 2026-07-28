@@ -1,7 +1,7 @@
 ---
 name: 好家醫療用手杖 B305 老人拐
 taxonomy: 行動輔具/拐杖
-price: 250
+price: ""
 brand: 好家
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ tags:
 specs:
   - label: 型號
     value: B305
-  - label: 規格選項
-    value: NT$250/原NT$350
 images: []
 published: false
 source: import

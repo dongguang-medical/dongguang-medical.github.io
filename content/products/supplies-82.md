@@ -1,7 +1,7 @@
 ---
 name: 愛樂康 ALCARE 低敏絲柔膠帶 1吋
 taxonomy: 照護耗材/醫用膠帶
-price: 130
+price: ""
 brand: 愛樂康
 offering:
   - 線上選購

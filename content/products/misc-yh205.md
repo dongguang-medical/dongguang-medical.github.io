@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YAHO YH205 治療大床
 taxonomy: 其他/診療床
-price: 4500
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 產品特點
     value: 實品可能會有有色差，商品圖僅供參考，請以實物為準，謝謝
   - label: 規格選項
-    value: "聚合床墊 YH205-1: NT$4500 ｜ 治療大床 YH205: NT$5500"
+    value: "聚合床墊 YH205-1｜治療大床 YH205"
 images: []
 published: false
 source: import

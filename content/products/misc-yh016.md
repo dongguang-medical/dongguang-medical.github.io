@@ -1,7 +1,7 @@
 ---
 name: YAHO 耀宏 床頭櫃 YH016 ABS塑鋼櫃
 taxonomy: 其他/診所與醫護設備
-price: 4500
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 材質
     value: ABS 塑鋼
   - label: 規格選項
-    value: "粉紅色: NT$4500/原NT$5500 ｜ 湖水綠: NT$4500/原NT$5500"
+    value: "粉紅色｜湖水綠"
 images: []
 published: false
 source: import

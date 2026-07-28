@@ -1,7 +1,7 @@
 ---
 name: 車用應急尿袋 無臭密封
 taxonomy: 照護耗材/造口與泌尿用品
-price: 55
+price: ""
 brand: ""
 offering:
   - 線上選購

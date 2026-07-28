@@ -1,7 +1,7 @@
 ---
 name: NISSEI日本精密 耳套固定環 耳溫槍收納盒 耳套環
 taxonomy: 健康量測/體溫計配件
-price: 170
+price: ""
 brand: 日本精密
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "耳溫槍收納盒: NT$170 ｜ 耳套固定環-粉: NT$170 ｜ 耳套固定環-藍: NT$170"
+    value: "耳溫槍收納盒｜耳套固定環-粉｜耳套固定環-藍"
 images: []
 published: false
 source: import

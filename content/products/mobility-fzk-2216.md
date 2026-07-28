@@ -1,7 +1,7 @@
 ---
 name: 富士康 輔助起身S型四腳拐 FZK-2216
 taxonomy: 行動輔具/拐杖
-price: 1080
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢

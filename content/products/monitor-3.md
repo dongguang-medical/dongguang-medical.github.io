@@ -1,7 +1,7 @@
 ---
 name: 歐姆龍 OMRON 血壓計交流變壓器
 taxonomy: 健康量測/血壓計配件
-price: 500
+price: ""
 brand: 歐姆龍
 offering:
   - 線上選購
@@ -11,9 +11,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047684596
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$500/原NT$750
+specs: []
 images:
   - /assets/uploads/monitor-3-1.jpg
   - /assets/uploads/monitor-3-2.jpg

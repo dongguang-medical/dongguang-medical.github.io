@@ -1,7 +1,7 @@
 ---
 name: D.S RESCUE 專業型多功能復甦救護包急救箱
 taxonomy: 其他/急救器材
-price: 2900
+price: ""
 brand: d-s-rescue
 offering:
   - 門市洽詢

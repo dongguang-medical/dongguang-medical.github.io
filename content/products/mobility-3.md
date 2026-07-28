@@ -1,7 +1,7 @@
 ---
 name: 杰奇坐墊 杰奇圓型健康減壓坐墊 美臀 孕婦 釋壓減壓座墊
 taxonomy: 行動輔具/輪椅座墊
-price: 680
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

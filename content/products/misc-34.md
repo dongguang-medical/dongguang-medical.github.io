@@ -1,7 +1,7 @@
 ---
 name: 瑞豐 白凡士林400g
 taxonomy: 其他/居家生活用品
-price: 119
+price: ""
 brand: 瑞豐
 offering:
   - 線上選購

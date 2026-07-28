@@ -1,7 +1,7 @@
 ---
 name: 雃博 ROHO羅荷氣墊座 輪椅座墊B款 浮動座墊
 taxonomy: 行動輔具/輪椅座墊
-price: 12000
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "QS89LPC (氣囊數8X9個): NT$12000 ｜ QS99LPC (氣囊數9X9個): NT$12000"
+    value: "QS89LPC (氣囊數8X9個)｜QS99LPC (氣囊數9X9個)"
 images: []
 published: false
 source: import

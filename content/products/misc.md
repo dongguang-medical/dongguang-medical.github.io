@@ -1,7 +1,7 @@
 ---
 name: Spirit精國 601P-02 專業級輕便雙面聽診器
 taxonomy: 其他/診所與醫護設備
-price: 1140
+price: ""
 brand: 精國
 offering:
   - 門市洽詢

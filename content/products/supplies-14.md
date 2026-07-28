@@ -1,7 +1,7 @@
 ---
 name: 紙膠切台
 taxonomy: 照護耗材/紗布棉棒
-price: 100
+price: ""
 brand: ""
 offering:
   - 門市洽詢

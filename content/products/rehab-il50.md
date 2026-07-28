@@ -1,7 +1,7 @@
 ---
 name: 德國博依beurer 紅外線燈 IL50
 taxonomy: 復健理療/紅外線治療儀
-price: 3980
+price: ""
 brand: 博依
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: IL50
-  - label: 規格選項
-    value: NT$3980/原NT$4680
 images: []
 published: false
 source: import

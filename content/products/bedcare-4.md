@@ -1,7 +1,7 @@
 ---
 name: 杰奇 JM 防水圍兜
 taxonomy: 臥床照護/照護衣物
-price: 250
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢
@@ -12,7 +12,7 @@ tags:
   - 防水材質
 specs:
   - label: 規格選項
-    value: "藏藍: NT$250 ｜ 綠: NT$250 ｜ 寶藍: NT$250"
+    value: "藏藍｜綠｜寶藍"
 images: []
 published: false
 source: import

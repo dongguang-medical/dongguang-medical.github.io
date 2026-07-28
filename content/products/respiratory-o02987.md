@@ -1,7 +1,7 @@
 ---
 name: 太平洋抽吸套 口水抽吸棒 O02987 圓頭無氣閥
 taxonomy: 呼吸照護/抽痰機耗材
-price: 70
+price: ""
 brand: 太平洋
 offering:
   - 門市洽詢

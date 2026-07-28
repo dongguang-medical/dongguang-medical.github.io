@@ -1,7 +1,7 @@
 ---
 name: 雃博APEX 啟申經皮電子神經刺激器 中頻向量干擾
 taxonomy: 復健理療/電療機
-price: 3500
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

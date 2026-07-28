@@ -1,7 +1,7 @@
 ---
 name: M101型嬰兒身高體重秤
 taxonomy: 健康量測/體重與體脂計
-price: 7200
+price: ""
 brand: ""
 offering:
   - 門市洽詢

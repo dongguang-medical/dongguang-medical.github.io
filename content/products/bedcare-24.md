@@ -1,7 +1,7 @@
 ---
 name: 杰奇 JM 多功能握式移位帶（無跨式）
 taxonomy: 臥床照護/移位輔具
-price: 1200
+price: ""
 brand: 杰奇
 offering:
   - 線上選購
@@ -18,7 +18,7 @@ specs:
   - label: 產品特點
     value: 符合補助項目【移位腰帶】、補助申請辦理及相關事宜，歡迎詢問
   - label: 規格選項
-    value: "JM-245 (S)：25吋~33吋cm: NT$1200 [4713809652450]｜JM-246 (M)：28吋~36吋cm: NT$1200 [4713809652467]…等"
+    value: "JM-245 (S)：25吋~33吋cm [4713809652450]｜JM-246 (M)：28吋~36吋cm [4713809652467]…等"
 images:
   - /assets/uploads/bedcare-24-1.jpg
 published: true

@@ -1,7 +1,7 @@
 ---
 name: 電動腳踏器 MZ-701H 手足健身車
 taxonomy: 復健理療/復健器材
-price: 13000
+price: ""
 brand: ""
 offering:
   - 門市洽詢

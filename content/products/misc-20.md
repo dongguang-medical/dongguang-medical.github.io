@@ -1,7 +1,7 @@
 ---
 name: 愛美格 醫用刀柄 刀柄手術刀 不銹鋼刀柄
 taxonomy: 其他/醫療器械
-price: 170
+price: ""
 brand: 愛美格
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 材質
     value: 不鏽鋼
   - label: 規格選項
-    value: "刀柄 3號: NT$170 [00593] ｜ 刀柄 4號: NT$170 [00594]"
+    value: "刀柄 3號 [00593]｜刀柄 4號 [00594]"
 images: []
 published: false
 source: import

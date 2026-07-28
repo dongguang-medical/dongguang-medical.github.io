@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 VacPro抽痰機 單缸抽痰機 吸痰器
 taxonomy: 呼吸照護/抽痰機
-price: 5800
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: 電動
   - label: 產品特點
     value: 此款可申請補助，歡迎詢問
-  - label: 規格選項
-    value: NT$5800/原NT$6000
 images: []
 published: false
 source: import

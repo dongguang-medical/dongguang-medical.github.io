@@ -1,7 +1,7 @@
 ---
 name: 光星 4080 迷你款助行器
 taxonomy: 行動輔具/助行器
-price: 1620
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -12,9 +12,7 @@ subsidy:
   - 身障輔具補助
 tags:
   - 可申請補助
-specs:
-  - label: 規格選項
-    value: NT$1620/原NT$1800
+specs: []
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 藍卡 RANCA R-302 沖牙機
 taxonomy: 臥床照護/口腔照護
-price: 1980
+price: ""
 brand: ranca
 offering:
   - 線上選購

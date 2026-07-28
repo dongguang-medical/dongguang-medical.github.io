@@ -1,7 +1,7 @@
 ---
 name: I-GEL 愛佶爾 上聲門導氣管 (滅菌)
 taxonomy: 其他/急救器材
-price: 1500
+price: ""
 brand: 愛佶爾
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 滅菌狀態
     value: 已滅菌
   - label: 規格選項
-    value: "成人3號：30~60kg: NT$1500 ｜ 成人4號：50~90kg: NT$1500 ｜ 成人5號：90kg以上: NT$1500"
+    value: "成人3號：30~60kg｜成人4號：50~90kg｜成人5號：90kg以上"
 images: []
 published: false
 source: import

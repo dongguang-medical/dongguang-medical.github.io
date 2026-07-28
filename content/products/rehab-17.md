@@ -1,7 +1,7 @@
 ---
 name: E-G MED 醫技 石膏繃帶防水罩
 taxonomy: 復健理療/護具
-price: 300
+price: ""
 brand: 醫技
 offering:
   - 門市洽詢
@@ -12,7 +12,7 @@ tags:
   - 防水材質
 specs:
   - label: 規格選項
-    value: "EG-0320 腿部: NT$350 ｜ EG-0310手部: NT$300"
+    value: "EG-0320 腿部｜EG-0310手部"
 images: []
 published: false
 source: import

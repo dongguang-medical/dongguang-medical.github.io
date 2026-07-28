@@ -1,7 +1,7 @@
 ---
 name: 強生 JUST4U 手部約束帶 保護性限制帶
 taxonomy: 臥床照護/約束與安全帶
-price: 540
+price: ""
 brand: 強生
 offering:
   - 門市洽詢

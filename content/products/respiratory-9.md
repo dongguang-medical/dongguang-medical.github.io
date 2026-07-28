@@ -1,7 +1,7 @@
 ---
 name: headstar 華德集水器 氧氣管集水器
 taxonomy: 呼吸照護/製氧機配件
-price: 160
+price: ""
 brand: 華德
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: JUST 4U 強生 透氣三角擺位枕 CB18
 taxonomy: 臥床照護/擺位枕
-price: 3432
+price: ""
 brand: 強生
 offering:
   - 門市洽詢
@@ -13,8 +13,6 @@ tags:
 specs:
   - label: 型號
     value: CB18
-  - label: 規格選項
-    value: NT$3432/原NT$3900
 images: []
 published: false
 source: import

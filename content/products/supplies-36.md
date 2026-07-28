@@ -1,7 +1,7 @@
 ---
 name: Coloplast
 taxonomy: 照護耗材/敷料與人工皮
-price: 499
+price: ""
 brand: 康樂保
 offering:
   - 門市洽詢

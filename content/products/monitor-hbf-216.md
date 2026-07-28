@@ -1,7 +1,7 @@
 ---
 name: OMRON HBF-216 體重體脂肪機 體脂計 體脂機
 taxonomy: 健康量測/體重與體脂計
-price: 1480
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 產品特點
     value: 保固1 年
   - label: 規格選項
-    value: "雪花白: NT$1480/原NT$1580"
+    value: "雪花白"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 虹泰 電療機 HT326L 低週波治療機
 taxonomy: 復健理療/電療機
-price: 2990
+price: ""
 brand: 虹泰
 offering:
   - 門市洽詢

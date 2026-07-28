@@ -1,7 +1,7 @@
 ---
 name: 勁好 頭部固定器
 taxonomy: 臥床照護/約束與安全帶
-price: 900
+price: ""
 brand: 勁好
 offering:
   - 門市洽詢

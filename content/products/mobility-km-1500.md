@@ -1,7 +1,7 @@
 ---
 name: 康揚 舒弧105 鋁合金輪椅 手動輪椅 B款輪椅
 taxonomy: 行動輔具/輪椅
-price: 9800
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -22,7 +22,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅-B款（輕量化量產型）；符合身障補助：輕量化量產型
   - label: 規格選項
-    value: "ABS輪椅餐桌 / 多功能立體圍兜: NT$9800/原NT$10000｜ABS輪椅餐桌 / 輪椅置物袋: NT$9800/原NT$10000…等"
+    value: "ABS輪椅餐桌 / 多功能立體圍兜｜ABS輪椅餐桌 / 輪椅置物袋…等"
 images: []
 published: false
 source: import

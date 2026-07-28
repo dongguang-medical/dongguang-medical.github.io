@@ -1,7 +1,7 @@
 ---
 name: 安泰 樂齡起身椅
 taxonomy: 衛浴與居家安全/起身與防跌輔具
-price: 12800
+price: ""
 brand: 安泰
 offering:
   - 門市洽詢

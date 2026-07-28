@@ -1,7 +1,7 @@
 ---
 name: Super-View廣和全自動身高體重計 HW-3030
 taxonomy: 健康量測/體重與體脂計
-price: 52000
+price: ""
 brand: 廣和
 offering:
   - 門市洽詢

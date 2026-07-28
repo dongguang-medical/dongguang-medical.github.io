@@ -1,7 +1,7 @@
 ---
 name: 晉宇 人體工學拐杖
 taxonomy: 行動輔具/拐杖
-price: 1200
+price: ""
 brand: 晉宇
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "左手: NT$1200 ｜ 右手: NT$1200"
+    value: "左手｜右手"
 images: []
 published: false
 source: import

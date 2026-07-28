@@ -1,7 +1,7 @@
 ---
 name: 氣切內管清潔刷
 taxonomy: 臥床照護/管路照護用品
-price: 40
+price: ""
 brand: ""
 offering:
   - 線上選購

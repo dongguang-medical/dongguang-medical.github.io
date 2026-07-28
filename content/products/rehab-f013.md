@@ -1,7 +1,7 @@
 ---
 name: 日本製 OMRON 歐姆龍低週波治療器 HV-F013
 taxonomy: 復健理療/電療機
-price: 1780
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: F013
   - label: 產地
     value: 日本製造
-  - label: 規格選項
-    value: NT$1780/原NT$3500
 images: []
 published: false
 source: import

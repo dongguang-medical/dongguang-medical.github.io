@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YAHO 平行桿
 taxonomy: 復健理療/復健器材
-price: 16000
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "YH234-1 平行桿(200cm): NT$16000 ｜ YH234 平行桿(300cm): NT$18000"
+    value: "YH234-1 平行桿(200cm)｜YH234 平行桿(300cm)"
 images: []
 published: false
 source: import

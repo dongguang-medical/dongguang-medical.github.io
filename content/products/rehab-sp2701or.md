@@ -1,7 +1,7 @@
 ---
 name: Sunlus三樂事 輕薄單人電熱毯 SP2701or
 taxonomy: 復健理療/熱敷墊
-price: 1780
+price: ""
 brand: 三樂事
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: SP2701OR
-  - label: 規格選項
-    value: NT$1780/原NT$2500
 images: []
 published: false
 source: import

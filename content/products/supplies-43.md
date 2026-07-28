@@ -1,7 +1,7 @@
 ---
 name: 瑞特 GS700血糖試紙採血針組
 taxonomy: 照護耗材/血糖試紙與採血針
-price: 800
+price: ""
 brand: 瑞特
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$800/原NT$1299
+specs: []
 images: []
 published: false
 source: import

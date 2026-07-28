@@ -1,7 +1,7 @@
 ---
 name: 立新 不鏽鋼陪伴床 不鏽鋼陪伴椅 看護床 看護椅 折疊床
 taxonomy: 其他/診療床
-price: 7200
+price: ""
 brand: 立新
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 收納方式
     value: 可折疊
   - label: 規格選項
-    value: "60CM (一般型): NT$7200 ｜ 70CM (加寬型): NT$8200"
+    value: "60CM (一般型)｜70CM (加寬型)"
 images: []
 published: false
 source: import

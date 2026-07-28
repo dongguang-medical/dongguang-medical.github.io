@@ -1,7 +1,7 @@
 ---
 name: BRAUN 百靈 LF40 一盒40入
 taxonomy: 健康量測/體溫計配件
-price: 230
+price: ""
 brand: 百靈
 offering:
   - 門市洽詢

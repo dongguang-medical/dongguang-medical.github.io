@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 手足健身車
 taxonomy: 復健理療/復健器材
-price: 950
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

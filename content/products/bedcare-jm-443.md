@@ -1,7 +1,7 @@
 ---
 name: 杰奇 肢體裝具 大腿合併帶 魔鬼沾黏貼式 固定彈性大腿帶
 taxonomy: 臥床照護/約束與安全帶
-price: 530
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

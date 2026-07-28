@@ -1,7 +1,7 @@
 ---
 name: 虹泰超音波透熱治療儀 HT901W 超音波治療儀
 taxonomy: 復健理療/超音波治療儀
-price: 2980
+price: ""
 brand: 虹泰
 offering:
   - 門市洽詢

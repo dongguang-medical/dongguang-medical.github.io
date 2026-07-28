@@ -1,7 +1,7 @@
 ---
 name: 1支入 善鼻 脈動式洗鼻器 成人用洗鼻桿 sh953
 taxonomy: 呼吸照護/洗鼻器配件
-price: 240
+price: ""
 brand: 善鼻
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 型號
     value: SH953
   - label: 規格選項
-    value: "粉: NT$240 ｜ 綠: NT$240 ｜ 藍: NT$240"
+    value: "粉｜綠｜藍"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 杰奇 JM-258 多功能便利帶 轉移位 胸帶 臀帶
 taxonomy: 臥床照護/移位輔具
-price: 450
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢
@@ -20,8 +20,6 @@ specs:
     value: 台灣製造
   - label: 產品特點
     value: 全長120~150cm可調節
-  - label: 規格選項
-    value: NT$450/原NT$550
 images: []
 published: false
 source: import

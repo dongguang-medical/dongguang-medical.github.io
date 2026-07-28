@@ -1,7 +1,7 @@
 ---
 name: OMRON 歐姆龍隧道型血壓計 HEM-1000
 taxonomy: 健康量測/血壓計
-price: 6980
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: HEM-1000
-  - label: 規格選項
-    value: NT$6980/原NT$7980
 images: []
 published: false
 source: import

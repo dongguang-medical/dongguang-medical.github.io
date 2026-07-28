@@ -1,7 +1,7 @@
 ---
 name: 杏華 附輪後煞助行器
 taxonomy: 行動輔具/助行器
-price: 1800
+price: ""
 brand: 杏華
 offering:
   - 門市洽詢
@@ -12,9 +12,7 @@ subsidy:
   - 身障輔具補助
 tags:
   - 可申請補助
-specs:
-  - label: 規格選項
-    value: NT$1800/原NT$1900
+specs: []
 images: []
 published: false
 source: import

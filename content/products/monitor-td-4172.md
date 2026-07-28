@@ -1,7 +1,7 @@
 ---
 name: FORA MD6 TD-4172 藍芽血糖機 福爾血糖機
 taxonomy: 健康量測/血糖機
-price: 1980
+price: ""
 brand: 福爾
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: TD-4172
-  - label: 規格選項
-    value: NT$1980/原NT$3100
 images: []
 published: false
 source: import

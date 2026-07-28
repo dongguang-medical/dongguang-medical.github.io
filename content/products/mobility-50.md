@@ -1,7 +1,7 @@
 ---
 name: 拐杖腳墊腳套 通用型
 taxonomy: 行動輔具/助行器配件
-price: 20
+price: ""
 brand: ""
 offering:
   - 線上選購

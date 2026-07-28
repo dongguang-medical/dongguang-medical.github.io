@@ -1,7 +1,7 @@
 ---
 name: 井上 無線震動警示器 AC119
 taxonomy: 臥床照護/離床警報器
-price: 2000
+price: ""
 brand: 井上
 offering:
   - 門市洽詢

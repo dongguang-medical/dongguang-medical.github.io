@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 抽痰機 吸痰器 電動抽痰器
 taxonomy: 呼吸照護/抽痰機
-price: 6380
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢
@@ -13,8 +13,6 @@ tags:
 specs:
   - label: 驅動方式
     value: 電動
-  - label: 規格選項
-    value: NT$6380/原NT$8000
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 虹泰 電療機 中頻電療器 HT668LN 組輸出頻道
 taxonomy: 復健理療/電療機
-price: 9900
+price: ""
 brand: 虹泰
 offering:
   - 門市洽詢

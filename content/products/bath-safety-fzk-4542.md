@@ -1,7 +1,7 @@
 ---
 name: 富士康 收合有輪鋁合金便盆椅 FZK-4542
 taxonomy: 衛浴與居家安全/便盆椅
-price: 3800
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -23,7 +23,7 @@ specs:
   - label: 產品特點
     value: "*四輪收合式洗澡便椅、整台可收合；*座位可調高低"
   - label: 規格選項
-    value: "子母坐墊: NT$4000/原NT$4200 ｜ U型坐墊: NT$3850/原NT$4200 ｜ 中空坐墊: NT$3800/原NT$4200"
+    value: "子母坐墊｜U型坐墊｜中空坐墊"
 images: []
 published: false
 source: import

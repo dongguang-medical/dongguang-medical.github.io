@@ -1,7 +1,7 @@
 ---
 name: 晉宇 JY-306 鋁合金洗澡椅 沐浴椅
 taxonomy: 衛浴與居家安全/洗澡椅
-price: 1620
+price: ""
 brand: 晉宇
 offering:
   - 門市洽詢
@@ -19,8 +19,6 @@ specs:
     value: 鋁合金
   - label: 產品特點
     value: 可耐重227kg
-  - label: 規格選項
-    value: NT$1620/原NT$1800
 images: []
 published: false
 source: import

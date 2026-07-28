@@ -1,7 +1,7 @@
 ---
 name: 十全 小蜻蜓攜帶式氧氣機 UP-02
 taxonomy: 呼吸照護/氧氣製造機
-price: 49000
+price: ""
 brand: 十全
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: UP-02
   - label: 產品特點
     value: 符合身心障礙者輔具補助； 補助項目 -氧氣製造機
-  - label: 規格選項
-    value: NT$49000/原NT$52000
 images: []
 published: false
 source: import

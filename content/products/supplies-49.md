@@ -1,7 +1,7 @@
 ---
 name: 中化 CCPC 綠的 乾洗手潔手凝露 75% 500ml
 taxonomy: 照護耗材/消毒與清潔
-price: 199
+price: ""
 brand: 中化
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 優盛醫學 ROSSMAX 手臂式電子血壓計
 taxonomy: 健康量測/血壓計
-price: 1900
+price: ""
 brand: 優盛
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$1900/原NT$2300
+specs: []
 images: []
 published: false
 source: import

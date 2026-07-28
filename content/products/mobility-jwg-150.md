@@ -1,7 +1,7 @@
 ---
 name: 均佳 JWG-150 鋁合金輪椅 jwg150 輪椅B款
 taxonomy: 行動輔具/輪椅
-price: 6180
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅B款；符合身障補助：輕量化量產型
   - label: 規格選項
-    value: "ABS輪椅餐桌＋不鏽鋼保鮮盒: NT$6180/原NT$6800｜多功能立體圍兜＋不鏽鋼保鮮盒: NT$6180/原NT$6800｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒: NT$6180/原NT$6800…等"
+    value: "ABS輪椅餐桌＋不鏽鋼保鮮盒｜多功能立體圍兜＋不鏽鋼保鮮盒｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒…等"
 images: []
 published: false
 source: import

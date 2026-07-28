@@ -1,7 +1,7 @@
 ---
 name: microlife 百略 電子體溫計 紅外線額溫槍
 taxonomy: 健康量測/體溫計
-price: 1600
+price: ""
 brand: 百略
 offering:
   - 門市洽詢

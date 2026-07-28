@@ -1,7 +1,7 @@
 ---
 name: 艾你優 頸舒適電動氣壓頸部伸展器
 taxonomy: 復健理療/復健器材
-price: 13800
+price: ""
 brand: 艾你優
 offering:
   - 門市洽詢

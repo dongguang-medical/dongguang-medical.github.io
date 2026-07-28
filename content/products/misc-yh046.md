@@ -1,7 +1,7 @@
 ---
 name: YAHO 耀宏 二層角鋼車 YH046 不鏽鋼 醫院
 taxonomy: 其他/診所與醫護設備
-price: 5600
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢

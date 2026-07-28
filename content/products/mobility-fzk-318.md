@@ -1,7 +1,7 @@
 ---
 name: 富士康 散步車 FZK-318
 taxonomy: 行動輔具/助行車
-price: 3200
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -14,10 +14,8 @@ tags:
 specs:
   - label: 型號
     value: FZK-318
-  - label: 產品特點
-    value: 可申請補助，補助約2100元
   - label: 規格選項
-    value: "FZK-318 深藍: NT$3200/原NT$5000 ｜ FZK-328 棗紅: NT$3200/原NT$5000"
+    value: "FZK-318 深藍｜FZK-328 棗紅"
 images: []
 published: false
 source: import

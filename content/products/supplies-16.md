@@ -1,7 +1,7 @@
 ---
 name: 安親 活力褲 輕薄型 成人紙尿褲 成人拉拉褲
 taxonomy: 照護耗材/成人紙尿褲
-price: 1014
+price: ""
 brand: 安親
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "S-M 適用腰圍：22-35吋: NT$1014 ｜ L-XL 適用腰圍：32-48吋: NT$1014"
+    value: "S-M 適用腰圍：22-35吋｜L-XL 適用腰圍：32-48吋"
 images: []
 published: false
 source: import

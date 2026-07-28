@@ -1,7 +1,7 @@
 ---
 name: "蓓莉雅 勤達 適復樂 適富樂 6\"普通棉棒 口腔棉棒"
 taxonomy: 照護耗材/紗布棉棒
-price: 3
+price: ""
 brand: 蓓莉雅
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 滅菌狀態
     value: 已滅菌
   - label: 規格選項
-    value: "3吋棉棒 10支/包: NT$3 ｜ ENT棉棒 10支/包: NT$3 ｜ 6吋普通棉棒 10支/包: NT$4 ｜ 口腔棉棒 10支/包: NT$4 ｜ 沖洗棉棒 6支/包: NT$6"
+    value: "3吋棉棒 10支/包｜ENT棉棒 10支/包｜6吋普通棉棒 10支/包｜口腔棉棒 10支/包｜沖洗棉棒 6支/包"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 裁切尿袋 尿束帶 尿袋捲 集尿袋 雨傘袋 接尿袋
 taxonomy: 臥床照護/管路照護用品
-price: 35
+price: ""
 brand: ""
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$35/原NT$50
+specs: []
 images: []
 published: false
 source: import

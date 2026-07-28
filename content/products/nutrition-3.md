@@ -1,7 +1,7 @@
 ---
 name: 樂紳仕 無熱量糖 代糖 赤藻糖醇 600公克 樂紳士
 taxonomy: 營養保健/血糖管理營養
-price: 680
+price: ""
 brand: 樂紳仕
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: CareWatch 天群 離床警報器防水感應墊
 taxonomy: 臥床照護/離床警報器
-price: 5000
+price: ""
 brand: 天群
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ specs:
   - label: 產品特點
     value: 台灣製造，非人為損壞，保固1年
   - label: 規格選項
-    value: "座椅用 30x30cm: NT$5000/原NT$7500 ｜ 床墊用 75.5x30cm: NT$5600/原NT$7500"
+    value: "座椅用 30x30cm｜床墊用 75.5x30cm"
 images: []
 published: false
 source: import

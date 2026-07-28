@@ -1,7 +1,7 @@
 ---
 name: 中衛 CSD 棉棒（未滅菌）
 taxonomy: 照護耗材/紗布棉棒
-price: 25
+price: ""
 brand: 中衛
 offering:
   - 線上選購

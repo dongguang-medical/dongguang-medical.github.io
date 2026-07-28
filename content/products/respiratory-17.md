@@ -1,7 +1,7 @@
 ---
 name: 珐瑪 熱及濕氣凝結器 人工鼻
 taxonomy: 呼吸照護/製氧機配件
-price: 150
+price: ""
 brand: 珐瑪
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "無過濾單顆: NT$150 ｜ 過濾20顆/包: NT$518"
+    value: "無過濾單顆｜過濾20顆/包"
 images: []
 published: false
 source: import

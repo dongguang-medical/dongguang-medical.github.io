@@ -1,7 +1,7 @@
 ---
 name: 立新三馬達電動床 LM-J6 簡約木飾板 電動護理床
 taxonomy: 臥床照護/電動照護床
-price: 22000
+price: ""
 brand: 立新
 offering:
   - 門市洽詢

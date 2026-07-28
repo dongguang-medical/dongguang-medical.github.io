@@ -1,7 +1,7 @@
 ---
 name: 立新兩手搖病床 C-01 木飾手搖護理床 手搖醫療床
 taxonomy: 臥床照護/手搖照護床
-price: 13500
+price: ""
 brand: 立新
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 驅動方式
     value: 手搖式
   - label: 規格選項
-    value: "1號:高強度鋼條底板: NT$13500 ｜ 2號:複合材輕量化abs底板: NT$14500"
+    value: "1號:高強度鋼條底板｜2號:複合材輕量化abs底板"
 images: []
 published: false
 source: import

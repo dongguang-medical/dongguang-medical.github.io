@@ -1,7 +1,7 @@
 ---
 name: 淳碩 橡膠氣囊氣墊座 浮動坐墊 輪椅座墊B款 浮動座墊
 taxonomy: 行動輔具/輪椅座墊
-price: 10000
+price: ""
 brand: 淳碩
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "TS-R55-4540-1（氣囊9X8）: NT$10000 ｜ TS-R55-4040-1（氣囊8X8）: NT$10000"
+    value: "TS-R55-4540-1（氣囊9X8）｜TS-R55-4040-1（氣囊8X8）"
 images: []
 published: false
 source: import

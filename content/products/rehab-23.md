@@ -1,7 +1,7 @@
 ---
 name: 安泰動力式熱敷墊 珊瑚砂
 taxonomy: 復健理療/熱敷墊
-price: 1780
+price: ""
 brand: 安泰
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$1780/原NT$1800
+specs: []
 images: []
 published: false
 source: import

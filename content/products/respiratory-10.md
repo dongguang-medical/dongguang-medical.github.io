@@ -1,7 +1,7 @@
 ---
 name: 飛利浦 磊士製氧機5公升 一般款 Ever Flo
 taxonomy: 呼吸照護/氧氣製造機
-price: 30000
+price: ""
 brand: 飛利浦
 offering:
   - 門市洽詢
@@ -10,9 +10,7 @@ rental_price: ""
 subsidy: []
 tags:
   - 可租賃
-specs:
-  - label: 規格選項
-    value: NT$30000/原NT$34000
+specs: []
 images: []
 published: false
 source: import

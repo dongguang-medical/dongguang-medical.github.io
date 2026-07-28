@@ -1,7 +1,7 @@
 ---
 name: 善鼻洗鼻鹽 60小包 洗鼻器專用
 taxonomy: 呼吸照護/洗鼻器配件
-price: 290
+price: ""
 brand: 善鼻
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 產品特點
     value: 1袋60小包，一包配500ML的水
-  - label: 規格選項
-    value: NT$290/原NT$300
 images: []
 published: false
 source: import

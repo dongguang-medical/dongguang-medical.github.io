@@ -1,7 +1,7 @@
 ---
 name: Conwell 康威利5937 前減壓鞋
 taxonomy: 復健理療/復健鞋
-price: 2280
+price: ""
 brand: 康威利
 offering:
   - 門市洽詢
@@ -12,7 +12,7 @@ tags:
   - 減壓設計
 specs:
   - label: 規格選項
-    value: "S: NT$2280 ｜ M: NT$2280 ｜ L: NT$2280 ｜ XL: NT$2280"
+    value: "S｜M｜L｜XL"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 美利馳merits A1 電動輔助式後輪
 taxonomy: 行動輔具/電動輪椅與代步車
-price: 14000
+price: ""
 brand: 美利馳
 offering:
   - 門市洽詢
@@ -16,8 +16,6 @@ tags:
 specs:
   - label: 驅動方式
     value: 電動
-  - label: 規格選項
-    value: NT$14000/原NT$15800
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 康揚 鋁合金手動輪椅 飛揚825 輕量化量產型輪椅
 taxonomy: 行動輔具/輪椅
-price: 11500
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -20,7 +20,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅-B款（輕量化量產型）+輪椅附加功能-A款（具利於移位功能）；符合身障補助：輕量化量產型
   - label: 規格選項
-    value: "ABS輪椅餐桌 / 多功能立體圍兜: NT$11500/原NT$15000｜ABS輪椅餐桌 / 輪椅置物袋: NT$11500/原NT$15000…等"
+    value: "ABS輪椅餐桌 / 多功能立體圍兜｜ABS輪椅餐桌 / 輪椅置物袋…等"
 images: []
 published: false
 source: import

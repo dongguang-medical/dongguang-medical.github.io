@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YH091-1 平面腳踏椅(低)中醫 保健室 診所
 taxonomy: 其他/診所與醫護設備
-price: 2100
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: YH091-1
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$2100/原NT$2500
 images: []
 published: false
 source: import

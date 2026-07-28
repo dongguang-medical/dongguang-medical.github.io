@@ -1,7 +1,7 @@
 ---
 name: 明宏 MH-250 紅外線燈(直立式附腳架)
 taxonomy: 復健理療/紅外線治療儀
-price: 5850
+price: ""
 brand: 明宏
 offering:
   - 門市洽詢

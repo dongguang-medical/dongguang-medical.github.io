@@ -1,7 +1,7 @@
 ---
 name: 1組2入 JUST4U 強生 TV-111 好神帶
 taxonomy: 臥床照護/移位輔具
-price: 990
+price: ""
 brand: 強生
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ tags:
 specs:
   - label: 型號
     value: TV-111
-  - label: 規格選項
-    value: NT$990/原NT$1100
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 康威 無痛脫膠劑 固定膠帶除膠劑 無痛脫膠噴霧劑 除膠片
 taxonomy: 照護耗材/敷料與人工皮
-price: 378
+price: ""
 brand: 康威
 offering:
   - 門市洽詢

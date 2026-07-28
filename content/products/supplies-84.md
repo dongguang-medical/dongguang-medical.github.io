@@ -1,7 +1,7 @@
 ---
 name: 富士康 不鏽鋼紙膠切台（刀口升降）
 taxonomy: 照護耗材/醫用膠帶
-price: 119
+price: ""
 brand: 富士康
 offering:
   - 線上選購

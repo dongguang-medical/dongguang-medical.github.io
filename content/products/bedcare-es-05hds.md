@@ -1,7 +1,7 @@
 ---
 name: 強盛興 JOSON-CARES 旗艦型醫療電動床
 taxonomy: 臥床照護/電動照護床
-price: 67000
+price: ""
 brand: 強盛興
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 杰奇 輪椅頭部固定帶 黏貼式 JM-445 輪椅頭靠
 taxonomy: 行動輔具/輪椅配件
-price: 360
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

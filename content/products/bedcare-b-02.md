@@ -1,7 +1,7 @@
 ---
 name: 立新兩馬達病床 B-02 電動護理床 雙馬達 醫療床
 taxonomy: 臥床照護/電動照護床
-price: 17000
+price: ""
 brand: 立新
 offering:
   - 門市洽詢
@@ -19,7 +19,7 @@ specs:
   - label: 驅動方式
     value: 兩馬達電動
   - label: 規格選項
-    value: "1號:高強度鋼條底板: NT$17000 ｜ 2號:複合材輕量化abs底板: NT$19000"
+    value: "1號:高強度鋼條底板｜2號:複合材輕量化abs底板"
 images: []
 published: false
 source: import

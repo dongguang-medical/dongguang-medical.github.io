@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YH135 血壓注射枕 枕頭
 taxonomy: 其他/診所與醫護設備
-price: 480
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: 台灣製造
   - label: 產品特點
     value: 台灣製造
-  - label: 規格選項
-    value: NT$480/原NT$500
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 好家 B101加高款助行器
 taxonomy: 行動輔具/助行器
-price: 1350
+price: ""
 brand: 好家
 offering:
   - 門市洽詢
@@ -12,9 +12,7 @@ subsidy:
   - 身障輔具補助
 tags:
   - 可申請補助
-specs:
-  - label: 規格選項
-    value: NT$1350/原NT$1500
+specs: []
 images: []
 published: false
 source: import

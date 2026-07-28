@@ -1,7 +1,7 @@
 ---
 name: NISSEI 日本精密血壓計 DS-G10J
 taxonomy: 健康量測/血壓計
-price: 2180
+price: ""
 brand: 日本精密
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: G10J
   - label: 產地
     value: 日本製造
-  - label: 規格選項
-    value: NT$2180/原NT$2880
 images: []
 published: false
 source: import

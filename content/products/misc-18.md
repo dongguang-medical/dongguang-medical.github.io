@@ -1,7 +1,7 @@
 ---
 name: 太平洋 鼻咽通氣導管
 taxonomy: 其他/急救器材
-price: 140
+price: ""
 brand: 太平洋
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 滅菌狀態
     value: 已滅菌
   - label: 規格選項
-    value: "5.5mm: NT$140 ｜ 6.0mm: NT$140 ｜ 6.5mm: NT$140 ｜ 7.0mm: NT$140 ｜ 7.5mm: NT$140 ｜ 8.0mm: NT$140"
+    value: "5.5mm｜6.0mm｜6.5mm｜7.0mm｜7.5mm｜8.0mm"
 images: []
 published: false
 source: import

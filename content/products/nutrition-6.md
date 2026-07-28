@@ -1,7 +1,7 @@
 ---
 name: 富保樂 左旋麩醯胺酸 L-Glutamine 500g
 taxonomy: 營養保健/成人營養補充
-price: 2790
+price: ""
 brand: 富保樂
 offering:
   - 門市洽詢

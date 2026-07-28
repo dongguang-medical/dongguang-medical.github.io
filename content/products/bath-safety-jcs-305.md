@@ -1,7 +1,7 @@
 ---
 name: 均佳 JCS-305 不銹鋼洗澡便器椅拆手型 熊賀康醫材
 taxonomy: 衛浴與居家安全/便盆椅
-price: 6980
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢

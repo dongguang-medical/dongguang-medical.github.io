@@ -1,7 +1,7 @@
 ---
 name: 3M 通氣紙膠 1吋 12入
 taxonomy: 照護耗材/醫用膠帶
-price: 188
+price: ""
 brand: 3m
 offering:
   - 線上選購

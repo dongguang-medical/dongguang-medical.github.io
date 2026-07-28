@@ -1,7 +1,7 @@
 ---
 name: 康揚 KARMA 仰樂多2 VIP2TR 手動輪椅
 taxonomy: 行動輔具/輪椅
-price: 28000
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -17,7 +17,7 @@ specs:
   - label: 產品特點
     value: 符合補助「輪椅B款 附加功能A+B+C+擺位D」；符合身障補助：輕量化量產型
   - label: 規格選項
-    value: "18吋座深，後輪14吋 / ABS輪椅餐桌＋挺立握把1組＋保溫瓶: NT$28000/原NT$32000｜18吋座深，後輪14吋 / 杰奇充氣方形凝膠坐墊＋挺立握把＋保溫瓶: NT$28000/原NT$32000…等"
+    value: "18吋座深，後輪14吋 / ABS輪椅餐桌＋挺立握把1組＋保溫瓶｜18吋座深，後輪14吋 / 杰奇充氣方形凝膠坐墊＋挺立握把＋保溫瓶…等"
 images: []
 published: false
 source: import

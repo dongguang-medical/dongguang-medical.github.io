@@ -1,7 +1,7 @@
 ---
 name: 阿爾傑 ALGER 巧馨 鼻胃管固定貼 10入/盒
 taxonomy: 臥床照護/管路照護用品
-price: 360
+price: ""
 brand: 阿爾傑
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$360/原NT$400
+specs: []
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 VacPlus抽痰機 蓄電式抽痰機
 taxonomy: 呼吸照護/抽痰機
-price: 9900
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ tags:
 specs:
   - label: 驅動方式
     value: 電動
-  - label: 規格選項
-    value: NT$9900/原NT$11200
 images: []
 published: false
 source: import

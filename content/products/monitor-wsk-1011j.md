@@ -1,7 +1,7 @@
 ---
 name: 日本製 NISSEI 日本精密血壓計 WSK-1011J
 taxonomy: 健康量測/血壓計
-price: 2480
+price: ""
 brand: 日本精密
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: WSK-1011J
   - label: 產地
     value: 日本製造
-  - label: 規格選項
-    value: NT$2480/原NT$2800
 images: []
 published: false
 source: import

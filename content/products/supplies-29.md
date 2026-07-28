@@ -1,7 +1,7 @@
 ---
 name: 尚美德 SunMate 柔適潔淨看護墊 護理墊 尿墊
 taxonomy: 照護耗材/看護墊
-price: 99
+price: ""
 brand: 尚美德
 offering:
   - 門市洽詢

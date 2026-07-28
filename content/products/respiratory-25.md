@@ -1,7 +1,7 @@
 ---
 name: 濟平 面罩緩衝墊(未滅菌) 第二代專利新款
 taxonomy: 呼吸照護/陽壓呼吸器配件
-price: 600
+price: ""
 brand: 濟平
 offering:
   - 門市洽詢

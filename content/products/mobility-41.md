@@ -1,7 +1,7 @@
 ---
 name: SHIMA SYMPHONY SP 交響樂 助步車
 taxonomy: 行動輔具/助行車
-price: 9200
+price: ""
 brand: shima
 offering:
   - 門市洽詢

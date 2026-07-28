@@ -1,7 +1,7 @@
 ---
 name: 帝通 子母型冰枕 冷熱敷袋
 taxonomy: 復健理療/冷熱敷用品
-price: 119
+price: ""
 brand: 帝通
 offering:
   - 線上選購

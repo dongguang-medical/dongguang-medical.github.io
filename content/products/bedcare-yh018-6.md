@@ -1,7 +1,7 @@
 ---
 name: YAHO 耀宏 YH018-6 氣壓式床上桌 桌面可傾斜
 taxonomy: 臥床照護/床邊配件
-price: 5000
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: YH018-6
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$5000/原NT$5500
 images: []
 published: false
 source: import

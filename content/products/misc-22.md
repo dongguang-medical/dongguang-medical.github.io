@@ -1,7 +1,7 @@
 ---
 name: 鑷子
 taxonomy: 其他/醫療器械
-price: 20
+price: ""
 brand: ""
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "鑷子 12cm: NT$20 [00593]｜鑷子 14cm: NT$30 [00594]｜鑷子 18cm: NT$60 [00595]｜鑷子 24cm: NT$80 [00596]｜鼻科鑷子14cm: NT$160…等"
+    value: "鑷子 12cm [00593]｜鑷子 14cm [00594]｜鑷子 18cm [00595]｜鑷子 24cm [00596]｜鼻科鑷子14cm…等"
 images: []
 published: false
 source: import

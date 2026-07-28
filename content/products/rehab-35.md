@@ -1,7 +1,7 @@
 ---
 name: muva 3D多點溫感揉捏枕
 taxonomy: 復健理療/復健器材
-price: 1750
+price: ""
 brand: muva
 offering:
   - 線上選購

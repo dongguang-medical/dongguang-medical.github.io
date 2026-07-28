@@ -1,7 +1,7 @@
 ---
 name: 羅氏 ACCU CHEK Mobile 50入/盒
 taxonomy: 健康量測/血糖機
-price: 1080
+price: ""
 brand: 羅氏
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$1080/原NT$1299
+specs: []
 images: []
 published: false
 source: import

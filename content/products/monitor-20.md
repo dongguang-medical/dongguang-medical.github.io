@@ -1,7 +1,7 @@
 ---
 name: 日本精密 NISSEI 血壓計變壓器
 taxonomy: 健康量測/血壓計配件
-price: 250
+price: ""
 brand: 日本精密
 offering:
   - 線上選購

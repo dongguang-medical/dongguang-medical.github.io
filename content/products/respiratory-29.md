@@ -1,7 +1,7 @@
 ---
 name: 京華 超音波噴霧器KUN-868
 taxonomy: 呼吸照護/噴霧器
-price: 4000
+price: ""
 brand: 京華
 offering:
   - 門市洽詢
@@ -10,9 +10,7 @@ rental_price: ""
 subsidy: []
 tags:
   - 可租賃
-specs:
-  - label: 規格選項
-    value: NT$4000/原NT$4300
+specs: []
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 麗臺 指尖式脈搏血氧儀
 taxonomy: 健康量測/血氧濃度計
-price: 2500
+price: ""
 brand: 麗臺
 offering:
   - 門市洽詢

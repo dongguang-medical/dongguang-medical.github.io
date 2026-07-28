@@ -1,7 +1,7 @@
 ---
 name: 耀宏 手滑板 手掌型 手部運動 手部復健 動作訓練
 taxonomy: 復健理療/復健器材
-price: 1400
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: 台灣製造
   - label: 產品特點
     value: 台灣製造
-  - label: 規格選項
-    value: NT$1400/原NT$1500
 images: []
 published: false
 source: import

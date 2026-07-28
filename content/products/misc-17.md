@@ -1,7 +1,7 @@
 ---
 name: SAM Pelvic Sling II骨盆固定器
 taxonomy: 其他/急救器材
-price: 6850
+price: ""
 brand: sam
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "藍橙色標準尺寸: NT$6850 ｜ 軍綠色標準尺寸: NT$6850"
+    value: "藍橙色標準尺寸｜軍綠色標準尺寸"
 images: []
 published: false
 source: import

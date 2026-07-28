@@ -1,7 +1,7 @@
 ---
 name: NOVA 光星 高底座四點拐杖 5650 四腳手杖
 taxonomy: 行動輔具/拐杖
-price: 900
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -18,8 +18,6 @@ specs:
     value: 鋁合金
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$900/原NT$1000
 images: []
 published: false
 source: import

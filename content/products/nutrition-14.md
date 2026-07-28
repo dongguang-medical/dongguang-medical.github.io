@@ -1,7 +1,7 @@
 ---
 name: 三多 好吞嚥
 taxonomy: 營養保健/特殊配方營養
-price: 199
+price: ""
 brand: 三多
 offering:
   - 門市洽詢

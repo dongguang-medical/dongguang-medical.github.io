@@ -1,7 +1,7 @@
 ---
 name: 康揚輪椅多功能頭靠組 KE-HR10 擺位系統D款
 taxonomy: 行動輔具/輪椅配件
-price: 2500
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 收納方式
     value: 可收合
   - label: 規格選項
-    value: "S:約30-34cm: NT$2500 ｜ M:約35-42cm: NT$2500 ｜ L:約42-50cm: NT$2500"
+    value: "S:約30-34cm｜M:約35-42cm｜L:約42-50cm"
 images: []
 published: false
 source: import

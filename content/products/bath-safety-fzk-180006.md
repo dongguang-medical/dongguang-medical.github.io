@@ -1,7 +1,7 @@
 ---
 name: FZK 富士康 馬桶扶手
 taxonomy: 衛浴與居家安全/起身與防跌輔具
-price: 1800
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: FZK-180006
-  - label: 規格選項
-    value: NT$1800/原NT$2000
 images: []
 published: false
 source: import

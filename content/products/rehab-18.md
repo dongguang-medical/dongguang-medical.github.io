@@ -1,7 +1,7 @@
 ---
 name: 醫技 COLD SPRAY 急速冷凍噴劑 400ML
 taxonomy: 復健理療/冷熱敷用品
-price: 230
+price: ""
 brand: 醫技
 offering:
   - 門市洽詢

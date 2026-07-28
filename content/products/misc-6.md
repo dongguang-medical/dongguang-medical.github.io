@@ -1,7 +1,7 @@
 ---
 name: HITOLY喜多麗 葡萄糖胺活力顧節霜 山芙蓉 外擦
 taxonomy: 其他/居家生活用品
-price: 180
+price: ""
 brand: 喜多麗
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "涼感 / 12ml: NT$180 ｜ 涼感 / 65ml: NT$882 ｜ 溫感 / 12ml: NT$180 ｜ 溫感 / 65ml: NT$882"
+    value: "涼感 / 12ml｜涼感 / 65ml｜溫感 / 12ml｜溫感 / 65ml"
 images: []
 published: false
 source: import

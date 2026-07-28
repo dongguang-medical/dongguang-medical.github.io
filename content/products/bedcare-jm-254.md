@@ -1,7 +1,7 @@
 ---
 name: 杰奇 肢體裝具 黑扣安全輔助帶 魔鬼沾黏貼式 黑扣輔助帶
 taxonomy: 臥床照護/約束與安全帶
-price: 180
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

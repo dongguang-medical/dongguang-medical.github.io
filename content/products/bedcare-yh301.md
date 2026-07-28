@@ -1,7 +1,7 @@
 ---
 name: 耀宏 日式電動床墊 YH301
 taxonomy: 臥床照護/床墊
-price: 13300
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ specs:
     value: YH301
   - label: 驅動方式
     value: 電動
-  - label: 規格選項
-    value: NT$13300/原NT$20000
 images: []
 published: false
 source: import

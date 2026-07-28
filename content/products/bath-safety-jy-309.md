@@ -1,7 +1,7 @@
 ---
 name: 晉宇 全方位洗臀椅 JY-309 鋁合金洗澡椅 沐浴椅
 taxonomy: 衛浴與居家安全/洗澡椅
-price: 3800
+price: ""
 brand: 晉宇
 offering:
   - 門市洽詢
@@ -19,8 +19,6 @@ specs:
     value: 鋁合金
   - label: 產品特點
     value: 限重227kg
-  - label: 規格選項
-    value: NT$3800/原NT$3300
 images: []
 published: false
 source: import

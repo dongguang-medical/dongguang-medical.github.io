@@ -1,7 +1,7 @@
 ---
 name: e-CARE 醫康 普利 愛美格 外科剪刀 醫用剪刀
 taxonomy: 其他/醫療器械
-price: 100
+price: ""
 brand: 愛美格
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "直雙尖: NT$120 [00586]｜直雙圓: NT$120 [01965]｜直尖圓: NT$130｜彎雙尖: NT$100｜眼科剪刀 直 11.5cm: NT$150｜眼科剪刀 反11.5cm: NT$150…等"
+    value: "直雙尖 [00586]｜直雙圓 [01965]｜直尖圓｜彎雙尖｜眼科剪刀 直 11.5cm｜眼科剪刀 反11.5cm…等"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 力增素均衡營養配方 原味 粉狀
 taxonomy: 營養保健/成人營養補充
-price: 410
+price: ""
 brand: ""
 offering:
   - 門市洽詢

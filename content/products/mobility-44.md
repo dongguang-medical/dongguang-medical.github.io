@@ -1,7 +1,7 @@
 ---
 name: AngelAid 天使愛 超止滑座椅用單向止滑墊
 taxonomy: 行動輔具/輪椅配件
-price: 1450
+price: ""
 brand: 天使愛
 offering:
   - 門市洽詢

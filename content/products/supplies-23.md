@@ -1,7 +1,7 @@
 ---
 name: 包大人 乾爽吸收 成人替換式紙尿片 28片裝 6包/箱
 taxonomy: 照護耗材/紙尿片
-price: 720
+price: ""
 brand: 包大人
 offering:
   - 門市洽詢

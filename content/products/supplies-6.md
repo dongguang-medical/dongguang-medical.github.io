@@ -1,7 +1,7 @@
 ---
 name: 赫麗敷 HERADERM 水性傷口敷料 10ml
 taxonomy: 照護耗材/敷料與人工皮
-price: 3800
+price: ""
 brand: 赫麗敷
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$3800/原NT$4200
+specs: []
 images: []
 published: false
 source: import

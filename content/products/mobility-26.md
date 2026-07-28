@@ -1,7 +1,7 @@
 ---
 name: SHIMA 日本 全碳纖維單點手杖
 taxonomy: 行動輔具/拐杖
-price: 2980
+price: ""
 brand: shima
 offering:
   - 門市洽詢

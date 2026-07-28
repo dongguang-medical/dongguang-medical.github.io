@@ -1,7 +1,7 @@
 ---
 name: TAICEND 液態皮膚保護膜 無痛皮膚保護膜
 taxonomy: 照護耗材/敷料與人工皮
-price: 450
+price: ""
 brand: taicend
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$450/原NT$600
+specs: []
 images: []
 published: false
 source: import

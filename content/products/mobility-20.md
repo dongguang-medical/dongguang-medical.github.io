@@ -1,7 +1,7 @@
 ---
 name: Karma 康揚H型輪椅胸帶 H型胸帶 輪椅安全帶
 taxonomy: 行動輔具/輪椅配件
-price: 1200
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢

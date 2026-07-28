@@ -1,7 +1,7 @@
 ---
 name: 光星 TAiMA (S) 助步車
 taxonomy: 行動輔具/助行車
-price: 4860
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -11,11 +11,7 @@ subsidy:
   - 長照2.0輔具補助
 tags:
   - 可申請補助
-specs:
-  - label: 產品特點
-    value: 可申請補助，補助約2100元
-  - label: 規格選項
-    value: NT$4860/原NT$5400
+specs: []
 images: []
 published: false
 source: import

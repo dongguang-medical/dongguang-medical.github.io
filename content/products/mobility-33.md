@@ -1,7 +1,7 @@
 ---
 name: 好家 不鏽鋼四腳拐 拐杖 手杖 U把手 助行器
 taxonomy: 行動輔具/拐杖
-price: 700
+price: ""
 brand: 好家
 offering:
   - 門市洽詢
@@ -16,7 +16,7 @@ specs:
   - label: 材質
     value: 不鏽鋼
   - label: 規格選項
-    value: "69~84cm: NT$700/原NT$740 ｜ 加高79~94cm(建議175公分以上): NT$730/原NT$770"
+    value: "69~84cm｜加高79~94cm(建議175公分以上)"
 images: []
 published: false
 source: import

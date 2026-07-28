@@ -1,7 +1,7 @@
 ---
 name: 愛恩特 INT 兔寶寶氣墊床SR-518+
 taxonomy: 臥床照護/氣墊床
-price: 25000
+price: ""
 brand: 愛恩特
 offering:
   - 門市洽詢
@@ -16,8 +16,6 @@ tags:
 specs:
   - label: 產品特點
     value: 1. 台灣製造，保固3年；三管交替，獨立管條
-  - label: 規格選項
-    value: NT$25000/原NT$28000
 images: []
 published: false
 source: import

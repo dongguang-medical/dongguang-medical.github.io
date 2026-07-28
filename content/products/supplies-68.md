@@ -1,7 +1,7 @@
 ---
 name: 3M 防水透氣透明敷料(OP-Site)
 taxonomy: 照護耗材/敷料與人工皮
-price: 650
+price: ""
 brand: 3m
 offering:
   - 線上選購

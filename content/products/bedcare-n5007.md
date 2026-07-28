@@ -1,7 +1,7 @@
 ---
 name: 富士康 N5007 老人床邊扶手 老人床邊護欄
 taxonomy: 臥床照護/床邊配件
-price: 1600
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢

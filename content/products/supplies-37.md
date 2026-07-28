@@ -1,7 +1,7 @@
 ---
 name: MyCare 醫美人工皮
 taxonomy: 照護耗材/敷料與人工皮
-price: 65
+price: ""
 brand: mycare
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 益江 聽診器
 taxonomy: 其他/診所與醫護設備
-price: 180
+price: ""
 brand: 益江
 offering:
   - 線上選購
@@ -13,7 +13,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "單面BK3001: NT$180 ｜ 雙面BK3002: NT$250"
+    value: "單面BK3001｜雙面BK3002"
 images:
   - /assets/uploads/misc-3-1.jpg
   - /assets/uploads/misc-3-2.jpg

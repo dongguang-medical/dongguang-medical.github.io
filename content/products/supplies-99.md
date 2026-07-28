@@ -1,7 +1,7 @@
 ---
 name: 尿袋束套固定帶 12入/包
 taxonomy: 照護耗材/造口與泌尿用品
-price: 38
+price: ""
 brand: ""
 offering:
   - 線上選購

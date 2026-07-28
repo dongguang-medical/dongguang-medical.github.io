@@ -1,7 +1,7 @@
 ---
 name: 3M 人工皮 20×20cm
 taxonomy: 照護耗材/敷料與人工皮
-price: 190
+price: ""
 brand: 3m
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 萊潔 舒適坐浴盆組（未滅菌）
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: 479
+price: ""
 brand: 萊潔
 offering:
   - 線上選購

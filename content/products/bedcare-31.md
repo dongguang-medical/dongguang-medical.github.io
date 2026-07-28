@@ -1,7 +1,7 @@
 ---
 name: 中衛 CSD 病患用潤滑膏 3g
 taxonomy: 臥床照護/管路照護用品
-price: 100
+price: ""
 brand: 中衛
 offering:
   - 線上選購
@@ -13,7 +13,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "單包裝20片: NT$100 ｜ 盒裝100片: NT$399"
+    value: "單包裝20片｜盒裝100片"
 images:
   - /assets/uploads/bedcare-31-1.jpg
   - /assets/uploads/bedcare-31-2.jpg

@@ -1,7 +1,7 @@
 ---
 name: NOVA 光星 調整手杖 2060 10段調整 單手拐杖
 taxonomy: 行動輔具/拐杖
-price: 450
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -19,7 +19,7 @@ specs:
   - label: 產地
     value: 台灣製造
   - label: 規格選項
-    value: "千鳥格紋 E011: NT$450/原NT$500｜紳藍格紋 E051: NT$450/原NT$500｜點點滴滴 E032: NT$450/原NT$500｜黃花綠意 E041: NT$450/原NT$500…等"
+    value: "千鳥格紋 E011｜紳藍格紋 E051｜點點滴滴 E032｜黃花綠意 E041…等"
 images: []
 published: false
 source: import

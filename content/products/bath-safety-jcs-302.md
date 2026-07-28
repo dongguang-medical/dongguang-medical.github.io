@@ -1,7 +1,7 @@
 ---
 name: 均佳 JCS-302 JCS302
 taxonomy: 衛浴與居家安全/便盆椅
-price: 5580
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢

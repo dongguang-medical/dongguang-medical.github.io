@@ -1,7 +1,7 @@
 ---
 name: 立新三馬達電動床 EF-33 電動護理床 電動醫療床
 taxonomy: 臥床照護/電動照護床
-price: 24000
+price: ""
 brand: 立新
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 病床可申請補助
   - label: 規格選項
-    value: "1號:優質鋼網狀底版: NT$24000｜2號:高強度鋼條底板: NT$26000｜3號:通風型蜂槽式鋼底板: NT$26000｜4號:複合材輕量化abs底板: NT$28000…等"
+    value: "1號:優質鋼網狀底版｜2號:高強度鋼條底板｜3號:通風型蜂槽式鋼底板｜4號:複合材輕量化abs底板…等"
 images: []
 published: false
 source: import

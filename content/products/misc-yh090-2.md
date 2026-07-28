@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YH090-2 腳架(方型墊)高度可調 三爪 中醫
 taxonomy: 其他/診所與醫護設備
-price: 2100
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -16,8 +16,6 @@ specs:
     value: YH090-2
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$2100/原NT$2200
 images: []
 published: false
 source: import

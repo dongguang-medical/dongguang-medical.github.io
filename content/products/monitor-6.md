@@ -1,7 +1,7 @@
 ---
 name: 十全 血氧飽和監測器
 taxonomy: 健康量測/血氧濃度計
-price: 2500
+price: ""
 brand: 十全
 offering:
   - 門市洽詢

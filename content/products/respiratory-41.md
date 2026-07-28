@@ -1,7 +1,7 @@
 ---
 name: 氧氣蛇形管 15cm/節 可自行剪裁
 taxonomy: 呼吸照護/氧氣用品
-price: 7
+price: ""
 brand: ""
 offering:
   - 線上選購

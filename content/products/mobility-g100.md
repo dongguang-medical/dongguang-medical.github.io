@@ -1,7 +1,7 @@
 ---
 name: 均佳 JW-G100 鋁合金輪椅 輪椅B款
 taxonomy: 行動輔具/輪椅
-price: 4880
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅B款；符合身障補助：輕量化量產型
   - label: 規格選項
-    value: "ABS輪椅餐桌＋不鏽鋼保鮮盒: NT$4880/原NT$5400｜多功能立體圍兜＋不鏽鋼保鮮盒: NT$4880/原NT$5400｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒: NT$4880/原NT$5400…等"
+    value: "ABS輪椅餐桌＋不鏽鋼保鮮盒｜多功能立體圍兜＋不鏽鋼保鮮盒｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒…等"
 images: []
 published: false
 source: import

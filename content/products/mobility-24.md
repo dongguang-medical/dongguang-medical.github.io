@@ -1,7 +1,7 @@
 ---
 name: 勁好 輪椅扶手墊
 taxonomy: 行動輔具/輪椅配件
-price: 600
+price: ""
 brand: 勁好
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 舒摩 SUMO 濕熱敷墊
 taxonomy: 復健理療/熱敷墊
-price: 1170
+price: ""
 brand: 舒摩
 offering:
   - 線上選購
@@ -16,7 +16,7 @@ specs:
   - label: 產地
     value: 台灣製造
   - label: 規格選項
-    value: "7 Ｘ 20(四肢專用): NT$1170｜14Ｘ14(四肢、腹部專用): NT$1260｜14 X 20: NT$1300｜14 X 27: NT$1350｜20 X 20 (ㄇ字型肩部專用): NT$1350"
+    value: "7 Ｘ 20(四肢專用)｜14Ｘ14(四肢、腹部專用)｜14 X 20｜14 X 27｜20 X 20 (ㄇ字型肩部專用)"
 images:
   - /assets/uploads/rehab-22-1.jpg
   - /assets/uploads/rehab-22-2.jpg

@@ -1,7 +1,7 @@
 ---
 name: 成人替換式紙尿片 42片裝 包大人乾爽型 8包/箱
 taxonomy: 照護耗材/紙尿片
-price: 1400
+price: ""
 brand: 包大人
 offering:
   - 門市洽詢

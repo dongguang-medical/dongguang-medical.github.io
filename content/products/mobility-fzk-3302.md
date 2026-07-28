@@ -1,7 +1,7 @@
 ---
 name: FZK富士康 帶輪型助步車 FZK-3302
 taxonomy: 行動輔具/助行車
-price: 4980
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -14,10 +14,6 @@ tags:
 specs:
   - label: 型號
     value: FZK-3302
-  - label: 產品特點
-    value: 可申請補助，補助約2100元
-  - label: 規格選項
-    value: NT$4980/原NT$6000
 images: []
 published: false
 source: import

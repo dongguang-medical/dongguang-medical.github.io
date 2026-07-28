@@ -1,7 +1,7 @@
 ---
 name: 愛民 I-M 網狀繃帶 1-9號 1kg
 taxonomy: 照護耗材/敷料與人工皮
-price: 480
+price: ""
 brand: 愛民
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 綠十字蓄尿袋750ML 小腿尿袋 螺旋型 集尿袋
 taxonomy: 臥床照護/管路照護用品
-price: 26
+price: ""
 brand: 綠十字
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$26/原NT$35
+specs: []
 images: []
 published: false
 source: import

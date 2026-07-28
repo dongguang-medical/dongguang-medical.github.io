@@ -1,7 +1,7 @@
 ---
 name: 升級 康威乾洗式 蘆薈清潔泡沫 免沖洗 頭髮身體清潔
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: 342
+price: ""
 brand: 康威
 offering:
   - 門市洽詢

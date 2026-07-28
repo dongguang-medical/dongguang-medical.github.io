@@ -1,7 +1,7 @@
 ---
 name: Nitto 優肌絆 透氣膠帶 膚色
 taxonomy: 照護耗材/敷料與人工皮
-price: 850
+price: ""
 brand: nitto
 offering:
   - 門市洽詢

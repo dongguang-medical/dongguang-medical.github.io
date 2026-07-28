@@ -1,7 +1,7 @@
 ---
 name: 好家 腋下拐杖 腋下拐握把 腋下拐手把 腋托 扶肩
 taxonomy: 行動輔具/拐杖
-price: 30
+price: ""
 brand: 好家
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "腋托（灰）: NT$50 ｜ 中間握把（灰）: NT$50 ｜ 橡膠腳墊（灰）: NT$30"
+    value: "腋托（灰）｜中間握把（灰）｜橡膠腳墊（灰）"
 images: []
 published: false
 source: import

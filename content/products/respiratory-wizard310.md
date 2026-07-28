@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 鼻罩式 WiZARD310
 taxonomy: 呼吸照護/陽壓呼吸器配件
-price: 3950
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: OMRON 歐姆龍低週波治療器 HV-F128
 taxonomy: 復健理療/電療機
-price: 2880
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: F128
   - label: 產地
     value: 日本製造
-  - label: 規格選項
-    value: NT$2880/原NT$4000
 images: []
 published: false
 source: import

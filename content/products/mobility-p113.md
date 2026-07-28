@@ -1,7 +1,7 @@
 ---
 name: 美利馳 merits 逍遙行 P113 YOYO
 taxonomy: 行動輔具/電動輪椅與代步車
-price: 55000
+price: ""
 brand: 美利馳
 offering:
   - 門市洽詢
@@ -23,7 +23,7 @@ specs:
   - label: 產品特點
     value: "符合補助項目 : 電動輪椅、身障補助"
   - label: 規格選項
-    value: "藍 / 11.4AH: NT$55000 ｜ 藍 / 17.1AH: NT$59800 ｜ 紅 / 11.4AH: NT$55000 ｜ 紅 / 17.1AH: NT$59800"
+    value: "藍 / 11.4AH｜藍 / 17.1AH｜紅 / 11.4AH｜紅 / 17.1AH"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 新加 橡膠氣囊氣墊座 浮動坐墊 輪椅座墊B款 浮動座墊
 taxonomy: 行動輔具/輪椅座墊
-price: 10000
+price: ""
 brand: 新加
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "16吋座寬: NT$10000 ｜ 18吋座寬: NT$10000"
+    value: "16吋座寬｜18吋座寬"
 images: []
 published: false
 source: import

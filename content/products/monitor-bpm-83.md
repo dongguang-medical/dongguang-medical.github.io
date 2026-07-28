@@ -1,7 +1,7 @@
 ---
 name: 貝舒樂心房顫動血壓計 BPM-83 手臂型血壓計
 taxonomy: 健康量測/血壓計
-price: 2080
+price: ""
 brand: 貝舒樂
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: BPM-83
-  - label: 規格選項
-    value: NT$2080/原NT$2300
 images: []
 published: false
 source: import

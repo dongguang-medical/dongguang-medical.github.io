@@ -1,7 +1,7 @@
 ---
 name: TERUMO 隧道型血壓計上臂式血壓計
 taxonomy: 健康量測/血壓計
-price: 6800
+price: ""
 brand: 泰爾茂
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: ESP-2020
-  - label: 規格選項
-    value: NT$6800/原NT$7980
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 均佳 JCS-208 鋁合金可收合有輪洗澡便器椅 馬桶椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 4500
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢

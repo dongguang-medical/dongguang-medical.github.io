@@ -1,7 +1,7 @@
 ---
 name: 歐姆龍 omron 噴霧治療器 NE-U100 蒸鼻機
 taxonomy: 呼吸照護/噴霧器
-price: 4780
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -13,8 +13,6 @@ tags:
 specs:
   - label: 型號
     value: U100
-  - label: 規格選項
-    value: NT$4780/原NT$5900
 images: []
 published: false
 source: import

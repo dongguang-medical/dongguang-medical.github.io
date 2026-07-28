@@ -1,7 +1,7 @@
 ---
 name: 強生 JUST4U 兩人四手搬運帶 TV-122
 taxonomy: 臥床照護/移位輔具
-price: 3960
+price: ""
 brand: 強生
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 產品特點
     value: 符合補助項目【人力移位吊帶】、補助申請辦理及相關事宜，歡迎詢問
   - label: 規格選項
-    value: "1件: NT$3960/原NT$4400"
+    value: "1件"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 杰奇 防漏床中單
 taxonomy: 照護耗材/看護墊
-price: 490
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "藍: NT$490 ｜ 蘋果綠: NT$490"
+    value: "藍｜蘋果綠"
 images: []
 published: false
 source: import

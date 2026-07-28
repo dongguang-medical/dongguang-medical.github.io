@@ -1,7 +1,7 @@
 ---
 name: 康威利 Conwell 護頸 5102
 taxonomy: 復健理療/護具
-price: 432
+price: ""
 brand: 康威利
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "S: NT$432 ｜ S: NT$432 ｜ M: NT$432 ｜ XL: NT$432 ｜ XXL: NT$432"
+    value: "S｜S｜M｜XL｜XXL"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: YAHO 耀宏 視力表
 taxonomy: 其他/診所與醫護設備
-price: 3400
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "視力表 (沒有架子）: NT$3500 ｜ 視力表架 (只有架子）: NT$3400 ｜ 視力表+視力表架: NT$6900"
+    value: "視力表 (沒有架子）｜視力表架 (只有架子）｜視力表+視力表架"
 images: []
 published: false
 source: import

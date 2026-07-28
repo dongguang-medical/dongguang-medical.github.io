@@ -1,7 +1,7 @@
 ---
 name: 金安心 透氣經濟型尿布
 taxonomy: 照護耗材/成人紙尿褲
-price: 200
+price: ""
 brand: 金安心
 offering:
   - 門市洽詢
@@ -12,7 +12,7 @@ tags:
   - 透氣設計
 specs:
   - label: 規格選項
-    value: "M:20片 (腰圍 : 24-51吋): NT$200 ｜ L號：16片 (腰圍 : 30-59吋): NT$200"
+    value: "M:20片 (腰圍 : 24-51吋)｜L號：16片 (腰圍 : 30-59吋)"
 images: []
 published: false
 source: import

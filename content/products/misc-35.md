@@ -1,7 +1,7 @@
 ---
 name: 芬蒂思 舒眠空氣壓縮枕
 taxonomy: 其他/居家生活用品
-price: 69
+price: ""
 brand: 芬蒂思
 offering:
   - 線上選購

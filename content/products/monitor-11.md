@@ -1,7 +1,7 @@
 ---
 name: ACCU CHEK 羅氏 Guide 智航 血糖機組
 taxonomy: 健康量測/血糖機
-price: 3800
+price: ""
 brand: 羅氏
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$3800/原NT$4300
+specs: []
 images: []
 published: false
 source: import

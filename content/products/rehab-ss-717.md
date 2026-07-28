@@ -1,7 +1,7 @@
 ---
 name: 愛民 I-M SS-717 竹炭護膝（側邊軟鐵條）
 taxonomy: 復健理療/護具
-price: 590
+price: ""
 brand: 愛民
 offering:
   - 線上選購

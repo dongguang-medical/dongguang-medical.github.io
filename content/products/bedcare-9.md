@@ -1,7 +1,7 @@
 ---
 name: 淳碩TS-106旋鈕數位型氣墊床5吋三管氣墊床
 taxonomy: 臥床照護/氣墊床
-price: 12000
+price: ""
 brand: 淳碩
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: OMRON 歐姆龍 藍牙隧道式電子血壓計
 taxonomy: 健康量測/血壓計
-price: 11250
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -14,8 +14,6 @@ specs:
     value: HCR-1902T2
   - label: 連線功能
     value: 支援藍牙傳輸
-  - label: 規格選項
-    value: NT$11250/原NT$12500
 images: []
 published: false
 source: import

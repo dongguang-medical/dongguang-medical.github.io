@@ -1,7 +1,7 @@
 ---
 name: 康揚 KARMA 鋁合金輪椅 KM-8520
 taxonomy: 行動輔具/輪椅
-price: 14300
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅B款、附加功能A；符合身障補助：輕量化量產型；輪椅附加功能｜具利於移位功能
   - label: 規格選項
-    value: "ABS輪椅餐桌 / 輪椅置物袋: NT$14300｜ABS輪椅餐桌 / 多功能立體圍兜: NT$14300｜杰奇充氣方形凝膠坐墊 / 多功能立體圍兜: NT$14300…等"
+    value: "ABS輪椅餐桌 / 輪椅置物袋｜ABS輪椅餐桌 / 多功能立體圍兜｜杰奇充氣方形凝膠坐墊 / 多功能立體圍兜…等"
 images: []
 published: false
 source: import

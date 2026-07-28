@@ -1,7 +1,7 @@
 ---
 name: APEX 雃博 TC-2000V 福康照護抽痰機
 taxonomy: 呼吸照護/抽痰機
-price: 6000
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

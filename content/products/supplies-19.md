@@ -1,7 +1,7 @@
 ---
 name: 包大人 成人紙尿褲 黏貼式紙尿褲 防漏護膚 成人尿布
 taxonomy: 照護耗材/成人紙尿褲
-price: 960
+price: ""
 brand: 包大人
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "M 20片(1箱4包): NT$960 ｜ L 16片(1箱4包): NT$960"
+    value: "M 20片(1箱4包)｜L 16片(1箱4包)"
 images: []
 published: false
 source: import

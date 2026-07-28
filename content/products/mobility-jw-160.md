@@ -1,7 +1,7 @@
 ---
 name: 均佳 JW-160 鋁合金輪椅 輪椅B款 JW160
 taxonomy: 行動輔具/輪椅
-price: 10500
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助：輪椅B款、附加功能A；符合身障補助：輕量化量產型、輪椅附加功能-具利於移位功能
   - label: 規格選項
-    value: "16吋(約41公分) / 前輪6吋 後輪12吋 (小輪) / ABS輪椅餐桌＋時尚保冷袋: NT$10500/原NT$14000…等"
+    value: "16吋(約41公分) / 前輪6吋 後輪12吋 (小輪) / ABS輪椅餐桌＋時尚保冷袋…等"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 綠十字 卡式止血帶
 taxonomy: 其他/急救器材
-price: 80
+price: ""
 brand: 綠十字
 offering:
   - 門市洽詢

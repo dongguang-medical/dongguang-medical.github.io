@@ -1,7 +1,7 @@
 ---
 name: 源星生醫 血氧儀
 taxonomy: 健康量測/血氧濃度計
-price: 2500
+price: ""
 brand: 源星生醫
 offering:
   - 門市洽詢

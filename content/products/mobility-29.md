@@ -1,7 +1,7 @@
 ---
 name: NOVA 光星 鋁合金折疊拐杖3010AX-A
 taxonomy: 行動輔具/拐杖
-price: 630
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 收納方式
     value: 可折疊
   - label: 規格選項
-    value: "星光閃紅 C116: NT$630/原NT$660 ｜ 星光閃黑 C005: NT$630/原NT$660 ｜ 星光閃銀 C012: NT$630/原NT$660 ｜ 星光閃藍 C021: NT$630/原NT$660"
+    value: "星光閃紅 C116｜星光閃黑 C005｜星光閃銀 C012｜星光閃藍 C021"
 images: []
 published: false
 source: import

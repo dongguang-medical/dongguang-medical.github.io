@@ -1,7 +1,7 @@
 ---
 name: 耀宏 YH090 腳架(不鏽鋼跨板) 高度可調 三爪
 taxonomy: 其他/診所與醫護設備
-price: 1700
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -18,8 +18,6 @@ specs:
     value: 不鏽鋼
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$1700/原NT$1900
 images: []
 published: false
 source: import

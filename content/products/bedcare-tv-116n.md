@@ -1,7 +1,7 @@
 ---
 name: JUST 4U 強生全方位安心帶 TV-116N
 taxonomy: 臥床照護/移位輔具
-price: 1750
+price: ""
 brand: 強生
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 產品特點
     value: 符合補助項目【移位腰帶】、補助申請辦理及相關事宜，歡迎詢問
   - label: 規格選項
-    value: "M號: 腰圍26~35吋: NT$1750 ｜ L號: 腰圍33~40吋: NT$1750 ｜ XL號: 腰圍40~50吋: NT$2100"
+    value: "M號: 腰圍26~35吋｜L號: 腰圍33~40吋｜XL號: 腰圍40~50吋"
 images: []
 published: false
 source: import

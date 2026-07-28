@@ -1,7 +1,7 @@
 ---
 name: 水煮式熱敷墊 背部／頸部／腰部
 taxonomy: 復健理療/熱敷墊
-price: 800
+price: ""
 brand: ""
 offering:
   - 線上選購

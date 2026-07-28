@@ -1,7 +1,7 @@
 ---
 name: WellWell雃博 多美適2 減壓氣墊床 氣墊床A款
 taxonomy: 臥床照護/氣墊床
-price: 8000
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢
@@ -14,9 +14,7 @@ tags:
   - 可租賃
   - 可申請補助
   - 減壓設計
-specs:
-  - label: 規格選項
-    value: NT$8000/原NT$10000
+specs: []
 images: []
 published: false
 source: import

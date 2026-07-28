@@ -1,7 +1,7 @@
 ---
 name: 德國博依beurer TP60 銀離子抗菌床墊型電毯
 taxonomy: 復健理療/熱敷墊
-price: 2880
+price: ""
 brand: 博依
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: TP60
-  - label: 規格選項
-    value: NT$2880/原NT$3580
 images: []
 published: false
 source: import

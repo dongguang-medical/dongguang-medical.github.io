@@ -1,7 +1,7 @@
 ---
 name: 日本精密NISSEI
 taxonomy: 健康量測/血壓計配件
-price: 200
+price: ""
 brand: 日本精密
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: DSK-1031J
-  - label: 規格選項
-    value: NT$200/原NT$0
 images: []
 published: false
 source: import

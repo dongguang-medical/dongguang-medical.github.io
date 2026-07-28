@@ -1,7 +1,7 @@
 ---
 name: 新加 幸福B2 交替式壓力氣墊床
 taxonomy: 臥床照護/氣墊床
-price: 12000
+price: ""
 brand: 新加
 offering:
   - 門市洽詢
@@ -16,8 +16,6 @@ tags:
 specs:
   - label: 產品特點
     value: 1. 台灣製造，保固3年；2. 4吋18管，3管交替
-  - label: 規格選項
-    value: NT$12000/原NT$14000
 images: []
 published: false
 source: import

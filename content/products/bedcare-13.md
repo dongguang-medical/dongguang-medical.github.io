@@ -1,7 +1,7 @@
 ---
 name: ALCOR 聖提尼爾 灌食機 餵食機
 taxonomy: 臥床照護/管路照護用品
-price: 35000
+price: ""
 brand: 聖提尼爾
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 驅動方式
     value: 電動
-  - label: 規格選項
-    value: NT$35000/原NT$40000
 images: []
 published: false
 source: import

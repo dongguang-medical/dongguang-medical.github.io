@@ -1,7 +1,7 @@
 ---
 name: 京展 竹炭手拖板
 taxonomy: 復健理療/護具
-price: 800
+price: ""
 brand: 京展
 offering:
   - 門市洽詢

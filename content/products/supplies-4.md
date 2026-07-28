@@ -1,7 +1,7 @@
 ---
 name: 3M 無痛保膚膜 Cavilon 28ml 無痛保護膜
 taxonomy: 照護耗材/敷料與人工皮
-price: 500
+price: ""
 brand: 3m
 offering:
   - 門市洽詢

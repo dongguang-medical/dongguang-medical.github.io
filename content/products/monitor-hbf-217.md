@@ -1,7 +1,7 @@
 ---
 name: 歐姆龍 OMRON HBF-217 體脂計
 taxonomy: 健康量測/體重與體脂計
-price: 1980
+price: ""
 brand: 歐姆龍
 offering:
   - 線上選購

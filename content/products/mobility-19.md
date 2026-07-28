@@ -1,7 +1,7 @@
 ---
 name: Karma 康揚輪椅扶手側包
 taxonomy: 行動輔具/輪椅配件
-price: 450
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 保麗淨 假牙清潔錠 清新薄荷
 taxonomy: 臥床照護/口腔照護
-price: 170
+price: ""
 brand: 保麗淨
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "假牙清潔錠(36片): NT$170 ｜ 保麗淨假牙黏著劑（60g）: NT$270"
+    value: "假牙清潔錠(36片)｜保麗淨假牙黏著劑（60g）"
 images: []
 published: false
 source: import

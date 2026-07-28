@@ -1,7 +1,7 @@
 ---
 name: 均佳 JK-005 鋁合金四輪助行車 一般型
 taxonomy: 行動輔具/助行車
-price: 3300
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢
@@ -16,10 +16,8 @@ specs:
     value: JK-005
   - label: 材質
     value: 鋁合金
-  - label: 產品特點
-    value: 可申請補助，補助約2100元
   - label: 規格選項
-    value: "銀色: NT$3300/原NT$3800 ｜ 紅色: NT$3300/原NT$3800"
+    value: "銀色｜紅色"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: amon 寶鴻 膠原蛋白牲鈦粉 蔓越莓 塞洛美 益生菌
 taxonomy: 營養保健/成人營養補充
-price: 2000
+price: ""
 brand: 寶鴻生技
 offering:
   - 門市洽詢

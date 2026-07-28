@@ -1,7 +1,7 @@
 ---
 name: 安泰攜帶式電療器 低週波治療器 低周波電療器 電療機
 taxonomy: 復健理療/電療機
-price: 3880
+price: ""
 brand: 安泰
 offering:
   - 門市洽詢
@@ -15,8 +15,6 @@ specs:
     value: AK350
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: NT$3880/原NT$4500
 images: []
 published: false
 source: import

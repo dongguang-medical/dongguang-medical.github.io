@@ -1,7 +1,7 @@
 ---
 name: 光星 NOVA 4080標準型助行器
 taxonomy: 行動輔具/助行器
-price: 1620
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "煙火紅: NT$1620/原NT$1800 ｜ 咖啡色: NT$1710/原NT$1900"
+    value: "煙火紅｜咖啡色"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 耀宏 樓梯擔架 緊急救護搬運椅 YH115-1 可折疊
 taxonomy: 其他/急救器材
-price: 13500
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -16,8 +16,6 @@ specs:
     value: 不鏽鋼
   - label: 收納方式
     value: 可折疊
-  - label: 規格選項
-    value: NT$13500/原NT$15000
 images: []
 published: false
 source: import

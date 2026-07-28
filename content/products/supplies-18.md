@@ -1,7 +1,7 @@
 ---
 name: Sunmate 尚美德 黏貼式成人紙尿褲
 taxonomy: 照護耗材/成人紙尿褲
-price: 1380
+price: ""
 brand: 尚美德
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "M 28片(腰圍 28~46寸)x4包: NT$1380 ｜ L 24片(腰圍38~61寸)x4包: NT$1380"
+    value: "M 28片(腰圍 28~46寸)x4包｜L 24片(腰圍38~61寸)x4包"
 images: []
 published: false
 source: import

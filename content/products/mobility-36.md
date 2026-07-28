@@ -1,7 +1,7 @@
 ---
 name: 強生 一馬當先推車
 taxonomy: 行動輔具/助行車
-price: 3980
+price: ""
 brand: 強生
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ tags:
   - 可申請補助
 specs:
   - label: 規格選項
-    value: "百合白: NT$3980/原NT$4500 ｜ 消光灰: NT$3980/原NT$4500"
+    value: "百合白｜消光灰"
 images: []
 published: false
 source: import

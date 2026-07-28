@@ -1,7 +1,7 @@
 ---
 name: 3M 乾洗潔膚泡沫 200ml 傷口照護 臥床病患 清潔
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: 280
+price: ""
 brand: 3m
 offering:
   - 門市洽詢

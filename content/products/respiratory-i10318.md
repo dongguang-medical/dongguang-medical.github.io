@@ -1,7 +1,7 @@
 ---
 name: 太平洋 外科抽吸引流管 (滅菌) I10318 外科長管
 taxonomy: 呼吸照護/抽痰機耗材
-price: 50
+price: ""
 brand: 太平洋
 offering:
   - 門市洽詢
@@ -16,8 +16,6 @@ specs:
     value: 已滅菌
   - label: 產品特點
     value: 抽痰機耗材
-  - label: 規格選項
-    value: NT$50/原NT$55
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: 惠生 HS-018-B 液態凝膠座墊 輪椅座墊C款
 taxonomy: 行動輔具/輪椅座墊
-price: 10000
+price: ""
 brand: 惠生
 offering:
   - 門市洽詢
@@ -16,7 +16,7 @@ specs:
   - label: 型號
     value: HS-018-B
   - label: 規格選項
-    value: "16吋: NT$10000 ｜ 18吋: NT$10000"
+    value: "16吋｜18吋"
 images: []
 published: false
 source: import

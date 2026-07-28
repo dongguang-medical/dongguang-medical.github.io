@@ -1,7 +1,7 @@
 ---
 name: 雃博 多美適2 減壓氣墊床 氣墊床A款 病床 醫療床
 taxonomy: 臥床照護/氣墊床
-price: 8000
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

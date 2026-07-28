@@ -1,7 +1,7 @@
 ---
 name: 杰奇 乒乓手套 (單入) 網狀約束手套 乒乓手拍 手乒乓
 taxonomy: 臥床照護/約束與安全帶
-price: 120
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

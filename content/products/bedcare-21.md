@@ -1,7 +1,7 @@
 ---
 name: JM 杰奇 舒柔乒乓手套 約束帶 拉鍊款 乒乓手拍
 taxonomy: 臥床照護/約束與安全帶
-price: 280
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ specs:
   - label: 產地
     value: 台灣製造
   - label: 規格選項
-    value: "Ｍ ：長29cm: NT$280 ｜ Ｌ ：長30cm: NT$300"
+    value: "Ｍ ：長29cm｜Ｌ ：長30cm"
 images: []
 published: false
 source: import

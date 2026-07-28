@@ -1,7 +1,7 @@
 ---
 name: FZK富士康 帶輪型助步車 FZK-3118
 taxonomy: 行動輔具/助行車
-price: 6000
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -14,10 +14,8 @@ tags:
 specs:
   - label: 型號
     value: FZK-3118
-  - label: 產品特點
-    value: 可申請補助，補助約2100元
   - label: 規格選項
-    value: "藍色: NT$6000/原NT$7000 ｜ 香檳金: NT$6000/原NT$7000"
+    value: "藍色｜香檳金"
 images: []
 published: false
 source: import

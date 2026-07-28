@@ -1,7 +1,7 @@
 ---
 name: Yuwell 魚躍 頸椎牽引器
 taxonomy: 復健理療/復健器材
-price: 1200
+price: ""
 brand: 魚躍
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$1200/原NT$2000
+specs: []
 images: []
 published: false
 source: import

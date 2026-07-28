@@ -1,7 +1,7 @@
 ---
 name: WellDay 晶晏 動力式多層石墨烯熱敷墊
 taxonomy: 復健理療/熱敷墊
-price: 2980
+price: ""
 brand: 晶晏
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: GH330
-  - label: 規格選項
-    value: NT$2980/原NT$3580
 images: []
 published: false
 source: import

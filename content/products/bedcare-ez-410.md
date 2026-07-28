@@ -1,7 +1,7 @@
 ---
 name: 天群 站立移位轉盤 EZ-410
 taxonomy: 臥床照護/移位輔具
-price: 1450
+price: ""
 brand: 天群
 offering:
   - 門市洽詢

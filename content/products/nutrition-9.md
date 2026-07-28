@@ -1,7 +1,7 @@
 ---
 name: 惠幼 加纖無糖棗露果露飲 12罐入
 taxonomy: 營養保健/成人營養補充
-price: 1200
+price: ""
 brand: 惠幼
 offering:
   - 門市洽詢

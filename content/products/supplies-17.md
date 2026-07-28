@@ -1,7 +1,7 @@
 ---
 name: 尚美德SunMate 成人褲型紙尿褲 復健方便褲 復健褲
 taxonomy: 照護耗材/成人紙尿褲
-price: 179
+price: ""
 brand: 尚美德
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "Ｍ (11片): NT$179 ｜ Ｌ (10片): NT$179 ｜ XL (8片): NT$179"
+    value: "Ｍ (11片)｜Ｌ (10片)｜XL (8片)"
 images: []
 published: false
 source: import

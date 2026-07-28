@@ -1,7 +1,7 @@
 ---
 name: 舒享得
 taxonomy: 呼吸照護/氧氣製造機
-price: 29000
+price: ""
 brand: 舒享得
 offering:
   - 門市洽詢
@@ -10,9 +10,7 @@ rental_price: ""
 subsidy: []
 tags:
   - 可租賃
-specs:
-  - label: 規格選項
-    value: NT$29000/原NT$30000
+specs: []
 images: []
 published: false
 source: import

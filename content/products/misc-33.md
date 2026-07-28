@@ -1,7 +1,7 @@
 ---
 name: 中醫／美甲腳架
 taxonomy: 其他/診所與醫護設備
-price: 1190
+price: ""
 brand: ""
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 耀宏 屏風 YH093 診所 醫院
 taxonomy: 其他/診所與醫護設備
-price: 4800
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -13,7 +13,7 @@ specs:
   - label: 型號
     value: YH093
   - label: 規格選項
-    value: "YH093-2 二折式屏風 / 水藍: NT$4800｜YH093-2 二折式屏風 / 粉紅: NT$4800｜YH093-2 二折式屏風 / 米白: NT$4800｜YH093-2 二折式屏風 / 綠: NT$4800…等"
+    value: "YH093-2 二折式屏風 / 水藍｜YH093-2 二折式屏風 / 粉紅｜YH093-2 二折式屏風 / 米白｜YH093-2 二折式屏風 / 綠…等"
 images: []
 published: false
 source: import

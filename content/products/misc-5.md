@@ -1,7 +1,7 @@
 ---
 name: QSHION 透氣舒壓中空坐墊
 taxonomy: 其他/居家生活用品
-price: 1530
+price: ""
 brand: qshion
 offering:
   - 門市洽詢

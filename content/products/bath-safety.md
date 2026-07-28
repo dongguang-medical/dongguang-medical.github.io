@@ -1,7 +1,7 @@
 ---
 name: 均佳JCS-102 鐵製收合便盆椅 收合便器椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 2000
+price: ""
 brand: 均佳
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 產品特點
     value: 台灣製造，可收合，可調高低
   - label: 規格選項
-    value: "水藍色: NT$2000 ｜ 粉紫色: NT$2000"
+    value: "水藍色｜粉紫色"
 images: []
 published: false
 source: import

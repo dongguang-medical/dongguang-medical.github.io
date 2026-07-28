@@ -1,7 +1,7 @@
 ---
 name: 易立爽成人看護墊 易力爽 保潔墊 保潔看護墊 尿墊
 taxonomy: 照護耗材/看護墊
-price: 80
+price: ""
 brand: 易立爽
 offering:
   - 門市洽詢

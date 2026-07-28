@@ -1,7 +1,7 @@
 ---
 name: 雃博 噴霧治療器AP-100100
 taxonomy: 呼吸照護/噴霧器
-price: 2100
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

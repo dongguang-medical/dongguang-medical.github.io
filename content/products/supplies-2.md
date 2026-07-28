@@ -1,7 +1,7 @@
 ---
 name: 優美醫用口罩 50入/盒 三層口罩 醫療口罩 一次性口罩
 taxonomy: 照護耗材/口罩
-price: 150
+price: ""
 brand: 優美
 offering:
   - 門市洽詢
@@ -14,7 +14,7 @@ specs:
   - label: 產地
     value: 台灣製造
   - label: 規格選項
-    value: "1盒50枚: NT$150/原NT$200"
+    value: "1盒50枚"
 images: []
 published: false
 source: import

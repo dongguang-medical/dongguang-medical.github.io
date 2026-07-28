@@ -1,7 +1,7 @@
 ---
 name: NOVA 光星鋁合金調整手杖 10段調整 單手拐杖
 taxonomy: 行動輔具/拐杖
-price: 580
+price: ""
 brand: 光星
 offering:
   - 門市洽詢
@@ -21,7 +21,7 @@ specs:
   - label: 產地
     value: 台灣製造
   - label: 規格選項
-    value: "粉底藍花 E034: NT$580/原NT$660｜紫底野莓 E035: NT$580/原NT$660｜綠蘇格蘭 E009: NT$580/原NT$660｜花叢白蝶 E045: NT$580/原NT$660…等"
+    value: "粉底藍花 E034｜紫底野莓 E035｜綠蘇格蘭 E009｜花叢白蝶 E045…等"
 images: []
 published: false
 source: import

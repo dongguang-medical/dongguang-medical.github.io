@@ -1,7 +1,7 @@
 ---
 name: 戴爾 Dale 導尿管固定帶 316 導管固定帶
 taxonomy: 臥床照護/管路照護用品
-price: 250
+price: ""
 brand: 戴爾
 offering:
   - 門市洽詢

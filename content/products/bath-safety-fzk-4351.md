@@ -1,7 +1,7 @@
 ---
 name: 富士康 半躺便器椅 FZK-4351 鋁合金 便盆椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 4500
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢

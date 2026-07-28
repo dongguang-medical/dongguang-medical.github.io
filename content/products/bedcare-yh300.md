@@ -1,7 +1,7 @@
 ---
 name: YAHO 耀宏床邊架 YH300
 taxonomy: 臥床照護/床邊配件
-price: 4000
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢

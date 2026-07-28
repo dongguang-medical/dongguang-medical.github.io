@@ -1,7 +1,7 @@
 ---
 name: 亞培 FreeStyle Libre2輔理善瞬感2
 taxonomy: 健康量測/血糖機
-price: 2200
+price: ""
 brand: 亞培
 offering:
   - 門市洽詢

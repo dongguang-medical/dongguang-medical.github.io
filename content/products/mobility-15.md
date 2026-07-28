@@ -1,7 +1,7 @@
 ---
 name: 杏華 2508 輕量型助行器
 taxonomy: 行動輔具/助行器
-price: 1500
+price: ""
 brand: 杏華
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ tags:
   - 輕量化
 specs:
   - label: 規格選項
-    value: "水藍色: NT$1500/原NT$1550 ｜ 緋紅色: NT$1500/原NT$1550"
+    value: "水藍色｜緋紅色"
 images: []
 published: false
 source: import

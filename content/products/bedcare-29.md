@@ -1,7 +1,7 @@
 ---
 name: 綠十字 消毒塑膠肛管 咖啡灌腸 18號
 taxonomy: 臥床照護/管路照護用品
-price: 15
+price: ""
 brand: 綠十字
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$15/原NT$20
+specs: []
 images: []
 published: false
 source: import

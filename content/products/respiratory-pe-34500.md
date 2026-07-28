@@ -1,7 +1,7 @@
 ---
 name: 貝斯美德 電動拍痰器 PE-34500 拍痰棒
 taxonomy: 呼吸照護/拍痰器
-price: 25000
+price: ""
 brand: 貝斯美德
 offering:
   - 門市洽詢

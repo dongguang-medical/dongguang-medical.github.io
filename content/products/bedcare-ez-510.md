@@ -1,7 +1,7 @@
 ---
 name: 天群 蝴蝶移位滑板 EZ-510 移位板
 taxonomy: 臥床照護/移位輔具
-price: 2520
+price: ""
 brand: 天群
 offering:
   - 門市洽詢

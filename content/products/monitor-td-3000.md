@@ -1,7 +1,7 @@
 ---
 name: 福爾FORA 軟式壓脈帶 TD-3000
 taxonomy: 健康量測/血壓計配件
-price: 300
+price: ""
 brand: 福爾
 offering:
   - 門市洽詢

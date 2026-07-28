@@ -1,7 +1,7 @@
 ---
 name: 雃博 APEX 網布斜躺椅 (附靠枕) 頭靠 背躺
 taxonomy: 復健理療/復健器材
-price: 882
+price: ""
 brand: 雃博
 offering:
   - 門市洽詢

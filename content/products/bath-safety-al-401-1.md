@@ -1,7 +1,7 @@
 ---
 name: 豐鎰 AL-401-1 鋁合金便器椅 便盆椅 有輪便器椅
 taxonomy: 衛浴與居家安全/便盆椅
-price: 2800
+price: ""
 brand: 豐鎰
 offering:
   - 門市洽詢

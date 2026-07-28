@@ -1,7 +1,7 @@
 ---
 name: 太平洋導尿包 太平洋護理包 不含尿管
 taxonomy: 臥床照護/管路照護用品
-price: 90
+price: ""
 brand: 太平洋
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 源益通 順源洗澡沐浴椅 S0001 鋁合金洗澡椅
 taxonomy: 衛浴與居家安全/洗澡椅
-price: 3200
+price: ""
 brand: 源益通
 offering:
   - 門市洽詢

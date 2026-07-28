@@ -1,7 +1,7 @@
 ---
 name: JM 杰奇 五段式全身安全約束帶 有扣式 全身安全帶
 taxonomy: 臥床照護/約束與安全帶
-price: 700
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

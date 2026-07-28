@@ -1,7 +1,7 @@
 ---
 name: 康揚 KARMA 舒弧 ERG
 taxonomy: 行動輔具/輪椅
-price: 18000
+price: ""
 brand: 康揚
 offering:
   - 門市洽詢
@@ -17,7 +17,7 @@ specs:
   - label: 產品特點
     value: 符合長照補助:B款輪椅+輪椅附加功能A； 身障補助:輕量化輪椅+輪椅附加功能移位功能
   - label: 規格選項
-    value: "18吋座寬 / 20吋後輪(大輪)+7吋前輪: NT$18000 ｜ 18吋座寬 / 14吋後輪(小輪)+7吋前輪: NT$18000"
+    value: "18吋座寬 / 20吋後輪(大輪)+7吋前輪｜18吋座寬 / 14吋後輪(小輪)+7吋前輪"
 images: []
 published: false
 source: import

@@ -1,7 +1,7 @@
 ---
 name: OMRON歐姆龍 HEM6161 電子手腕血壓計
 taxonomy: 健康量測/血壓計
-price: 1580
+price: ""
 brand: 歐姆龍
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: HEM6161
-  - label: 規格選項
-    value: NT$1580/原NT$1780
 images: []
 published: false
 source: import

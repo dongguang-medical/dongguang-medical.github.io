@@ -1,7 +1,7 @@
 ---
 name: 富士康 便盆椅用固定帶
 taxonomy: 衛浴與居家安全/便盆椅配件
-price: 200
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢

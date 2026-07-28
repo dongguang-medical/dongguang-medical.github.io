@@ -1,7 +1,7 @@
 ---
 name: 德國博依床墊型電毯 單人定時型TP80
 taxonomy: 復健理療/熱敷墊
-price: 2680
+price: ""
 brand: 博依
 offering:
   - 門市洽詢
@@ -11,7 +11,7 @@ subsidy: []
 tags: []
 specs:
   - label: 規格選項
-    value: "TP80單人款150 x 80 cm: NT$2680/原NT$3580 ｜ TP88xxl雙人雙控款150x140cm: NT$4280/原NT$5600"
+    value: "TP80單人款150 x 80 cm｜TP88xxl雙人雙控款150x140cm"
 images: []
 published: false
 source: import

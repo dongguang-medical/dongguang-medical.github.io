@@ -1,7 +1,7 @@
 ---
 name: 艾樂舒 遠紅外線治療儀 UC9001 UC-9001
 taxonomy: 復健理療/紅外線治療儀
-price: 5280
+price: ""
 brand: 艾樂舒
 offering:
   - 門市洽詢
@@ -12,8 +12,6 @@ tags: []
 specs:
   - label: 型號
     value: UC9001
-  - label: 規格選項
-    value: NT$5280/原NT$5500
 images: []
 published: false
 source: import

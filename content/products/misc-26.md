@@ -1,7 +1,7 @@
 ---
 name: 精國 Spirit 雙面聽診器（未滅菌）
 taxonomy: 其他/診所與醫護設備
-price: 220
+price: ""
 brand: 精國
 offering:
   - 線上選購

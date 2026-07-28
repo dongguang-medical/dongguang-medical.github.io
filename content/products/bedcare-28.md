@@ -1,7 +1,7 @@
 ---
 name: 福朵 移位腰帶可拆式移位帶
 taxonomy: 臥床照護/移位輔具
-price: 1485
+price: ""
 brand: 福朵
 offering:
   - 門市洽詢
@@ -18,7 +18,7 @@ specs:
   - label: 產品特點
     value: 符合補助項目【移位腰帶】、補助申請辦理及相關事宜，歡迎詢問
   - label: 規格選項
-    value: "Ｍ適合腰圍24吋~34吋: NT$1485 ｜ Ｌ適合腰圍34吋~48吋: NT$1485"
+    value: "Ｍ適合腰圍24吋~34吋｜Ｌ適合腰圍34吋~48吋"
 images: []
 published: false
 source: import

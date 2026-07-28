@@ -1,7 +1,7 @@
 ---
 name: 鎮好用 彈性透氣伸縮絆 可剪裁
 taxonomy: 照護耗材/敷料與人工皮
-price: 95
+price: ""
 brand: ""
 offering:
   - 線上選購

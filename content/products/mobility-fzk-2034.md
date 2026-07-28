@@ -1,7 +1,7 @@
 ---
 name: 保固1年 鋁合金 小四腳拐杖 FZK-2034 寶石藍
 taxonomy: 行動輔具/拐杖
-price: 700
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -17,8 +17,6 @@ specs:
     value: FZK-2034
   - label: 材質
     value: 鋁合金
-  - label: 規格選項
-    value: NT$700/原NT$750
 images: []
 published: false
 source: import

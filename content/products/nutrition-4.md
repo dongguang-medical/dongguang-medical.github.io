@@ -1,7 +1,7 @@
 ---
 name: 寶鴻生技 私密話題 蔓越莓 益生菌 私密保養 100包
 taxonomy: 營養保健/成人營養補充
-price: 2000
+price: ""
 brand: 寶鴻生技
 offering:
   - 門市洽詢

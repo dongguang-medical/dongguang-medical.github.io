@@ -1,7 +1,7 @@
 ---
 name: YAHO 耀宏 YH129 R型助行器 兩階式助行器
 taxonomy: 行動輔具/助行器
-price: 1300
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -19,8 +19,6 @@ specs:
     value: 鋁合金
   - label: 產品特點
     value: 8段可調整高度
-  - label: 規格選項
-    value: NT$1300/原NT$1500
 images: []
 published: false
 source: import

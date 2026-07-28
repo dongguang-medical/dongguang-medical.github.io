@@ -1,7 +1,7 @@
 ---
 name: 西德有機健康對策 美力鋅+C1000 發泡錠 B群
 taxonomy: 營養保健/成人營養補充
-price: 250
+price: ""
 brand: ""
 offering:
   - 門市洽詢

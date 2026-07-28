@@ -1,7 +1,7 @@
 ---
 name: 宜瑪氏 EasyMax 專業型採血筆
 taxonomy: 照護耗材/血糖試紙與採血針
-price: 199
+price: ""
 brand: easymax
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 立新三馬達電動床 LM-EF03 ABS電動護理床
 taxonomy: 臥床照護/電動照護床
-price: 20000
+price: ""
 brand: 立新
 offering:
   - 門市洽詢

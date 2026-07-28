@@ -1,7 +1,7 @@
 ---
 name: 邁康 手動洗鼻器 附大小鼻頭
 taxonomy: 呼吸照護/洗鼻器
-price: 400
+price: ""
 brand: 邁康
 offering:
   - 線上選購

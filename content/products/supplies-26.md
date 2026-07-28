@@ -1,7 +1,7 @@
 ---
 name: 金安心 加長型成人紙尿片 40片 替換式紙尿片 小尿片
 taxonomy: 照護耗材/紙尿片
-price: 195
+price: ""
 brand: 金安心
 offering:
   - 門市洽詢

@@ -1,7 +1,7 @@
 ---
 name: 杰奇 肢體裝具 床上固定帶 約束帶 床上用 JM-458
 taxonomy: 臥床照護/約束與安全帶
-price: 600
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢

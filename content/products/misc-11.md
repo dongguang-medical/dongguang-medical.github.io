@@ -1,7 +1,7 @@
 ---
 name: 耀宏 鋁合金折疊式診查床(挖洞)高60/48cm 治療台
 taxonomy: 其他/診療床
-price: 6500
+price: ""
 brand: 耀宏
 offering:
   - 門市洽詢
@@ -15,7 +15,7 @@ specs:
   - label: 收納方式
     value: 可折疊
   - label: 規格選項
-    value: "高度60公分: NT$7000 ｜ 高度48公分: NT$6500"
+    value: "高度60公分｜高度48公分"
 images: []
 published: false
 source: import

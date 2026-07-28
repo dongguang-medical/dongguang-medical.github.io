@@ -1,7 +1,7 @@
 ---
 name: 杰奇 輪椅置物網袋
 taxonomy: 行動輔具/輪椅配件
-price: 390
+price: ""
 brand: 杰奇
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$390/原NT$400
+specs: []
 images: []
 published: false
 source: import

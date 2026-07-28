@@ -1,7 +1,7 @@
 ---
 name: FZK富士康 FZK-105烤漆單煞鐵製收合輪椅
 taxonomy: 行動輔具/輪椅
-price: 3300
+price: ""
 brand: 富士康
 offering:
   - 門市洽詢
@@ -19,7 +19,7 @@ specs:
   - label: 產品特點
     value: 請注意，此輪椅是單煞，後方手把處沒有煞車裝置
   - label: 規格選項
-    value: "單輪椅(不用噴字): NT$3300 ｜ 輪椅+噴字: NT$3500"
+    value: "單輪椅(不用噴字)｜輪椅+噴字"
 images: []
 published: false
 source: import

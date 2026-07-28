@@ -1,7 +1,7 @@
 ---
 name: FAR LEADER 華俐 洗鼻器 附大小鼻頭
 taxonomy: 呼吸照護/洗鼻器
-price: 400
+price: ""
 brand: 善鼻
 offering:
   - 門市洽詢

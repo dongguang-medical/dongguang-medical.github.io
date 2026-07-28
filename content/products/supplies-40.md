@@ -1,7 +1,7 @@
 ---
 name: 遠東 舒膚貼 人工皮 親水性敷料 15X15cm
 taxonomy: 照護耗材/敷料與人工皮
-price: 170
+price: ""
 brand: 遠東
 offering:
   - 門市洽詢

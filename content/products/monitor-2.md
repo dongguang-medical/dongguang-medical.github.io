@@ -1,7 +1,7 @@
 ---
 name: M501型座椅式體重秤 輪椅體重秤
 taxonomy: 健康量測/體重與體脂計
-price: 30000
+price: ""
 brand: ""
 offering:
   - 門市洽詢
@@ -9,9 +9,7 @@ rentable: false
 rental_price: ""
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: NT$30000/原NT$35000
+specs: []
 images: []
 published: false
 source: import
