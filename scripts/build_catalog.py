@@ -371,10 +371,10 @@ def page_header(active_url=""):
     desktop = "\n        ".join(items)
     # 行動版：導覽列的電話按鈕在 900px 以下會隱藏，因此補一個撥號項目
     mobile = "\n    ".join(
-        [f'<a href="{u}" onclick="closeMobileNav()">{esc(t)}</a>'
-         for t, u in nav_links()]
-        + [f'<a href="tel:{PHONE_TEL}" onclick="closeMobileNav()">'
-           f'撥打電話 {PHONE_DISPLAY}</a>'])
+        '<a href="{u}"{cls} onclick="closeMobileNav()">{t}</a>'.format(
+            u=u, t=esc(t),
+            cls=' class="mob-home"' if u == "/" else "")
+        for t, u in nav_links())
     return f"""  <header class="intro-header">
     <div class="intro-header-inner">
       <a href="/" class="intro-logo" aria-label="{SITE_NAME} 首頁">
@@ -449,6 +449,9 @@ NAV_JS = """  <script>
     }
     document.addEventListener('click', function (e) {
       if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+    });
+    mobileNav.addEventListener('click', function (e) {
+      if (e.target === mobileNav) closeMobileNav();
     });
   </script>
 """
@@ -862,9 +865,12 @@ def pick_featured(products):
     """
     feats = [p for p in products if p["featured"] and p["images"]]
     if len(feats) < FEATURED_FALLBACK_COUNT:
-        pool = [p for p in products
-                if p not in feats and p["images"]
-                and p["rentable"] and p["price"]]
+        # 多層備援：可租賃且有標價 → 有標價 → 只要有圖。
+        # 資料尚在補建時（如 rentable 全空）輪播才不會整個開天窗。
+        with_img = [p for p in products if p not in feats and p["images"]]
+        pool = [p for p in with_img if p["rentable"] and p["price"]] \
+            or [p for p in with_img if p["price"]] \
+            or with_img
         # 依主分類輪流取，避免整排都是同一類商品——照檔名順序直接取前 N 筆
         # 會讓輪播全是 bedcare-*，首頁看起來像只賣臥床用品。
         buckets = {}
@@ -888,6 +894,20 @@ def build_home_page(products):
     """首頁：資訊列（醫院對面）→ 搜尋 → 熱銷輪播 → 分類卡 → 聯絡資訊。"""
     featured = pick_featured(products)
     carousel = "\n".join(product_card(p) for p in featured)
+    feat_section = ""
+    if featured:
+        feat_section = f"""        <section class="home-feat" id="featured">
+          <div class="cat-cat-head">
+            <h2>熱銷精選</h2>
+          </div>
+          <div class="carousel-wrap">
+            <button class="car-prev" aria-label="上一批">‹</button>
+            <div class="home-carousel" id="feat-carousel">
+{carousel}
+            </div>
+            <button class="car-next" aria-label="下一批">›</button>
+          </div>
+        </section>"""
 
     cat_counts = {c: sum(1 for p in products if p["category"] == c)
                   for c in CATEGORY_NAMES}
@@ -913,18 +933,7 @@ def build_home_page(products):
           <div class="cat-empty" id="cat-no-results" hidden>找不到符合的商品，歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 詢問，門市品項更齊全。</div>
         </div>
         <div id="cat-browse">
-        <section class="home-feat" id="featured">
-          <div class="cat-cat-head">
-            <h2>熱銷精選</h2>
-          </div>
-          <div class="carousel-wrap">
-            <button class="car-prev" aria-label="上一批">‹</button>
-            <div class="home-carousel" id="feat-carousel">
-{carousel}
-            </div>
-            <button class="car-next" aria-label="下一批">›</button>
-          </div>
-        </section>
+{feat_section}
         </div>
       </div>
     </div>
@@ -1539,7 +1548,7 @@ def build_brand_pages(products, brands):
         {breadcrumb(bc)}
         <div class="cat-page-head">
           <h1>{esc(brand['name'])}</h1>
-          <p>共 {len(items)} 項商品｜租賃、購買與補助申請歡迎來電洽詢</p>
+          <p>共 {len(items)} 項商品</p>
           {site_link}
         </div>
         {note}
