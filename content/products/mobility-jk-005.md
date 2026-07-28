@@ -21,7 +21,7 @@ specs:
   - label: 規格選項
     value: "銀色: NT$3300/原NT$3800 ｜ 紅色: NT$3300/原NT$3800"
 images: []
-published: true
+published: false
 source: import
 ---
 

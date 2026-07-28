@@ -16,7 +16,7 @@ specs:
   - label: 產品特點
     value: 此款可申請補助，歡迎詢問
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "1號:高強度鋼條底板: NT$13500 ｜ 2號:複合材輕量化abs底板: NT$14500"
 images: []
-published: true
+published: false
 source: import
 ---
 

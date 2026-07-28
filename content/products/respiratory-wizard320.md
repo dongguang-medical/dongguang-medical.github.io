@@ -13,7 +13,7 @@ specs:
   - label: 型號
     value: WIZARD320
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -23,7 +23,7 @@ specs:
   - label: 規格選項
     value: "1號:優質鋼網狀底版: NT$24000｜2號:高強度鋼條底板: NT$26000｜3號:通風型蜂槽式鋼底板: NT$26000｜4號:複合材輕量化abs底板: NT$28000…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

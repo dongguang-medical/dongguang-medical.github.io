@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 病床可申請補助
 images: []
-published: true
+published: false
 source: import
 ---
 

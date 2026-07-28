@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: NT$480/原NT$500
 images: []
-published: true
+published: false
 source: import
 ---
 

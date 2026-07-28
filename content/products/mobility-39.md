@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "左手: NT$1200 ｜ 右手: NT$1200"
 images: []
-published: true
+published: false
 source: import
 ---
 

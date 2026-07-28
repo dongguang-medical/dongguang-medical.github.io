@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "YH093-2 二折式屏風 / 水藍: NT$4800｜YH093-2 二折式屏風 / 粉紅: NT$4800｜YH093-2 二折式屏風 / 米白: NT$4800｜YH093-2 二折式屏風 / 綠: NT$4800…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

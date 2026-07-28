@@ -14,7 +14,7 @@ specs:
   - label: 規格選項
     value: "EG-0320 腿部: NT$350 ｜ EG-0310手部: NT$300"
 images: []
-published: true
+published: false
 source: import
 ---
 

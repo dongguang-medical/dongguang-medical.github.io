@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "M 28片(腰圍 28~46寸)x4包: NT$1380 ｜ L 24片(腰圍38~61寸)x4包: NT$1380"
 images: []
-published: true
+published: false
 source: import
 ---
 

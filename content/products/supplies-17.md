@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "Ｍ (11片): NT$179 ｜ Ｌ (10片): NT$179 ｜ XL (8片): NT$179"
 images: []
-published: true
+published: false
 source: import
 ---
 

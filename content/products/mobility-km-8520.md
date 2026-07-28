@@ -23,7 +23,7 @@ specs:
   - label: 規格選項
     value: "ABS輪椅餐桌 / 輪椅置物袋: NT$14300｜ABS輪椅餐桌 / 多功能立體圍兜: NT$14300｜杰奇充氣方形凝膠坐墊 / 多功能立體圍兜: NT$14300…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

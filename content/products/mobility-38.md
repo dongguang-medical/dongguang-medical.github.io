@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "腋托（灰）: NT$50 ｜ 中間握把（灰）: NT$50 ｜ 橡膠腳墊（灰）: NT$30"
 images: []
-published: true
+published: false
 source: import
 ---
 

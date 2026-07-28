@@ -13,7 +13,7 @@ specs:
   - label: 型號
     value: O02987
 images: []
-published: true
+published: false
 source: import
 ---
 

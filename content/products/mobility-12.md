@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "煙火紅: NT$1620/原NT$1800 ｜ 咖啡色: NT$1710/原NT$1900"
 images: []
-published: true
+published: false
 source: import
 ---
 

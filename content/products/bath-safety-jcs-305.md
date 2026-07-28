@@ -20,7 +20,7 @@ specs:
   - label: 產品特點
     value: 台灣製造，下掀式扶手，可調高低
 images: []
-published: true
+published: false
 source: import
 ---
 

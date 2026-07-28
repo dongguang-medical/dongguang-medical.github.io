@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "成人3號：30~60kg: NT$1500 ｜ 成人4號：50~90kg: NT$1500 ｜ 成人5號：90kg以上: NT$1500"
 images: []
-published: true
+published: false
 source: import
 ---
 

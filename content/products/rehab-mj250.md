@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "MJ250（適一般女性）: NT$4000 ｜ MJ300（適一般成年男性）: NT$4000"
 images: []
-published: true
+published: false
 source: import
 ---
 

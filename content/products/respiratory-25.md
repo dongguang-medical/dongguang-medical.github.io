@@ -13,7 +13,7 @@ specs:
   - label: 滅菌狀態
     value: 未滅菌
 images: []
-published: true
+published: false
 source: import
 ---
 

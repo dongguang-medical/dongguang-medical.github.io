@@ -18,7 +18,7 @@ specs:
   - label: 規格選項
     value: "藍: NT$195 ｜ 黃: NT$195 ｜ 粉: NT$195 ｜ 綠: NT$195"
 images: []
-published: true
+published: false
 source: import
 ---
 

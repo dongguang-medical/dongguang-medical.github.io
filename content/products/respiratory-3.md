@@ -13,7 +13,7 @@ specs:
   - label: 產品特點
     value: 新版，尺寸通用
 images: []
-published: true
+published: false
 source: import
 ---
 

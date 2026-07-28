@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "刀柄 3號: NT$170 [00593] ｜ 刀柄 4號: NT$170 [00594]"
 images: []
-published: true
+published: false
 source: import
 ---
 

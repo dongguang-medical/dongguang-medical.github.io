@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "S: 126~152公分: NT$850 ｜ M：152~175公分: NT$850 ｜ L：175~198公分: NT$850"
 images: []
-published: true
+published: false
 source: import
 ---
 

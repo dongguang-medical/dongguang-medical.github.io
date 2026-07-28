@@ -24,7 +24,7 @@ specs:
   - label: 規格選項
     value: "綠色: NT$3600 ｜ 藍色: NT$3600"
 images: []
-published: true
+published: false
 source: import
 ---
 

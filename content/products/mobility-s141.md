@@ -21,7 +21,7 @@ specs:
   - label: 規格選項
     value: "環狀握把 / 加購遮雨棚: NT$50500 ｜ 環狀握把 / 加購雙人座: NT$51700 ｜ 環狀握把 / 加購遮雨棚＋雙人座: NT$54700 ｜ 環狀握把 / 不加購: NT$47500"
 images: []
-published: true
+published: false
 source: import
 ---
 

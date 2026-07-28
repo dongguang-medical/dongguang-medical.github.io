@@ -25,7 +25,7 @@ specs:
   - label: 規格選項
     value: "藍 / 11.4AH: NT$55000 ｜ 藍 / 17.1AH: NT$59800 ｜ 紅 / 11.4AH: NT$55000 ｜ 紅 / 17.1AH: NT$59800"
 images: []
-published: true
+published: false
 source: import
 ---
 

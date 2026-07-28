@@ -14,7 +14,7 @@ specs:
   - label: 規格選項
     value: "藏藍: NT$250 ｜ 綠: NT$250 ｜ 寶藍: NT$250"
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "座椅用 30x30cm: NT$5000/原NT$7500 ｜ 床墊用 75.5x30cm: NT$5600/原NT$7500"
 images: []
-published: true
+published: false
 source: import
 ---
 

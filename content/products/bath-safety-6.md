@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "有噴頭: NT$207/原NT$250 ｜ 無噴頭: NT$162/原NT$200"
 images: []
-published: true
+published: false
 source: import
 ---
 

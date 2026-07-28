@@ -23,7 +23,7 @@ specs:
   - label: 規格選項
     value: "粉底藍花 E034: NT$580/原NT$660｜紫底野莓 E035: NT$580/原NT$660｜綠蘇格蘭 E009: NT$580/原NT$660｜花叢白蝶 E045: NT$580/原NT$660…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

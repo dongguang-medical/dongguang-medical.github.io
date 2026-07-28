@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: 固定扶手，踏板可上收
 images: []
-published: true
+published: false
 source: import
 ---
 

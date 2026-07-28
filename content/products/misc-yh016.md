@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "粉紅色: NT$4500/原NT$5500 ｜ 湖水綠: NT$4500/原NT$5500"
 images: []
-published: true
+published: false
 source: import
 ---
 

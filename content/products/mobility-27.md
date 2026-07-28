@@ -21,7 +21,7 @@ specs:
   - label: 規格選項
     value: "千鳥格紋 E011: NT$450/原NT$500｜紳藍格紋 E051: NT$450/原NT$500｜點點滴滴 E032: NT$450/原NT$500｜黃花綠意 E041: NT$450/原NT$500…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

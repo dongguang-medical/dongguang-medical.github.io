@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "Ｍ ：長29cm: NT$280 ｜ Ｌ ：長30cm: NT$300"
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -21,7 +21,7 @@ specs:
   - label: 產品特點
     value: ES-05HDS醫療型電動床其設計與功能係以符合各醫療院所病房所需的規格而設計，具備四大功能模式，背部傾斜/膝部傾斜/背膝聯動/床面升降，提供醫護人員操作；床身結構堅實耐用床體骨架為鋼製粉體烤漆床面板採ABS塑鋼材質；規格符合國際醫療安規IEC60601-2-38認證規範
 images: []
-published: true
+published: false
 source: import
 ---
 

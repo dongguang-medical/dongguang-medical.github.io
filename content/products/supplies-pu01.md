@@ -15,7 +15,7 @@ specs:
   - label: 型號
     value: PU01
 images: []
-published: true
+published: false
 source: import
 ---
 

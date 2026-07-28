@@ -14,7 +14,7 @@ specs:
   - label: 產地
     value: 日本製造
 images: []
-published: true
+published: false
 source: import
 ---
 

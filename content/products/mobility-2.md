@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "16吋：40x40x8cm: NT$3700 ｜ 18吋：45x40x8cm: NT$3700"
 images: []
-published: true
+published: false
 source: import
 ---
 

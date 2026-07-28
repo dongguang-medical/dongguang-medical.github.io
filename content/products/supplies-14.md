@@ -13,7 +13,7 @@ specs:
   - label: 材質
     value: 不鏽鋼
 images: []
-published: true
+published: false
 source: import
 ---
 

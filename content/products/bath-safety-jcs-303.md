@@ -22,7 +22,7 @@ specs:
   - label: 產品特點
     value: 台灣製造，固定扶手，上下收合
 images: []
-published: true
+published: false
 source: import
 ---
 

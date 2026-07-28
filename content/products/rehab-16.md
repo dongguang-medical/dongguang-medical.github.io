@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "膝副木 50cm: NT$900 ｜ 肘副木35cm: NT$700"
 images: []
-published: true
+published: false
 source: import
 ---
 

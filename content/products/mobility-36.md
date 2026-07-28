@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "百合白: NT$3980/原NT$4500 ｜ 消光灰: NT$3980/原NT$4500"
 images: []
-published: true
+published: false
 source: import
 ---
 

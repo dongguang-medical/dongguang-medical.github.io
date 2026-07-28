@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "3吋棉棒 10支/包: NT$3 ｜ ENT棉棒 10支/包: NT$3 ｜ 6吋普通棉棒 10支/包: NT$4 ｜ 口腔棉棒 10支/包: NT$4 ｜ 沖洗棉棒 6支/包: NT$6"
 images: []
-published: true
+published: false
 source: import
 ---
 

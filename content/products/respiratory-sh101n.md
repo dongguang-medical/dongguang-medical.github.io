@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "大人*1+小孩*2: NT$3900 ｜ 大人*3: NT$3900 ｜ 小孩*3: NT$3900 ｜ 大人*2+小孩*1: NT$3900"
 images: []
-published: true
+published: false
 source: import
 ---
 

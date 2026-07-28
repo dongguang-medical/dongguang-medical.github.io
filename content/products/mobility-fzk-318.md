@@ -19,7 +19,7 @@ specs:
   - label: 規格選項
     value: "FZK-318 深藍: NT$3200/原NT$5000 ｜ FZK-328 棗紅: NT$3200/原NT$5000"
 images: []
-published: true
+published: false
 source: import
 ---
 

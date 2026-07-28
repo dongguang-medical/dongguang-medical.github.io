@@ -22,7 +22,7 @@ specs:
   - label: 規格選項
     value: "小輪：座寬18吋/後輪14吋 / ABS輪椅餐桌＋不鏽鋼保鮮盒: NT$17600｜小輪：座寬18吋/後輪14吋 / 多功能立體圍兜＋不鏽鋼保鮮盒: NT$17600…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

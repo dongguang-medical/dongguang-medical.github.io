@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "M號: 腰圍26~35吋: NT$1840 ｜ L號: 腰圍33~40吋: NT$1840 ｜ XL號: 腰圍40~50吋: NT$2330"
 images: []
-published: true
+published: false
 source: import
 ---
 

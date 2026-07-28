@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "涼感 / 12ml: NT$180 ｜ 涼感 / 65ml: NT$882 ｜ 溫感 / 12ml: NT$180 ｜ 溫感 / 65ml: NT$882"
 images: []
-published: true
+published: false
 source: import
 ---
 

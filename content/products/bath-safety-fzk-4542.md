@@ -25,7 +25,7 @@ specs:
   - label: 規格選項
     value: "子母坐墊: NT$4000/原NT$4200 ｜ U型坐墊: NT$3850/原NT$4200 ｜ 中空坐墊: NT$3800/原NT$4200"
 images: []
-published: true
+published: false
 source: import
 ---
 

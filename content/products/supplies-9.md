@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "普通棉棒100入: NT$20 ｜ 口腔棉棒100入: NT$22 ｜ 沖洗棉棒100入: NT$60"
 images: []
-published: true
+published: false
 source: import
 ---
 

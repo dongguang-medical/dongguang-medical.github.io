@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "推拉箱(1入): NT$1200 ｜ 皮帶(1入): NT$2200"
 images: []
-published: true
+published: false
 source: import
 ---
 

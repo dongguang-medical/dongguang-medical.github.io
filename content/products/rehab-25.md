@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "YH224-2(10x12): NT$850 ｜ YH224-3(10x18): NT$1050 ｜ YH224-4(10x24): NT$1300 ｜ YH224-5(24x7)弧型: NT$850"
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "16吋座寬: NT$10000 ｜ 18吋座寬: NT$10000"
 images: []
-published: true
+published: false
 source: import
 ---
 

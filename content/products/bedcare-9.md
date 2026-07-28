@@ -17,7 +17,7 @@ specs:
   - label: 產品特點
     value: 1. 台灣製造，保固3年；2. 5吋20管，3管交替， Nylon / TPU；3. 頭部3管不交替，保護頭及頸部，不隨之起伏
 images: []
-published: true
+published: false
 source: import
 ---
 

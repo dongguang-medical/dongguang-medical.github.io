@@ -16,7 +16,7 @@ specs:
   - label: 產品特點
     value: 電池、插電兩用
 images: []
-published: true
+published: false
 source: import
 ---
 

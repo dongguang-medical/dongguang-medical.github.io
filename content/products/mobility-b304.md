@@ -23,7 +23,7 @@ specs:
   - label: 收納方式
     value: 可折疊
 images: []
-published: true
+published: false
 source: import
 ---
 

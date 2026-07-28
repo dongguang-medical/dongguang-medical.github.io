@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "S: NT$432 ｜ S: NT$432 ｜ M: NT$432 ｜ XL: NT$432 ｜ XXL: NT$432"
 images: []
-published: true
+published: false
 source: import
 ---
 

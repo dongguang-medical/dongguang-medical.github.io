@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "JM-230 (S) : 25-33吋: NT$1260 [4713809652306]｜JM-231 (M) : 28-36吋: NT$1260 [4713809652313]…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

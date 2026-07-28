@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "藍橙色標準尺寸: NT$6850 ｜ 軍綠色標準尺寸: NT$6850"
 images: []
-published: true
+published: false
 source: import
 ---
 

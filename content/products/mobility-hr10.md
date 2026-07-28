@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "S:約30-34cm: NT$2500 ｜ M:約35-42cm: NT$2500 ｜ L:約42-50cm: NT$2500"
 images: []
-published: true
+published: false
 source: import
 ---
 

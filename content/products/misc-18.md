@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "5.5mm: NT$140 ｜ 6.0mm: NT$140 ｜ 6.5mm: NT$140 ｜ 7.0mm: NT$140 ｜ 7.5mm: NT$140 ｜ 8.0mm: NT$140"
 images: []
-published: true
+published: false
 source: import
 ---
 

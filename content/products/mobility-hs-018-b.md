@@ -18,7 +18,7 @@ specs:
   - label: 規格選項
     value: "16吋: NT$10000 ｜ 18吋: NT$10000"
 images: []
-published: true
+published: false
 source: import
 ---
 

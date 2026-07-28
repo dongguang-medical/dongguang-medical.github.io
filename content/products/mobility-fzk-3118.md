@@ -19,7 +19,7 @@ specs:
   - label: 規格選項
     value: "藍色: NT$6000/原NT$7000 ｜ 香檳金: NT$6000/原NT$7000"
 images: []
-published: true
+published: false
 source: import
 ---
 

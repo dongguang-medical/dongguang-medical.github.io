@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "彈簧條款 / SP6220A：約26公分: NT$882｜彈簧條款 / SP6230A：約19公分: NT$720｜無彈簧條款 / SP6630：約19公分: NT$585…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

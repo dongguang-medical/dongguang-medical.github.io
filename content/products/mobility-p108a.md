@@ -21,7 +21,7 @@ specs:
   - label: 規格選項
     value: "橘色 / 16吋: NT$62800 ｜ 橘色 / 18吋: NT$62800 ｜ 棕色 / 16吋: NT$62800 ｜ 棕色 / 18吋: NT$62800"
 images: []
-published: true
+published: false
 source: import
 ---
 

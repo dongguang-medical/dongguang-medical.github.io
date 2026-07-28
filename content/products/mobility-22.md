@@ -22,7 +22,7 @@ specs:
   - label: 規格選項
     value: "ABS輪椅餐桌 / 多功能立體圍兜: NT$11500/原NT$15000｜ABS輪椅餐桌 / 輪椅置物袋: NT$11500/原NT$15000…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

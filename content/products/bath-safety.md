@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "水藍色: NT$2000 ｜ 粉紫色: NT$2000"
 images: []
-published: true
+published: false
 source: import
 ---
 

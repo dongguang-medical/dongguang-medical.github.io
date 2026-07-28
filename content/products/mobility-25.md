@@ -19,7 +19,7 @@ specs:
   - label: 規格選項
     value: "18吋座寬 / 20吋後輪(大輪)+7吋前輪: NT$18000 ｜ 18吋座寬 / 14吋後輪(小輪)+7吋前輪: NT$18000"
 images: []
-published: true
+published: false
 source: import
 ---
 

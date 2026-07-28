@@ -20,7 +20,7 @@ specs:
   - label: 產品特點
     value: 可耐重136kg
 images: []
-published: true
+published: false
 source: import
 ---
 

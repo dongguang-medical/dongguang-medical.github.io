@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "M 20片(1箱4包): NT$1116 ｜ L 16片(1箱4包): NT$1116"
 images: []
-published: true
+published: false
 source: import
 ---
 

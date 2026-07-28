@@ -18,7 +18,7 @@ specs:
   - label: 規格選項
     value: "69~84cm: NT$700/原NT$740 ｜ 加高79~94cm(建議175公分以上): NT$730/原NT$770"
 images: []
-published: true
+published: false
 source: import
 ---
 

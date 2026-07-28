@@ -13,7 +13,7 @@ specs:
   - label: 型號
     value: TD-3000
 images: []
-published: true
+published: false
 source: import
 ---
 

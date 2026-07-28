@@ -23,7 +23,7 @@ specs:
   - label: 產品特點
     value: 台灣製造，有輪可收合
 images: []
-published: true
+published: false
 source: import
 ---
 

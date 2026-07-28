@@ -19,7 +19,7 @@ specs:
   - label: 規格選項
     value: "18吋座深，後輪14吋 / ABS輪椅餐桌＋挺立握把1組＋保溫瓶: NT$28000/原NT$32000｜18吋座深，後輪14吋 / 杰奇充氣方形凝膠坐墊＋挺立握把＋保溫瓶: NT$28000/原NT$32000…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

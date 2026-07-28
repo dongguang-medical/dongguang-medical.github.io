@@ -25,7 +25,7 @@ specs:
   - label: 規格選項
     value: "藍色 / 圓孔坐墊: NT$1980 ｜ 藍色 / 子母軟墊: NT$2230 ｜ 綠色 / 圓孔坐墊: NT$1980 ｜ 綠色 / 子母軟墊: NT$2230"
 images: []
-published: true
+published: false
 source: import
 ---
 

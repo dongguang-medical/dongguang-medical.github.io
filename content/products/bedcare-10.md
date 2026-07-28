@@ -17,7 +17,7 @@ specs:
   - label: 產品特點
     value: 1. 台灣製造，保固3年；2. TPU耐水解管條，24管日式方管；3. 3管交替
 images: []
-published: true
+published: false
 source: import
 ---
 

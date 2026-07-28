@@ -14,7 +14,7 @@ specs:
   - label: 規格選項
     value: "M:20片 (腰圍 : 24-51吋): NT$200 ｜ L號：16片 (腰圍 : 30-59吋): NT$200"
 images: []
-published: true
+published: false
 source: import
 ---
 

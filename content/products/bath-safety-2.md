@@ -18,7 +18,7 @@ specs:
   - label: 產品特點
     value: 鋁合金可收合，可調高低
 images: []
-published: true
+published: false
 source: import
 ---
 

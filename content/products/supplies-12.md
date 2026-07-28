@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "不織布 / 2X2: NT$5 ｜ 不織布 / 3X3: NT$7 ｜ 不織布 / 4X4: NT$9 ｜ 純紗 / 2X2: NT$7 ｜ 純紗 / 3X3: NT$11 ｜ 純紗 / 4X4: NT$14"
 images: []
-published: true
+published: false
 source: import
 ---
 

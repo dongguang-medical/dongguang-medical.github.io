@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "雪花白: NT$1480/原NT$1580"
 images: []
-published: true
+published: false
 source: import
 ---
 

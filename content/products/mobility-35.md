@@ -18,7 +18,7 @@ specs:
   - label: 規格選項
     value: "B201BR 小四腳拐: NT$670/原NT$760 ｜ B202BR 大四腳拐: NT$670/原NT$760"
 images: []
-published: true
+published: false
 source: import
 ---
 

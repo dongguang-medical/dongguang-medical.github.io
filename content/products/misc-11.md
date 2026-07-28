@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "高度60公分: NT$7000 ｜ 高度48公分: NT$6500"
 images: []
-published: true
+published: false
 source: import
 ---
 

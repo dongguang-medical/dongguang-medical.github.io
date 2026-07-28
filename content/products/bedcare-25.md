@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "JM-234(S號) : 25-33吋: NT$1490 [4713809652344]｜JM-235(M號) : 28-36吋: NT$1490 [4713809652351]…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

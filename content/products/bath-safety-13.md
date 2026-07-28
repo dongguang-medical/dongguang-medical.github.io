@@ -15,7 +15,7 @@ specs:
   - label: 產品特點
     value: 若有無障礙空間扶手的需求
 images: []
-published: true
+published: false
 source: import
 ---
 

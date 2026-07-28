@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "聚合床墊 YH205-1: NT$4500 ｜ 治療大床 YH205: NT$5500"
 images: []
-published: true
+published: false
 source: import
 ---
 

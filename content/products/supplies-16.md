@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "S-M 適用腰圍：22-35吋: NT$1014 ｜ L-XL 適用腰圍：32-48吋: NT$1014"
 images: []
-published: true
+published: false
 source: import
 ---
 

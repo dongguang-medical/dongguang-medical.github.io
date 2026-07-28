@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "TS-R55-4540-1（氣囊9X8）: NT$10000 ｜ TS-R55-4040-1（氣囊8X8）: NT$10000"
 images: []
-published: true
+published: false
 source: import
 ---
 

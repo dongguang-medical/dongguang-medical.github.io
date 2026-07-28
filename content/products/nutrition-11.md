@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "1罐: NT$900 ｜ 6+1罐(贈): NT$5400"
 images: []
-published: true
+published: false
 source: import
 ---
 

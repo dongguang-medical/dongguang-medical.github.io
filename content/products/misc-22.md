@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "鑷子 12cm: NT$20 [00593]｜鑷子 14cm: NT$30 [00594]｜鑷子 18cm: NT$60 [00595]｜鑷子 24cm: NT$80 [00596]｜鼻科鑷子14cm: NT$160…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

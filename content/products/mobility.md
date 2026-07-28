@@ -17,7 +17,7 @@ specs:
   - label: 收納方式
     value: 部件可拆卸
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -24,7 +24,7 @@ specs:
   - label: 規格選項
     value: "ABS輪椅餐桌＋不鏽鋼保鮮盒: NT$10800｜多功能立體圍兜＋不鏽鋼保鮮盒: NT$10800｜杰奇充氣方形凝膠坐墊＋不鏽鋼保鮮盒: NT$10800｜輪椅置物袋＋不鏽鋼保鮮盒: NT$10800…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

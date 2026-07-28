@@ -23,7 +23,7 @@ specs:
   - label: 規格選項
     value: "16吋(約41公分) / 前輪6吋 後輪12吋 (小輪) / ABS輪椅餐桌＋時尚保冷袋: NT$10500/原NT$14000…等"
 images: []
-published: true
+published: false
 source: import
 ---
 

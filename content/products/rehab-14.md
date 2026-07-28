@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "YH234-1 平行桿(200cm): NT$16000 ｜ YH234 平行桿(300cm): NT$18000"
 images: []
-published: true
+published: false
 source: import
 ---
 

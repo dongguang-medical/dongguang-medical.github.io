@@ -17,7 +17,7 @@ specs:
   - label: 規格選項
     value: "60CM (一般型): NT$7200 ｜ 70CM (加寬型): NT$8200"
 images: []
-published: true
+published: false
 source: import
 ---
 

@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "假牙清潔錠(36片): NT$170 ｜ 保麗淨假牙黏著劑（60g）: NT$270"
 images: []
-published: true
+published: false
 source: import
 ---
 

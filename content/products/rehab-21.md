@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "14 X 27: NT$1450/原NT$1800 ｜ 20 X 20: NT$1440/原NT$1800"
 images: []
-published: true
+published: false
 source: import
 ---
 

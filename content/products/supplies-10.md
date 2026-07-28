@@ -15,7 +15,7 @@ specs:
   - label: 規格選項
     value: "4X6棉墊: NT$10 ｜ 5X8棉墊: NT$14 ｜ 8X12棉墊: NT$18 ｜ 18X18腹部墊: NT$45"
 images: []
-published: true
+published: false
 source: import
 ---
 

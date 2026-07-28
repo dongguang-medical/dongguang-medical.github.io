@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "藍: NT$490 ｜ 蘋果綠: NT$490"
 images: []
-published: true
+published: false
 source: import
 ---
 

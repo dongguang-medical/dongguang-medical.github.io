@@ -16,7 +16,7 @@ specs:
   - label: 型號
     value: FZK-2216
 images: []
-published: true
+published: false
 source: import
 ---
 

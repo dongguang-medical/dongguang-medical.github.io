@@ -13,7 +13,7 @@ specs:
   - label: 規格選項
     value: "TP80單人款150 x 80 cm: NT$2680/原NT$3580 ｜ TP88xxl雙人雙控款150x140cm: NT$4280/原NT$5600"
 images: []
-published: true
+published: false
 source: import
 ---
 

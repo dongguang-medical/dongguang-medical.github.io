@@ -20,7 +20,7 @@ specs:
   - label: 規格選項
     value: "星光閃紅 C116: NT$630/原NT$660 ｜ 星光閃黑 C005: NT$630/原NT$660 ｜ 星光閃銀 C012: NT$630/原NT$660 ｜ 星光閃藍 C021: NT$630/原NT$660"
 images: []
-published: true
+published: false
 source: import
 ---
 

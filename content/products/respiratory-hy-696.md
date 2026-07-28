@@ -14,7 +14,7 @@ specs:
   - label: 型號
     value: HY-696
 images: []
-published: true
+published: false
 source: import
 ---
 

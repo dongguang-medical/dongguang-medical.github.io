@@ -16,7 +16,7 @@ specs:
   - label: 規格選項
     value: "QS89LPC (氣囊數8X9個): NT$12000 ｜ QS99LPC (氣囊數9X9個): NT$12000"
 images: []
-published: true
+published: false
 source: import
 ---
 
