@@ -1,5 +1,12 @@
 screenshots/
 scripts/*
 !scripts/build_catalog.py
+!scripts/gen_cms_options.py
+!scripts/stats.py
+!scripts/data/
+scripts/data/*
+!scripts/data/taxonomy.tsv
+/products/
 .playwright-cli/
 .claude/
+assets/uploads-excluded/

@@ -6,6 +6,21 @@
     <meta name="robots" content="noindex" />
     <title>東光醫療器材 — 商品管理</title>
     <link rel="icon" href="/favicon.ico" />
+    <style>
+      /*
+        售價這類數字欄位不需要上下微調鍵：價格是直接鍵入的，
+        點一下只加一元沒有意義，滑鼠滾輪經過還容易誤改數字。
+      */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+    </style>
   </head>
   <body>
     <!--
