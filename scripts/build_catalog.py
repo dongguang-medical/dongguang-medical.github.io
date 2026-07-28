@@ -1380,28 +1380,37 @@ def build_product_pages(products):
         </section>
 """
 
+        # 商品頁不放租賃／補助標記：下方的資訊列講得更精確（租金怎麼算、
+        # 是哪一種補助），標記只會讓同一件事在一個畫面出現兩次。
+        # 標記留在商品卡片上——那裡沒有空間放資訊列，才需要它來快速掃視。
         plain_tags = [t for t in product["tags"]
                       if t not in ("可租賃", "可申請補助")]
-        tags_html = badges_html(product)
+        tags_html = ""
         if plain_tags:
-            tags_html += ('<div class="cat-tags">'
-                          + "".join(f'<span class="cat-tag">{esc(t)}</span>'
-                                    for t in plain_tags)
+            tags_html = ('<div class="cat-tags">'
+                         + "".join(f'<span class="cat-tag">{esc(t)}</span>'
+                                   for t in plain_tags)
+                         + "</div>")
+
+        # 提供方式：只留資訊列講不完的細節。「購買方式」本身已由下方的
+        # 電話按鈕與蝦皮按鈕表達，不再重複一行。
+        offer_rows = []
+        if product["rental_price"]:
+            offer_rows.append(("租金", product["rental_price"]))
+        elif product["rentable"]:
+            offer_rows.append(("租金", "依租期而定，歡迎來電詢價"))
+        if product["subsidy"]:
+            offer_rows.append(("補助", "、".join(product["subsidy"])))
+        offer_html = ""
+        if offer_rows:
+            offer_html = ('<div class="cat-offer-rows">'
+                          + "".join(f'<div class="cat-offer-row">'
+                                    f'<span class="cat-offer-label">{esc(k)}</span>'
+                                    f'<span>{esc(v)}</span></div>'
+                                    for k, v in offer_rows)
                           + "</div>")
 
-        # 提供方式：租賃與補助是實際購買決策點，獨立成一區而非塞在標籤裡
-        offer_rows = ["購買方式：" + "、".join(product["offering"])]
-        if product["rental_price"]:
-            offer_rows.append("租金：" + product["rental_price"])
-        elif product["rentable"]:
-            offer_rows.append("租金依租期而定，歡迎來電詢價")
-        if product["subsidy"]:
-            offer_rows.append("可申請：" + "、".join(product["subsidy"]))
-        offer_html = ('<ul class="cat-offer-list">'
-                      + "".join(f"<li>{esc(x)}</li>" for x in offer_rows)
-                      + "</ul>")
-
-        # 可網購且填了連結時，在電話按鈕下方補一個到蝦皮下單的次要按鈕
+        # 可網購且填了連結時，在電話按鈕下方補一個蝦皮下單的次要按鈕
         shopee_cta = ""
         if "線上選購" in product["offering"] and product["shopee_url"]:
             shopee_cta = (
@@ -1411,7 +1420,7 @@ def build_product_pages(products):
                 f' stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2'
                 f' 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/>'
                 f'<path d="M16 10a4 4 0 0 1-8 0"/></svg>\n'
-                f'                到蝦皮下單\n'
+                f'                蝦皮下單\n'
                 f'              </a>\n')
 
         brand_html = ""
@@ -1460,13 +1469,14 @@ def build_product_pages(products):
             {price_note}
             {tags_html}
             {offer_html}
-            <div class="cat-cta-box">
-              <p>租賃、購買與政府輔具補助申請，歡迎來電由專人為您服務</p>
-              <a href="tel:{PHONE_TEL}" class="cat-cta-call">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-                電話洽詢 {PHONE_DISPLAY}
-              </a>
-{shopee_cta}              <p class="cat-cta-sub">門市地址：701 台南市東區崇德路 677 &amp; 679 號（台南市立醫院對面）</p>
+            <div class="cat-cta">
+              <div class="cat-cta-actions">
+                <a href="tel:{PHONE_TEL}" class="cat-cta-call">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+                  電話洽詢
+                </a>
+{shopee_cta}              </div>
+              <p class="cat-cta-sub">門市：崇德路 677 號（台南市立醫院對面）・營業 9:30–22:00</p>
             </div>
           </div>
         </div>
