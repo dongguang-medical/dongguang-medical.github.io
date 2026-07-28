@@ -3,9 +3,13 @@
 # Sveltia CMS 相容 Decap CMS 設定格式（本檔即採用該語法）
 # ============================================================
 
+# 本機編輯模式：在 localhost 開啟後台時，直接讀寫本機資料夾（不需登入 GitHub）
+# 正式站（非 localhost）會自動忽略此設定，改走下方 GitHub backend
+local_backend: true
+
 backend:
   name: github
-  repo: dongguang-medical/dongguang-medical.github.io
+  repo: dongguang-medical/website
   branch: main
   # base_url：GitHub OAuth 代理（Cloudflare Worker）的網址。
   # ⚠️ 以下為 placeholder，待 OAuth 代理架好後填入實際 Worker 網址，
@@ -38,8 +42,16 @@ collections:
     format: frontmatter        # YAML frontmatter + Markdown 內文
     extension: md
     identifier_field: name
-    summary: "{{name}}｜{{category}}"
-    sortable_fields: [name, category]
+    summary: "{{name}}｜{{taxonomy}}｜圖片：{{image_status}}"
+    sortable_fields: [name, taxonomy, price, image_status]
+    # 左側可一鍵篩出還沒換圖的商品
+    view_filters:
+      - label: 圖片待替換
+        field: image_status
+        pattern: 暫用外部圖待替換
+      - label: 尚未上架
+        field: published
+        pattern: false
     # 檔名樣板：日期 + 短亂數 ID，保證是英文/數字檔名，
     # 不會因中文商品名產生中文檔名（{{uuid_short}} 為 Sveltia 支援的標籤）
     slug: "{{year}}{{month}}{{day}}-{{uuid_short}}"
@@ -53,38 +65,173 @@ collections:
         required: true
         hint: 顯示在網站上的商品名稱
 
-      - label: 分類
-        name: category
+      # 主分類與子分類合併為單一欄位，避免選出「行動輔具＋氣墊床」這種
+      # 不存在的組合。下拉可直接打字篩選：輸入「行動」只剩該類、輸入
+      # 「氣墊」直接命中。
+      # ⚠️ 以下選項由 scripts/data/taxonomy.tsv 產生，請勿手改。
+      #    新增子分類請改該檔案後執行：python scripts/gen_cms_options.py
+      - label: 商品分類
+        name: taxonomy
         widget: select
         required: true
+        # >>> TAXONOMY_OPTIONS_START
         options:
-          - 行動輔具
-          - 衛浴輔具
-          - 臥床輔具
-          - 呼吸輔具
+          # 行動輔具
+          - { label: "行動輔具 › 拐杖", value: "行動輔具/拐杖" }
+          - { label: "行動輔具 › 輪椅", value: "行動輔具/輪椅" }
+          - { label: "行動輔具 › 輪椅配件", value: "行動輔具/輪椅配件" }
+          - { label: "行動輔具 › 輪椅座墊", value: "行動輔具/輪椅座墊" }
+          - { label: "行動輔具 › 助行車", value: "行動輔具/助行車" }
+          - { label: "行動輔具 › 助行器", value: "行動輔具/助行器" }
+          - { label: "行動輔具 › 電動輪椅與代步車", value: "行動輔具/電動輪椅與代步車" }
+          - { label: "行動輔具 › 助行器配件", value: "行動輔具/助行器配件" }
+          # 臥床照護
+          - { label: "臥床照護 › 移位輔具", value: "臥床照護/移位輔具" }
+          - { label: "臥床照護 › 管路照護用品", value: "臥床照護/管路照護用品" }
+          - { label: "臥床照護 › 約束與安全帶", value: "臥床照護/約束與安全帶" }
+          - { label: "臥床照護 › 電動照護床", value: "臥床照護/電動照護床" }
+          - { label: "臥床照護 › 氣墊床", value: "臥床照護/氣墊床" }
+          - { label: "臥床照護 › 口腔照護", value: "臥床照護/口腔照護" }
+          - { label: "臥床照護 › 床邊配件", value: "臥床照護/床邊配件" }
+          - { label: "臥床照護 › 照護衣物", value: "臥床照護/照護衣物" }
+          - { label: "臥床照護 › 床墊", value: "臥床照護/床墊" }
+          - { label: "臥床照護 › 手搖照護床", value: "臥床照護/手搖照護床" }
+          - { label: "臥床照護 › 擺位枕", value: "臥床照護/擺位枕" }
+          - { label: "臥床照護 › 離床警報器", value: "臥床照護/離床警報器" }
+          # 衛浴與居家安全
+          - { label: "衛浴與居家安全 › 便盆椅", value: "衛浴與居家安全/便盆椅" }
+          - { label: "衛浴與居家安全 › 沐浴清潔用品", value: "衛浴與居家安全/沐浴清潔用品" }
+          - { label: "衛浴與居家安全 › 洗澡椅", value: "衛浴與居家安全/洗澡椅" }
+          - { label: "衛浴與居家安全 › 起身與防跌輔具", value: "衛浴與居家安全/起身與防跌輔具" }
+          - { label: "衛浴與居家安全 › 便盆椅配件", value: "衛浴與居家安全/便盆椅配件" }
+          - { label: "衛浴與居家安全 › 無障礙改善", value: "衛浴與居家安全/無障礙改善" }
+          # 呼吸照護
+          - { label: "呼吸照護 › 氧氣製造機", value: "呼吸照護/氧氣製造機" }
+          - { label: "呼吸照護 › 製氧機配件", value: "呼吸照護/製氧機配件" }
+          - { label: "呼吸照護 › 噴霧器", value: "呼吸照護/噴霧器" }
+          - { label: "呼吸照護 › 抽痰機", value: "呼吸照護/抽痰機" }
+          - { label: "呼吸照護 › 洗鼻器", value: "呼吸照護/洗鼻器" }
+          - { label: "呼吸照護 › 洗鼻器配件", value: "呼吸照護/洗鼻器配件" }
+          - { label: "呼吸照護 › 陽壓呼吸器配件", value: "呼吸照護/陽壓呼吸器配件" }
+          - { label: "呼吸照護 › 抽痰機耗材", value: "呼吸照護/抽痰機耗材" }
+          - { label: "呼吸照護 › 睡眠輔助", value: "呼吸照護/睡眠輔助" }
+          - { label: "呼吸照護 › 拍痰器", value: "呼吸照護/拍痰器" }
+          - { label: "呼吸照護 › 陽壓呼吸器", value: "呼吸照護/陽壓呼吸器" }
+          - { label: "呼吸照護 › 氧氣用品", value: "呼吸照護/氧氣用品" }
+          - { label: "呼吸照護 › 噴霧器配件", value: "呼吸照護/噴霧器配件" }
+          - { label: "呼吸照護 › 吸鼻器", value: "呼吸照護/吸鼻器" }
+          # 健康量測
+          - { label: "健康量測 › 血壓計", value: "健康量測/血壓計" }
+          - { label: "健康量測 › 血糖機", value: "健康量測/血糖機" }
+          - { label: "健康量測 › 體溫計", value: "健康量測/體溫計" }
+          - { label: "健康量測 › 體重與體脂計", value: "健康量測/體重與體脂計" }
+          - { label: "健康量測 › 血壓計配件", value: "健康量測/血壓計配件" }
+          - { label: "健康量測 › 血氧濃度計", value: "健康量測/血氧濃度計" }
+          - { label: "健康量測 › 體溫計配件", value: "健康量測/體溫計配件" }
+          # 復健理療
+          - { label: "復健理療 › 復健器材", value: "復健理療/復健器材" }
+          - { label: "復健理療 › 護具", value: "復健理療/護具" }
+          - { label: "復健理療 › 熱敷墊", value: "復健理療/熱敷墊" }
+          - { label: "復健理療 › 電療機", value: "復健理療/電療機" }
+          - { label: "復健理療 › 紅外線治療儀", value: "復健理療/紅外線治療儀" }
+          - { label: "復健理療 › 冷熱敷用品", value: "復健理療/冷熱敷用品" }
+          - { label: "復健理療 › 復健鞋", value: "復健理療/復健鞋" }
+          - { label: "復健理療 › 超音波治療儀", value: "復健理療/超音波治療儀" }
+          # 照護耗材
+          - { label: "照護耗材 › 敷料與人工皮", value: "照護耗材/敷料與人工皮" }
+          - { label: "照護耗材 › 成人紙尿褲", value: "照護耗材/成人紙尿褲" }
+          - { label: "照護耗材 › 紗布棉棒", value: "照護耗材/紗布棉棒" }
+          - { label: "照護耗材 › 看護墊", value: "照護耗材/看護墊" }
+          - { label: "照護耗材 › 紙尿片", value: "照護耗材/紙尿片" }
+          - { label: "照護耗材 › 血糖試紙與採血針", value: "照護耗材/血糖試紙與採血針" }
+          - { label: "照護耗材 › 口罩", value: "照護耗材/口罩" }
+          - { label: "照護耗材 › 手套", value: "照護耗材/手套" }
+          - { label: "照護耗材 › 醫用膠帶", value: "照護耗材/醫用膠帶" }
+          - { label: "照護耗材 › 消毒與清潔", value: "照護耗材/消毒與清潔" }
+          - { label: "照護耗材 › 造口與泌尿用品", value: "照護耗材/造口與泌尿用品" }
+          # 營養保健
+          - { label: "營養保健 › 成人營養補充", value: "營養保健/成人營養補充" }
+          - { label: "營養保健 › 特殊配方營養", value: "營養保健/特殊配方營養" }
+          - { label: "營養保健 › 血糖管理營養", value: "營養保健/血糖管理營養" }
+          # 其他
+          - { label: "其他 › 診所與醫護設備", value: "其他/診所與醫護設備" }
+          - { label: "其他 › 居家生活用品", value: "其他/居家生活用品" }
+          - { label: "其他 › 急救器材", value: "其他/急救器材" }
+          - { label: "其他 › 醫療器械", value: "其他/醫療器械" }
+          - { label: "其他 › 診療床", value: "其他/診療床" }
+        # <<< TAXONOMY_OPTIONS_END
 
-      - label: 子分類
-        name: subcategory
-        widget: string
-        required: false
-        hint: 選填，例：輪椅、氣墊床
-
+      # 只填數字，網站上的「NT$」與千分位由產生器加。存成數字後台才排得動序，
+      # 存字串的話「NT$12,800」會排在「NT$170」前面。
       - label: 售價
         name: price
+        widget: number
+        value_type: int
+        min: 0
+        required: false
+        hint: 只填數字，例 3500（網站會顯示成 NT$3,500）。留空會顯示「歡迎洽詢」
+
+      - label: 提供方式
+        name: offering
+        widget: select
+        multiple: true
+        required: true
+        default: [門市洽詢]
+        options:
+          - 線上選購
+          - 門市洽詢
+        hint: 可複選。勾選「線上選購」請一併填下面的蝦皮商品連結
+
+      # 租賃是「是／否」的性質，用開關比多選清單好按，也不會跟提供方式混在一起
+      - label: 可租賃
+        name: rentable
+        widget: boolean
+        default: false
+        hint: 開啟後會出現在網站的租賃專區，商品卡也會顯示「可租賃」
+
+      - label: 租金
+        name: rental_price
         widget: string
         required: false
-        hint: 例 NT$3,500，留空會顯示「歡迎洽詢」
+        hint: 只有可租賃的商品要填。例 800/月、1500/季（會原樣顯示）
 
+      # 只有「提供方式」勾了網購的商品才需要填，商品頁會據此顯示蝦皮購買按鈕
+      - label: 蝦皮商品連結
+        name: shopee_url
+        widget: string
+        required: false
+        pattern:
+          - '^(https://shopee\.tw/.+)?$'
+          - 請填完整的蝦皮商品網址，需以 https://shopee.tw/ 開頭
+        hint: 勾選「網購」時填入。商品頁會顯示「到蝦皮下單」按鈕
+
+      - label: 可申請補助
+        name: subsidy
+        widget: select
+        multiple: true
+        required: false
+        options:
+          - 長照2.0輔具補助
+          - 身障輔具補助
+        hint: 可複選，沒有就不用勾
+
+      # 品牌改為關聯欄位：只能從「品牌」清單挑選，打不出錯字，
+      # 也讓品牌本身能帶原廠窗口、圖片素材狀態等資訊
       - label: 品牌
         name: brand
-        widget: string
+        widget: relation
+        collection: brands
+        search_fields: [name, slug]
+        display_fields: [name]
+        value_field: slug
         required: false
+        hint: 找不到品牌時，請先到左側「品牌」新增一筆
 
       - label: 標籤
         name: tags
         widget: list
         required: false
-        hint: 例：保固一年、可申請補助（一次一個，可加多個）
+        hint: 行銷用語，例：保固一年、台灣製造（補助與租賃已有專屬欄位，不必重複填）
 
       - label: 規格
         name: specs
@@ -111,13 +258,94 @@ collections:
           name: image
           widget: image
 
+      # 目前多數商品先暫用外部來源的圖撐版面，需要逐步換成自家拍攝或
+      # 原廠授權的圖。用這個欄位追蹤還有哪些沒換，可在商品清單直接排序篩選。
+      - label: 圖片狀態
+        name: image_status
+        widget: select
+        required: false
+        default: 自有圖片
+        options:
+          - 自有圖片
+          - 暫用外部圖待替換
+        hint: 「暫用外部圖待替換」表示圖片來自外部來源，請優先換成自家拍攝或原廠授權的圖
+
       - label: 上架顯示
         name: published
         widget: boolean
         default: true
         hint: 關閉後商品不會出現在網站上（不用刪除商品）
 
+      - label: 熱銷精選
+        name: featured
+        widget: boolean
+        default: false
+        hint: 開啟後會出現在首頁「熱銷精選」輪播
+
       - label: 商品說明
+        name: body
+        widget: markdown
+        required: false
+
+  # ── 品牌 ────────────────────────────────────────────────
+  # 商品的品牌欄位由此清單提供選項。除了避免打錯字，也把原廠聯絡窗口
+  # 與「商品圖片素材拿到了沒」集中管理——這是目前最需要追蹤的事。
+  - name: brands
+    label: 品牌
+    label_singular: 品牌
+    folder: content/brands
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    identifier_field: name
+    summary: "{{name}}｜素材：{{asset_status}}"
+    sortable_fields: [name, asset_status]
+    slug: "{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: 品牌代碼
+        name: slug
+        widget: string
+        required: true
+        hint: 英文或中文皆可，建立後請勿修改（商品是靠這個代碼指向品牌的）
+
+      - label: 品牌名稱
+        name: name
+        widget: string
+        required: true
+        hint: 顯示在網站上的名稱，可隨時修改
+
+      - label: 原廠官網
+        name: website
+        widget: string
+        required: false
+
+      - label: 聯絡窗口
+        name: contact
+        widget: string
+        required: false
+        hint: 業務電話或 email，向原廠索取型錄與商品圖時使用
+
+      - label: 圖片素材狀態
+        name: asset_status
+        widget: select
+        default: 未接洽
+        options:
+          - 未接洽
+          - 已寄信待回覆
+          - 已取得授權
+          - 原廠不提供
+        hint: 追蹤商品照片的取得進度
+
+      - label: 主力品牌
+        name: featured
+        widget: boolean
+        default: false
+        hint: 開啟後會顯示在品牌列表前段
+
+      - label: 備註
         name: body
         widget: markdown
         required: false

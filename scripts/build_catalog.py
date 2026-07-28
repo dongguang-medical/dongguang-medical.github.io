@@ -7,17 +7,18 @@ build_catalog.py
 
 讀取 content/products/<slug>.md（YAML frontmatter + Markdown 內文），產出：
 
-  catalog/index.html            商品總覽頁（四大分類區塊 + 商品卡片 + 前端搜尋）
+  index.html（網站根目錄）       首頁＝完整商品目錄（資訊列 + 搜尋 + 九大分類 + 聯絡資訊）
+  catalog/index.html            轉址頁（舊網址 → 首頁）
   catalog/search-index.json     前端搜尋用輕量索引
-  category/<分類名>/index.html   分類頁（四大分類各一頁，含空分類）
+  category/<分類名>/index.html   分類頁（九大分類各一頁，含空分類）
   product/<slug>/index.html     商品頁（圖庫、價格、規格表、說明、CTA、麵包屑、相關商品）
-  sitemap.xml                   首頁 + 目錄 + 分類 + 商品頁
+  sitemap.xml                   首頁 + 分類 + 品牌 + 商品頁
 
 用法：
   python3 scripts/build_catalog.py        # 在 repo 任意位置執行皆可
 
 frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
-  name(必填)、category(必填，四選一)、subcategory、price、brand、
+  name(必填)、category(必填，九選一)、subcategory、price、brand、
   tags(字串清單)、specs(label/value 清單)、images(路徑清單，相對網站根目錄)、
   published(預設 true)
 """
@@ -44,18 +45,32 @@ LOGO = "assets/images/logo.png"
 PHONE_DISPLAY = "(06) 290-7244"
 PHONE_TEL = "062907244"
 
-# 四大分類（固定順序）：名稱、簡介、代表圖
+# 九大分類（固定順序）：名稱、簡介、代表圖
 CATEGORIES = [
-    ("行動輔具", "輪椅、助行器、拐杖、輔助踏車等行動輔助器材",
+    ("行動輔具", "輪椅、電動代步車、助行器、拐杖與相關配件",
      "assets/images/products/mobility-wheelchair.jpeg"),
-    ("衛浴輔具", "洗澡椅、安全扶手、便器椅、防滑墊等衛浴安全器材",
-     "assets/images/products/bathroom-commode-folding.jpeg"),
-    ("臥床輔具", "氣墊床、電動護理床、床邊護欄、移位腰帶等臥床照護器材",
+    ("臥床照護", "電動照護床、氣墊床、移位輔具、管路與臥床照護用品",
      "assets/images/products/bed-nursing.jpeg"),
-    ("呼吸輔具", "氧氣機、抽痰機、製氧機、血氧機等呼吸照護器材",
+    ("衛浴與居家安全", "便盆椅、洗澡椅、安全扶手、無障礙改善與沐浴清潔",
+     "assets/images/products/bathroom-commode-folding.jpeg"),
+    ("呼吸照護", "氧氣製造機、抽痰機、噴霧器、陽壓呼吸器與洗鼻器",
      "assets/images/products/respiratory-suction.jpeg"),
+    ("健康量測", "血壓計、血糖機、體溫計、血氧濃度計等居家量測儀器",
+     "assets/images/placeholder.svg"),
+    ("復健理療", "熱敷墊、電療機、紅外線治療儀、復健器材與護具",
+     "assets/images/placeholder.svg"),
+    ("照護耗材", "成人紙尿褲、看護墊、敷料人工皮、紗布棉棒等消耗品",
+     "assets/images/placeholder.svg"),
+    ("營養保健", "成人營養補充、特殊配方與血糖管理營養品",
+     "assets/images/placeholder.svg"),
+    ("其他", "診所與醫護設備、急救器材、醫療器械與居家生活用品",
+     "assets/images/placeholder.svg"),
 ]
 CATEGORY_NAMES = [c[0] for c in CATEGORIES]
+
+# 提供方式與購買方式的合法值（與 admin/config.yml 一致）
+OFFERINGS = ["線上選購", "門市洽詢"]
+SUBSIDIES = ["長照2.0輔具補助", "身障輔具補助"]
 
 PLACEHOLDER_SVG = """<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
   <rect width="400" height="300" fill="#f0f0f0"/>
@@ -195,7 +210,48 @@ def md_to_text(md, limit=150):
 
 # ── 讀取商品 ────────────────────────────────────────────
 
-def load_products():
+def load_taxonomy():
+    """分類階層的唯一真相來源，用來驗證商品沒有用到已被更名／併走的子分類。"""
+    pairs = set()
+    path = ROOT / "scripts" / "data" / "taxonomy.tsv"
+    if not path.is_file():
+        return pairs          # 沒有階層檔時只做主分類檢查，不擋建置
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if line and not line.startswith("#"):
+            cat, _, sub = line.partition("\t")
+            pairs.add((cat.strip(), sub.strip()))
+    return pairs
+
+
+def load_brands():
+    """{代碼: {…}}。品牌是獨立 collection，商品以代碼指向它。"""
+    brands = {}
+    brand_dir = ROOT / "content" / "brands"
+    if not brand_dir.is_dir():
+        return brands
+    for md_file in sorted(brand_dir.glob("*.md")):
+        fm, body = parse_frontmatter(md_file.read_text(encoding="utf-8"))
+        slug = str(fm.get("slug", "")).strip() or md_file.stem
+        name = str(fm.get("name", "")).strip()
+        if not name:
+            print(f"⚠️  brands/{md_file.name}：缺少 name，略過", file=sys.stderr)
+            continue
+        brands[slug] = {
+            "slug": slug,
+            "name": name,
+            "website": str(fm.get("website", "")).strip(),
+            "asset_status": str(fm.get("asset_status", "")).strip(),
+            "featured": str(fm.get("featured", "false")).strip().lower()
+                        in ("true", "yes", "1"),
+            "body": body,
+            "url": f"/brand/{quote(slug)}/",
+        }
+    return brands
+
+
+def load_products(brands, taxonomy=None):
+    taxonomy = taxonomy if taxonomy is not None else load_taxonomy()
     products = []
     if not CONTENT_DIR.is_dir():
         print(f"⚠️  找不到 {CONTENT_DIR}", file=sys.stderr)
@@ -211,14 +267,28 @@ def load_products():
         if published in ("false", "no", "0"):
             continue
 
-        name, category = s("name"), s("category")
+        name = s("name")
         if not name:
             print(f"⚠️  {md_file.name}：缺少 name，略過", file=sys.stderr)
             continue
+
+        # 分類是單一欄位「主分類/子分類」，在此拆開供頁面使用
+        taxonomy_value = s("taxonomy")
+        category, _, subcategory = taxonomy_value.partition("/")
         if category not in CATEGORY_NAMES:
-            print(f"⚠️  {md_file.name}：category「{category}」不在四大分類中，略過",
+            print(f"⚠️  {md_file.name}：分類「{taxonomy_value}」不在九大分類中，略過",
                   file=sys.stderr)
             continue
+        # 子分類被更名或併走時，舊值會靜靜地在站上長出一個孤兒分頁，在此攔下
+        if taxonomy and (category, subcategory) not in taxonomy:
+            print(f"⚠️  {md_file.name}：子分類「{category}/{subcategory}」不在 "
+                  f"taxonomy.tsv 中，可能是更名後未更新", file=sys.stderr)
+
+        brand_slug = s("brand")
+        brand = brands.get(brand_slug, {}).get("name", "")
+        if brand_slug and not brand:
+            print(f"⚠️  {md_file.name}：找不到品牌「{brand_slug}」，"
+                  f"請確認 content/brands/ 內有對應資料", file=sys.stderr)
 
         specs = [d for d in fm.get("specs", []) or []
                  if isinstance(d, dict) and d.get("label")]
@@ -226,16 +296,35 @@ def load_products():
                   if isinstance(p, str) and p.strip()]
         tags = [t for t in fm.get("tags", []) or [] if isinstance(t, str) and t]
 
+        offering = [o for o in fm.get("offering", []) or [] if o in OFFERINGS] \
+            or ["門市洽詢"]
+        subsidy = [x for x in fm.get("subsidy", []) or [] if x in SUBSIDIES]
+
         products.append({
             "slug": md_file.stem,
             "name": name,
             "category": category,
-            "subcategory": s("subcategory"),
-            "price": s("price"),
-            "brand": s("brand"),
+            "subcategory": subcategory,
+            # price 是數字（供排序與結構化資料），price_text 是顯示用的「NT$3,500」
+            "price": parse_price(fm.get("price")),
+            "price_text": format_price(parse_price(fm.get("price"))),
+            "brand": brand,
+            "brand_slug": brand_slug if brand else "",
+            "offering": offering,
+            "rental_price": s("rental_price"),
+            # 只在「提供方式」含網購時才有意義，商品頁據此顯示蝦皮購買按鈕
+            "shopee_url": s("shopee_url"),
+            # 租賃改成獨立開關，不再混在提供方式裡
+            "rentable": str(fm.get("rentable", "false")).strip().lower()
+                        in ("true", "yes", "1"),
+            "subsidy": subsidy,
             "tags": tags,
             "specs": specs,
             "images": images,
+            # 「暫用外部圖待替換」= 先借外部來源的圖撐版面，待換成自有素材
+            "image_status": s("image_status"),
+            "featured": str(fm.get("featured", "false")).strip().lower()
+                        in ("true", "yes", "1"),
             "body": body,
             "url": f"/product/{quote(md_file.stem)}/",
         })
@@ -244,41 +333,92 @@ def load_products():
 
 # ── 共用頁面外框（與 index.html 形象頁同一設計語彙） ──────────────
 
+MAPS_URL = "https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA"
+
+
 def nav_links():
-    links = [("回首頁", "/"), ("商品目錄", "/catalog/")]
-    links += [(c, url_path(f"category/{c}/")) for c in CATEGORY_NAMES]
-    links.append(("聯絡我們", "/#contact"))
-    return links
+    # 導覽列直接放九大商品分類（聯絡資訊已由下方橘色資訊列常駐提供）；
+    # 其餘次要頁面（租賃專區、關於我們）由頁尾「更多資訊」連結
+    return ([("首頁", "/")]
+            + [(c, url_path(f"category/{c}/")) for c in CATEGORY_NAMES])
+
+
+# 主分類 → 有商品的子分類（依 taxonomy.tsv 順序），main() 載入商品後填入，
+# 供導覽列下拉選單與分類頁子分類區塊共用
+NAV_SUBS = {}
+
+
+def compute_nav_subs(products):
+    have = {(p["category"], p["subcategory"]) for p in products
+            if p["subcategory"]}
+    subs = {c: [] for c in CATEGORY_NAMES}
+    path = ROOT / "scripts" / "data" / "taxonomy.tsv"
+    if not path.is_file():
+        return subs
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        cat, _, sub = line.partition("\t")
+        cat, sub = cat.strip(), sub.strip()
+        if cat in subs and (cat, sub) in have:
+            subs[cat].append(sub)
+    return subs
 
 
 def page_header(active_url=""):
-    desktop = "\n        ".join(
-        '<a href="{u}"{cls}>{t}</a>'.format(
-            u=u, t=esc(t),
-            cls=' class="active"' if u == active_url else "")
-        for t, u in nav_links())
+    items = []
+    for t, u in nav_links():
+        cls = ' class="active"' if u == active_url else ""
+        link = f'<a href="{u}"{cls}>{esc(t)}</a>'
+        subs = NAV_SUBS.get(t, [])
+        if subs:
+            drop = "".join(f'<a href="{u}{quote(s)}/">{esc(s)}</a>'
+                           for s in subs)
+            items.append('<div class="intro-nav-item">'
+                         f'{link}<div class="intro-nav-drop">{drop}</div></div>')
+        else:
+            items.append(f'<div class="intro-nav-item">{link}</div>')
+    desktop = "\n        ".join(items)
+    # 行動版：導覽列的電話按鈕在 900px 以下會隱藏，因此補一個撥號項目
     mobile = "\n    ".join(
-        f'<a href="{u}" onclick="closeMobileNav()">{esc(t)}</a>'
-        for t, u in nav_links())
+        [f'<a href="{u}" onclick="closeMobileNav()">{esc(t)}</a>'
+         for t, u in nav_links()]
+        + [f'<a href="tel:{PHONE_TEL}" onclick="closeMobileNav()">'
+           f'撥打電話 {PHONE_DISPLAY}</a>'])
     return f"""  <header class="intro-header">
     <div class="intro-header-inner">
       <a href="/" class="intro-logo" aria-label="{SITE_NAME} 首頁">
         <img src="/{LOGO}" alt="{SITE_NAME}" width="40" height="40">
-        <div>
-          <div class="intro-logo-name">{SITE_NAME}</div>
-          <div class="intro-logo-sub">醫療輔具租賃</div>
-        </div>
+        <div class="intro-logo-name">{SITE_NAME}</div>
       </a>
       <nav class="intro-nav" aria-label="主要導覽">
         {desktop}
       </nav>
-      <a href="tel:{PHONE_TEL}" class="intro-header-phone">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-        {PHONE_DISPLAY}
-      </a>
       <button class="intro-hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
+    </div>
+    <div class="intro-infobar">
+      <div class="intro-infobar-inner">
+        <a class="intro-infobar-loc" href="{MAPS_URL}" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          崇德路677號<span class="intro-infobar-addr">（台南市立醫院對面）</span>
+        </a>
+        <a class="intro-infobar-tel" href="tel:{PHONE_TEL}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+          {PHONE_DISPLAY}
+        </a>
+        <a class="intro-infobar-line" href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          LINE<span class="intro-infobar-line-text"> {PHONE_TEL}</span>
+        </a>
+        <a class="intro-infobar-shopee" href="https://shopee.tw/shop/8642264" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          蝦皮<span class="intro-infobar-shopee-text"> 咚滋商城</span>
+        </a>
+        <span class="intro-infobar-hours">營業 9:30–22:00（週日 10:00–17:00）</span>
+      </div>
     </div>
   </header>
 
@@ -290,43 +430,16 @@ def page_header(active_url=""):
 
 PAGE_FOOTER = f"""  <footer class="intro-footer">
     <div class="intro-footer-inner">
-      <div class="intro-footer-col">
-        <div class="intro-footer-brand">
-          <img src="/{LOGO}" alt="{SITE_NAME}" loading="lazy" width="36" height="36">
-          <div class="intro-footer-brand-name">{SITE_NAME}<br>醫療輔具租賃</div>
-        </div>
-        <p class="intro-footer-tagline">認真・負責・專業<br>超過二十年，守護您的健康</p>
+      <div class="intro-footer-brand">
+        <img src="/{LOGO}" alt="{SITE_NAME}" loading="lazy" width="36" height="36">
+        <span class="intro-footer-tagline">認真・負責・專業｜超過二十年，守護您的健康</span>
       </div>
-      <div class="intro-footer-col">
-        <h4>聯絡資訊</h4>
-        <ul>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
-            <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>
-          </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:t2907244@seed.net.tw">t2907244@seed.net.tw</a>
-          </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            701 台南市東區崇德路 677 &amp; 679 號
-          </li>
-        </ul>
-      </div>
-      <div class="intro-footer-col">
-        <h4>營業時間</h4>
-        <ul class="intro-footer-hours">
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span class="fh-day">週一至週六</span><span class="fh-time">9:30 AM – 10:00 PM</span>
-          </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span class="fh-day">週日</span><span class="fh-time">10:00 AM – 5:00 PM</span>
-          </li>
-        </ul>
-      </div>
+      <nav class="intro-footer-links" aria-label="更多資訊">
+        <a href="/rental/">租賃專區</a>
+        <a href="/about/#story">關於東光</a>
+        <a href="/about/#services">服務項目</a>
+        <a href="/about/#reviews">顧客好評</a>
+      </nav>
     </div>
     <div class="intro-footer-bottom">
       <span>© 台南東光醫療器材醫療輔具租賃. All Rights Reserved.</span>
@@ -353,7 +466,7 @@ NAV_JS = """  <script>
 
 
 def render_page(*, title, description, path, og_type, og_image, jsonld,
-                main_html, extra_js="", active_url=""):
+                main_html, extra_js="", active_url="", extra_head=""):
     """組出完整 HTML 頁面。path 為不含開頭斜線的網站路徑（用於 canonical）。"""
     canonical = BASE_URL + url_path(path)
     jsonld_tag = ""
@@ -368,7 +481,7 @@ def render_page(*, title, description, path, og_type, og_image, jsonld,
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
-  <link rel="canonical" href="{canonical}">
+  <link rel="canonical" href="{canonical}">{extra_head}
 
   <meta property="og:type" content="{og_type}">
   <meta property="og:site_name" content="台南東光儀器有限公司">
@@ -436,19 +549,52 @@ def cover_of(product):
     return product["images"][0] if product["images"] else PLACEHOLDER
 
 
+def parse_price(raw):
+    """把 frontmatter 的售價轉成整數。
+
+    後台現在填純數字，但舊資料是「NT$3,500」這種字串，兩種都要吃得下。
+    取不到數字回傳 None（網站顯示「歡迎洽詢」）。
+    """
+    if raw is None or raw == "":
+        return None
+    if isinstance(raw, (int, float)):
+        return int(raw)
+    digits = re.sub(r"[^\d]", "", str(raw))
+    return int(digits) if digits else None
+
+
+def format_price(value):
+    """數字轉成網站上顯示的樣子；幣別固定台幣，由這裡統一加上。"""
+    return f"NT${value:,}" if value is not None else ""
+
+
 def price_html(product, big=False):
     cls = "cat-product-price" if big else "cat-card-price"
-    if product["price"]:
-        return f'<div class="{cls}">{esc(product["price"])}</div>'
+    if product["price_text"]:
+        return f'<div class="{cls}">{esc(product["price_text"])}</div>'
     return f'<div class="{cls} cat-price-ask">歡迎洽詢</div>'
+
+
+def badges_html(product):
+    """租賃／補助等關鍵資訊，以醒目標記優先於一般標籤呈現。"""
+    marks = []
+    if product["rentable"]:
+        marks.append('<span class="cat-badge cat-badge-rent">可租賃</span>')
+    if "線上選購" in product["offering"]:
+        marks.append('<span class="cat-badge cat-badge-online">線上可購</span>')
+    if product["subsidy"]:
+        marks.append('<span class="cat-badge cat-badge-subsidy">可申請補助</span>')
+    return f'<div class="cat-badges">{"".join(marks)}</div>' if marks else ""
 
 
 def product_card(product):
     tags = ""
-    if product["tags"]:
+    # 標籤欄已被租賃／補助標記取代大半，卡片上只留兩個行銷標籤避免過長
+    plain = [t for t in product["tags"] if t not in ("可租賃", "可申請補助")]
+    if plain:
         tags = ('<div class="cat-tags">'
                 + "".join(f'<span class="cat-tag">{esc(t)}</span>'
-                          for t in product["tags"][:3])
+                          for t in plain[:2])
                 + "</div>")
     brand = (f'<div class="cat-card-brand">{esc(product["brand"])}</div>'
              if product["brand"] else "")
@@ -459,18 +605,11 @@ def product_card(product):
   <div class="cat-card-body">
     <h3>{esc(product['name'])}</h3>
     {brand}
+    {badges_html(product)}
     {tags}
     {price_html(product)}
   </div>
 </a>"""
-
-
-def category_chips(active=None):
-    chips = [f'<a class="cat-chip{" active" if active is None else ""}" href="/catalog/">全部商品</a>']
-    for c in CATEGORY_NAMES:
-        cls = " active" if c == active else ""
-        chips.append(f'<a class="cat-chip{cls}" href="{url_path(f"category/{c}/")}">{esc(c)}</a>')
-    return '<div class="cat-chips">' + "".join(chips) + "</div>"
 
 
 # ── 各頁面產生 ──────────────────────────────────────────
@@ -480,6 +619,7 @@ CATALOG_SEARCH_JS = """  <script>
       var input = document.getElementById('cat-search-input');
       if (!input) return;
       var browse = document.getElementById('cat-browse');
+      var extras = document.querySelectorAll('.search-hide');
       var resultsWrap = document.getElementById('cat-search-results');
       var grid = document.getElementById('cat-results-grid');
       var empty = document.getElementById('cat-no-results');
@@ -492,15 +632,28 @@ CATALOG_SEARCH_JS = """  <script>
       }
 
       function card(p) {
-        var tags = (p.tags || []).slice(0, 3).map(function (t) {
+        var tags = (p.tags || []).filter(function (t) {
+          return t !== '可租賃' && t !== '可申請補助';
+        }).slice(0, 2).map(function (t) {
           return '<span class="cat-tag">' + esc(t) + '</span>';
         }).join('');
+        var badges = '';
+        if (p.rentable) {
+          badges += '<span class="cat-badge cat-badge-rent">可租賃</span>';
+        }
+        if ((p.offering || []).indexOf('線上選購') !== -1) {
+          badges += '<span class="cat-badge cat-badge-online">線上可購</span>';
+        }
+        if ((p.subsidy || []).length) {
+          badges += '<span class="cat-badge cat-badge-subsidy">可申請補助</span>';
+        }
         return '<a class="cat-card" href="' + esc(p.url) + '">'
           + '<div class="cat-card-photo"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" width="400" height="300"></div>'
           + '<div class="cat-card-body"><h3>' + esc(p.name) + '</h3>'
           + (p.brand ? '<div class="cat-card-brand">' + esc(p.brand) + '</div>' : '')
+          + (badges ? '<div class="cat-badges">' + badges + '</div>' : '')
           + (tags ? '<div class="cat-tags">' + tags + '</div>' : '')
-          + (p.price ? '<div class="cat-card-price">' + esc(p.price) + '</div>'
+          + (p.price_text ? '<div class="cat-card-price">' + esc(p.price_text) + '</div>'
                      : '<div class="cat-card-price cat-price-ask">歡迎洽詢</div>')
           + '</div></a>';
       }
@@ -510,6 +663,7 @@ CATALOG_SEARCH_JS = """  <script>
         if (!q) {
           resultsWrap.hidden = true;
           browse.hidden = false;
+          extras.forEach(function (el) { el.hidden = false; });
           return;
         }
         if (!index) return;
@@ -523,6 +677,7 @@ CATALOG_SEARCH_JS = """  <script>
         grid.hidden = hits.length === 0;
         resultsWrap.hidden = false;
         browse.hidden = true;
+        extras.forEach(function (el) { el.hidden = true; });
       }
 
       input.addEventListener('input', function () {
@@ -537,76 +692,312 @@ CATALOG_SEARCH_JS = """  <script>
 """
 
 
-def build_catalog_page(products):
-    by_cat = {c: [p for p in products if p["category"] == c] for c in CATEGORY_NAMES}
-    blocks = []
-    for cat_name, cat_desc, _cover in CATEGORIES:
-        items = by_cat[cat_name]
-        cat_url = url_path(f"category/{cat_name}/")
-        if items:
-            grid = ('<div class="cat-grid">'
-                    + "\n".join(product_card(p) for p in items)
-                    + "</div>")
-        else:
-            grid = (f'<div class="cat-empty">此分類商品陸續上架中，'
-                    f'歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 洽詢庫存與租賃方案。</div>')
-        blocks.append(f"""<section class="cat-cat-block">
-  <div class="cat-cat-head">
-    <h2><a href="{cat_url}">{esc(cat_name)}</a><span class="cat-cat-sub">{esc(cat_desc)}</span></h2>
-    <a class="cat-cat-more" href="{cat_url}">查看全部 →</a>
-  </div>
-  {grid}
-</section>""")
+HOME_CONTACT_HTML = f"""    <section class="intro-section home-screen3" id="contact">
+      <div class="intro-container">
+        <div class="intro-heading">
+          <h2>歡迎來電或親自到訪</h2>
+          <p>位於台南市立醫院對面，交通便利，歡迎您攜帶家人前來了解適合的器材方案</p>
+        </div>
+        <div class="intro-contact-grid">
 
-    bc = [("首頁", "/"), ("商品目錄", None)]
-    main = f"""    <div class="cat-section">
+          <div class="intro-contact-cards">
+
+            <a href="tel:{PHONE_TEL}" class="intro-cc-card intro-cc-card-link">
+              <div class="intro-cc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
+              </div>
+              <div class="intro-cc-body">
+                <h4>洽詢電話</h4>
+                <p class="intro-cc-main">{PHONE_DISPLAY}</p>
+              </div>
+            </a>
+
+            <div class="intro-cc-card intro-cc-hours">
+              <div class="intro-cc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="intro-cc-body">
+                <h4>營業時間</h4>
+                <div class="intro-hours-rows">
+                  <div class="intro-hours-row">
+                    <span class="intro-hours-day">週一 – 週六</span>
+                    <span class="intro-hours-time">9:30 – 22:00</span>
+                  </div>
+                  <div class="intro-hours-row">
+                    <span class="intro-hours-day">週日</span>
+                    <span class="intro-hours-time">10:00 – 17:00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener" class="intro-cc-card intro-cc-card-link">
+              <div class="intro-cc-icon intro-cc-icon-line">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 10.2C22 5.4 17.5 1.5 12 1.5S2 5.4 2 10.2c0 4.3 3.8 8 9.1 8.6.4.1.9.3 1 .6.1.3.1.7 0 1l-.2.9c-.1.3-.3 1.3 1.1.7 1.4-.6 7.6-4.5 10.4-7.6 1.9-2.1 2.6-4.2 2.6-4.2z"/></svg>
+              </div>
+              <div class="intro-cc-body">
+                <h4>LINE</h4>
+                <p class="intro-cc-main">ID: {PHONE_TEL}</p>
+              </div>
+            </a>
+
+            <a href="https://shopee.tw/shop/8642264" target="_blank" rel="noopener" class="intro-cc-card intro-cc-card-link">
+              <div class="intro-cc-icon intro-cc-icon-shopee">
+                <img src="/assets/images/shopee-icon.png" alt="" width="22" height="22" style="object-fit:contain;">
+              </div>
+              <div class="intro-cc-body">
+                <h4>蝦皮商城</h4>
+                <p class="intro-cc-main">咚滋商城</p>
+              </div>
+            </a>
+
+            <a href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener" class="intro-cc-card intro-cc-card-link">
+              <div class="intro-cc-icon intro-cc-icon-fb">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <div class="intro-cc-body">
+                <h4>Facebook</h4>
+                <p class="intro-cc-main">{SITE_NAME}</p>
+              </div>
+            </a>
+
+            <a href="mailto:t2907244@seed.net.tw" class="intro-cc-card intro-cc-card-link">
+              <div class="intro-cc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="intro-cc-body">
+                <h4>電子信箱</h4>
+                <p class="intro-cc-main">t2907244@seed.net.tw</p>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="intro-contact-right">
+            <a href="{MAPS_URL}" target="_blank" rel="noopener" class="intro-map-address intro-map-address-link">
+              <div class="intro-cc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4>地址</h4>
+                <p>701 台南市東區崇德路 677 &amp; 679 號</p>
+                <span class="intro-cc-landmark">📍 台南市立醫院對面</span>
+              </div>
+            </a>
+            <div class="intro-map">
+              <iframe
+                src="https://maps.google.com/maps?q=%E6%9D%B1%E5%85%89%E5%84%80%E5%99%A8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                title="東光醫療器材地址地圖"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+"""
+
+HOME_JSONLD_STORE = {
+    "@type": "MedicalSupplyStore",
+    "name": "台南東光儀器有限公司",
+    "alternateName": SITE_NAME,
+    "url": BASE_URL + "/",
+    "logo": f"{BASE_URL}/{LOGO}",
+    "image": f"{BASE_URL}/{LOGO}",
+    "description": "東光醫療器材醫療輔具租賃，秉持認真、負責、專業的態度超過二十年",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "崇德路677號",
+        "addressLocality": "東區",
+        "addressRegion": "台南市",
+        "postalCode": "701",
+        "addressCountry": "TW",
+    },
+    "telephone": "+886-6-290-7244",
+    "email": "t2907244@seed.net.tw",
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday",
+                          "Friday", "Saturday"],
+            "opens": "09:30",
+            "closes": "22:00",
+        },
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "10:00",
+            "closes": "17:00",
+        },
+    ],
+}
+
+
+FEATURED_FALLBACK_COUNT = 8
+
+CAROUSEL_JS = """  <script>
+    (function () {
+      document.querySelectorAll('.carousel-wrap').forEach(function (wrap) {
+        var track = wrap.querySelector('.home-carousel');
+        var prev = wrap.querySelector('.car-prev');
+        var next = wrap.querySelector('.car-next');
+        if (!track || !prev || !next) return;
+        if (track.scrollWidth <= track.clientWidth + 4) {
+          prev.style.display = 'none';
+          next.style.display = 'none';
+          return;
+        }
+        function step() {
+          var card = track.querySelector('.cat-card');
+          return (card ? card.offsetWidth + 14 : 254) * 2;
+        }
+        prev.addEventListener('click', function () {
+          track.scrollBy({ left: -step(), behavior: 'smooth' });
+        });
+        next.addEventListener('click', function () {
+          track.scrollBy({ left: step(), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+"""
+
+def pick_featured(products):
+    """frontmatter featured: true 的商品；不足時以「可租賃且有標價」遞補。
+
+    首頁輪播只放有圖的商品——擺一整排 placeholder 沒有意義，
+    標了 featured 但還沒補圖的商品會自動略過，補上圖之後就會回到輪播。
+    """
+    feats = [p for p in products if p["featured"] and p["images"]]
+    if len(feats) < FEATURED_FALLBACK_COUNT:
+        pool = [p for p in products
+                if p not in feats and p["images"]
+                and p["rentable"] and p["price"]]
+        # 依主分類輪流取，避免整排都是同一類商品——照檔名順序直接取前 N 筆
+        # 會讓輪播全是 bedcare-*，首頁看起來像只賣臥床用品。
+        buckets = {}
+        for p in pool:
+            buckets.setdefault(p["category"], []).append(p)
+        order = [c for c in CATEGORY_NAMES if c in buckets]
+        need = FEATURED_FALLBACK_COUNT - len(feats)
+        while need > 0 and order:
+            for cat in list(order):
+                if not buckets[cat]:
+                    order.remove(cat)
+                    continue
+                feats.append(buckets[cat].pop(0))
+                need -= 1
+                if need == 0:
+                    break
+    return feats
+
+
+def build_home_page(products):
+    """首頁：資訊列（醫院對面）→ 搜尋 → 熱銷輪播 → 分類卡 → 聯絡資訊。"""
+    featured = pick_featured(products)
+    carousel = "\n".join(product_card(p) for p in featured)
+
+    cat_counts = {c: sum(1 for p in products if p["category"] == c)
+                  for c in CATEGORY_NAMES}
+    cat_cards = "\n".join(f"""          <a class="intro-cat-card" href="{url_path(f"category/{name}/")}">
+            <h3>{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
+            <p>{esc(desc)}</p>
+            <span class="intro-cat-more">瀏覽商品 →</span>
+          </a>""" for name, desc, _cover in CATEGORIES)
+
+    main = f"""    <div class="cat-section home-screen1">
       <div class="cat-container">
-        {breadcrumb(bc)}
-        <div class="cat-page-head">
-          <div class="intro-heading-label">商品目錄</div>
-          <h1>全部商品</h1>
-          <p>行動、衛浴、臥床、呼吸四大類醫療輔具，租賃與販售皆有提供。價格如有異動以門市為準，歡迎來電洽詢。</p>
+        <div class="cat-page-head home-hero-head">
+          <img src="/{LOGO}" alt="" class="home-hero-logo" width="84" height="84">
+          <h1>台南東光醫療器材</h1>
+          <p class="home-hero-tag">醫療輔具租賃及販售｜超過二十年在地服務</p>
         </div>
         <div class="cat-search">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="search" id="cat-search-input" placeholder="搜尋商品名稱、品牌或標籤…" aria-label="搜尋商品">
         </div>
-        {category_chips(active=None)}
         <div id="cat-search-results" hidden>
           <div class="cat-grid" id="cat-results-grid"></div>
           <div class="cat-empty" id="cat-no-results" hidden>找不到符合的商品，歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 詢問，門市品項更齊全。</div>
         </div>
         <div id="cat-browse">
-{chr(10).join(blocks)}
+        <section class="home-feat" id="featured">
+          <div class="cat-cat-head">
+            <h2>熱銷精選</h2>
+          </div>
+          <div class="carousel-wrap">
+            <button class="car-prev" aria-label="上一批">‹</button>
+            <div class="home-carousel" id="feat-carousel">
+{carousel}
+            </div>
+            <button class="car-next" aria-label="下一批">›</button>
+          </div>
+        </section>
         </div>
       </div>
     </div>
-"""
-    desc = ("東光醫療器材商品目錄：行動輔具、衛浴輔具、臥床輔具、呼吸輔具，"
-            "輪椅、電動床、氣墊床、安全扶手等醫療輔具租賃與販售，台南在地超過二十年。")
+
+    <div class="cat-section home-screen2 search-hide" id="categories">
+      <div class="cat-container">
+        <section class="home-cats">
+          <div class="cat-cat-head">
+            <h2>商品分類</h2>
+          </div>
+          <div class="intro-cat-grid">
+{cat_cards}
+          </div>
+        </section>
+      </div>
+    </div>
+{HOME_CONTACT_HTML}"""
+    desc = ("東光醫療器材（台南市立醫院對面）醫療輔具租賃及販售：輪椅、電動床、"
+            "氣墊床、製氧機、安全扶手等九大類商品含價格，超過二十年在地服務，"
+            f"電話 {PHONE_DISPLAY}。")
     jsonld = {
         "@context": "https://schema.org",
         "@graph": [
+            HOME_JSONLD_STORE,
             {
-                "@type": "CollectionPage",
-                "name": f"商品目錄 — {SITE_NAME}",
-                "url": BASE_URL + "/catalog/",
-                "description": desc,
+                "@type": "WebSite",
+                "name": "台南東光儀器有限公司",
+                "url": BASE_URL + "/",
             },
-            breadcrumb_jsonld(bc),
         ],
     }
     html_out = render_page(
-        title=f"商品目錄 — {SITE_NAME}",
+        title=f"{SITE_NAME} — 醫療輔具租賃及販售｜台南市立醫院對面",
         description=desc,
-        path="catalog/",
+        path="",
         og_type="website",
         og_image=f"{BASE_URL}/{LOGO}",
         jsonld=jsonld,
         main_html=main,
-        extra_js=CATALOG_SEARCH_JS,
-        active_url="/catalog/",
+        extra_js=CATALOG_SEARCH_JS + CAROUSEL_JS,
+        extra_head='\n  <meta name="google-site-verification" '
+                   'content="c2vod6zryQNa5_kj1qKnbEpmSReGXSjPSgtubfUTuUw">',
     )
+    (ROOT / "index.html").write_text(html_out, encoding="utf-8")
+
+
+def build_catalog_redirect():
+    """/catalog/ 併入首頁後保留轉址，避免外部舊連結 404。
+    search-index.json 仍放在 /catalog/ 下，由 build_search_index 產生。"""
+    html_out = f"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>商品目錄 — {SITE_NAME}</title>
+  <meta http-equiv="refresh" content="0; url=/">
+  <link rel="canonical" href="{BASE_URL}/">
+</head>
+<body>
+  <p>商品目錄已併入首頁，<a href="/">點此前往</a>。</p>
+</body>
+</html>
+"""
     out = ROOT / "catalog" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html_out, encoding="utf-8")
@@ -616,7 +1007,44 @@ def build_category_pages(products):
     for cat_name, cat_desc, _cover in CATEGORIES:
         items = [p for p in products if p["category"] == cat_name]
         cat_url = url_path(f"category/{cat_name}/")
-        if items:
+        subs = NAV_SUBS.get(cat_name, [])
+        if items and subs:
+            # 依子分類分區（taxonomy 順序），提供 #錨點 給導覽下拉選單
+            blocks = []
+            grouped = set()
+            for sub in subs:
+                sub_items = [p for p in items if p["subcategory"] == sub]
+                grouped.update(p["slug"] for p in sub_items)
+                sub_url = url_path(f"category/{cat_name}/{sub}/")
+                blocks.append(f"""<section class="cat-cat-block" id="{esc(sub)}">
+  <div class="cat-cat-head">
+    <h2><a href="{sub_url}">{esc(sub)}</a><span class="cat-cat-sub">{len(sub_items)} 項</span></h2>
+    <a class="cat-cat-more" href="{sub_url}">查看全部 →</a>
+  </div>
+  <div class="carousel-wrap">
+    <button class="car-prev" aria-label="上一批">‹</button>
+    <div class="home-carousel cat-sub-carousel">
+{chr(10).join(product_card(p) for p in sub_items)}
+    </div>
+    <button class="car-next" aria-label="下一批">›</button>
+  </div>
+</section>""")
+            rest = [p for p in items if p["slug"] not in grouped]
+            if rest:
+                blocks.append(f"""<section class="cat-cat-block">
+  <div class="cat-cat-head">
+    <h2>其他品項<span class="cat-cat-sub">{len(rest)} 項</span></h2>
+  </div>
+  <div class="carousel-wrap">
+    <button class="car-prev" aria-label="上一批">‹</button>
+    <div class="home-carousel cat-sub-carousel">
+{chr(10).join(product_card(p) for p in rest)}
+    </div>
+    <button class="car-next" aria-label="下一批">›</button>
+  </div>
+</section>""")
+            content = "\n".join(blocks)
+        elif items:
             content = ('<div class="cat-grid">'
                        + "\n".join(product_card(p) for p in items)
                        + "</div>")
@@ -624,16 +1052,10 @@ def build_category_pages(products):
             content = (f'<div class="cat-empty">此分類商品陸續上架中，門市備有多款現貨。<br>'
                        f'歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 洽詢庫存與租賃方案。</div>')
 
-        bc = [("首頁", "/"), ("商品目錄", "/catalog/"), (cat_name, None)]
+        bc = [("商品分類", "/#categories"), (cat_name, None)]
         main = f"""    <div class="cat-section">
       <div class="cat-container">
         {breadcrumb(bc)}
-        <div class="cat-page-head">
-          <div class="intro-heading-label">商品分類</div>
-          <h1>{esc(cat_name)}</h1>
-          <p>{esc(cat_desc)}。租賃與販售皆有提供，可協助評估政府輔具補助資格。</p>
-        </div>
-        {category_chips(active=cat_name)}
         {content}
       </div>
     </div>
@@ -660,11 +1082,130 @@ def build_category_pages(products):
             og_image=f"{BASE_URL}/{LOGO}",
             jsonld=jsonld,
             main_html=main,
+            extra_js=CAROUSEL_JS,
             active_url=cat_url,
         )
         out = ROOT / "category" / cat_name / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html_out, encoding="utf-8")
+
+
+def build_subcategory_pages(products):
+    """子分類獨立頁（導覽下拉選單的落點）：category/<主分類>/<子分類>/"""
+    for cat_name in CATEGORY_NAMES:
+        cat_url = url_path(f"category/{cat_name}/")
+        for sub in NAV_SUBS.get(cat_name, []):
+            items = [p for p in products
+                     if p["category"] == cat_name and p["subcategory"] == sub]
+            sub_url = url_path(f"category/{cat_name}/{sub}/")
+            content = ('<div class="cat-grid">'
+                       + "\n".join(product_card(p) for p in items)
+                       + "</div>")
+            bc = [("商品分類", "/#categories"), (cat_name, cat_url), (sub, None)]
+            main = f"""    <div class="cat-section">
+      <div class="cat-container">
+        {breadcrumb(bc)}
+        {content}
+      </div>
+    </div>
+"""
+            desc = (f"東光醫療器材{cat_name}／{sub}商品目錄，共 {len(items)} 項。"
+                    f"台南醫療輔具租賃與販售，歡迎來電 {PHONE_DISPLAY} 洽詢。")
+            jsonld = {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "CollectionPage",
+                        "name": f"{sub}（{cat_name}）— {SITE_NAME}",
+                        "url": BASE_URL + sub_url,
+                        "description": desc,
+                    },
+                    breadcrumb_jsonld(bc),
+                ],
+            }
+            html_out = render_page(
+                title=f"{sub}（{cat_name}）— {SITE_NAME}",
+                description=desc,
+                path=f"category/{cat_name}/{sub}/",
+                og_type="website",
+                og_image=f"{BASE_URL}/{LOGO}",
+                jsonld=jsonld,
+                main_html=main,
+                active_url=cat_url,
+            )
+            out = ROOT / "category" / cat_name / sub / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(html_out, encoding="utf-8")
+
+
+def build_rental_page(products):
+    """租賃專區：跨分類集中所有可租賃品項（首頁租賃入口的落點）。"""
+    items = [p for p in products if p["rentable"]]
+    by_cat = [(c, [p for p in items if p["category"] == c])
+              for c in CATEGORY_NAMES]
+    blocks = []
+    for cat_name, cat_items in by_cat:
+        if not cat_items:
+            continue
+        blocks.append(f"""<section class="cat-cat-block">
+  <div class="cat-cat-head">
+    <h2>{esc(cat_name)}</h2>
+  </div>
+  <div class="cat-grid">
+{chr(10).join(product_card(p) for p in cat_items)}
+  </div>
+</section>""")
+
+    body = "\n".join(blocks) if blocks else (
+        f'<div class="cat-empty">租賃品項調整中，歡迎來電 '
+        f'<a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 洽詢。</div>')
+
+    bc = [("首頁", "/"), ("租賃專區", None)]
+    main = f"""    <div class="cat-section">
+      <div class="cat-container">
+        {breadcrumb(bc)}
+        <div class="cat-page-head">
+          <div class="intro-heading-label">租賃專區</div>
+          <h1>可租賃品項</h1>
+          <p>電動照護床、氣墊床、輪椅、氧氣製造機等品項提供租賃，
+             適合術後恢復或短期照護需求。租金依租期而定，
+             多數品項亦可申請長照補助，歡迎來電由專人評估。</p>
+        </div>
+        <div class="cat-rental-note">
+          <p><strong>租賃流程</strong>：來電說明需求 → 專人評估機型 →
+             送貨到府並教學操作 → 租期結束回收消毒。台南市區可到府服務。</p>
+        </div>
+        {body}
+      </div>
+    </div>
+"""
+    desc = ("東光醫療器材租賃專區：電動照護床、氣墊床、輪椅、氧氣製造機、抽痰機等"
+            "醫療輔具租賃，台南在地服務、到府送貨教學，可協助申請長照補助。")
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                "name": f"租賃專區 — {SITE_NAME}",
+                "url": BASE_URL + "/rental/",
+                "description": desc,
+            },
+            breadcrumb_jsonld(bc),
+        ],
+    }
+    html_out = render_page(
+        title=f"醫療輔具租賃 — {SITE_NAME}",
+        description=desc,
+        path="rental/",
+        og_type="website",
+        og_image=f"{BASE_URL}/{LOGO}",
+        jsonld=jsonld,
+        main_html=main,
+        active_url="/rental/",
+    )
+    out = ROOT / "rental" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html_out, encoding="utf-8")
 
 
 GALLERY_JS = """  <script>
@@ -682,6 +1223,93 @@ GALLERY_JS = """  <script>
   </script>
 """
 
+
+LIGHTBOX_JS = """  <script>
+    (function () {
+      var main = document.getElementById('cat-gallery-img');
+      if (!main) return;
+      var wrap = main.closest('.cat-gallery-main');
+
+      /* ── 圖片清單（多圖時取縮圖列，否則只有主圖） ── */
+      var imgs = Array.prototype.map.call(
+        document.querySelectorAll('.cat-gallery-thumbs button'),
+        function (b) { return b.dataset.src; });
+      if (!imgs.length) imgs = [main.getAttribute('src')];
+      var idx = 0;
+
+      /* ── Lightbox ── */
+      var overlay = document.createElement('div');
+      overlay.className = 'cat-lightbox';
+      overlay.innerHTML =
+        '<button class="cat-lightbox-close" aria-label="關閉">×</button>'
+        + (imgs.length > 1
+           ? '<button class="cat-lightbox-nav cat-lightbox-prev" aria-label="上一張">‹</button>'
+             + '<button class="cat-lightbox-nav cat-lightbox-next" aria-label="下一張">›</button>'
+           : '')
+        + '<img alt="">';
+      document.body.appendChild(overlay);
+      var big = overlay.querySelector('img');
+
+      function show(i) {
+        idx = (i + imgs.length) % imgs.length;
+        big.src = imgs[idx];
+      }
+      function close() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      main.style.cursor = 'zoom-in';
+      main.addEventListener('click', function () {
+        var cur = imgs.indexOf(main.getAttribute('src'));
+        show(cur < 0 ? 0 : cur);
+        big.alt = main.alt;
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      overlay.addEventListener('click', close);
+      big.addEventListener('click', function (e) { e.stopPropagation(); });
+      var prev = overlay.querySelector('.cat-lightbox-prev');
+      var next = overlay.querySelector('.cat-lightbox-next');
+      if (prev) {
+        prev.addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+        next.addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (!overlay.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (prev && e.key === 'ArrowLeft') show(idx - 1);
+        if (prev && e.key === 'ArrowRight') show(idx + 1);
+      });
+
+      /* ── 方形放大鏡（滑鼠跟隨，桌機限定） ── */
+      if (wrap && window.matchMedia('(hover: hover)').matches) {
+        var Z = 2, LS = 190;
+        var lens = document.createElement('div');
+        lens.className = 'cat-zoom-lens';
+        wrap.appendChild(lens);
+        wrap.addEventListener('mousemove', function (e) {
+          var r = main.getBoundingClientRect();
+          var x = e.clientX - r.left, y = e.clientY - r.top;
+          if (x < 0 || y < 0 || x > r.width || y > r.height) {
+            lens.style.display = 'none';
+            return;
+          }
+          var wr = wrap.getBoundingClientRect();
+          lens.style.display = 'block';
+          lens.style.left = (e.clientX - wr.left - LS / 2) + 'px';
+          lens.style.top = (e.clientY - wr.top - LS / 2) + 'px';
+          lens.style.backgroundImage = 'url("' + main.getAttribute('src') + '")';
+          lens.style.backgroundSize = (r.width * Z) + 'px ' + (r.height * Z) + 'px';
+          lens.style.backgroundPosition =
+            (-(x * Z - LS / 2)) + 'px ' + (-(y * Z - LS / 2)) + 'px';
+        });
+        wrap.addEventListener('mouseleave', function () {
+          lens.style.display = 'none';
+        });
+      }
+    })();
+  </script>
+"""
 
 def product_jsonld(product, bc):
     cover = cover_of(product)
@@ -703,11 +1331,10 @@ def product_jsonld(product, bc):
     prod = data["@graph"][0]
     if product["brand"]:
         prod["brand"] = {"@type": "Brand", "name": product["brand"]}
-    digits = re.sub(r"[^\d.]", "", product["price"] or "")
-    if digits:
+    if product["price"] is not None:
         prod["offers"] = {
             "@type": "Offer",
-            "price": digits,
+            "price": str(product["price"]),
             "priceCurrency": "TWD",
             "availability": "https://schema.org/InStock",
             "url": BASE_URL + product["url"],
@@ -755,17 +1382,47 @@ def build_product_pages(products):
         </section>
 """
 
-        tags_html = ""
-        if product["tags"]:
-            tags_html = ('<div class="cat-tags">'
-                         + "".join(f'<span class="cat-tag">{esc(t)}</span>'
-                                   for t in product["tags"])
-                         + "</div>")
+        plain_tags = [t for t in product["tags"]
+                      if t not in ("可租賃", "可申請補助")]
+        tags_html = badges_html(product)
+        if plain_tags:
+            tags_html += ('<div class="cat-tags">'
+                          + "".join(f'<span class="cat-tag">{esc(t)}</span>'
+                                    for t in plain_tags)
+                          + "</div>")
+
+        # 提供方式：租賃與補助是實際購買決策點，獨立成一區而非塞在標籤裡
+        offer_rows = ["購買方式：" + "、".join(product["offering"])]
+        if product["rental_price"]:
+            offer_rows.append("租金：" + product["rental_price"])
+        elif product["rentable"]:
+            offer_rows.append("租金依租期而定，歡迎來電詢價")
+        if product["subsidy"]:
+            offer_rows.append("可申請：" + "、".join(product["subsidy"]))
+        offer_html = ('<ul class="cat-offer-list">'
+                      + "".join(f"<li>{esc(x)}</li>" for x in offer_rows)
+                      + "</ul>")
+
+        # 可網購且填了連結時，在電話按鈕下方補一個到蝦皮下單的次要按鈕
+        shopee_cta = ""
+        if "線上選購" in product["offering"] and product["shopee_url"]:
+            shopee_cta = (
+                f'              <a href="{esc(product["shopee_url"])}" class="cat-cta-shopee"'
+                f' target="_blank" rel="noopener noreferrer">\n'
+                f'                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"'
+                f' stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2'
+                f' 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/>'
+                f'<path d="M16 10a4 4 0 0 1-8 0"/></svg>\n'
+                f'                到蝦皮下單\n'
+                f'              </a>\n')
 
         brand_html = ""
         if product["brand"]:
-            brand_html = (f'<p class="cat-product-brand">品牌：'
-                          f'<strong>{esc(product["brand"])}</strong></p>')
+            label = f'<strong>{esc(product["brand"])}</strong>'
+            if product["brand_slug"]:
+                label = (f'<a href="/brand/{quote(product["brand_slug"])}/">'
+                         f'{label}</a>')
+            brand_html = f'<p class="cat-product-brand">品牌：{label}</p>'
 
         price_note = ('<p class="cat-price-note">價格如有異動，以門市標示為準。</p>'
                       if product["price"] else
@@ -784,7 +1441,7 @@ def build_product_pages(products):
 """
 
         cat_url = url_path(f"category/{product['category']}/")
-        bc = [("首頁", "/"), ("商品目錄", "/catalog/"),
+        bc = [("商品分類", "/#categories"),
               (product["category"], cat_url), (product["name"], None)]
 
         main = f"""    <div class="cat-section">
@@ -804,13 +1461,14 @@ def build_product_pages(products):
             {price_html(product, big=True)}
             {price_note}
             {tags_html}
+            {offer_html}
             <div class="cat-cta-box">
               <p>租賃、購買與政府輔具補助申請，歡迎來電由專人為您服務</p>
               <a href="tel:{PHONE_TEL}" class="cat-cta-call">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91A16 16 0 0 0 16 17l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.73 18z"/></svg>
                 電話洽詢 {PHONE_DISPLAY}
               </a>
-              <p class="cat-cta-sub">門市地址：701 台南市東區崇德路 677 &amp; 679 號（台南市立醫院對面）</p>
+{shopee_cta}              <p class="cat-cta-sub">門市地址：701 台南市東區崇德路 677 &amp; 679 號（台南市立醫院對面）</p>
             </div>
           </div>
         </div>
@@ -822,7 +1480,7 @@ def build_product_pages(products):
         desc_parts = [f"{product['name']}"]
         if product["brand"]:
             desc_parts.append(f"品牌 {product['brand']}")
-        desc_parts.append(f"售價 {product['price']}" if product["price"] else "歡迎洽詢")
+        desc_parts.append(f"售價 {product['price_text']}" if product["price"] else "歡迎洽詢")
         meta_desc = "，".join(desc_parts) + f"。{summary}｜台南東光醫療器材，電話 {PHONE_DISPLAY}。"
 
         cover = cover_of(product)
@@ -836,7 +1494,8 @@ def build_product_pages(products):
             og_image=og_image,
             jsonld=product_jsonld(product, bc),
             main_html=main,
-            extra_js=GALLERY_JS if len(images) > 1 else "",
+            extra_js=(GALLERY_JS if len(images) > 1 else "")
+                     + (LIGHTBOX_JS if images else ""),
             active_url=cat_url,
         )
         out = ROOT / "product" / product["slug"] / "index.html"
@@ -844,10 +1503,88 @@ def build_product_pages(products):
         out.write_text(html_out, encoding="utf-8")
 
 
-def build_sitemap(products):
+def build_brand_pages(products, brands):
+    """每個品牌一頁，列出該品牌全部商品。客人常直接搜「台南 康揚輪椅」。"""
+    made = []
+    for slug, brand in brands.items():
+        items = [p for p in products if p["brand_slug"] == slug]
+        if not items:
+            continue                      # 沒有商品的品牌不產生空頁面
+        made.append(slug)
+
+        by_cat = [(c, [p for p in items if p["category"] == c])
+                  for c in CATEGORY_NAMES]
+        blocks = []
+        for cat_name, cat_items in by_cat:
+            if not cat_items:
+                continue
+            blocks.append(f"""<section class="cat-cat-block">
+  <div class="cat-cat-head">
+    <h2><a href="{url_path(f"category/{cat_name}/")}">{esc(cat_name)}</a></h2>
+  </div>
+  <div class="cat-grid">
+{chr(10).join(product_card(p) for p in cat_items)}
+  </div>
+</section>""")
+
+        site_link = ""
+        if brand["website"]:
+            site_link = (f'<p class="cat-brand-site">原廠網站：'
+                         f'<a href="{esc(brand["website"])}" target="_blank"'
+                         f' rel="noopener noreferrer">{esc(brand["website"])}</a></p>')
+        note = md_to_html(brand["body"])
+
+        bc = [("商品分類", "/#categories"), (brand["name"], None)]
+        main = f"""    <div class="cat-section">
+      <div class="cat-container">
+        {breadcrumb(bc)}
+        <div class="cat-page-head">
+          <h1>{esc(brand['name'])}</h1>
+          <p>共 {len(items)} 項商品｜租賃、購買與補助申請歡迎來電洽詢</p>
+          {site_link}
+        </div>
+        {note}
+{chr(10).join(blocks)}
+      </div>
+    </div>
+"""
+        desc = (f"東光醫療器材 {brand['name']} 商品一覽，共 {len(items)} 項。"
+                f"台南醫療輔具租賃與販售，歡迎來電 {PHONE_DISPLAY} 洽詢。")
+        jsonld = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "CollectionPage",
+                    "name": f"{brand['name']} — {SITE_NAME}",
+                    "url": BASE_URL + brand["url"],
+                    "description": desc,
+                },
+                breadcrumb_jsonld(bc),
+            ],
+        }
+        html_out = render_page(
+            title=f"{brand['name']} — {SITE_NAME}",
+            description=desc,
+            path=f"brand/{slug}/",
+            og_type="website",
+            og_image=f"{BASE_URL}/{LOGO}",
+            jsonld=jsonld,
+            main_html=main,
+            active_url="/",
+        )
+        out = ROOT / "brand" / slug / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html_out, encoding="utf-8")
+    return made
+
+
+def build_sitemap(products, brand_slugs=()):
     today = date.today().isoformat()
-    paths = ["", "catalog/"]
+    paths = ["", "rental/", "about/"]
     paths += [f"category/{c}/" for c in CATEGORY_NAMES]
+    paths += [f"category/{c}/{sub}/"
+              for c in CATEGORY_NAMES for sub in NAV_SUBS.get(c, [])]
+    paths += [f"brand/{s}/" for s in brand_slugs]
     paths += [f"product/{p['slug']}/" for p in products]
     entries = "\n".join(
         f"  <url>\n    <loc>{BASE_URL}{url_path(p) if p else '/'}</loc>\n"
@@ -868,7 +1605,11 @@ def build_search_index(products):
                 "tags": p["tags"],
                 "category": p["category"],
                 "subcategory": p["subcategory"],
+                "offering": p["offering"],
+                "rentable": p["rentable"],
+                "subsidy": p["subsidy"],
                 "price": p["price"],
+                "price_text": p["price_text"],
                 "url": p["url"],
                 "image": url_path(cover_of(p)),
             }
@@ -884,28 +1625,42 @@ def build_search_index(products):
 # ── 主流程 ──────────────────────────────────────────────
 
 def main():
+    # Windows 主控台預設 cp950，直接印中文／emoji 會 UnicodeEncodeError
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
     # 確保無圖商品的預設圖存在
     placeholder = ROOT / PLACEHOLDER
     if not placeholder.is_file():
         placeholder.parent.mkdir(parents=True, exist_ok=True)
         placeholder.write_text(PLACEHOLDER_SVG, encoding="utf-8")
 
-    products = load_products()
-    print(f"讀取 {len(products)} 項已發布商品")
+    brands = load_brands()
+    products = load_products(brands)
+    print(f"讀取 {len(products)} 項已發布商品、{len(brands)} 個品牌")
+
+    NAV_SUBS.update(compute_nav_subs(products))
 
     # 重建產出目錄（皆為純產生內容，可安全清除）
-    for d in ("catalog", "category", "product"):
+    for d in ("catalog", "category", "product", "rental", "brand"):
         shutil.rmtree(ROOT / d, ignore_errors=True)
 
-    build_catalog_page(products)
+    build_home_page(products)
+    build_catalog_redirect()
     build_category_pages(products)
+    build_subcategory_pages(products)
+    build_rental_page(products)
+    brand_slugs = build_brand_pages(products, brands)
     build_product_pages(products)
     build_search_index(products)
-    build_sitemap(products)
+    build_sitemap(products, brand_slugs)
 
-    pages = 1 + len(CATEGORIES) + len(products)
-    print(f"✅ 產生完成：{pages} 個頁面（1 總覽 + {len(CATEGORIES)} 分類 + "
-          f"{len(products)} 商品）、sitemap.xml、search-index.json")
+    rentable = sum(1 for p in products if p["rentable"])
+    pages = 2 + len(CATEGORIES) + len(brand_slugs) + len(products)
+    print(f"✅ 產生完成：{pages} 個頁面（首頁目錄 + 1 租賃專區 + {len(CATEGORIES)} 分類 + "
+          f"{len(brand_slugs)} 品牌 + {len(products)} 商品）、sitemap.xml、search-index.json")
+    print(f"   其中可租賃 {rentable} 項")
 
 
 if __name__ == "__main__":
