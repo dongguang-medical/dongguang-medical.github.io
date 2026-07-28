@@ -3,25 +3,76 @@
    Aesthetic: 陽春親民感 — warm, simple, functional
    =================================================== */
 
-/* ── Header ── */
+/* ── Header ──
+   兩層固定：主列 64px + 資訊列 36px（--header-total = 100px）。
+   下方版位（.cat-main、.intro-subhero、.intro-nav-mobile）都以此偏移。 */
+:root {
+  --infobar-height: 36px;
+  --header-total: 100px; /* 64 + 36 */
+}
+
+/* 錨點跳轉（#contact 等）避開固定 header */
+[id] {
+  scroll-margin-top: calc(var(--header-total) + 12px);
+}
+
 .intro-header {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
   background: var(--color-white);
-  border-bottom: 2px solid var(--color-primary-pale);
   box-shadow: var(--shadow-header);
-  height: 64px;
 }
 
 .intro-header-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
-  height: 100%;
+  height: 64px;
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+/* ── 常駐資訊列：市立醫院對面・電話・營業時間 ── */
+.intro-infobar {
+  background: var(--color-primary);
+  height: var(--infobar-height);
+  overflow: hidden;
+}
+
+.intro-infobar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap;
+}
+
+.intro-infobar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.intro-infobar a:hover {
+  text-decoration: underline;
+}
+
+.intro-infobar-loc strong {
+  font-weight: 700;
+}
+
+.intro-infobar-hours {
+  color: rgba(255,255,255,0.78);
 }
 
 .intro-logo {
@@ -57,19 +108,59 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  gap: 2px;
+  gap: 0;
+  min-width: 0;
+}
+
+.intro-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+/* 下拉子分類選單（hover / 鍵盤 focus 展開） */
+.intro-nav-drop {
+  display: none;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  flex-direction: column;
+  min-width: 150px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-hover);
+  padding: 6px 0;
+  z-index: 101;
+}
+
+.intro-nav-item:hover .intro-nav-drop,
+.intro-nav-item:focus-within .intro-nav-drop {
+  display: flex;
+}
+
+.intro-nav-drop a {
+  padding: 8px 16px;
+  border-radius: 0;
+  font-size: 13px;
 }
 
 .intro-nav a {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-secondary);
-  padding: 6px 14px;
+  padding: 6px 9px;
   border-radius: var(--radius-sm);
   text-decoration: none;
+  white-space: nowrap;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.intro-nav a:hover {
+.intro-nav a:hover,
+.intro-nav a.active {
   background: var(--color-primary-pale);
   color: var(--color-primary);
 }
@@ -117,7 +208,7 @@
 .intro-nav-mobile {
   display: none;
   position: fixed;
-  top: 64px;
+  top: var(--header-total);
   left: 0; right: 0;
   background: var(--color-white);
   border-top: 1px solid var(--color-border);
@@ -914,17 +1005,19 @@
 .intro-footer {
   background: #2B1208;
   color: rgba(255,255,255,0.62);
-  padding: 48px 24px 20px;
+  padding: 22px 24px 14px;
   border-top: 3px solid var(--color-primary);
 }
 
 .intro-footer-inner {
   max-width: 1100px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
   border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
@@ -932,7 +1025,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
 }
 
 .intro-footer-brand img {
@@ -953,7 +1045,8 @@
 
 .intro-footer-tagline {
   font-size: 13px;
-  line-height: 1.8;
+  color: rgba(255,255,255,0.55);
+  margin-left: 6px;
 }
 
 .intro-footer-col h4 {
@@ -1143,28 +1236,402 @@
   color: var(--color-text-muted);
 }
 
+/* ── Slim hero（首頁：重點讓給聯絡資訊與商品目錄）── */
+.intro-hero-slim {
+  min-height: 0;
+  padding: 96px 24px 48px;
+}
+
+.intro-hero-slim .intro-hero-logo {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 16px;
+}
+
+.intro-hero-slim .intro-hero-sub {
+  margin-bottom: 24px;
+}
+
+/* ── 內頁標題區（/about/ 等子頁）── */
+.intro-subhero {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: calc(var(--header-total) + 40px) 24px 40px;
+}
+
+.intro-subhero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.intro-subhero p {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.intro-crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+}
+
+.intro-crumb a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.intro-crumb a:hover {
+  color: var(--color-primary);
+}
+
+/* ── 首頁分類目錄卡 ── */
+.intro-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.intro-cat-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 20px 16px;
+  text-decoration: none;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.intro-cat-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.intro-cat-card h3 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.intro-cat-card p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+/* ── 首頁：熱銷精選輪播 ── */
+.home-feat {
+  margin-bottom: 44px;
+}
+
+.carousel-wrap {
+  position: relative;
+}
+
+.carousel-wrap .car-prev,
+.carousel-wrap .car-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-secondary);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.carousel-wrap .car-prev { left: -14px; }
+.carousel-wrap .car-next { right: -14px; }
+
+.carousel-wrap .car-prev:hover,
+.carousel-wrap .car-next:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.home-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 240px;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 2px;
+  scrollbar-width: none;   /* Firefox：隱藏滾動條 */
+}
+
+.home-carousel::-webkit-scrollbar {
+  display: none;           /* Chrome / Safari / Edge */
+}
+
+.home-carousel .cat-card {
+  scroll-snap-align: start;
+}
+
+/* ── 首頁三屏 ──
+   第一屏：標題＋搜尋＋熱銷（米色底）
+   第二屏：商品分類（白色 surface 底，與聯絡資訊原色對調）
+   第三屏：聯絡資訊（米色底） */
+.home-screen1 {
+  min-height: calc(100vh - var(--header-total));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--color-surface);
+}
+
+/* 提高權重蓋過 catalog.css 的 .cat-section padding */
+.cat-section.home-screen1 {
+  padding: 24px 16px;
+}
+
+.home-screen1 .cat-container {
+  width: 100%;
+}
+
+/* 首屏標題區（間距壓縮，確保第一屏內容不超出視窗） */
+.home-hero-head {
+  margin-bottom: 18px;
+}
+
+.home-hero-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  border: 3px solid var(--color-primary-pale);
+  box-shadow: var(--shadow-card);
+}
+
+.home-hero-head h1 {
+  font-size: clamp(28px, 4.6vw, 40px);
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+
+.home-hero-tag {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+}
+
+.home-screen1 .home-feat {
+  margin-bottom: 0;
+}
+
+.home-screen1 .cat-search {
+  margin-bottom: 24px;
+}
+
+.home-screen1 .cat-cat-head {
+  margin-bottom: 12px;
+}
+
+.home-screen2 {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  min-height: calc(100vh - var(--header-total));
+  scroll-margin-top: var(--header-total); /* 錨點落點貼齊 header，不露下一屏 */
+}
+
+.home-screen2 .cat-container {
+  width: 100%;
+  display: flex;
+}
+
+.home-screen3 {
+  min-height: calc(100vh - var(--header-total));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-screen3 .intro-container {
+  /* flex 容器內 margin:auto 會令寬度縮到內容寬，須明確撐滿 */
+  width: 100%;
+}
+
+.home-cats {
+  /* 高度由 .home-screen2 的 min-height + flex 決定 */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* 分類卡格子吃滿剩餘高度，卡片跟著拉大 */
+.home-cats .intro-cat-grid {
+  flex: 1;
+  gap: 18px;
+}
+
+.home-cats .intro-cat-card {
+  padding: 28px 28px 22px;
+  background: var(--color-surface);
+}
+
+.home-cats .intro-cat-card h3 {
+  font-size: 21px;
+}
+
+.home-cats .intro-cat-card .intro-cat-count {
+  font-size: 13px;
+}
+
+.home-cats .intro-cat-card p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.home-cats .intro-cat-more {
+  font-size: 14px;
+}
+
+@media (min-width: 901px) {
+  .home-cats .intro-cat-grid {
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+/* 分類頁子分類輪播：一次四格 */
+.cat-sub-carousel {
+  grid-auto-columns: calc((100% - 42px) / 4); /* 3 個 14px 間距 */
+}
+
+
+.intro-cat-count {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: 8px;
+}
+
+.intro-cat-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.intro-cat-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.intro-cat-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 18px;
+}
+
+/* ── Footer 連結列 ── */
+.intro-footer-links {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.intro-footer-links a {
+  color: rgba(255,255,255,0.72);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.intro-footer-links a:hover {
+  color: #fff;
+}
+
+/* ── /about/ 頁尾 CTA ── */
+.intro-backcta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 32px;
+}
+
+.intro-backcta h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2.6vw, 24px);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.intro-backcta p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .intro-header-inner { padding: 0 16px; }
+  .intro-infobar-hours { display: none; }
   .intro-nav,
   .intro-header-phone { display: none; }
   .intro-hamburger { display: flex; }
   .intro-about-layout { grid-template-columns: 1fr; gap: 36px; }
   .intro-services-grid { grid-template-columns: 1fr; }
   .intro-equipment-grid { grid-template-columns: 1fr 1fr; }
+  .intro-cat-grid { grid-template-columns: 1fr 1fr; }
+  .cat-sub-carousel { grid-auto-columns: calc((100% - 14px) / 2); }
   .intro-contact-grid { grid-template-columns: 1fr; }
   .intro-contact-cards { display: grid; grid-template-columns: 1fr 1fr; }
   .intro-map iframe { height: 280px; }
-  .intro-footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  .intro-footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
   .intro-reviews-grid { grid-template-columns: 1fr; }
+  .intro-backcta { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 600px) {
+  .home-carousel { grid-auto-columns: 200px; }
+  .cat-sub-carousel { grid-auto-columns: 200px; }
+  .intro-infobar-inner { gap: 14px; font-size: 12px; padding: 0 12px; }
+  .intro-infobar-addr,
+  .intro-infobar-shopee .intro-infobar-shopee-text,
+  .intro-infobar-line .intro-infobar-line-text { display: none; }
   .intro-section { padding: 52px 16px; }
   .intro-hero { padding: 90px 16px 52px; }
+  .intro-hero-slim { padding: 84px 16px 40px; }
+  .intro-subhero { padding: calc(var(--header-total) + 24px) 16px 32px; }
   .intro-stats { grid-template-columns: 1fr 1fr; }
   .intro-equipment-grid { grid-template-columns: 1fr 1fr; }
+  .intro-cat-grid { grid-template-columns: 1fr; }
   .intro-contact-cards { grid-template-columns: 1fr; }
   .intro-map iframe { height: 240px; }
   .intro-footer-bottom { flex-direction: column; text-align: center; }
+  .intro-backcta { padding: 24px 20px; }
 }
