@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "均佳 便盆椅坐墊 馬桶椅坐墊 便盆椅配件 便盆椅軟墊",
+      "name": "均佳 便盆椅坐墊",
       "brand": "均佳",
       "tags": [],
       "category": "衛浴與居家安全",
@@ -18,7 +18,7 @@
       "image": "/assets/uploads/bath-safety-10-1.jpg"
     },
     {
-      "name": "不銹鋼洗澡便器椅 固定不可收合 四輪 大靠背 有手把 有煞車",
+      "name": "不鏽鋼洗澡便器椅 四輪固定式",
       "brand": "",
       "tags": [],
       "category": "衛浴與居家安全",
@@ -35,7 +35,7 @@
       "image": "/assets/uploads/bath-safety-16-1.jpg"
     },
     {
-      "name": "萊潔舒適坐浴盆組(未滅菌) 自然產 產婦 痔瘡",
+      "name": "萊潔 舒適坐浴盆組（未滅菌）",
       "brand": "萊潔",
       "tags": [],
       "category": "衛浴與居家安全",
@@ -52,7 +52,7 @@
       "image": "/assets/uploads/bath-safety-17-1.jpg"
     },
     {
-      "name": "充氣式洗頭槽 可自行充氣 收納簡易",
+      "name": "充氣式洗頭槽",
       "brand": "",
       "tags": [],
       "category": "衛浴與居家安全",
@@ -69,7 +69,7 @@
       "image": "/assets/uploads/bath-safety-18-1.jpg"
     },
     {
-      "name": "富士康 FZK 加大防水洗頭帽 6孔舒適 洗髮帽",
+      "name": "富士康 FZK 加大防水洗頭帽",
       "brand": "富士康",
       "tags": [
         "防水材質",
@@ -89,7 +89,7 @@
       "image": "/assets/uploads/bath-safety-4-1.jpg"
     },
     {
-      "name": "伽瑪 海棉牙刷 海綿牙刷 含牙粉 無牙粉 潔牙棒",
+      "name": "伽瑪 海綿牙刷（含牙粉／無牙粉）",
       "brand": "伽瑪",
       "tags": [],
       "category": "臥床照護",
@@ -106,7 +106,7 @@
       "image": "/assets/uploads/bedcare-17-1.jpg"
     },
     {
-      "name": "杰奇 JM 多功能握式移位帶 無跨式版 無胯式 學步帶",
+      "name": "杰奇 JM 多功能握式移位帶（無跨式）",
       "brand": "杰奇",
       "tags": [
         "可租賃",
@@ -128,7 +128,7 @@
       "image": "/assets/uploads/bedcare-24-1.jpg"
     },
     {
-      "name": "中衛 病患用潤滑膏3gm",
+      "name": "中衛 CSD 病患用潤滑膏 3g",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "臥床照護",
@@ -145,7 +145,7 @@
       "image": "/assets/uploads/bedcare-31-1.jpg"
     },
     {
-      "name": "保衛 加厚型乒乓約束帶 乒乓手套 透氣 方便穿脫",
+      "name": "保衛 加厚型乒乓約束手套",
       "brand": "保衛",
       "tags": [],
       "category": "臥床照護",
@@ -162,8 +162,8 @@
       "image": "/assets/uploads/bedcare-32-1.jpg"
     },
     {
-      "name": "RANCA 藍卡沖牙機 R-302",
-      "brand": "RANCA 藍卡",
+      "name": "藍卡 RANCA R-302 沖牙機",
+      "brand": "藍卡 RANCA",
       "tags": [],
       "category": "臥床照護",
       "subcategory": "口腔照護",
@@ -196,7 +196,7 @@
       "image": "/assets/uploads/bedcare-34-1.jpg"
     },
     {
-      "name": "中衛 海綿潔牙棒 口腔清潔棒 不含牙粉 滅菌 5支/包",
+      "name": "中衛 CSD 海綿潔牙棒 5支/包（滅菌）",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "臥床照護",
@@ -213,7 +213,7 @@
       "image": "/assets/uploads/bedcare-35-1.jpg"
     },
     {
-      "name": "H1雷峰標準成人健康牙刷 顏色",
+      "name": "雷峰 H1 標準成人牙刷",
       "brand": "雷峰",
       "tags": [],
       "category": "臥床照護",
@@ -247,7 +247,7 @@
       "image": "/assets/uploads/bedcare-37-1.jpg"
     },
     {
-      "name": "國發 單支入 乒乓約束帶 專利彈性纖維 純棉內襯",
+      "name": "國發 乒乓約束帶 單支入",
       "brand": "國發",
       "tags": [],
       "category": "臥床照護",
@@ -264,7 +264,7 @@
       "image": "/assets/uploads/bedcare-38-1.jpg"
     },
     {
-      "name": "床邊扶手 安全護欄 可調整高低",
+      "name": "床邊扶手護欄 高低可調",
       "brand": "",
       "tags": [],
       "category": "臥床照護",
@@ -281,7 +281,7 @@
       "image": "/assets/uploads/bedcare-39-1.jpg"
     },
     {
-      "name": "雃博 甜甜圈減壓墊 坐瘡護墊",
+      "name": "雃博 APEX 甜甜圈減壓坐墊",
       "brand": "雃博 APEX",
       "tags": [],
       "category": "臥床照護",
@@ -298,7 +298,7 @@
       "image": "/assets/uploads/bedcare-40-1.jpg"
     },
     {
-      "name": "柔麗思棉質免洗褲 1包5入(孕婦、産後加大型)",
+      "name": "柔麗思 棉質免洗褲 5入（產後加大型）",
       "brand": "柔麗思",
       "tags": [],
       "category": "臥床照護",
@@ -315,7 +315,7 @@
       "image": "/assets/uploads/bedcare-41-1.jpg"
     },
     {
-      "name": "試管刷 氣切刷 毛刷",
+      "name": "氣切內管清潔刷",
       "brand": "",
       "tags": [],
       "category": "臥床照護",
@@ -332,7 +332,7 @@
       "image": "/assets/uploads/bedcare-42-1.jpg"
     },
     {
-      "name": "綠十字 GreenCross 塑膠灌食空針 (已滅菌) 60ml 含接頭",
+      "name": "綠十字 塑膠灌食空針 60ml（滅菌／含接頭）",
       "brand": "綠十字",
       "tags": [],
       "category": "臥床照護",
@@ -349,7 +349,7 @@
       "image": "/assets/uploads/bedcare-43-1.jpg"
     },
     {
-      "name": "太平洋 灌腸袋 肛管 灌腸管 台灣製造 M09024",
+      "name": "太平洋 M09024 灌腸袋（含肛管）",
       "brand": "太平洋",
       "tags": [
         "台灣製造"
@@ -368,7 +368,7 @@
       "image": "/assets/uploads/bedcare-m09024-1.jpg"
     },
     {
-      "name": "斯巴洗眼器/洗眼",
+      "name": "斯巴 洗眼器",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -402,7 +402,7 @@
       "image": "/assets/uploads/misc-24-1.jpg"
     },
     {
-      "name": "香條/艾條/養根命 溫灸棒 溫灸",
+      "name": "養根命 艾條溫灸棒",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -419,7 +419,7 @@
       "image": "/assets/uploads/misc-25-1.jpg"
     },
     {
-      "name": "Spirit精國/益江 雙面聽診器(未滅菌) 手動聽診器 簡易聽診器",
+      "name": "精國 Spirit 雙面聽診器（未滅菌）",
       "brand": "精國",
       "tags": [],
       "category": "其他",
@@ -453,7 +453,7 @@
       "image": "/assets/uploads/misc-27-1.jpg"
     },
     {
-      "name": "萊禮 CPR面膜 急救面膜 人工呼吸面膜 36片一盒",
+      "name": "萊禮 CPR急救面膜 36片/盒",
       "brand": "萊禮",
       "tags": [],
       "category": "其他",
@@ -470,7 +470,7 @@
       "image": "/assets/uploads/misc-28-1.jpg"
     },
     {
-      "name": "不鏽鋼 蚊式止血鉗 12.5公分",
+      "name": "不鏽鋼蚊式止血鉗 12.5cm",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -521,7 +521,7 @@
       "image": "/assets/uploads/misc-30-1.jpg"
     },
     {
-      "name": "陶瓷乳缽/研缽 整組(缽碗+研磨棒)",
+      "name": "陶瓷乳缽研磨組（缽碗＋研磨棒）",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -538,7 +538,7 @@
       "image": "/assets/uploads/misc-31-1.jpg"
     },
     {
-      "name": "高品質 壓舌板 挖藥棒 調蠟棒 熱蠟除毛 木製 壓1舌棒 (未滅菌)",
+      "name": "木製壓舌板（未滅菌）",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -555,7 +555,7 @@
       "image": "/assets/uploads/misc-32-1.jpg"
     },
     {
-      "name": "中醫腳架/美甲腳架(可寄7-11和全家)",
+      "name": "中醫／美甲腳架",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -623,7 +623,7 @@
       "image": "/assets/uploads/misc-36-1.jpg"
     },
     {
-      "name": "台灣製 SOHO BACK 舒活透氣雙背墊 安能背克",
+      "name": "SOHO BACK 舒活透氣雙背墊",
       "brand": "SOHO BACK",
       "tags": [
         "台灣製造",
@@ -643,7 +643,7 @@
       "image": "/assets/uploads/misc-8-1.jpg"
     },
     {
-      "name": "KATO 美國進口 邁康 超靜音 防音耳塞 NRR33",
+      "name": "邁康 KATO NRR33 防音耳塞",
       "brand": "邁康",
       "tags": [
         "美國進口",
@@ -663,7 +663,7 @@
       "image": "/assets/uploads/misc-nrr33-1.jpg"
     },
     {
-      "name": "四爪防滑腳墊 四角套墊 不倒腳套墊",
+      "name": "四爪拐杖防滑腳墊",
       "brand": "",
       "tags": [],
       "category": "行動輔具",
@@ -680,7 +680,7 @@
       "image": "/assets/uploads/mobility-49-1.jpg"
     },
     {
-      "name": "拐杖腳墊腳套 適用四腳拐 腋下拐 單手拐 沐浴椅 助行器",
+      "name": "拐杖腳墊腳套 通用型",
       "brand": "",
       "tags": [],
       "category": "行動輔具",
@@ -697,7 +697,7 @@
       "image": "/assets/uploads/mobility-50-1.jpg"
     },
     {
-      "name": "NISSEI日本精密 血壓計變壓器 電源供應器",
+      "name": "日本精密 NISSEI 血壓計變壓器",
       "brand": "日本精密 NISSEI",
       "tags": [],
       "category": "健康量測",
@@ -714,7 +714,7 @@
       "image": "/assets/uploads/monitor-20-1.jpg"
     },
     {
-      "name": "歐姆龍 NISSEL 血壓計/電子血壓計 壓脈帶/腕布 專用接頭",
+      "name": "血壓計壓脈帶專用接頭 歐姆龍／日本精密適用",
       "brand": "",
       "tags": [],
       "category": "健康量測",
@@ -731,7 +731,7 @@
       "image": "/assets/uploads/monitor-21-1.jpg"
     },
     {
-      "name": "OMRON歐姆龍 血壓計交流變壓器",
+      "name": "歐姆龍 OMRON 血壓計交流變壓器",
       "brand": "歐姆龍 OMRON",
       "tags": [],
       "category": "健康量測",
@@ -748,7 +748,7 @@
       "image": "/assets/uploads/monitor-3-1.jpg"
     },
     {
-      "name": "HBF-217 OMRON歐姆龍體脂計",
+      "name": "歐姆龍 OMRON HBF-217 體脂計",
       "brand": "歐姆龍 OMRON",
       "tags": [],
       "category": "健康量測",
@@ -765,7 +765,7 @@
       "image": "/assets/uploads/monitor-hbf-217-1.jpg"
     },
     {
-      "name": "OMRON 歐姆龍體脂計HBF-222T",
+      "name": "歐姆龍 OMRON HBF-222T 體脂計",
       "brand": "歐姆龍 OMRON",
       "tags": [],
       "category": "健康量測",
@@ -782,7 +782,7 @@
       "image": "/assets/uploads/monitor-hbf-222t-1.jpg"
     },
     {
-      "name": "BRAUN 百靈 IRT6030 體溫計 百齡耳溫槍",
+      "name": "百靈 BRAUN IRT6030 耳溫槍",
       "brand": "百靈 BRAUN",
       "tags": [],
       "category": "健康量測",
@@ -799,7 +799,7 @@
       "image": "/assets/uploads/monitor-irt6030-1.jpg"
     },
     {
-      "name": "NISSEI 日本精密迷你耳溫槍 MT-30CPLB",
+      "name": "日本精密 NISSEI MT-30CPLB 迷你耳溫槍",
       "brand": "日本精密 NISSEI",
       "tags": [],
       "category": "健康量測",
@@ -816,7 +816,7 @@
       "image": "/assets/uploads/monitor-mt-30cplb-1.jpg"
     },
     {
-      "name": "microlife 百略 電子體溫計 MT200",
+      "name": "百略 microlife MT200 電子體溫計",
       "brand": "百略 microlife",
       "tags": [],
       "category": "健康量測",
@@ -833,7 +833,7 @@
       "image": "/assets/uploads/monitor-mt200-1.jpg"
     },
     {
-      "name": "熱映光電 耳溫槍 TH889 (內附耳套21個)",
+      "name": "熱映光電 TH889 耳溫槍（附耳套21個）",
       "brand": "熱映光電",
       "tags": [],
       "category": "健康量測",
@@ -850,7 +850,7 @@
       "image": "/assets/uploads/monitor-th889-1.jpg"
     },
     {
-      "name": "達摩易筋伸展拉筋板 達摩拉筋 養生柔軟體操板 達摩易筋機",
+      "name": "達摩 易筋伸展拉筋板",
       "brand": "達摩",
       "tags": [
         "台灣製造"
@@ -869,7 +869,7 @@
       "image": "/assets/uploads/rehab-12-1.jpg"
     },
     {
-      "name": "SUMO 舒摩 熱敷墊 電熱毯 台灣製 濕熱毯",
+      "name": "舒摩 SUMO 濕熱敷墊",
       "brand": "舒摩 SUMO",
       "tags": [
         "台灣製造"
@@ -888,8 +888,8 @@
       "image": "/assets/uploads/rehab-22-1.jpg"
     },
     {
-      "name": "3M FUTURO護多樂 護腕(拉繩式拇指支撐型) 手腕關節炎 媽媽手",
-      "brand": "FUTURO 護多樂",
+      "name": "護多樂 FUTURO 拉繩式拇指支撐護腕",
+      "brand": "護多樂 FUTURO",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -905,7 +905,7 @@
       "image": "/assets/uploads/rehab-28-1.jpg"
     },
     {
-      "name": "熱敷墊 (熱敷包/水煮熱敷墊/水煮袋) 中醫 背部 頸部 腰部",
+      "name": "水煮式熱敷墊 背部／頸部／腰部",
       "brand": "",
       "tags": [],
       "category": "復健理療",
@@ -922,7 +922,7 @@
       "image": "/assets/uploads/rehab-29-1.jpg"
     },
     {
-      "name": "小白兔24小時手握暖暖包小白兔 暖暖包 手握式 24小時 寒流",
+      "name": "小白兔 手握式暖暖包 24小時",
       "brand": "",
       "tags": [],
       "category": "復健理療",
@@ -939,7 +939,7 @@
       "image": "/assets/uploads/rehab-30-1.jpg"
     },
     {
-      "name": "帝通 冰枕 冷熱敷袋 子母型",
+      "name": "帝通 子母型冰枕 冷熱敷袋",
       "brand": "帝通",
       "tags": [],
       "category": "復健理療",
@@ -956,7 +956,7 @@
       "image": "/assets/uploads/rehab-31-1.jpg"
     },
     {
-      "name": "冷熱敷水袋-雙效合一",
+      "name": "雙效冷熱敷水袋",
       "brand": "",
       "tags": [],
       "category": "復健理療",
@@ -990,9 +990,11 @@
       "image": "/assets/uploads/rehab-33-1.jpg"
     },
     {
-      "name": "雅博 恆溫濕熱電毯 14x20/14x27/肩頸 保固2年",
+      "name": "雃博 APEX 恆溫濕熱電毯 14x20／14x27／肩頸",
       "brand": "雃博 APEX",
-      "tags": [],
+      "tags": [
+        "保固2年"
+      ],
       "category": "復健理療",
       "subcategory": "熱敷墊",
       "offering": [
@@ -1024,7 +1026,7 @@
       "image": "/assets/uploads/rehab-35-1.jpg"
     },
     {
-      "name": "康威利 conwell 5319 手指保護套",
+      "name": "康威利 Conwell 5319 手指保護套",
       "brand": "康威利 Conwell",
       "tags": [],
       "category": "復健理療",
@@ -1041,8 +1043,8 @@
       "image": "/assets/uploads/rehab-7-1.jpg"
     },
     {
-      "name": "I-M 愛民 束腹帶(寬版) EB-501 產後束腹帶 產後復原 孕婦",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M EB-501 產後束腹帶（寬版）",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1058,7 +1060,7 @@
       "image": "/assets/uploads/rehab-eb-501-1.jpg"
     },
     {
-      "name": "醫技 冷熱敷墊 EG-0088",
+      "name": "醫技 E-G MED EG-0088 冷熱敷墊",
       "brand": "醫技 E-G MED",
       "tags": [],
       "category": "復健理療",
@@ -1075,8 +1077,8 @@
       "image": "/assets/uploads/rehab-eg-0088-1.jpg"
     },
     {
-      "name": "I-M 愛民 藍色手臂吊帶 護具 EO-302",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M EO-302 手臂吊帶（藍）",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1092,8 +1094,8 @@
       "image": "/assets/uploads/rehab-eo-302-1.jpg"
     },
     {
-      "name": "I-M 愛民 EO-345 手臂吊帶(舒適加強型) 骨折 石膏適用",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M EO-345 手臂吊帶（舒適加強型）",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1109,8 +1111,8 @@
       "image": "/assets/uploads/rehab-eo-345-1.jpg"
     },
     {
-      "name": "I-M 愛民 網狀手臂吊帶 護具 EO308",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M EO-308 網狀手臂吊帶",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1126,7 +1128,7 @@
       "image": "/assets/uploads/rehab-eo308-1.jpg"
     },
     {
-      "name": "杰奇 JM-415 運動復健手套 手固定腳踏器",
+      "name": "杰奇 JM-415 運動復健手套",
       "brand": "杰奇",
       "tags": [],
       "category": "復健理療",
@@ -1143,8 +1145,8 @@
       "image": "/assets/uploads/rehab-jm-415-1.jpg"
     },
     {
-      "name": "I-M 愛民 開放式護膝 NS-792 魔鬼氈 快速穿脫 強力支撐",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M NS-792 開放式護膝",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1160,8 +1162,8 @@
       "image": "/assets/uploads/rehab-ns-792-1.jpg"
     },
     {
-      "name": "愛民 軟式頸圈 OH-008 8cm 肩頸軟墊 頸圈 頸部軟墊 3C族 頸枕",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M OH-008 軟式頸圈 8cm",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1177,8 +1179,8 @@
       "image": "/assets/uploads/rehab-oh-008-1.jpg"
     },
     {
-      "name": "I-M 愛民 骨盆帶 RB-501 髖骨帶 髖骨加壓帶 自然產復原 矯正帶",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M RB-501 骨盆帶",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1194,8 +1196,8 @@
       "image": "/assets/uploads/rehab-rb-501-1.jpg"
     },
     {
-      "name": "I-M 愛民 護膝 SS-717 竹炭纖維添加 側邊雙軟鐵條 抗菌除臭",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M SS-717 竹炭護膝（側邊軟鐵條）",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1211,8 +1213,8 @@
       "image": "/assets/uploads/rehab-ss-717-1.jpg"
     },
     {
-      "name": "I-M 愛民 護腰 WB-512 強化支撐力 預防工作傷害 束腰帶 矯正帶",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M WB-512 強化支撐護腰",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1228,8 +1230,8 @@
       "image": "/assets/uploads/rehab-wb-512-1.jpg"
     },
     {
-      "name": "I-M 愛民 護腰 WB-605(寬版) 強化支撐力 束腰帶 矯正帶 塑腰",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M WB-605 護腰（寬版）",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1245,8 +1247,8 @@
       "image": "/assets/uploads/rehab-wb-605-1.jpg"
     },
     {
-      "name": "I-M 愛民 護腰 WB-613 竹炭纖維添加 抗菌除臭 吸濕排汗 束腰帶",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M WB-613 竹炭護腰",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "復健理療",
       "subcategory": "護具",
@@ -1262,7 +1264,7 @@
       "image": "/assets/uploads/rehab-wb-613-1.jpg"
     },
     {
-      "name": "邁康洗鼻器 附大小鼻頭 手動洗鼻器",
+      "name": "邁康 手動洗鼻器 附大小鼻頭",
       "brand": "邁康",
       "tags": [],
       "category": "呼吸照護",
@@ -1279,7 +1281,7 @@
       "image": "/assets/uploads/respiratory-22-1.jpg"
     },
     {
-      "name": "三花 抽痰包50pcs包(滅菌) 附無菌手套 12fr 14fr 抽痰管",
+      "name": "三花 華新 抽痰包 50入（滅菌）附無菌手套",
       "brand": "三花 華新",
       "tags": [],
       "category": "呼吸照護",
@@ -1296,7 +1298,7 @@
       "image": "/assets/uploads/respiratory-32-1.jpg"
     },
     {
-      "name": "Sunlus三樂事 熊貝比電動吸鼻器",
+      "name": "三樂事 Sunlus 熊貝比電動吸鼻器",
       "brand": "三樂事 Sunlus",
       "tags": [],
       "category": "呼吸照護",
@@ -1313,7 +1315,7 @@
       "image": "/assets/uploads/respiratory-33-1.jpg"
     },
     {
-      "name": "新豐 醫友抽痰包10Fr、12Fr、14Fr，100條/包",
+      "name": "新豐 醫友 抽痰包 100條/包",
       "brand": "新豐",
       "tags": [],
       "category": "呼吸照護",
@@ -1330,7 +1332,7 @@
       "image": "/assets/uploads/respiratory-34-1.jpg"
     },
     {
-      "name": "雃博 專用抽痰杯 集痰杯 800cc",
+      "name": "雃博 APEX 抽痰杯 800cc",
       "brand": "雃博 APEX",
       "tags": [],
       "category": "呼吸照護",
@@ -1347,7 +1349,7 @@
       "image": "/assets/uploads/respiratory-35-1.jpg"
     },
     {
-      "name": "怡安 抽痰瓶 蓄瓶 收集瓶 1750ml",
+      "name": "怡安 抽痰收集瓶 1750ml",
       "brand": "怡安",
       "tags": [],
       "category": "呼吸照護",
@@ -1364,7 +1366,7 @@
       "image": "/assets/uploads/respiratory-36-1.jpg"
     },
     {
-      "name": "醫技 O2氧氣隨身瓶(拋棄式) 9000c.c. 氧氣罐 氧氣瓶 戶外 登山",
+      "name": "醫技 E-G MED 拋棄式氧氣隨身瓶 9000c.c.",
       "brand": "醫技 E-G MED",
       "tags": [],
       "category": "呼吸照護",
@@ -1381,7 +1383,7 @@
       "image": "/assets/uploads/respiratory-37-1.jpg"
     },
     {
-      "name": "雃博福康抽痰機專用配件 抽吸連接管 外科引流管 口水接管 抽痰機 過濾器",
+      "name": "雃博 APEX 福康抽痰機 連接管與過濾器",
       "brand": "雃博 APEX",
       "tags": [],
       "category": "呼吸照護",
@@ -1398,7 +1400,7 @@
       "image": "/assets/uploads/respiratory-38-1.jpg"
     },
     {
-      "name": "貝斯美德 醫技 噴霧面罩 成人/兒童 吸鼻器用面罩",
+      "name": "貝斯美德 Besmed 噴霧面罩 成人／兒童",
       "brand": "貝斯美德 Besmed",
       "tags": [],
       "category": "呼吸照護",
@@ -1415,7 +1417,7 @@
       "image": "/assets/uploads/respiratory-39-1.jpg"
     },
     {
-      "name": "氧氣鼻管 貝斯美德/醫技 2M/6M (氧氣管 氧氣導管 氧氣接管)",
+      "name": "貝斯美德 Besmed 氧氣鼻管 2M／6M",
       "brand": "貝斯美德 Besmed",
       "tags": [],
       "category": "呼吸照護",
@@ -1432,7 +1434,7 @@
       "image": "/assets/uploads/respiratory-40-1.jpg"
     },
     {
-      "name": "蛇形管 一節15公分 可自行剪裁所需的長度",
+      "name": "氧氣蛇形管 15cm/節 可自行剪裁",
       "brand": "",
       "tags": [],
       "category": "呼吸照護",
@@ -1466,7 +1468,7 @@
       "image": "/assets/uploads/respiratory-42-1.jpg"
     },
     {
-      "name": "士康 洗鼻器 洗鼻鹽",
+      "name": "士康 洗鼻器",
       "brand": "士康",
       "tags": [],
       "category": "呼吸照護",
@@ -1500,7 +1502,7 @@
       "image": "/assets/uploads/respiratory-44-1.jpg"
     },
     {
-      "name": "日本attento大王 透氣舒適復健褲 M/L 內褲型紙尿褲",
+      "name": "大王 attento 透氣舒適復健褲 M／L",
       "brand": "大王 attento",
       "tags": [],
       "category": "照護耗材",
@@ -1517,8 +1519,8 @@
       "image": "/assets/uploads/supplies-100-1.jpg"
     },
     {
-      "name": "安適康AnsCare 皙佳疤痕護理矽凝膠7g/15g",
-      "brand": "AnsCare 安適康",
+      "name": "安適康 AnsCare 皙佳疤痕護理矽凝膠 7g／15g",
+      "brand": "安適康 AnsCare",
       "tags": [],
       "category": "照護耗材",
       "subcategory": "敷料與人工皮",
@@ -1534,7 +1536,7 @@
       "image": "/assets/uploads/supplies-101-1.jpg"
     },
     {
-      "name": "CSD 中衛藥用紗布 Y型不織布墊 紗布墊 4吋 3吋",
+      "name": "中衛 CSD Y型不織布紗布墊 3吋／4吋",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -1551,7 +1553,7 @@
       "image": "/assets/uploads/supplies-11-1.jpg"
     },
     {
-      "name": "4包/箱 來復易 防漏安心復健褲 褲型尿布 成人紙尿褲",
+      "name": "來復易 防漏安心復健褲 4包/箱",
       "brand": "來復易",
       "tags": [],
       "category": "照護耗材",
@@ -1568,7 +1570,7 @@
       "image": "/assets/uploads/supplies-15-1.jpg"
     },
     {
-      "name": "UMED 優美採血針(滅菌) 200入/盒 放血片",
+      "name": "優美 UMED 採血針 200入/盒（滅菌）",
       "brand": "優美",
       "tags": [],
       "category": "照護耗材",
@@ -1585,7 +1587,7 @@
       "image": "/assets/uploads/supplies-45-1.jpg"
     },
     {
-      "name": "永猷 雙鋼印 成人醫用口罩 50入/盒 醫療口罩",
+      "name": "永猷 成人醫用口罩 50入/盒（雙鋼印）",
       "brand": "永猷",
       "tags": [],
       "category": "照護耗材",
@@ -1602,7 +1604,7 @@
       "image": "/assets/uploads/supplies-46-1.jpg"
     },
     {
-      "name": "中衛醫療防護口罩 有CSD鋼印 第二等級 中衛二級/中衛2級/加厚/雙剛印",
+      "name": "中衛 CSD 醫療防護口罩 第二等級",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -1619,7 +1621,7 @@
       "image": "/assets/uploads/supplies-47-1.jpg"
     },
     {
-      "name": "中衛口罩 醫療平面口罩 一級/二級 藍、綠、粉三色",
+      "name": "中衛 CSD 醫療平面口罩 一級／二級",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -1636,7 +1638,7 @@
       "image": "/assets/uploads/supplies-48-1.jpg"
     },
     {
-      "name": "中化 綠的 乾洗手消毒潔手凝露75%(500ml)(乙類成藥)",
+      "name": "中化 CCPC 綠的 乾洗手潔手凝露 75% 500ml",
       "brand": "中化 CCPC",
       "tags": [],
       "category": "照護耗材",
@@ -1653,7 +1655,7 @@
       "image": "/assets/uploads/supplies-49-1.jpg"
     },
     {
-      "name": "中、小棉球/棉花(未滅菌) 一磅裝 清潔 擦拭 酒精/優碘消毒適用",
+      "name": "棉球／棉花 一磅裝（未滅菌）",
       "brand": "",
       "tags": [],
       "category": "照護耗材",
@@ -1670,7 +1672,7 @@
       "image": "/assets/uploads/supplies-50-1.jpg"
     },
     {
-      "name": "中衛 酒精棉片 100片入",
+      "name": "中衛 CSD 酒精棉片 100片入",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -1704,7 +1706,7 @@
       "image": "/assets/uploads/supplies-52-1.jpg"
     },
     {
-      "name": "康乃馨 純水濕紙巾80抽/包 無酒精 無香精",
+      "name": "康乃馨 Carnation 純水濕紙巾 80抽/包",
       "brand": "康乃馨 Carnation",
       "tags": [],
       "category": "照護耗材",
@@ -1721,7 +1723,7 @@
       "image": "/assets/uploads/supplies-53-1.jpg"
     },
     {
-      "name": "醫強 克司博 派頓 75%酒精 500ml 有衛署字號 (乙類成藥)",
+      "name": "醫強 克司博 75%酒精 500ml（乙類成藥）",
       "brand": "醫強",
       "tags": [],
       "category": "照護耗材",
@@ -1738,7 +1740,7 @@
       "image": "/assets/uploads/supplies-54-1.jpg"
     },
     {
-      "name": "勤達 防疫隔離滅菌PE手套-100入/盒 -傷口無菌換藥",
+      "name": "勤達 滅菌PE手套 100入/盒",
       "brand": "勤達",
       "tags": [],
       "category": "照護耗材",
@@ -1755,7 +1757,7 @@
       "image": "/assets/uploads/supplies-55-1.jpg"
     },
     {
-      "name": "多倍 NBR無粉手套 加厚款 合成橡膠 檢診手套 無粉 美髮 烘焙 醫療",
+      "name": "多倍 PROTOS NBR無粉檢診手套（加厚）",
       "brand": "多倍 PROTOS",
       "tags": [],
       "category": "照護耗材",
@@ -1772,7 +1774,7 @@
       "image": "/assets/uploads/supplies-56-1.jpg"
     },
     {
-      "name": "多倍乳膠無粉檢診手套(未滅菌)",
+      "name": "多倍 PROTOS 乳膠無粉檢診手套（未滅菌）",
       "brand": "多倍 PROTOS",
       "tags": [],
       "category": "照護耗材",
@@ -1789,7 +1791,7 @@
       "image": "/assets/uploads/supplies-57-1.jpg"
     },
     {
-      "name": "PROTOS多倍乳膠檢診手套/乳膠手套 -未滅菌 (100入/盒)",
+      "name": "多倍 PROTOS 乳膠檢診手套 100入/盒（未滅菌）",
       "brand": "多倍 PROTOS",
       "tags": [],
       "category": "照護耗材",
@@ -1806,7 +1808,7 @@
       "image": "/assets/uploads/supplies-58-1.jpg"
     },
     {
-      "name": "華新 三花 PVC無粉檢診手套/(未滅菌)",
+      "name": "三花 華新 PVC無粉檢診手套（未滅菌）",
       "brand": "三花 華新",
       "tags": [],
       "category": "照護耗材",
@@ -1823,7 +1825,7 @@
       "image": "/assets/uploads/supplies-59-1.jpg"
     },
     {
-      "name": "三花 華新PVC無粉檢診手套(未滅菌) S/M/L",
+      "name": "三花 華新 PVC無粉檢診手套 S/M/L（未滅菌）",
       "brand": "三花 華新",
       "tags": [],
       "category": "照護耗材",
@@ -1840,7 +1842,7 @@
       "image": "/assets/uploads/supplies-60-1.jpg"
     },
     {
-      "name": "多倍塑膠檢診手套(無粉) PVC材質 S/M/L/XL 塑膠手套 PVC手套",
+      "name": "多倍 PROTOS PVC無粉檢診手套 S/M/L/XL",
       "brand": "多倍 PROTOS",
       "tags": [],
       "category": "照護耗材",
@@ -1857,7 +1859,7 @@
       "image": "/assets/uploads/supplies-61-1.jpg"
     },
     {
-      "name": "龍勝/大友 PE手套/手扒雞手套 一次性 抽取式 拋棄式手套 透明 染髮",
+      "name": "龍勝 一次性PE手套（抽取式）",
       "brand": "龍勝",
       "tags": [],
       "category": "照護耗材",
@@ -1874,7 +1876,7 @@
       "image": "/assets/uploads/supplies-62-1.jpg"
     },
     {
-      "name": "佳好 脫脂棉 (未滅菌) 棉花 盒裝脫脂棉",
+      "name": "佳好 盒裝脫脂棉（未滅菌）",
       "brand": "佳好",
       "tags": [],
       "category": "照護耗材",
@@ -1891,7 +1893,7 @@
       "image": "/assets/uploads/supplies-63-1.jpg"
     },
     {
-      "name": "安適生活嚴選 紙軸棉花棒 紙軸棉棒 200支入 白色",
+      "name": "安適生活 紙軸棉花棒 200支入",
       "brand": "安適生活",
       "tags": [],
       "category": "照護耗材",
@@ -1908,7 +1910,7 @@
       "image": "/assets/uploads/supplies-64-1.jpg"
     },
     {
-      "name": "中衛CSD棉棒(未滅菌) 普通棉棒 口腔棉棒 沖洗棉棒",
+      "name": "中衛 CSD 棉棒（未滅菌）",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -1925,7 +1927,7 @@
       "image": "/assets/uploads/supplies-65-1.jpg"
     },
     {
-      "name": "中衛CSD棉棒(滅菌) 3吋小棉棒 ENT棉棒 普通棉棒 口腔棉棒 沖洗棉棒",
+      "name": "中衛 CSD 3吋棉棒（滅菌）",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -1942,7 +1944,7 @@
       "image": "/assets/uploads/supplies-66-1.jpg"
     },
     {
-      "name": "禾捷 棉花棒 棉棒 普通棉棒 口腔棉棒 沖洗棉棒",
+      "name": "禾捷 棉花棒",
       "brand": "禾捷",
       "tags": [],
       "category": "照護耗材",
@@ -1976,8 +1978,8 @@
       "image": "/assets/uploads/supplies-68-1.jpg"
     },
     {
-      "name": "愛民 IM 網狀繃帶 1-9號 1KG 固定 繃帶",
-      "brand": "I-M 愛民",
+      "name": "愛民 I-M 網狀繃帶 1-9號 1kg",
+      "brand": "愛民 I-M",
       "tags": [],
       "category": "照護耗材",
       "subcategory": "敷料與人工皮",
@@ -1993,7 +1995,7 @@
       "image": "/assets/uploads/supplies-69-1.jpg"
     },
     {
-      "name": "ConvaTec 康威 適透膜粉 適透膜膠 造口粉",
+      "name": "康威 ConvaTec 適透膜粉／膠（造口粉）",
       "brand": "康威 ConvaTec",
       "tags": [],
       "category": "照護耗材",
@@ -2010,7 +2012,7 @@
       "image": "/assets/uploads/supplies-7-1.jpg"
     },
     {
-      "name": "宜鴻 彈性繃帶(未滅菌)(網狀繃帶)",
+      "name": "宜鴻 彈性網狀繃帶（未滅菌）",
       "brand": "宜鴻",
       "tags": [],
       "category": "照護耗材",
@@ -2027,7 +2029,7 @@
       "image": "/assets/uploads/supplies-70-1.jpg"
     },
     {
-      "name": "鎮好用彈性透氣伸縮絆 可隨意剪裁 傷口護理 透氣繃 OK絆 OK繃",
+      "name": "鎮好用 彈性透氣伸縮絆 可剪裁",
       "brand": "",
       "tags": [],
       "category": "照護耗材",
@@ -2061,7 +2063,7 @@
       "image": "/assets/uploads/supplies-72-1.jpg"
     },
     {
-      "name": "佑合 不織布紗布墊 200片2x2、3x3、4x4",
+      "name": "佑合 不織布紗布墊 200片 2x2／3x3／4x4",
       "brand": "佑合",
       "tags": [],
       "category": "照護耗材",
@@ -2078,7 +2080,7 @@
       "image": "/assets/uploads/supplies-73-1.jpg"
     },
     {
-      "name": "中衛CSD 石膏繃帶(未滅菌)10cm 15cm",
+      "name": "中衛 CSD 石膏繃帶 10cm／15cm（未滅菌）",
       "brand": "中衛 CSD",
       "tags": [],
       "category": "照護耗材",
@@ -2095,7 +2097,7 @@
       "image": "/assets/uploads/supplies-74-1.jpg"
     },
     {
-      "name": "蓓莉雅4x8紗布塊(滅菌)-10片/包",
+      "name": "蓓莉雅 4x8紗布塊 10片/包（滅菌）",
       "brand": "蓓莉雅",
       "tags": [],
       "category": "照護耗材",
@@ -2112,7 +2114,7 @@
       "image": "/assets/uploads/supplies-75-1.jpg"
     },
     {
-      "name": "中衛 蓓莉雅 滅菌紗布 3X6 4X8 8ply 10片入",
+      "name": "蓓莉雅 滅菌紗布 3x6／4x8 10片入",
       "brand": "蓓莉雅",
       "tags": [],
       "category": "照護耗材",
@@ -2129,7 +2131,7 @@
       "image": "/assets/uploads/supplies-76-1.jpg"
     },
     {
-      "name": "滅菌紗布 紗布塊 純紗 不織布 2X2 3X3 4X4",
+      "name": "滅菌紗布塊 2x2／3x3／4x4",
       "brand": "",
       "tags": [],
       "category": "照護耗材",
@@ -2146,7 +2148,7 @@
       "image": "/assets/uploads/supplies-77-1.jpg"
     },
     {
-      "name": "3M Nexcare 膚色通氣膠帶一吋12入(盒)",
+      "name": "3M Nexcare 膚色通氣膠帶 1吋 12入/盒",
       "brand": "3M",
       "tags": [],
       "category": "照護耗材",
@@ -2163,7 +2165,7 @@
       "image": "/assets/uploads/supplies-78-1.jpg"
     },
     {
-      "name": "3M通氣紙膠 一吋 12粒入",
+      "name": "3M 通氣紙膠 1吋 12入",
       "brand": "3M",
       "tags": [],
       "category": "照護耗材",
@@ -2180,7 +2182,7 @@
       "image": "/assets/uploads/supplies-79-1.jpg"
     },
     {
-      "name": "整盒 芬蒂思 透氣膠帶/接睫用紙膠 單顆包裝 一吋/半吋",
+      "name": "芬蒂思 透氣膠帶 1吋／半吋（整盒）",
       "brand": "芬蒂思",
       "tags": [],
       "category": "照護耗材",
@@ -2214,7 +2216,7 @@
       "image": "/assets/uploads/supplies-81-1.jpg"
     },
     {
-      "name": "愛樂康ALCARE 低敏絲柔膠帶 一吋",
+      "name": "愛樂康 ALCARE 低敏絲柔膠帶 1吋",
       "brand": "愛樂康 ALCARE",
       "tags": [],
       "category": "照護耗材",
@@ -2231,7 +2233,7 @@
       "image": "/assets/uploads/supplies-82-1.jpg"
     },
     {
-      "name": "3M 宜拉膠帶 1吋0.5吋",
+      "name": "3M 宜拉膠帶 1吋／0.5吋",
       "brand": "3M",
       "tags": [],
       "category": "照護耗材",
@@ -2248,7 +2250,7 @@
       "image": "/assets/uploads/supplies-83-1.jpg"
     },
     {
-      "name": "不鏽鋼紙膠切台 刀口升降",
+      "name": "富士康 不鏽鋼紙膠切台（刀口升降）",
       "brand": "富士康",
       "tags": [],
       "category": "照護耗材",
@@ -2282,7 +2284,7 @@
       "image": "/assets/uploads/supplies-85-1.jpg"
     },
     {
-      "name": "3M 溫和剝離矽膠帶 敏感脆弱肌專用 免用剪刀 不殘膠",
+      "name": "3M 溫和剝離矽膠帶（敏感肌適用）",
       "brand": "3M",
       "tags": [],
       "category": "照護耗材",
@@ -2299,7 +2301,7 @@
       "image": "/assets/uploads/supplies-86-1.jpg"
     },
     {
-      "name": "3M透氣嬰兒膠布 1吋 (單粒彩盒裝)",
+      "name": "3M 透氣嬰兒膠布 1吋",
       "brand": "3M",
       "tags": [],
       "category": "照護耗材",
@@ -2316,7 +2318,7 @@
       "image": "/assets/uploads/supplies-87-1.jpg"
     },
     {
-      "name": "單顆零售 芬蒂思 透氣膠帶/接睫用紙膠 單顆包裝 一吋/半吋",
+      "name": "芬蒂思 透氣膠帶 1吋／半吋（單顆）",
       "brand": "芬蒂思",
       "tags": [],
       "category": "照護耗材",
@@ -2333,7 +2335,7 @@
       "image": "/assets/uploads/supplies-88-1.jpg"
     },
     {
-      "name": "採血筆 GE/瑞特血糖機通用型",
+      "name": "瑞特 採血筆（血糖機通用型）",
       "brand": "瑞特",
       "tags": [],
       "category": "照護耗材",
@@ -2367,8 +2369,8 @@
       "image": "/assets/uploads/supplies-90-1.jpg"
     },
     {
-      "name": "採血筆 EasyMax 宜瑪氏專業型採血筆",
-      "brand": "EasyMax 宜瑪氏",
+      "name": "宜瑪氏 EasyMax 專業型採血筆",
+      "brand": "宜瑪氏 EasyMax",
       "tags": [],
       "category": "照護耗材",
       "subcategory": "血糖試紙與採血針",
@@ -2418,7 +2420,7 @@
       "image": "/assets/uploads/supplies-93-1.jpg"
     },
     {
-      "name": "愛樂康造口術用袋 C100(封口) 便袋 造口袋 (未滅菌)",
+      "name": "愛樂康 ALCARE C100 造口袋（封口／未滅菌）",
       "brand": "愛樂康 ALCARE",
       "tags": [],
       "category": "照護耗材",
@@ -2435,7 +2437,7 @@
       "image": "/assets/uploads/supplies-94-1.jpg"
     },
     {
-      "name": "愛樂康造口術用袋 G100(開口) 便袋 造口袋 (未滅菌)",
+      "name": "愛樂康 ALCARE G100 造口袋（開口／未滅菌）",
       "brand": "愛樂康 ALCARE",
       "tags": [],
       "category": "照護耗材",
@@ -2452,7 +2454,7 @@
       "image": "/assets/uploads/supplies-95-1.jpg"
     },
     {
-      "name": "愛樂康 Pospack萬用造口袋 萬用便袋 10入/盒 13361",
+      "name": "愛樂康 ALCARE Pospack 萬用造口袋 10入/盒",
       "brand": "愛樂康 ALCARE",
       "tags": [],
       "category": "照護耗材",
@@ -2469,7 +2471,7 @@
       "image": "/assets/uploads/supplies-96-1.jpg"
     },
     {
-      "name": "車上用尿袋 無臭無味 尿液不外露 塞車必備",
+      "name": "車用應急尿袋 無臭密封",
       "brand": "",
       "tags": [],
       "category": "照護耗材",
@@ -2486,7 +2488,7 @@
       "image": "/assets/uploads/supplies-97-1.jpg"
     },
     {
-      "name": "綠十字 泌尿導管附件 男用泌尿套 未滅菌",
+      "name": "綠十字 男用泌尿套（未滅菌）",
       "brand": "綠十字",
       "tags": [],
       "category": "照護耗材",
@@ -2503,7 +2505,7 @@
       "image": "/assets/uploads/supplies-98-1.jpg"
     },
     {
-      "name": "尿袋束套 尿捲固定帶 12入/包 (無外盒)",
+      "name": "尿袋束套固定帶 12入/包",
       "brand": "",
       "tags": [],
       "category": "照護耗材",
