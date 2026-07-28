@@ -1,0 +1,26 @@
+---
+name: 採血筆 GE/瑞特血糖機通用型
+taxonomy: 照護耗材/血糖試紙與採血針
+price: 245
+brand: 瑞特
+offering:
+  - 線上選購
+  - 門市洽詢
+rentable: false
+rental_price: ""
+shopee_url: https://shopee.tw/product/8642264/1440608300
+subsidy: []
+tags: []
+specs: []
+images:
+  - /assets/uploads/supplies-89-1.jpg
+image_status: 自有圖片
+published: true
+source: shopee
+---
+
+瑞特 RIGHTEST｜血糖試紙與採血針。血糖自我監測所需的耗材。
+
+採血針為單次使用品，請勿重複使用。
+
+實際庫存與價格以門市為準，歡迎來電洽詢。

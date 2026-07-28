@@ -1,0 +1,24 @@
+---
+name: Conwell 康威利 5921
+taxonomy: 復健理療/復健鞋
+price: 6000
+brand: 康威利
+offering:
+  - 門市洽詢
+rentable: false
+rental_price: ""
+subsidy: []
+tags: []
+specs:
+  - label: 規格選項
+    value: "S: NT$6000 ｜ M: NT$6000 ｜ L: NT$6000 ｜ XL: NT$6000"
+images: []
+published: true
+source: import
+---
+
+康威利 Conwell｜復健鞋。針對足部保護、減壓與行走穩定設計的鞋款。
+
+尺寸與足弓支撐影響穿著效果，建議到店試穿。
+
+實際庫存與價格以門市為準，歡迎來電洽詢。

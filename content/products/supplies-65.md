@@ -1,0 +1,28 @@
+---
+name: 中衛CSD棉棒(未滅菌) 普通棉棒 口腔棉棒 沖洗棉棒
+taxonomy: 照護耗材/紗布棉棒
+price: 25
+brand: 中衛
+offering:
+  - 線上選購
+  - 門市洽詢
+rentable: false
+rental_price: ""
+shopee_url: https://shopee.tw/product/8642264/5017004617
+subsidy: []
+tags: []
+specs:
+  - label: 滅菌狀態
+    value: 未滅菌
+images:
+  - /assets/uploads/supplies-65-1.jpg
+image_status: 自有圖片
+published: true
+source: shopee
+---
+
+中衛 CSD｜紗布棉棒。傷口清潔與換藥的基本耗材，分滅菌與未滅菌兩種。
+
+接觸開放性傷口請務必使用滅菌品項。
+
+實際庫存與價格以門市為準，歡迎來電洽詢。
