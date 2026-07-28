@@ -1,5 +1,5 @@
 ---
-name: 華新 三花 PVC無粉檢診手套/(未滅菌)
+name: 三花 華新 PVC無粉檢診手套（未滅菌）
 taxonomy: 照護耗材/手套
 price: 109
 brand: 三花

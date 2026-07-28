@@ -1,5 +1,5 @@
 ---
-name: Sunlus三樂事 熊貝比電動吸鼻器
+name: 三樂事 Sunlus 熊貝比電動吸鼻器
 taxonomy: 呼吸照護/吸鼻器
 price: 2380
 brand: 三樂事

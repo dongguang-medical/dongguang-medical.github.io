@@ -1,5 +1,5 @@
 ---
-name: 冷熱敷水袋-雙效合一
+name: 雙效冷熱敷水袋
 taxonomy: 復健理療/冷熱敷用品
 price: 99
 brand: ""

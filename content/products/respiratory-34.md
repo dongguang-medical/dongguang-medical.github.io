@@ -1,5 +1,5 @@
 ---
-name: 新豐 醫友抽痰包10Fr、12Fr、14Fr，100條/包
+name: 新豐 醫友 抽痰包 100條/包
 taxonomy: 呼吸照護/抽痰機耗材
 price: 490
 brand: 新豐
@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 包裝規格
     value: 100條/包
+  - label: 適用尺寸
+    value: 10Fr／12Fr／14Fr
 images:
   - /assets/uploads/respiratory-34-1.jpg
 published: true

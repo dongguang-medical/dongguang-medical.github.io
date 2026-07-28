@@ -1,5 +1,5 @@
 ---
-name: 不鏽鋼 蚊式止血鉗 12.5公分
+name: 不鏽鋼蚊式止血鉗 12.5cm
 taxonomy: 其他/醫療器械
 price: 165
 brand: ""

@@ -1,5 +1,5 @@
 ---
-name: 安適生活嚴選 紙軸棉花棒 紙軸棉棒 200支入 白色
+name: 安適生活 紙軸棉花棒 200支入
 taxonomy: 照護耗材/紗布棉棒
 price: 43
 brand: 安適生活
@@ -11,7 +11,11 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1317279185
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 材質
+    value: 紙軸
+  - label: 顏色
+    value: 白色
 images:
   - /assets/uploads/supplies-64-1.jpg
 published: true

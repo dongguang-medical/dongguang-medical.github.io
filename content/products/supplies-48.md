@@ -1,5 +1,5 @@
 ---
-name: 中衛口罩 醫療平面口罩 一級/二級 藍、綠、粉三色
+name: 中衛 CSD 醫療平面口罩 一級／二級
 taxonomy: 照護耗材/口罩
 price: 135
 brand: 中衛
@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4466220634
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 顏色
+    value: 藍／綠／粉
 images:
   - /assets/uploads/supplies-48-1.jpg
   - /assets/uploads/supplies-48-2.jpg

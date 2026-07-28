@@ -1,5 +1,5 @@
 ---
-name: 安適康AnsCare 皙佳疤痕護理矽凝膠7g/15g
+name: 安適康 AnsCare 皙佳疤痕護理矽凝膠 7g／15g
 taxonomy: 照護耗材/敷料與人工皮
 price: 960
 brand: anscare
@@ -19,7 +19,7 @@ published: true
 source: shopee
 ---
 
-AnsCare 安適康｜敷料與人工皮。覆蓋並保護傷口，維持適當濕潤環境以利癒合。
+安適康 AnsCare｜敷料與人工皮。覆蓋並保護傷口，維持適當濕潤環境以利癒合。
 
 更換頻率與敷料選擇建議依傷口狀況與醫護指示。
 

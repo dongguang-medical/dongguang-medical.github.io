@@ -1,5 +1,5 @@
 ---
-name: 醫技 冷熱敷墊 EG-0088
+name: 醫技 E-G MED EG-0088 冷熱敷墊
 taxonomy: 復健理療/冷熱敷用品
 price: 135
 brand: 醫技

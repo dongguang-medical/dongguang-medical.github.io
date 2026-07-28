@@ -1,5 +1,5 @@
 ---
-name: 香條/艾條/養根命 溫灸棒 溫灸
+name: 養根命 艾條溫灸棒
 taxonomy: 其他/居家生活用品
 price: 150
 brand: ""

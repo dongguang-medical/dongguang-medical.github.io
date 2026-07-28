@@ -1,5 +1,5 @@
 ---
-name: 愛樂康 Pospack萬用造口袋 萬用便袋 10入/盒 13361
+name: 愛樂康 ALCARE Pospack 萬用造口袋 10入/盒
 taxonomy: 照護耗材/造口與泌尿用品
 price: 420
 brand: 愛樂康

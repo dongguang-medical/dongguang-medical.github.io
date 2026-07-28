@@ -1,5 +1,5 @@
 ---
-name: 滅菌紗布 紗布塊 純紗 不織布 2X2 3X3 4X4
+name: 滅菌紗布塊 2x2／3x3／4x4
 taxonomy: 照護耗材/紗布棉棒
 price: 4
 brand: ""

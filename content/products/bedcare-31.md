@@ -1,5 +1,5 @@
 ---
-name: 中衛 病患用潤滑膏3gm
+name: 中衛 CSD 病患用潤滑膏 3g
 taxonomy: 臥床照護/管路照護用品
 price: 100
 brand: 中衛

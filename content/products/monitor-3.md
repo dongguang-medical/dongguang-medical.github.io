@@ -1,5 +1,5 @@
 ---
-name: OMRON歐姆龍 血壓計交流變壓器
+name: 歐姆龍 OMRON 血壓計交流變壓器
 taxonomy: 健康量測/血壓計配件
 price: 500
 brand: 歐姆龍

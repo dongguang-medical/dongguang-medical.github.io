@@ -1,5 +1,5 @@
 ---
-name: 怡安 抽痰瓶 蓄瓶 收集瓶 1750ml
+name: 怡安 抽痰收集瓶 1750ml
 taxonomy: 呼吸照護/抽痰機耗材
 price: 380
 brand: 怡安

@@ -1,5 +1,5 @@
 ---
-name: 禾捷 棉花棒 棉棒 普通棉棒 口腔棉棒 沖洗棉棒
+name: 禾捷 棉花棒
 taxonomy: 照護耗材/紗布棉棒
 price: 3
 brand: 禾捷

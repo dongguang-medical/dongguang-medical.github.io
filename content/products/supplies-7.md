@@ -1,5 +1,5 @@
 ---
-name: ConvaTec 康威 適透膜粉 適透膜膠 造口粉
+name: 康威 ConvaTec 適透膜粉／膠（造口粉）
 taxonomy: 照護耗材/敷料與人工皮
 price: 275
 brand: 康威

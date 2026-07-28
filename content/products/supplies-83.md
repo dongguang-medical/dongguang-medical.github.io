@@ -1,5 +1,5 @@
 ---
-name: 3M 宜拉膠帶 1吋0.5吋
+name: 3M 宜拉膠帶 1吋／0.5吋
 taxonomy: 照護耗材/醫用膠帶
 price: 129
 brand: 3m

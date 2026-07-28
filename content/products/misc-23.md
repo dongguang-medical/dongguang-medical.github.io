@@ -1,5 +1,5 @@
 ---
-name: 斯巴洗眼器/洗眼
+name: 斯巴 洗眼器
 taxonomy: 其他/醫療器械
 price: 123
 brand: ""

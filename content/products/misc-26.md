@@ -1,5 +1,5 @@
 ---
-name: Spirit精國/益江 雙面聽診器(未滅菌) 手動聽診器 簡易聽診器
+name: 精國 Spirit 雙面聽診器（未滅菌）
 taxonomy: 其他/診所與醫護設備
 price: 220
 brand: 精國

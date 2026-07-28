@@ -1,5 +1,5 @@
 ---
-name: 台灣製 SOHO BACK 舒活透氣雙背墊 安能背克
+name: SOHO BACK 舒活透氣雙背墊
 taxonomy: 其他/居家生活用品
 price: 230
 brand: soho-back

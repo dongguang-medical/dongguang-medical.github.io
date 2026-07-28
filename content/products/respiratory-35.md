@@ -1,5 +1,5 @@
 ---
-name: 雃博 專用抽痰杯 集痰杯 800cc
+name: 雃博 APEX 抽痰杯 800cc
 taxonomy: 呼吸照護/抽痰機耗材
 price: 450
 brand: 雃博

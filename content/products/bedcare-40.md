@@ -1,5 +1,5 @@
 ---
-name: 雃博 甜甜圈減壓墊 坐瘡護墊
+name: 雃博 APEX 甜甜圈減壓坐墊
 taxonomy: 臥床照護/擺位枕
 price: 799
 brand: 雃博

@@ -1,5 +1,5 @@
 ---
-name: 萊禮 CPR面膜 急救面膜 人工呼吸面膜 36片一盒
+name: 萊禮 CPR急救面膜 36片/盒
 taxonomy: 其他/急救器材
 price: 550
 brand: 萊禮

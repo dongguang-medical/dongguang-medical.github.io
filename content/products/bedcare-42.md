@@ -1,5 +1,5 @@
 ---
-name: 試管刷 氣切刷 毛刷
+name: 氣切內管清潔刷
 taxonomy: 臥床照護/管路照護用品
 price: 40
 brand: ""

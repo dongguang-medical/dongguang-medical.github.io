@@ -1,5 +1,5 @@
 ---
-name: BRAUN 百靈 IRT6030 體溫計 百齡耳溫槍
+name: 百靈 BRAUN IRT6030 耳溫槍
 taxonomy: 健康量測/體溫計
 price: 2480
 brand: 百靈

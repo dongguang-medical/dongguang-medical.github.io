@@ -1,5 +1,5 @@
 ---
-name: 雅博 恆溫濕熱電毯 14x20/14x27/肩頸 保固2年
+name: 雃博 APEX 恆溫濕熱電毯 14x20／14x27／肩頸
 taxonomy: 復健理療/熱敷墊
 price: 1850
 brand: 雃博
@@ -10,7 +10,8 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/11417667614
 subsidy: []
-tags: []
+tags:
+  - 保固2年
 specs:
   - label: 產地
     value: 台灣製造

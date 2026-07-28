@@ -1,5 +1,5 @@
 ---
-name: NISSEI 日本精密迷你耳溫槍 MT-30CPLB
+name: 日本精密 NISSEI MT-30CPLB 迷你耳溫槍
 taxonomy: 健康量測/體溫計
 price: 1580
 brand: 日本精密

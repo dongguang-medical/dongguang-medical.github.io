@@ -1,5 +1,5 @@
 ---
-name: KATO 美國進口 邁康 超靜音 防音耳塞 NRR33
+name: 邁康 KATO NRR33 防音耳塞
 taxonomy: 其他/居家生活用品
 price: 45
 brand: 邁康

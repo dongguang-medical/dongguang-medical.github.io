@@ -1,5 +1,5 @@
 ---
-name: UMED 優美採血針(滅菌) 200入/盒 放血片
+name: 優美 UMED 採血針 200入/盒（滅菌）
 taxonomy: 照護耗材/血糖試紙與採血針
 price: 180
 brand: 優美

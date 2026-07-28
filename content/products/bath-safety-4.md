@@ -1,5 +1,5 @@
 ---
-name: 富士康 FZK 加大防水洗頭帽 6孔舒適 洗髮帽
+name: 富士康 FZK 加大防水洗頭帽
 taxonomy: 衛浴與居家安全/沐浴清潔用品
 price: 150
 brand: 富士康
@@ -13,7 +13,9 @@ subsidy: []
 tags:
   - 防水材質
   - 加大尺寸
-specs: []
+specs:
+  - label: 孔數
+    value: 6 孔
 images:
   - /assets/uploads/bath-safety-4-1.jpg
   - /assets/uploads/bath-safety-4-2.jpg

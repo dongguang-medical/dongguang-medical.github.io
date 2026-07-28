@@ -1,5 +1,5 @@
 ---
-name: 3M透氣嬰兒膠布 1吋 (單粒彩盒裝)
+name: 3M 透氣嬰兒膠布 1吋
 taxonomy: 照護耗材/醫用膠帶
 price: 59
 brand: 3m

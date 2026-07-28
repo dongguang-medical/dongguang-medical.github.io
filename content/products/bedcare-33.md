@@ -1,5 +1,5 @@
 ---
-name: RANCA 藍卡沖牙機 R-302
+name: 藍卡 RANCA R-302 沖牙機
 taxonomy: 臥床照護/口腔照護
 price: 1980
 brand: ranca
@@ -20,7 +20,7 @@ published: true
 source: shopee
 ---
 
-RANCA 藍卡｜口腔照護。臥床者與長者的口腔清潔用品。
+藍卡 RANCA｜口腔照護。臥床者與長者的口腔清潔用品。
 
 臥床者使用時請採側臥並注意避免嗆咳。
 

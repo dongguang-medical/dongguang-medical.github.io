@@ -1,5 +1,5 @@
 ---
-name: 杰奇 JM-415 運動復健手套 手固定腳踏器
+name: 杰奇 JM-415 運動復健手套
 taxonomy: 復健理療/復健器材
 price: 240
 brand: 杰奇

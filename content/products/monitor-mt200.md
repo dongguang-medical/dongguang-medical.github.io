@@ -1,5 +1,5 @@
 ---
-name: microlife 百略 電子體溫計 MT200
+name: 百略 microlife MT200 電子體溫計
 taxonomy: 健康量測/體溫計
 price: 280
 brand: 百略

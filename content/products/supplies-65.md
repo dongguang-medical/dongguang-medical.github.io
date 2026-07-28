@@ -1,5 +1,5 @@
 ---
-name: 中衛CSD棉棒(未滅菌) 普通棉棒 口腔棉棒 沖洗棉棒
+name: 中衛 CSD 棉棒（未滅菌）
 taxonomy: 照護耗材/紗布棉棒
 price: 25
 brand: 中衛

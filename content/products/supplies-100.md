@@ -1,5 +1,5 @@
 ---
-name: 日本attento大王 透氣舒適復健褲 M/L 內褲型紙尿褲
+name: 大王 attento 透氣舒適復健褲 M／L
 taxonomy: 照護耗材/成人紙尿褲
 price: 239
 brand: attento
@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/8852348251
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 產地
+    value: 日本製
 images:
   - /assets/uploads/supplies-100-1.jpg
   - /assets/uploads/supplies-100-2.jpg

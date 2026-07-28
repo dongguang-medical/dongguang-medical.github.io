@@ -1,5 +1,5 @@
 ---
-name: 多倍塑膠檢診手套(無粉) PVC材質 S/M/L/XL 塑膠手套 PVC手套
+name: 多倍 PROTOS PVC無粉檢診手套 S/M/L/XL
 taxonomy: 照護耗材/手套
 price: 109
 brand: 多倍
