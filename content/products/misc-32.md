@@ -22,7 +22,6 @@ images:
   - /assets/uploads/misc-32-1.jpg
   - /assets/uploads/misc-32-2.jpg
   - /assets/uploads/misc-32-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

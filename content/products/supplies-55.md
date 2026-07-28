@@ -18,7 +18,6 @@ specs:
     value: 100入/盒
 images:
   - /assets/uploads/supplies-55-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

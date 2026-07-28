@@ -16,7 +16,6 @@ specs:
     value: MT200
 images:
   - /assets/uploads/monitor-mt200-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

@@ -19,7 +19,6 @@ specs:
 images:
   - /assets/uploads/monitor-th889-1.jpg
   - /assets/uploads/monitor-th889-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

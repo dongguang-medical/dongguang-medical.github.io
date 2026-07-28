@@ -19,7 +19,6 @@ specs:
 images:
   - /assets/uploads/supplies-74-1.jpg
   - /assets/uploads/supplies-74-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

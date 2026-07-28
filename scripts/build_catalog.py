@@ -321,8 +321,6 @@ def load_products(brands, taxonomy=None):
             "tags": tags,
             "specs": specs,
             "images": images,
-            # 「暫用外部圖待替換」= 先借外部來源的圖撐版面，待換成自有素材
-            "image_status": s("image_status"),
             "featured": str(fm.get("featured", "false")).strip().lower()
                         in ("true", "yes", "1"),
             "body": body,

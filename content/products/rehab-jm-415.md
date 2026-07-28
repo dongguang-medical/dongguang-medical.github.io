@@ -16,7 +16,6 @@ specs:
     value: JM-415
 images:
   - /assets/uploads/rehab-jm-415-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

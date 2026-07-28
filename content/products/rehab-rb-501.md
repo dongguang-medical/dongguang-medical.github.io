@@ -19,7 +19,6 @@ specs:
 images:
   - /assets/uploads/rehab-rb-501-1.jpg
   - /assets/uploads/rehab-rb-501-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

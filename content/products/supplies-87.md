@@ -16,7 +16,6 @@ specs:
     value: 1吋
 images:
   - /assets/uploads/supplies-87-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

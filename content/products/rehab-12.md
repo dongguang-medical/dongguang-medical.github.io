@@ -23,7 +23,6 @@ images:
   - /assets/uploads/rehab-12-1.jpg
   - /assets/uploads/rehab-12-2.jpg
   - /assets/uploads/rehab-12-3.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

@@ -18,7 +18,6 @@ images:
   - /assets/uploads/bedcare-31-1.jpg
   - /assets/uploads/bedcare-31-2.jpg
   - /assets/uploads/bedcare-31-3.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

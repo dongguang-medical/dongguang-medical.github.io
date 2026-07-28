@@ -23,7 +23,6 @@ images:
   - /assets/uploads/monitor-mt-30cplb-4.jpg
   - /assets/uploads/monitor-mt-30cplb-5.jpg
   - /assets/uploads/monitor-mt-30cplb-6.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

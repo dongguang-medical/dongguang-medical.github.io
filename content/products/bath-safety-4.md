@@ -18,7 +18,6 @@ images:
   - /assets/uploads/bath-safety-4-1.jpg
   - /assets/uploads/bath-safety-4-2.jpg
   - /assets/uploads/bath-safety-4-3.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

@@ -20,7 +20,6 @@ images:
   - /assets/uploads/rehab-ss-717-1.jpg
   - /assets/uploads/rehab-ss-717-2.jpg
   - /assets/uploads/rehab-ss-717-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

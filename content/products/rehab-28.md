@@ -18,7 +18,6 @@ images:
   - /assets/uploads/rehab-28-3.jpg
   - /assets/uploads/rehab-28-4.jpg
   - /assets/uploads/rehab-28-5.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

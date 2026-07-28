@@ -16,7 +16,6 @@ images:
   - /assets/uploads/respiratory-43-1.jpg
   - /assets/uploads/respiratory-43-2.jpg
   - /assets/uploads/respiratory-43-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

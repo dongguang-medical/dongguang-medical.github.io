@@ -14,7 +14,6 @@ tags: []
 specs: []
 images:
   - /assets/uploads/supplies-89-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

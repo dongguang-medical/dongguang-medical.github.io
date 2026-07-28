@@ -18,7 +18,6 @@ specs:
     value: 日本製
 images:
   - /assets/uploads/supplies-94-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

@@ -16,7 +16,6 @@ specs:
     value: 日本製
 images:
   - /assets/uploads/rehab-30-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

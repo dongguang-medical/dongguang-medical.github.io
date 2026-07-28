@@ -18,7 +18,6 @@ images:
   - /assets/uploads/supplies-85-1.jpg
   - /assets/uploads/supplies-85-2.jpg
   - /assets/uploads/supplies-85-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

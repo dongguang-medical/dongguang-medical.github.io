@@ -15,7 +15,6 @@ specs: []
 images:
   - /assets/uploads/misc-29-1.jpg
   - /assets/uploads/misc-29-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

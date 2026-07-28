@@ -20,7 +20,6 @@ images:
   - /assets/uploads/monitor-hbf-217-3.jpg
   - /assets/uploads/monitor-hbf-217-4.jpg
   - /assets/uploads/monitor-hbf-217-5.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

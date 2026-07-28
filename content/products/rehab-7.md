@@ -16,7 +16,6 @@ specs:
     value: "S: NT$162 ｜ M: NT$162 ｜ L: NT$162 ｜ XL: NT$162"
 images:
   - /assets/uploads/rehab-7-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

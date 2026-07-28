@@ -18,7 +18,6 @@ images:
   - /assets/uploads/monitor-21-3.jpg
   - /assets/uploads/monitor-21-4.jpg
   - /assets/uploads/monitor-21-5.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

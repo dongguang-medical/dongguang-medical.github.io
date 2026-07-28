@@ -16,7 +16,6 @@ specs:
     value: EG-0088
 images:
   - /assets/uploads/rehab-eg-0088-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

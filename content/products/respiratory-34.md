@@ -16,7 +16,6 @@ specs:
     value: 100條/包
 images:
   - /assets/uploads/respiratory-34-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

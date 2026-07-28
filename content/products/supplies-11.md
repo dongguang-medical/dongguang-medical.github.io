@@ -18,7 +18,6 @@ specs:
     value: "2寸 6PLY: NT$4 ｜ 3寸 6PLY: NT$5 ｜ 4寸 4PLY: NT$6"
 images:
   - /assets/uploads/supplies-11-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

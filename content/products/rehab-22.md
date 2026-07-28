@@ -20,7 +20,6 @@ specs:
 images:
   - /assets/uploads/rehab-22-1.jpg
   - /assets/uploads/rehab-22-2.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

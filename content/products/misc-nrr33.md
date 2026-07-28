@@ -21,7 +21,6 @@ specs:
 images:
   - /assets/uploads/misc-nrr33-1.jpg
   - /assets/uploads/misc-nrr33-2.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

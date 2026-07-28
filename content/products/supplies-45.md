@@ -20,7 +20,6 @@ images:
   - /assets/uploads/supplies-45-1.jpg
   - /assets/uploads/supplies-45-2.jpg
   - /assets/uploads/supplies-45-3.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

@@ -18,7 +18,6 @@ images:
   - /assets/uploads/supplies-7-1.jpg
   - /assets/uploads/supplies-7-2.jpg
   - /assets/uploads/supplies-7-3.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

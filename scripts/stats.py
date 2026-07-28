@@ -77,18 +77,6 @@ def report_overview(products, brands):
     no_img = [p for p in products if not p["images"]]
     print(f"  缺圖        {len(no_img):>4}  {bar(len(no_img), total)}"
           f"  {len(no_img) / total * 100:4.1f}%")
-    pending = [p for p in products
-               if p["images"] and p.get("image_status") == "暫用外部圖待替換"]
-    own = [p for p in products
-           if p["images"] and p.get("image_status") != "暫用外部圖待替換"]
-    print(f"  自有圖片    {len(own):>4}  {bar(len(own), total)}"
-          f"  {len(own) / total * 100:4.1f}%")
-    print(f"  待替換      {len(pending):>4}  {bar(len(pending), total)}"
-          f"  {len(pending) / total * 100:4.1f}%")
-    if pending:
-        by_brand = Counter(p["brand"] or "(未指定品牌)" for p in pending)
-        top = "、".join(f"{n}({c})" for n, c in by_brand.most_common(5))
-        print(f"    └ 待替換最多的品牌：{top}")
 
     print("\n── 品牌 Top 15 " + "─" * 39)
     by_brand = Counter(p["brand"] or "(未指定品牌)" for p in products)

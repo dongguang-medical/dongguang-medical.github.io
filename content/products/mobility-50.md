@@ -18,7 +18,6 @@ images:
   - /assets/uploads/mobility-50-3.jpg
   - /assets/uploads/mobility-50-4.jpg
   - /assets/uploads/mobility-50-5.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

@@ -16,7 +16,6 @@ specs:
     value: "便盆(均佳便盆椅專用): NT$170 ｜ 中空坐墊: NT$350 ｜ U型座墊: NT$500 ｜ 子母坐墊: NT$600"
 images:
   - /assets/uploads/bath-safety-10-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

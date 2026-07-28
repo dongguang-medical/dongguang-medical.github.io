@@ -17,7 +17,6 @@ specs:
 images:
   - /assets/uploads/monitor-irt6030-1.jpg
   - /assets/uploads/monitor-irt6030-2.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

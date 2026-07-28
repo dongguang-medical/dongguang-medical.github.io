@@ -16,7 +16,6 @@ specs:
     value: 1750ml
 images:
   - /assets/uploads/respiratory-36-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

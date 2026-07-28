@@ -16,7 +16,6 @@ specs:
     value: 未滅菌
 images:
   - /assets/uploads/supplies-63-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

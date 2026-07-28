@@ -21,7 +21,6 @@ specs:
     value: "JM-245 (S)：25吋~33吋cm: NT$1200 [4713809652450]｜JM-246 (M)：28吋~36吋cm: NT$1200 [4713809652467]…等"
 images:
   - /assets/uploads/bedcare-24-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

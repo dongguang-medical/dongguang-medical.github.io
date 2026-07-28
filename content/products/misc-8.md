@@ -23,7 +23,6 @@ images:
   - /assets/uploads/misc-8-2.jpg
   - /assets/uploads/misc-8-3.jpg
   - /assets/uploads/misc-8-4.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

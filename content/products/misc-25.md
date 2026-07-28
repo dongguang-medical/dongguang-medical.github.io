@@ -16,7 +16,6 @@ images:
   - /assets/uploads/misc-25-1.jpg
   - /assets/uploads/misc-25-2.jpg
   - /assets/uploads/misc-25-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

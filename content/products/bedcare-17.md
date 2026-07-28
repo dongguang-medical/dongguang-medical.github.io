@@ -16,7 +16,6 @@ specs:
     value: "有牙粉(11支入): NT$50/原NT$60 ｜ 無牙粉(11支入): NT$50/原NT$60"
 images:
   - /assets/uploads/bedcare-17-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

@@ -15,7 +15,6 @@ specs: []
 images:
   - /assets/uploads/bedcare-39-1.jpg
   - /assets/uploads/bedcare-39-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

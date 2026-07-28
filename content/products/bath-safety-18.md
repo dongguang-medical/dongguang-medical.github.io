@@ -16,7 +16,6 @@ images:
   - /assets/uploads/bath-safety-18-1.jpg
   - /assets/uploads/bath-safety-18-2.jpg
   - /assets/uploads/bath-safety-18-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

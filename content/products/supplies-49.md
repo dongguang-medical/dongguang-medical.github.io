@@ -16,7 +16,6 @@ specs:
     value: 500ml
 images:
   - /assets/uploads/supplies-49-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

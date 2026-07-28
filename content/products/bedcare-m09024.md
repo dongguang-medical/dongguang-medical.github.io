@@ -21,7 +21,6 @@ specs:
     value: NT$160/原NT$200
 images:
   - /assets/uploads/bedcare-m09024-1.jpg
-image_status: 自有圖片
 published: true
 source: import
 ---

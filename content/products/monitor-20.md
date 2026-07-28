@@ -15,7 +15,6 @@ specs: []
 images:
   - /assets/uploads/monitor-20-1.jpg
   - /assets/uploads/monitor-20-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

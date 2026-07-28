@@ -21,7 +21,6 @@ specs:
 images:
   - /assets/uploads/rehab-oh-008-1.jpg
   - /assets/uploads/rehab-oh-008-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

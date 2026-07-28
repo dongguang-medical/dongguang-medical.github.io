@@ -18,7 +18,6 @@ specs:
     value: 台灣製造
 images:
   - /assets/uploads/rehab-ns-792-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

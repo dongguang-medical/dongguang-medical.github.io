@@ -16,7 +16,6 @@ images:
   - /assets/uploads/bedcare-34-1.jpg
   - /assets/uploads/bedcare-34-2.jpg
   - /assets/uploads/bedcare-34-3.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

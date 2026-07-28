@@ -17,7 +17,6 @@ specs:
 images:
   - /assets/uploads/misc-36-1.jpg
   - /assets/uploads/misc-36-2.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

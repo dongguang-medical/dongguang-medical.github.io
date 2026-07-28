@@ -16,7 +16,6 @@ specs:
     value: 800cc
 images:
   - /assets/uploads/respiratory-35-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

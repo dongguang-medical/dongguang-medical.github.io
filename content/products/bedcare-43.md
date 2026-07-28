@@ -18,7 +18,6 @@ specs:
     value: 60ml
 images:
   - /assets/uploads/bedcare-43-1.jpg
-image_status: 自有圖片
 published: true
 source: shopee
 ---

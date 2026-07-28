@@ -42,13 +42,9 @@ collections:
     format: frontmatter        # YAML frontmatter + Markdown 內文
     extension: md
     identifier_field: name
-    summary: "{{name}}｜{{taxonomy}}｜圖片：{{image_status}}"
-    sortable_fields: [name, taxonomy, price, image_status]
-    # 左側可一鍵篩出還沒換圖的商品
+    summary: "{{name}}｜{{taxonomy}}"
+    sortable_fields: [name, taxonomy, price]
     view_filters:
-      - label: 圖片待替換
-        field: image_status
-        pattern: 暫用外部圖待替換
       - label: 尚未上架
         field: published
         pattern: false
@@ -257,18 +253,6 @@ collections:
           label: 照片
           name: image
           widget: image
-
-      # 目前多數商品先暫用外部來源的圖撐版面，需要逐步換成自家拍攝或
-      # 原廠授權的圖。用這個欄位追蹤還有哪些沒換，可在商品清單直接排序篩選。
-      - label: 圖片狀態
-        name: image_status
-        widget: select
-        required: false
-        default: 自有圖片
-        options:
-          - 自有圖片
-          - 暫用外部圖待替換
-        hint: 「暫用外部圖待替換」表示圖片來自外部來源，請優先換成自家拍攝或原廠授權的圖
 
       - label: 上架顯示
         name: published
