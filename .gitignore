@@ -1,12 +1,8 @@
-screenshots/
-scripts/*
-!scripts/build_catalog.py
-!scripts/gen_cms_options.py
-!scripts/stats.py
-!scripts/data/
-scripts/data/*
-!scripts/data/taxonomy.tsv
-/products/
-.playwright-cli/
+# Python 執行時自動產生
+__pycache__/
+
+# 套件相依（目前沒用到，先擋著避免日後誤加）
+node_modules/
+
+# Claude Code 專案設定
 .claude/
-assets/uploads-excluded/
