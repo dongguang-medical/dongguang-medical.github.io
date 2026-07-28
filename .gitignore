@@ -1,4 +1,5 @@
 screenshots/
-scripts/
+scripts/*
+!scripts/build_catalog.py
 .playwright-cli/
 .claude/

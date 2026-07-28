@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "name": "交替式氣墊床（防褥瘡）",
+      "brand": "雃博",
+      "tags": [
+        "防褥瘡",
+        "可申請補助",
+        "靜音設計"
+      ],
+      "category": "臥床輔具",
+      "subcategory": "氣墊床",
+      "price": "NT$4,500",
+      "url": "/product/alternating-air-mattress/",
+      "image": "/assets/images/placeholder.svg"
+    },
+    {
+      "name": "標準型鋁合金輪椅",
+      "brand": "康揚",
+      "tags": [
+        "保固一年",
+        "可申請補助",
+        "可折疊"
+      ],
+      "category": "行動輔具",
+      "subcategory": "輪椅",
+      "price": "NT$3,780",
+      "url": "/product/aluminum-wheelchair/",
+      "image": "/assets/images/placeholder.svg"
+    },
+    {
+      "name": "三馬達電動護理床",
+      "brand": "雃博",
+      "tags": [
+        "保固一年",
+        "可申請補助",
+        "附側欄"
+      ],
+      "category": "臥床輔具",
+      "subcategory": "電動床",
+      "price": "NT$28,000",
+      "url": "/product/electric-nursing-bed/",
+      "image": "/assets/images/placeholder.svg"
+    },
+    {
+      "name": "四輪助行車（附座椅）",
+      "brand": "來而康",
+      "tags": [
+        "可折疊",
+        "附置物袋",
+        "附座椅"
+      ],
+      "category": "行動輔具",
+      "subcategory": "助行器",
+      "price": "NT$2,800",
+      "url": "/product/four-wheel-rollator/",
+      "image": "/assets/images/placeholder.svg"
+    },
+    {
+      "name": "L型不鏽鋼安全扶手",
+      "brand": "通用",
+      "tags": [
+        "防鏽",
+        "防滑",
+        "承重150kg"
+      ],
+      "category": "衛浴輔具",
+      "subcategory": "安全扶手",
+      "price": "NT$1,200",
+      "url": "/product/l-shaped-grab-bar/",
+      "image": "/assets/images/placeholder.svg"
+    }
+  ]
+}
