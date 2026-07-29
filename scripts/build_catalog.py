@@ -1009,29 +1009,29 @@ def build_home_page(products):
         "其他": '<circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>',
     }
 
-    def cat_tile_media(name):
-        """分類磚的代表圖。優先序：
-        1. assets/images/categories/<分類名>.(jpg|jpeg|png|webp) — 手動指定的門面圖
-        2. 該分類第一個有照片的商品封面（自動）
-        3. 線條圖示（分類尚無任何圖片時）"""
-        for ext in ("jpg", "jpeg", "png", "webp"):
-            f = ROOT / "assets" / "images" / "categories" / f"{name}.{ext}"
-            if f.is_file():
-                return (f'<img src="{url_path(f"assets/images/categories/{name}.{ext}")}" '
-                        f'alt="" loading="lazy" width="360" height="220">')
-        covers = [cover_of(p) for p in products
-                  if p["category"] == name and p["images"]][:1]
-        if covers:
-            return (f'<img src="{url_path(covers[0])}" alt="" loading="lazy" '
-                    f'width="360" height="220">')
+    def cat_icon_sm(name):
+        """分類名稱左側的小圖示。"""
         path = CAT_ICONS.get(name, "")
-        return (f'<span class="intro-cat-tile-ic"><svg width="44" height="44" viewBox="0 0 24 24" '
-                f'fill="none" stroke="currentColor" stroke-width="1.6" '
+        return (f'<span class="intro-cat-ic-sm"><svg width="17" height="17" viewBox="0 0 24 24" '
+                f'fill="none" stroke="currentColor" stroke-width="1.9" '
                 f'stroke-linecap="round" stroke-linejoin="round">{path}</svg></span>')
 
-    cat_cards = "\n".join(f"""          <a class="intro-cat-card intro-cat-tile" href="{url_path(f"category/{name}/")}">
-            <div class="intro-cat-tile-media">{cat_tile_media(name)}</div>
-            <h3>{esc(name)}</h3>
+    def cat_chips(name):
+        """子分類標籤：清楚示意每類實際有哪些品項（最多五個，其餘 +N）。"""
+        subs = NAV_SUBS.get(name, [])
+        if not subs:
+            return ""
+        shown = subs[:5]
+        more = (f'<span class="intro-cat-chip intro-cat-chip-more">+{len(subs)-5}</span>'
+                if len(subs) > 5 else "")
+        return ('<span class="intro-cat-chips">'
+                + "".join(f'<span class="intro-cat-chip">{esc(s)}</span>' for s in shown)
+                + more + "</span>")
+
+    cat_cards = "\n".join(f"""          <a class="intro-cat-card" href="{url_path(f"category/{name}/")}">
+            <h3>{cat_icon_sm(name)}{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
+            {cat_chips(name)}
+            <span class="intro-cat-more">瀏覽商品 →</span>
           </a>""" for name, desc in CATEGORIES)
 
     main = f"""    <div class="cat-section home-screen1">
