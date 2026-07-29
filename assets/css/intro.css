@@ -1125,17 +1125,56 @@
   border-radius: 50%;
   background: rgba(255,255,255,0.12);
   color: rgba(255,255,255,0.85);
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast),
+              transform var(--transition-fast);
 }
 
+/* hover：上浮＋各服務的品牌色 */
 .intro-footer-social a:hover {
+  transform: translateY(-3px);
   background: var(--color-primary);
   color: #fff;
 }
 
+.intro-footer-social a[aria-label="LINE"]:hover { background: #06C755; }
+.intro-footer-social a[aria-label="蝦皮商城"]:hover { background: #EE4D2D; }
+.intro-footer-social a[aria-label="Facebook"]:hover { background: #1877F2; }
+
 /* 電話與位置圖示僅在手機版顯示（桌面已有文字欄位） */
 .intro-footer-social a.intro-footer-social-mobile {
   display: none;
+}
+
+/* 關於我們連結：桌面在社群圖示下方；手機版移至營業時間右側 */
+.intro-footer-about {
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.intro-footer-about:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+.intro-footer-about-mobile {
+  display: none;
+}
+
+.intro-footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 頁尾地圖（桌面） */
+.intro-footer-map iframe {
+  display: block;
+  width: 280px;
+  height: 150px;
+  border: 0;
+  border-radius: 8px;
 }
 
 .intro-footer-brand img {
@@ -1213,7 +1252,7 @@
   max-width: 1100px;
   margin: 18px auto 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
@@ -1726,11 +1765,16 @@
   .intro-footer-brand { display: none; }
   .intro-footer-inner { justify-content: center; }
   .intro-footer-brand-col { width: 100%; align-items: center; order: 9; }
-  .intro-footer-links { justify-content: center; width: 100%; }
-  /* 手機版：電話與位置改為圖示（社群列內），文字欄位僅留營業時間 */
+  /* 手機版：電話與位置改為圖示（社群列內），文字欄位僅留營業時間；
+     隱藏「聯絡資訊」標題與 FB／信箱圖示，關於我們移到營業時間右側 */
   .intro-footer-social a.intro-footer-social-mobile { display: inline-flex; }
+  .intro-footer-social a.intro-footer-social-desktop { display: none; }
   .intro-footer-col li.intro-footer-phone-li { display: none; }
   .intro-footer-loc-col { display: none; }
+  .intro-footer-map-col { display: none; }
+  .intro-footer-contact-h4 { display: none; }
+  .intro-footer-about-desktop { display: none; }
+  .intro-footer-about-mobile { display: inline-block; }
 
   .home-carousel { grid-auto-columns: 200px; }
   .cat-sub-carousel { grid-auto-columns: 200px; }
