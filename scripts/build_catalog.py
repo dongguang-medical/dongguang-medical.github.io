@@ -326,10 +326,11 @@ MAPS_URL = "https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA"
 
 
 def nav_links():
-    # 導覽列直接放九大商品分類（聯絡資訊已由下方橘色資訊列常駐提供）；
-    # 其餘次要頁面（租賃專區、關於我們）由頁尾「更多資訊」連結
+    # 導覽列：九大商品分類＋租賃專區（綠色強調，排在「其他」之後）；
+    # 關於我們由頁尾連結（聯絡資訊已由下方橘色資訊列常駐提供）
     return ([("首頁", "/")]
-            + [(c, url_path(f"category/{c}/")) for c in CATEGORY_NAMES])
+            + [(c, url_path(f"category/{c}/")) for c in CATEGORY_NAMES]
+            + [("租賃專區", "/rental/")])
 
 
 # 主分類 → 有商品的子分類（依 taxonomy.tsv 順序），main() 載入商品後填入，
@@ -358,7 +359,12 @@ def compute_nav_subs(products):
 def page_header(active_url=""):
     items = []
     for t, u in nav_links():
-        cls = ' class="active"' if u == active_url else ""
+        classes = []
+        if u == "/rental/":
+            classes.append("nav-rental")
+        if u == active_url:
+            classes.append("active")
+        cls = f' class="{" ".join(classes)}"' if classes else ""
         link = f'<a href="{u}"{cls}>{esc(t)}</a>'
         subs = NAV_SUBS.get(t, [])
         if subs:
@@ -373,7 +379,8 @@ def page_header(active_url=""):
     mobile = "\n    ".join(
         '<a href="{u}"{cls} onclick="closeMobileNav()">{t}</a>'.format(
             u=u, t=esc(t),
-            cls=' class="mob-home"' if u == "/" else "")
+            cls=(' class="mob-home"' if u == "/"
+                 else ' class="nav-rental"' if u == "/rental/" else ""))
         for t, u in nav_links())
     return f"""  <header class="intro-header">
     <div class="intro-header-inner">
@@ -424,10 +431,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
         <span class="intro-footer-tagline">認真・負責・專業｜超過二十年，守護您的健康</span>
       </div>
       <nav class="intro-footer-links" aria-label="更多資訊">
-        <a href="/rental/">租賃專區</a>
-        <a href="/about/#story">關於東光</a>
-        <a href="/about/#services">服務項目</a>
-        <a href="/about/#reviews">顧客好評</a>
+        <a href="/about/">關於我們</a>
       </nav>
     </div>
     <div class="intro-footer-bottom">
@@ -1162,13 +1166,7 @@ def build_rental_page(products):
     main = f"""    <div class="cat-section">
       <div class="cat-container">
         {breadcrumb(bc)}
-        <div class="cat-page-head">
-          <div class="intro-heading-label">租賃專區</div>
-          <h1>可租賃品項</h1>
-          <p>電動照護床、氣墊床、輪椅、氧氣製造機等品項提供租賃，
-             適合術後恢復或短期照護需求。租金依租期而定，
-             多數品項亦可申請長照補助，歡迎來電由專人評估。</p>
-        </div>
+        <h1 class="visually-hidden">租賃專區</h1>
         <div class="cat-rental-note">
           <p><strong>租賃流程</strong>：來電說明需求 → 專人評估機型 →
              送貨到府並教學操作 → 租期結束回收消毒。台南市區可到府服務。</p>

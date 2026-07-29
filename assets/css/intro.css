@@ -107,7 +107,7 @@
 .intro-nav {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 0;
   min-width: 0;
 }
@@ -163,6 +163,41 @@
 .intro-nav a.active {
   background: var(--color-primary-pale);
   color: var(--color-primary);
+}
+
+/* 租賃專區：綠色藥丸強調，與商品分類 tab 區隔 */
+.intro-nav a.nav-rental {
+  background: var(--color-tag-subsidy);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.intro-nav a.nav-rental:hover,
+.intro-nav a.nav-rental.active {
+  background: #245F3E;
+  color: #fff;
+}
+
+/* 靠右對齊後，最末幾個 tab 的下拉選單改靠右展開，避免超出視窗 */
+.intro-nav-item:nth-last-child(-n+2) .intro-nav-drop {
+  left: auto;
+  right: 0;
+}
+
+/* 僅供螢幕閱讀器與 SEO 的隱藏標題 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .intro-header-phone {
@@ -264,6 +299,11 @@
   font-weight: 700;
   font-size: 16px;
   padding-top: 6px;
+}
+
+.intro-nav-mobile a.nav-rental {
+  color: var(--color-tag-subsidy);
+  font-weight: 700;
 }
 
 .intro-nav-mobile a:hover {
