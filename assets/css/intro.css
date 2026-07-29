@@ -104,6 +104,13 @@
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* 中間寬度：店名與完整 tab 條無法並存，先隱藏店名（logo 保留）；
+   ≤900px 導覽收成漢堡後空間足夠，店名恢復顯示 */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .intro-logo-name { display: none; }
 }
 
 .intro-logo-sub {

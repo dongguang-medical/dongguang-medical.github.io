@@ -38,6 +38,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "products"
 BASE_URL = "https://dongguang-medical.github.io"
 SITE_NAME = "東光醫療器材"
+SITE_NAME_FULL = "台南東光醫療器材"  # 頁首、頁尾顯示用店名
 PLACEHOLDER = "assets/images/placeholder.svg"
 LOGO = "assets/images/logo.png"
 
@@ -384,9 +385,9 @@ def page_header(active_url=""):
         for t, u in nav_links())
     return f"""  <header class="intro-header">
     <div class="intro-header-inner">
-      <a href="/" class="intro-logo" aria-label="{SITE_NAME} 首頁">
-        <img src="/{LOGO}" alt="{SITE_NAME}" width="40" height="40">
-        <div class="intro-logo-name">{SITE_NAME}</div>
+      <a href="/" class="intro-logo" aria-label="{SITE_NAME_FULL} 首頁">
+        <img src="/{LOGO}" alt="{SITE_NAME_FULL}" width="40" height="40">
+        <div class="intro-logo-name">{SITE_NAME_FULL}</div>
       </a>
       <nav class="intro-nav" aria-label="主要導覽">
         {desktop}
@@ -428,8 +429,8 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
     <div class="intro-footer-inner">
       <div class="intro-footer-col intro-footer-brand-col">
         <div class="intro-footer-brand">
-          <img src="/{LOGO}" alt="{SITE_NAME}" loading="lazy" width="36" height="36">
-          <span class="intro-footer-brand-name">{SITE_NAME}</span>
+          <img src="/{LOGO}" alt="{SITE_NAME_FULL}" loading="lazy" width="36" height="36">
+          <span class="intro-footer-brand-name">{SITE_NAME_FULL}</span>
         </div>
         <div class="intro-footer-social" aria-label="社群與購物連結">
           <a href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener" aria-label="LINE" title="LINE：{PHONE_TEL}">
