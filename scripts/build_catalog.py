@@ -1630,6 +1630,38 @@ def build_search_index(products):
 
 # ── 主流程 ──────────────────────────────────────────────
 
+def sync_about_chrome():
+    """about/index.html 為手刻頁面，頁首/頁尾會隨模板演進而過期；
+    每次建置時把該頁的 header（含行動版選單）與 footer 換成共用模板，
+    內文（main 區塊）維持手刻內容不動。"""
+    path = ROOT / "about" / "index.html"
+    if not path.is_file():
+        return
+    text = path.read_text(encoding="utf-8")
+
+    # 頁首：<header class="intro-header"> 起，到行動版選單的 </nav> 止
+    h_start = text.find('<header class="intro-header">')
+    mob = text.find('intro-nav-mobile', h_start)
+    h_end = text.find("</nav>", mob)
+    if h_start == -1 or mob == -1 or h_end == -1:
+        print("⚠️  about/index.html 頁首錨點未找到，略過同步", file=sys.stderr)
+        return
+    h_end += len("</nav>")
+    text = text[:h_start] + page_header("/about/").strip() + text[h_end:]
+
+    # 頁尾：<footer class="intro-footer"> 到 </footer>
+    f_start = text.find('<footer class="intro-footer">')
+    f_end = text.find("</footer>", f_start)
+    if f_start == -1 or f_end == -1:
+        print("⚠️  about/index.html 頁尾錨點未找到，略過同步", file=sys.stderr)
+        return
+    f_end += len("</footer>")
+    text = text[:f_start] + PAGE_FOOTER.strip() + text[f_end:]
+
+    path.write_text(text, encoding="utf-8")
+    print("   about/index.html 頁首頁尾已同步為共用模板")
+
+
 def main():
     # Windows 主控台預設 cp950，直接印中文／emoji 會 UnicodeEncodeError
     for stream in (sys.stdout, sys.stderr):
@@ -1661,6 +1693,7 @@ def main():
     build_product_pages(products)
     build_search_index(products)
     build_sitemap(products, brand_slugs)
+    sync_about_chrome()
 
     rentable = sum(1 for p in products if p["rentable"])
     pages = 2 + len(CATEGORIES) + len(brand_slugs) + len(products)

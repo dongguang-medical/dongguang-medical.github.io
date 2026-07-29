@@ -165,9 +165,9 @@
   color: var(--color-primary);
 }
 
-/* 租賃專區：綠色藥丸強調，與商品分類 tab 區隔 */
+/* 租賃專區：品牌橘實心藥丸強調，與文字式分類 tab 區隔 */
 .intro-nav a.nav-rental {
-  background: var(--color-tag-subsidy);
+  background: var(--color-primary);
   color: #fff;
   border-radius: 999px;
   padding: 6px 14px;
@@ -177,7 +177,7 @@
 
 .intro-nav a.nav-rental:hover,
 .intro-nav a.nav-rental.active {
-  background: #245F3E;
+  background: var(--color-primary-dark);
   color: #fff;
 }
 
@@ -302,8 +302,10 @@
 }
 
 .intro-nav-mobile a.nav-rental {
-  color: var(--color-tag-subsidy);
+  background: var(--color-primary-pale);
+  color: var(--color-primary-dark);
   font-weight: 700;
+  border-radius: var(--radius-sm);
 }
 
 .intro-nav-mobile a:hover {
