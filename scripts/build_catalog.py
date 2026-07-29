@@ -647,8 +647,8 @@ def price_html(product, big=False):
     return f'<div class="{cls} cat-price-ask">歡迎洽詢</div>'
 
 
-def badges_html(product):
-    """租賃／補助等關鍵資訊，以醒目標記優先於一般標籤呈現。"""
+def badge_spans(product):
+    """租賃／補助等關鍵標記。與一般標籤同列同尺寸，僅「可租賃」以實心橘突出。"""
     marks = []
     if product["rentable"]:
         marks.append('<span class="cat-badge cat-badge-rent">可租賃</span>')
@@ -656,18 +656,15 @@ def badges_html(product):
         marks.append('<span class="cat-badge cat-badge-online">線上可購</span>')
     if product["subsidy"]:
         marks.append('<span class="cat-badge cat-badge-subsidy">可申請補助</span>')
-    return f'<div class="cat-badges">{"".join(marks)}</div>' if marks else ""
+    return marks
 
 
 def product_card(product):
-    tags = ""
-    # 標籤欄已被租賃／補助標記取代大半，卡片上只留兩個行銷標籤避免過長
+    # 標記與行銷標籤合併為同一列 pill，行銷標籤最多兩個避免過長
+    pills = badge_spans(product)
     plain = [t for t in product["tags"] if t not in ("可租賃", "可申請補助")]
-    if plain:
-        tags = ('<div class="cat-tags">'
-                + "".join(f'<span class="cat-tag">{esc(t)}</span>'
-                          for t in plain[:2])
-                + "</div>")
+    pills += [f'<span class="cat-tag">{esc(t)}</span>' for t in plain[:2]]
+    tags = f'<div class="cat-tags">{"".join(pills)}</div>' if pills else ""
     brand = (f'<div class="cat-card-brand">{esc(product["brand"])}</div>'
              if product["brand"] else "")
     return f"""<a class="cat-card" href="{product['url']}">
@@ -677,7 +674,6 @@ def product_card(product):
   <div class="cat-card-body">
     <h3>{esc(product['name'])}</h3>
     {brand}
-    {badges_html(product)}
     {tags}
     {price_html(product)}
   </div>
@@ -723,8 +719,7 @@ CATALOG_SEARCH_JS = """  <script>
           + '<div class="cat-card-photo"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" width="400" height="300"></div>'
           + '<div class="cat-card-body"><h3>' + esc(p.name) + '</h3>'
           + (p.brand ? '<div class="cat-card-brand">' + esc(p.brand) + '</div>' : '')
-          + (badges ? '<div class="cat-badges">' + badges + '</div>' : '')
-          + (tags ? '<div class="cat-tags">' + tags + '</div>' : '')
+          + ((badges || tags) ? '<div class="cat-tags">' + badges + tags + '</div>' : '')
           + (p.price_text ? '<div class="cat-card-price">' + esc(p.price_text) + '</div>'
                      : '<div class="cat-card-price cat-price-ask">歡迎洽詢</div>')
           + '</div></a>';
