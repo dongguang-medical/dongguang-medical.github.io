@@ -1264,6 +1264,23 @@
   transform: translateY(-2px);
 }
 
+/* 分類卡縮圖列：該分類的實際商品照，一眼看出品項 */
+.intro-cat-photos {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.intro-cat-photos img {
+  flex: 1;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  background: #fff;
+}
+
 .intro-cat-card h3 {
   font-family: var(--font-heading);
   font-size: 17px;

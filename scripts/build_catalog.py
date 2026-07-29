@@ -988,8 +988,20 @@ def build_home_page(products):
 
     cat_counts = {c: sum(1 for p in products if p["category"] == c)
                   for c in CATEGORY_NAMES}
+
+    def cat_photo_strip(name):
+        """分類卡縮圖列：取該分類前三個有照片的商品封面，讓訪客一眼看出品項。"""
+        covers = [cover_of(p) for p in products
+                  if p["category"] == name and p["images"]][:3]
+        if not covers:
+            return ""
+        imgs = "".join(
+            f'<img src="{url_path(c)}" alt="" loading="lazy" width="120" height="120">'
+            for c in covers)
+        return f'<div class="intro-cat-photos">{imgs}</div>'
+
     cat_cards = "\n".join(f"""          <a class="intro-cat-card" href="{url_path(f"category/{name}/")}">
-            <h3>{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
+            {cat_photo_strip(name)}<h3>{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
             <p>{esc(desc)}</p>
             <span class="intro-cat-more">瀏覽商品 →</span>
           </a>""" for name, desc in CATEGORIES)
