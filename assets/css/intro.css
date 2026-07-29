@@ -1133,6 +1133,11 @@
   color: #fff;
 }
 
+/* 電話與位置圖示僅在手機版顯示（桌面已有文字欄位） */
+.intro-footer-social a.intro-footer-social-mobile {
+  display: none;
+}
+
 .intro-footer-brand img {
   width: 36px;
   height: 36px;
@@ -1722,6 +1727,10 @@
   .intro-footer-inner { justify-content: center; }
   .intro-footer-brand-col { width: 100%; align-items: center; order: 9; }
   .intro-footer-links { justify-content: center; width: 100%; }
+  /* 手機版：電話與位置改為圖示（社群列內），文字欄位僅留營業時間 */
+  .intro-footer-social a.intro-footer-social-mobile { display: inline-flex; }
+  .intro-footer-col li.intro-footer-phone-li { display: none; }
+  .intro-footer-loc-col { display: none; }
 
   .home-carousel { grid-auto-columns: 200px; }
   .cat-sub-carousel { grid-auto-columns: 200px; }
