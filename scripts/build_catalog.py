@@ -457,6 +457,20 @@ NAV_JS = """  <script>
     mobileNav.addEventListener('click', function (e) {
       if (e.target === mobileNav) closeMobileNav();
     });
+
+    /* 向下捲動收起頁首、向上捲動顯示 */
+    var siteHeader = document.querySelector('.intro-header');
+    var lastScrollY = window.scrollY;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      if (mobileNav.classList.contains('open')) { lastScrollY = y; return; }
+      if (y > lastScrollY && y > 140) {
+        siteHeader.classList.add('header-hidden');
+      } else if (y < lastScrollY - 2 || y <= 140) {
+        siteHeader.classList.remove('header-hidden');
+      }
+      lastScrollY = y;
+    }, { passive: true });
   </script>
 """
 
@@ -1658,8 +1672,17 @@ def sync_about_chrome():
     f_end += len("</footer>")
     text = text[:f_start] + PAGE_FOOTER.strip() + text[f_end:]
 
+    # 導覽 JS：以 'var hamburger' 所在的 <script> 區塊為錨點，換成 NAV_JS
+    j_anchor = text.find("var hamburger = document.getElementById")
+    if j_anchor != -1:
+        j_start = text.rfind("<script>", 0, j_anchor)
+        j_end = text.find("</script>", j_anchor)
+        if j_start != -1 and j_end != -1:
+            j_end += len("</script>")
+            text = text[:j_start] + NAV_JS.strip() + text[j_end:]
+
     path.write_text(text, encoding="utf-8")
-    print("   about/index.html 頁首頁尾已同步為共用模板")
+    print("   about/index.html 頁首頁尾與導覽 JS 已同步為共用模板")
 
 
 def main():

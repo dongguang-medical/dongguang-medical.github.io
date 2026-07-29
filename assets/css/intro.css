@@ -22,10 +22,17 @@
   z-index: 100;
   background: var(--color-white);
   box-shadow: var(--shadow-header);
+  transition: transform 0.28s ease;
+}
+
+/* 向下捲動時收起頁首，向上捲動時滑回（見 NAV_JS） */
+.intro-header.header-hidden {
+  transform: translateY(-100%);
 }
 
 .intro-header-inner {
-  max-width: 1100px;
+  /* 1140 = 內容 1100 + 左右各 20 內距，讓內容寬度與主畫面、頁尾（1100）對齊 */
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 20px;
   height: 64px;
@@ -42,7 +49,7 @@
 }
 
 .intro-infobar-inner {
-  max-width: 1100px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 20px;
   height: 100%;
@@ -165,20 +172,21 @@
   color: var(--color-primary);
 }
 
-/* 租賃專區：品牌橘實心藥丸強調，與文字式分類 tab 區隔 */
+/* 租賃專區：細框藥丸低調強調，與文字式分類 tab 區隔 */
 .intro-nav a.nav-rental {
-  background: var(--color-primary);
-  color: #fff;
+  border: 1.5px solid var(--color-primary-light);
+  color: var(--color-primary);
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 5px 13px;
   font-weight: 600;
   margin-left: 8px;
 }
 
 .intro-nav a.nav-rental:hover,
 .intro-nav a.nav-rental.active {
-  background: var(--color-primary-dark);
-  color: #fff;
+  background: var(--color-primary-pale);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 /* 靠右對齊後，最末幾個 tab 的下拉選單改靠右展開，避免超出視窗 */
@@ -302,10 +310,8 @@
 }
 
 .intro-nav-mobile a.nav-rental {
-  background: var(--color-primary-pale);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   font-weight: 700;
-  border-radius: var(--radius-sm);
 }
 
 .intro-nav-mobile a:hover {

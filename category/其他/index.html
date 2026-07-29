@@ -407,6 +407,20 @@
     mobileNav.addEventListener('click', function (e) {
       if (e.target === mobileNav) closeMobileNav();
     });
+
+    /* 向下捲動收起頁首、向上捲動顯示 */
+    var siteHeader = document.querySelector('.intro-header');
+    var lastScrollY = window.scrollY;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      if (mobileNav.classList.contains('open')) { lastScrollY = y; return; }
+      if (y > lastScrollY && y > 140) {
+        siteHeader.classList.add('header-hidden');
+      } else if (y < lastScrollY - 2 || y <= 140) {
+        siteHeader.classList.remove('header-hidden');
+      }
+      lastScrollY = y;
+    }, { passive: true });
   </script>
   <script>
     (function () {
