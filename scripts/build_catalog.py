@@ -1000,7 +1000,7 @@ def build_home_page(products):
     def cat_photo_strip(name):
         """分類卡縮圖列：取該分類前三個有照片的商品封面，讓訪客一眼看出品項。"""
         covers = [cover_of(p) for p in products
-                  if p["category"] == name and p["images"]][:3]
+                  if p["category"] == name and p["images"]][:2]
         if not covers:
             return ""
         imgs = "".join(

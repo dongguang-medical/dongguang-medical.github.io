@@ -1265,30 +1265,22 @@
 }
 
 /* 分類卡縮圖列：該分類的實際商品照，一眼看出品項；
-   下半部漸層虛化融入卡片底，示意用途、不搶分類文字的焦點 */
+   以遮罩讓圖片下緣柔和淡出（不疊亮色，避免泛白），示意用途、
+   不搶分類文字的焦點 */
 .intro-cat-photos {
-  position: relative;
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
-}
-
-.intro-cat-photos::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 45%;
-  background: linear-gradient(to bottom,
-    rgba(255,255,255,0) 0%, var(--color-surface) 96%);
-  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom,
+    #000 62%, rgba(0,0,0,0.28) 100%);
+  mask-image: linear-gradient(to bottom,
+    #000 62%, rgba(0,0,0,0.28) 100%);
 }
 
 .intro-cat-photos img {
   flex: 1;
   min-width: 0;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-light);
@@ -1376,7 +1368,7 @@
 
 /* 提高權重蓋過 catalog.css 的 .cat-section padding */
 .cat-section.home-screen1 {
-  padding: 32px 16px 8px;
+  padding: 32px 16px 44px;
 }
 
 /* 首屏標題區 */
@@ -1426,7 +1418,7 @@
 }
 
 .cat-section.home-screen2 {
-  padding: 8px 16px 56px;
+  padding: 28px 16px 56px;
 }
 
 .home-cats {
