@@ -1,6 +1,7 @@
 /* =====================================================
    DESIGN SYSTEM — CSS Custom Properties
-   東光醫療器材 Brand: Terracotta #C8551F, Amber #E8A84B
+   東光醫療器材 Brand: Terracotta #C8551F
+   全站僅使用陶土橘家族＋暖色中性，避免多色系雜亂
    ===================================================== */
 
 :root {
@@ -9,8 +10,6 @@
   --color-primary-dark:   #A64014;
   --color-primary-light:  #DF7A45;
   --color-primary-pale:   #FCEEE5;
-  --color-accent:         #E8A84B;
-  --color-accent-dark:    #C68A30;
 
   /* Warm Neutrals */
   --color-white:          #FFFDF9;
@@ -21,12 +20,6 @@
   --color-text-primary:   #2C1A0E;
   --color-text-secondary: #7A5C48;
   --color-text-muted:     #B09880;
-
-  /* Semantic tag colors */
-  --color-tag-subsidy:    #2D7A4F;
-  --color-tag-warranty:   #1B5FA0;
-  --color-tag-new:        #C8551F;
-  --color-tag-default:    #7A5C48;
 
   /* Typography */
   --font-primary:  'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', 'PingFang TC', sans-serif;

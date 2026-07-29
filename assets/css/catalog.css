@@ -317,28 +317,24 @@
   white-space: nowrap;
 }
 
+/* 可租賃＝業務重點：實心橘底白字，靠深淺與其他淡底徽章區分 */
 .cat-badge-rent {
-  color: #0f5c4a;
-  background: #ddf3ec;
-  border: 1px solid rgba(15,92,74,0.22);
+  color: #fff;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary-dark);
 }
 
-.cat-badge-subsidy {
-  color: #7a4a00;
-  background: #fdf0d5;
-  border: 1px solid rgba(122,74,0,0.22);
-}
-
+.cat-badge-subsidy,
 .cat-badge-online {
-  color: #8a3410;
-  background: #fde8dc;
-  border: 1px solid rgba(138,52,16,0.22);
+  color: var(--color-primary-dark);
+  background: var(--color-primary-pale);
+  border: 1px solid rgba(200,85,31,0.18);
 }
 
 .cat-badge-note {
-  color: #5a5a5a;
-  background: #eeeeee;
-  border: 1px solid rgba(0,0,0,0.12);
+  color: var(--color-text-secondary);
+  background: var(--color-border-light);
+  border: 1px solid var(--color-border);
 }
 
 /* ── 商品頁：提供方式資訊 ── */
@@ -371,12 +367,12 @@
 .cat-rental-note {
   margin: 0 0 28px;
   padding: 14px 18px;
-  background: #ddf3ec;
-  border-left: 4px solid #0f5c4a;
+  background: var(--color-primary-pale);
+  border-left: 4px solid var(--color-primary);
   border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
   font-size: 14px;
   line-height: 1.85;
-  color: #14493d;
+  color: var(--color-text-primary);
 }
 
 .cat-rental-note p {
