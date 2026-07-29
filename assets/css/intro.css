@@ -1270,21 +1270,20 @@
 .intro-cat-photos {
   display: flex;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  /* 下緣完全淡出至透明：無邊框也能與卡片底無縫銜接 */
   -webkit-mask-image: linear-gradient(to bottom,
-    #000 62%, rgba(0,0,0,0.28) 100%);
+    #000 40%, rgba(0,0,0,0) 100%);
   mask-image: linear-gradient(to bottom,
-    #000 62%, rgba(0,0,0,0.28) 100%);
+    #000 40%, rgba(0,0,0,0) 100%);
 }
 
 .intro-cat-photos img {
   flex: 1;
   min-width: 0;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-light);
-  background: #fff;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
 .intro-cat-card h3 {
