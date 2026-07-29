@@ -997,21 +997,41 @@ def build_home_page(products):
     cat_counts = {c: sum(1 for p in products if p["category"] == c)
                   for c in CATEGORY_NAMES}
 
-    def cat_photo_strip(name):
-        """分類卡縮圖列：取該分類前三個有照片的商品封面，讓訪客一眼看出品項。"""
-        covers = [cover_of(p) for p in products
-                  if p["category"] == name and p["images"]][:2]
-        if not covers:
-            return ""
-        imgs = "".join(
-            f'<img src="{url_path(c)}" alt="" loading="lazy" width="120" height="120">'
-            for c in covers)
-        return f'<div class="intro-cat-photos">{imgs}</div>'
+    CAT_ICONS = {
+        "行動輔具": '<circle cx="7" cy="17" r="4"/><circle cx="17" cy="19" r="2"/><path d="M7 13V5h2l5 6h3l2 4"/>',
+        "臥床照護": '<path d="M2 17V7"/><path d="M2 13h20v4"/><path d="M2 11h7a3 3 0 0 1 3 3"/><circle cx="6" cy="9" r="1.6"/>',
+        "衛浴與居家安全": '<path d="M4 12h16v2a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z"/><path d="M6 12V6a3 3 0 0 1 6 0"/><path d="M15 8l1.5-1.5M17 11l2-.5M16 5l.5-2"/>',
+        "呼吸照護": '<path d="M9 4v8a4 4 0 0 1-8 0"/><path d="M15 4v8a4 4 0 0 0 8 0"/><path d="M12 3v12"/><circle cx="12" cy="18" r="2.4"/>',
+        "健康量測": '<path d="M3 12h4l2-6 4 12 2-6h6"/>',
+        "復健理療": '<path d="M6 3v18M18 3v18"/><path d="M6 8h12M6 16h12"/>',
+        "照護耗材": '<path d="M4 8l8-5 8 5v8l-8 5-8-5z"/><path d="M4 8l8 5 8-5M12 13v8"/>',
+        "營養保健": '<rect x="7" y="8" width="10" height="13" rx="3"/><path d="M9 8V5h6v3M9 13h6"/>',
+        "其他": '<circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>',
+    }
 
-    cat_cards = "\n".join(f"""          <a class="intro-cat-card" href="{url_path(f"category/{name}/")}">
-            {cat_photo_strip(name)}<h3>{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
-            <p>{esc(desc)}</p>
-            <span class="intro-cat-more">瀏覽商品 →</span>
+    def cat_tile_media(name):
+        """分類磚的代表圖。優先序：
+        1. assets/images/categories/<分類名>.(jpg|jpeg|png|webp) — 手動指定的門面圖
+        2. 該分類第一個有照片的商品封面（自動）
+        3. 線條圖示（分類尚無任何圖片時）"""
+        for ext in ("jpg", "jpeg", "png", "webp"):
+            f = ROOT / "assets" / "images" / "categories" / f"{name}.{ext}"
+            if f.is_file():
+                return (f'<img src="{url_path(f"assets/images/categories/{name}.{ext}")}" '
+                        f'alt="" loading="lazy" width="360" height="220">')
+        covers = [cover_of(p) for p in products
+                  if p["category"] == name and p["images"]][:1]
+        if covers:
+            return (f'<img src="{url_path(covers[0])}" alt="" loading="lazy" '
+                    f'width="360" height="220">')
+        path = CAT_ICONS.get(name, "")
+        return (f'<span class="intro-cat-tile-ic"><svg width="44" height="44" viewBox="0 0 24 24" '
+                f'fill="none" stroke="currentColor" stroke-width="1.6" '
+                f'stroke-linecap="round" stroke-linejoin="round">{path}</svg></span>')
+
+    cat_cards = "\n".join(f"""          <a class="intro-cat-card intro-cat-tile" href="{url_path(f"category/{name}/")}">
+            <div class="intro-cat-tile-media">{cat_tile_media(name)}</div>
+            <h3>{esc(name)}</h3>
           </a>""" for name, desc in CATEGORIES)
 
     main = f"""    <div class="cat-section home-screen1">
