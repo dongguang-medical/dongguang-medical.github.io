@@ -1,25 +1,27 @@
 /* =====================================================
    DESIGN SYSTEM — CSS Custom Properties
-   東光醫療器材 Brand: Terracotta #C8551F
-   全站僅使用陶土橘家族＋暖色中性，避免多色系雜亂
+   東光醫療器材 Brand: 亮橘 Vivid Orange #E8681A
+   全站僅使用亮橘家族＋暖色中性，避免多色系雜亂
+   換色時只需改本檔的色彩變數（含 --color-primary-rgb）
    ===================================================== */
 
 :root {
-  /* Brand Colors — earthy, warm terracotta */
-  --color-primary:        #C8551F;
-  --color-primary-dark:   #A64014;
-  --color-primary-light:  #DF7A45;
-  --color-primary-pale:   #FCEEE5;
+  /* Brand Colors — vivid warm orange */
+  --color-primary:        #E8681A;
+  --color-primary-rgb:    232, 104, 26;  /* 供 rgba() 衍生透明色使用 */
+  --color-primary-dark:   #C25007;
+  --color-primary-light:  #F19256;
+  --color-primary-pale:   #FEF0E4;
 
   /* Warm Neutrals */
-  --color-bg:             #FAF3E8;
-  --color-surface:        #FFFDF9;  /* 卡片、頁首等浮出面（原 --color-white 已併入） */
-  --color-border:         #EAD8C4;
-  --color-border-light:   #F4EBE0;
-  --color-text-primary:   #2C1A0E;
-  --color-text-secondary: #7A5C48;
-  --color-text-muted:     #B09880;
-  --color-footer-bg:      #2B1208;
+  --color-bg:             #FCF8F2;
+  --color-surface:        #FFFFFF;  /* 卡片、頁首等浮出面（原 --color-white 已併入） */
+  --color-border:         #F0DCC6;
+  --color-border-light:   #F7EEE2;
+  --color-text-primary:   #33200F;
+  --color-text-secondary: #8A6A50;
+  --color-text-muted:     #C0A98E;
+  --color-footer-bg:      #301A08;
 
   /* Typography */
   --font-primary:  'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', 'PingFang TC', sans-serif;
@@ -62,7 +64,7 @@
   /* Shadows — simple */
   --shadow-sm:    0 1px 3px rgba(0,0,0,0.10);
   --shadow-card:  0 2px 6px rgba(0,0,0,0.09);
-  --shadow-hover: 0 4px 12px rgba(200,85,31,0.18);
+  --shadow-hover: 0 4px 12px rgba(var(--color-primary-rgb), 0.18);
   --shadow-header:0 2px 4px rgba(0,0,0,0.10);
 
   /* Transitions */
