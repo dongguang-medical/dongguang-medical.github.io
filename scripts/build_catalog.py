@@ -470,7 +470,6 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
             <span>週日 10:00–17:00</span>
           </li>
         </ul>
-        <a class="intro-footer-about intro-footer-about-mobile" href="/about/">關於我們</a>
         </div>
       </div>
       <div class="intro-footer-col intro-footer-loc-col">
@@ -764,6 +763,8 @@ CATALOG_SEARCH_JS = """  <script>
 """
 
 
+# 目前未使用：首頁聯絡資訊區塊已移除（資訊整合至頁尾）。
+# 若要復原，把 {HOME_CONTACT_HTML} 插回 build_home_page 的頁面組裝字串即可。
 HOME_CONTACT_HTML = f"""    <section class="intro-section home-screen3" id="contact">
       <div class="intro-container">
         <div class="intro-heading">
@@ -1030,7 +1031,7 @@ def build_home_page(products):
         </section>
       </div>
     </div>
-{HOME_CONTACT_HTML}"""
+"""
     desc = ("東光醫療器材（台南市立醫院對面）醫療輔具租賃及販售：輪椅、電動床、"
             "氣墊床、製氧機、安全扶手等九大類商品含價格，超過二十年在地服務，"
             f"電話 {PHONE_DISPLAY}。")
