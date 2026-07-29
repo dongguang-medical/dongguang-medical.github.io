@@ -892,7 +892,6 @@
   background: var(--color-footer-bg);
   color: rgba(255,255,255,0.62);
   padding: 30px 24px 14px;
-  border-top: 3px solid var(--color-primary);
 }
 
 .intro-footer-inner {
