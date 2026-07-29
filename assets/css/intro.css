@@ -1264,11 +1264,25 @@
   transform: translateY(-2px);
 }
 
-/* 分類卡縮圖列：該分類的實際商品照，一眼看出品項 */
+/* 分類卡縮圖列：該分類的實際商品照，一眼看出品項；
+   下半部漸層虛化融入卡片底，示意用途、不搶分類文字的焦點 */
 .intro-cat-photos {
+  position: relative;
   display: flex;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+}
+
+.intro-cat-photos::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 45%;
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,0) 0%, var(--color-surface) 96%);
+  pointer-events: none;
 }
 
 .intro-cat-photos img {
@@ -1353,28 +1367,19 @@
   scroll-snap-align: start;
 }
 
-/* ── 首頁三屏 ──
-   第一屏：標題＋搜尋＋熱銷（米色底）
-   第二屏：商品分類（白色 surface 底，與聯絡資訊原色對調）
-   第三屏：聯絡資訊（米色底） */
+/* ── 首頁版位 ──
+   頁首已改為捲動自動收合，不再需要逐屏滿版（100vh）設計；
+   各區以一般文章式間距自然銜接 */
 .home-screen1 {
-  min-height: calc(100vh - var(--header-total));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   background: var(--color-bg);  /* 與商品分類區（home-screen2）同底色 */
 }
 
 /* 提高權重蓋過 catalog.css 的 .cat-section padding */
 .cat-section.home-screen1 {
-  padding: 24px 16px;
+  padding: 32px 16px 8px;
 }
 
-.home-screen1 .cat-container {
-  width: 100%;
-}
-
-/* 首屏標題區（間距壓縮，確保第一屏內容不超出視窗） */
+/* 首屏標題區 */
 .home-hero-head {
   margin-bottom: 18px;
 }
@@ -1417,39 +1422,18 @@
 .home-screen2 {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border-light);
-  display: flex;
-  min-height: calc(100vh - var(--header-total));
-  scroll-margin-top: var(--header-total); /* 錨點落點貼齊 header，不露下一屏 */
+  scroll-margin-top: var(--header-total); /* 錨點落點貼齊 header */
 }
 
-.home-screen2 .cat-container {
-  width: 100%;
-  display: flex;
-}
-
-.home-screen3 {
-  min-height: calc(100vh - var(--header-total));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.home-screen3 .intro-container {
-  /* flex 容器內 margin:auto 會令寬度縮到內容寬，須明確撐滿 */
-  width: 100%;
+.cat-section.home-screen2 {
+  padding: 8px 16px 56px;
 }
 
 .home-cats {
-  /* 高度由 .home-screen2 的 min-height + flex 決定 */
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   margin-bottom: 0;
 }
 
-/* 分類卡格子吃滿剩餘高度，卡片跟著拉大 */
 .home-cats .intro-cat-grid {
-  flex: 1;
   gap: 18px;
 }
 
@@ -1473,12 +1457,6 @@
 
 .home-cats .intro-cat-more {
   font-size: 14px;
-}
-
-@media (min-width: 901px) {
-  .home-cats .intro-cat-grid {
-    grid-template-rows: repeat(3, 1fr);
-  }
 }
 
 /* 分類頁子分類輪播：一次四格 */

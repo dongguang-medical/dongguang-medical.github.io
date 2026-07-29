@@ -23,6 +23,7 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
   published(預設 true)
 """
 
+import hashlib
 import html
 import json
 import re
@@ -37,6 +38,13 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "products"
 BASE_URL = "https://dongguang-medical.github.io"
+
+# CSS 版本號（內容雜湊）：附加於樣式連結的 ?v=，
+# 樣式一有變動網址就不同，訪客瀏覽器不會再拿到舊快取
+CSS_VERSION = hashlib.md5(b"".join(
+    (ROOT / "assets" / "css" / f).read_bytes()
+    for f in ("design-system.css", "intro.css", "catalog.css")
+)).hexdigest()[:10]
 SITE_NAME = "東光醫療器材"
 SITE_NAME_FULL = "台南東光醫療器材"  # 頁首、頁尾顯示用店名
 PLACEHOLDER = "assets/images/placeholder.svg"
@@ -567,9 +575,9 @@ def render_page(*, title, description, path, og_type, og_image, jsonld,
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/design-system.css">
-  <link rel="stylesheet" href="/assets/css/intro.css">
-  <link rel="stylesheet" href="/assets/css/catalog.css">
+  <link rel="stylesheet" href="/assets/css/design-system.css?v={CSS_VERSION}">
+  <link rel="stylesheet" href="/assets/css/intro.css?v={CSS_VERSION}">
+  <link rel="stylesheet" href="/assets/css/catalog.css?v={CSS_VERSION}">
 </head>
 <body>
 
@@ -1751,6 +1759,10 @@ def sync_about_chrome():
         if j_start != -1 and j_end != -1:
             j_end += len("</script>")
             text = text[:j_start] + NAV_JS.strip() + text[j_end:]
+
+    # CSS 版本號同步（避免 about 頁拿到舊快取樣式）
+    text = re.sub(r'(href="/assets/css/[\w-]+\.css)(\?v=\w+)?"',
+                  rf'\1?v={CSS_VERSION}"', text)
 
     path.write_text(text, encoding="utf-8")
     print("   about/index.html 頁首頁尾與導覽 JS 已同步為共用模板")
