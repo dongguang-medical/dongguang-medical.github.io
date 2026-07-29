@@ -12,9 +12,8 @@
   --color-primary-pale:   #FCEEE5;
 
   /* Warm Neutrals */
-  --color-white:          #FFFDF9;
   --color-bg:             #FAF3E8;
-  --color-surface:        #FFFDF9;
+  --color-surface:        #FFFDF9;  /* 卡片、頁首等浮出面（原 --color-white 已併入） */
   --color-border:         #EAD8C4;
   --color-border-light:   #F4EBE0;
   --color-text-primary:   #2C1A0E;
