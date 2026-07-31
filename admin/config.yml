@@ -9,13 +9,11 @@ local_backend: true
 
 backend:
   name: github
-  repo: dongguang-medical/website
+  repo: dongguang-medical/dongguang-medical.github.io
   branch: main
   # base_url：GitHub OAuth 代理（Cloudflare Worker）的網址。
-  # ⚠️ 以下為 placeholder，待 OAuth 代理架好後填入實際 Worker 網址，
-  #    例如 https://sveltia-cms-auth.<你的子網域>.workers.dev
-  #    詳見 docs/後台部署設定.md
-  base_url: https://REPLACE-WITH-OAUTH-WORKER.workers.dev
+  # 只填根網址，不含 /callback、不加結尾斜線。部署方式見 docs/後台部署設定.md
+  base_url: https://sveltia-cms-auth.zirulin810.workers.dev
 
 # 網站資訊（後台右上角可快速開啟正式網站）
 site_url: https://dongguang-medical.github.io
