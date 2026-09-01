@@ -28,9 +28,9 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 這裡要涵蓋 build_catalog.py 產出的每一個路徑，漏掉的線上就不會更新。
-          # 產生器會 rmtree 重建 catalog/category/product/rental/brand，
+          # 產生器會 rmtree 重建 catalog/category/product/rental/brand/subsidy，
           # 並覆寫根目錄 index.html（首頁＝商品目錄）與 sitemap.xml。
-          git add -A catalog category product rental brand \
+          git add -A catalog category product rental brand subsidy \
                      index.html sitemap.xml assets/images/placeholder.svg
           git diff --staged --quiet && echo "No changes to commit." || \
             git commit -m "chore: 自動建置商品目錄 [skip ci]"
