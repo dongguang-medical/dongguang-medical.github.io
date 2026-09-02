@@ -45,6 +45,14 @@ CSS_VERSION = hashlib.md5(b"".join(
     (ROOT / "assets" / "css" / f).read_bytes()
     for f in ("design-system.css", "intro.css", "catalog.css", "subsidy.css")
 )).hexdigest()[:10]
+# 補助試算頁的資產版本號（前端程式與 Word 範本）：只影響 /subsidy/，
+# 不與全站 CSS 版本綁在一起，範本更新時才不會白白讓所有頁面的樣式失效
+SUBSIDY_ASSET_VERSION = hashlib.md5(b"".join(
+    (ROOT / f).read_bytes() for f in (
+        "assets/js/subsidy.js",
+        "assets/templates/certificate-template.json",
+    ) if (ROOT / f).is_file()
+)).hexdigest()[:10]
 SITE_NAME = "東光醫療器材"
 SITE_NAME_FULL = "台南東光醫療器材"  # 頁首、頁尾顯示用店名
 PLACEHOLDER = "assets/images/placeholder.svg"
@@ -1834,8 +1842,11 @@ def build_subsidy_page():
 
             <div class="sub-actions">
               <button type="button" class="sub-btn-main" id="sbCalc">計算補助金額</button>
-              <button type="button" class="sub-btn-ghost" id="sbCert">產生正式給付證明</button>
+              <button type="button" class="sub-btn-ghost" id="sbPrint">產生正式給付證明並列印</button>
+              <button type="button" class="sub-btn-ghost" id="sbWord"
+                      data-template="/assets/templates/certificate-template.json?v={SUBSIDY_ASSET_VERSION}">下載 Word 版給付證明</button>
             </div>
+            <div class="sub-note" id="sbMsg" hidden></div>
           </section>
 
           <p class="sub-disclaimer">
@@ -1849,16 +1860,7 @@ def build_subsidy_page():
       </div>
     </div>
 
-    <div class="sub-preview" id="sbPreview" role="dialog" aria-modal="true" aria-label="給付證明預覽">
-      <div class="sub-pv-bar">
-        <span class="sub-pv-title">長照輔具服務給付證明暨契約書</span>
-        <button type="button" class="sub-btn-main" id="sbPvPrint" style="flex:none">列印 / 存成 PDF</button>
-        <button type="button" class="sub-btn-ghost" id="sbPvWord" style="flex:none">下載 Word 檔</button>
-        <button type="button" class="sub-pv-close" id="sbPvClose">關閉</button>
-        <div class="sub-pv-status" id="sbPvStatus"></div>
-      </div>
-      <div class="sub-pv-scroll" id="sbPvScroll"></div>
-    </div>
+    <div class="sub-print" id="sbPrintArea" aria-hidden="true"></div>
 """
 
     desc = ("台南長照輔具補助試算：依長期照顧服務申請及給付辦法附表四、附表五，"
@@ -1890,7 +1892,7 @@ def build_subsidy_page():
         main_html=main,
         extra_head=(f'\n  <link rel="stylesheet" '
                     f'href="/assets/css/subsidy.css?v={CSS_VERSION}">'),
-        extra_js=f'  <script src="/assets/js/subsidy.js?v={CSS_VERSION}"></script>\n',
+        extra_js=f'  <script src="/assets/js/subsidy.js?v={SUBSIDY_ASSET_VERSION}"></script>\n',
     )
     out = ROOT / "subsidy" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)

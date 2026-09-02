@@ -398,75 +398,118 @@
     };
   }
 
-  /* ── 紙本 HTML ───────────────────────────────────────────────────── */
+  /* ── 紙本 HTML：依範本的實際數值重建 ─────────────────────────────
+     段落順序、縮排、字級、行距、欄寬、列高都取自範本 OOXML，
+     換算方式與註解見 assets/css/subsidy.css 開頭。
+     行距與中文斷行無法與 Word 完全一致，正式送件請用 Word 檔。
+     ---------------------------------------------------------------- */
+
+  /* 空段落：高度由該段落標記的字級與行距決定，用來還原垂直節奏 */
+  function gap(sizePt, lineHeight) {
+    return '<p class="s-gap" style="font-size:' + sizePt + 'pt' +
+           (lineHeight ? ";line-height:" + lineHeight : "") + '"></p>';
+  }
+  /* 填寫欄位：底線寬度以字數估算，維持與範本相近的欄位長度 */
+  function ul(value, minChars, cls) {
+    var text = String(value == null ? "" : value);
+    return '<span class="u' + (cls ? " " + cls : "") +
+           '" style="min-width:' + minChars + 'em">' +
+           (text ? esc(text) : "&nbsp;") + "</span>";
+  }
+
   function buildSheets(cert) {
-    var body = "";
-    cert.rows.forEach(function (row) {
-      body += "<tr>" +
-        "<td>" + row.no + "</td>" +
-        '<td style="text-align:left">' + esc(row.name) + "</td>" +
-        "<td>" + esc(row.brand) + "</td>" +
-        "<td>" + esc(row.model) + "</td>" +
-        "<td>" + esc(row.serial) + "</td>" +
-        "<td>" + money(row.price) + "</td>" +
-        "<td>" + money(row.gov) + "</td>" +
-        "<td>" + money(row.self) + "</td>" +
+    /* 範本本身留了兩列空白供手寫，程式填表用不到，只列實際筆數 */
+    var rows = "";
+    for (var i = 0; i < cert.rows.length; i++) {
+      var r = cert.rows[i];
+      rows += "<tr>" +
+        '<td class="c0">' + (r ? i + 1 + "." : "&nbsp;") + "</td>" +
+        "<td>" + (r ? esc(r.name) : "") + "</td>" +
+        "<td>" + (r ? esc(r.brand) : "") + "</td>" +
+        "<td>" + (r ? esc(r.model) : "") + "</td>" +
+        "<td>" + (r ? esc(r.serial) : "") + "</td>" +
+        "<td>" + (r ? money(r.price) : "") + "</td>" +
+        "<td>" + (r ? money(r.gov) : "") + "</td>" +
+        "<td>" + (r ? money(r.self) : "") + "</td>" +
         "</tr>";
-    });
-    for (var i = cert.rows.length; i < 3; i++) {
-      body += "<tr>" + new Array(9).join("<td>&nbsp;</td>") + "</tr>";
     }
+
+    /* 版面結構取自實際核銷件（0805、0816）與範本的比對：
+       表格變高時，「立契約人」以下的下半部位置幾乎不動，變動全部由
+       「台南市政府衛生局」與「立契約人」之間的空白吸收。因此上半部
+       自然流動、中間留彈性空白、下半部貼齊頁尾，明細變多也不會分頁。 */
     var html =
       '<div class="sub-sheet">' +
-        '<div class="t">長照輔具服務給付證明暨契約書</div>' +
-        '<div class="intro">　　本人 <span class="ul">' + esc(cert.applicant) + '</span> 確已收到 ' +
-          '<span class="ul long">' + esc(cert.vendor) + '</span> ' +
-          '販售（或修繕）之輔助器具，明細如下表，本人同意經廠商申報下列輔具給付額度後，自本人長照輔具服務額度中扣除，' +
-          '所請代辦之憑證若經縣市政府查核有不符規定情事，願自行負擔購買費用，且如涉及詐欺或其他不法行為請領給付費用，' +
-          '願負一切法律責任，絕無異議。</div>' +
-        '<div class="headrow"><span>購買明細：</span><span>單位：元</span></div>' +
-        "<table><thead><tr>" +
-          '<th style="width:6%">編號</th>' +
-          '<th style="width:26%">輔具／環境改善<br>項目名稱</th>' +
-          '<th style="width:11%">產品廠牌</th>' +
-          '<th style="width:11%">產品型號</th>' +
-          '<th style="width:12%">產品序號</th>' +
-          '<th style="width:11%">購買金額</th>' +
-          '<th style="width:11%">給付金額</th>' +
-          '<th style="width:12%">民眾部分負擔</th>' +
-        "</tr></thead><tbody>" + body + "</tbody></table>" +
-        '<div class="note">註：購買金額應等於申請給付金額及民眾部分負擔之加總。</div>' +
-        '<div class="cause">此　致</div>' +
-        '<div class="dept">台南市政府衛生局</div>' +
-        '<div class="contract">立契約人(以下簡稱申請人)與' + esc(cert.vendor) +
-          '(以下簡稱乙方)同意訂立輔具買賣契約，雙方議定條件如上:</div>' +
-        '<div class="sign">' +
-          '申請人簽名或蓋章：<span class="ul"></span>　身分證字號：<span class="ul short">' + esc(cert.applicantId) + "</span><br>" +
-          '聯 絡 電 話：<span class="ul">' + esc(cert.applicantTel) + "</span><br>" +
-          '受託人簽名或蓋章：<span class="ul"></span>　身分證字號：<span class="ul short"></span><br>' +
-          '受託人與申請人之關係：<span class="ul short"></span>' +
+        '<div class="s-top">' +
+          gap(14) +
+          '<p class="s-title">長照輔具服務給付證明暨契約書</p>' +
+          gap(12) +
+          '<p class="s-intro">本人' + ul(cert.applicant, 6) +
+            "確已收到 " + ul(cert.vendor, 10) +
+            " 販售（或修繕）之輔助器具，明細如下表，本人同意經廠商申報下列輔具給付額度後，" +
+            "自本人長照輔具服務額度中扣除，所請代辦之憑證若經縣市政府查核有不符規定情事，" +
+            "願自行負擔購買費用，且如涉及詐欺或其他不法行為請領給付費用，" +
+            "願負一切法律責任，絕無異議。</p>" +
+          gap(10, "var(--ls-360)") +
+          '<p class="s-dhead">購買明細：<span class="unit">單位：元</span></p>' +
+          gap(12) +
+          '<table class="s-table"><colgroup>' +
+            '<col style="width:35.85pt"><col style="width:97.25pt">' +
+            '<col style="width:49.6pt"><col style="width:74.3pt">' +
+            '<col style="width:84.95pt"><col style="width:58.55pt">' +
+            '<col style="width:58.6pt"><col style="width:85.15pt">' +
+          "</colgroup><thead><tr>" +
+            "<th>編號</th><th>輔具/環境改善<br>項目名稱</th>" +
+            "<th>產品廠牌</th><th>產品型號</th><th>產品序號</th>" +
+            "<th>購買金額</th><th>給付金額</th><th>民眾部分負擔</th>" +
+          "</tr></thead><tbody>" + rows + "</tbody></table>" +
+          gap(12) +
+          '<p class="s-note">註：購買金額應等於申請給付金額及民眾部分負擔之加總。</p>' +
+          gap(18, "var(--ls-212)") +
+          gap(18, "var(--ls-212)") +
+          '<p class="s-cause">此　　致</p>' +
+          gap(8, "var(--ls-212)") +
+          '<p class="s-dept">台南市政府衛生局</p>' +
         "</div>" +
-        '<div class="vendor">乙方: ' + esc(cert.vendor) + "　　地址:" + esc(cert.vendorAddr) +
-          "　　代表人:" + esc(cert.vendorRep) + "</div>" +
-        '<div class="date">中　華　民　國　<span class="ul short">' + esc(cert.year) +
-          '</span>　年　<span class="ul short">' + esc(cert.month) +
-          '</span>　月　<span class="ul short">' + esc(cert.day) + "</span>　日</div>" +
+
+        '<div class="s-flex"></div>' +
+
+        '<div class="s-bottom">' +
+          '<p class="s-contract">立契約人(以下簡稱申請人)與' + ul(cert.vendor, 10) +
+            "(以下簡稱乙方)同意訂立輔具買賣契約，雙方議定</p>" +
+          '<p class="s-contract">條件如上:</p>' +
+          '<p class="s-sign">申請人簽名或蓋章：' + ul("", 11) +
+            "　身分證字號：" + ul(cert.applicantId, 7) + "</p>" +
+          '<p class="s-sign">聯 絡 電 話：' + ul(cert.applicantTel, 7) + "</p>" +
+          '<p class="s-sign">受託人簽名或蓋章：' + ul("", 11) +
+            "　身分證字號：" + ul("", 7) + "</p>" +
+          '<p class="s-sign">受託人與申請人之關係：' + ul("", 7) + "</p>" +
+          gap(16, "var(--ls-360)") +
+          '<p class="s-vendor">乙方: ' + esc(cert.vendor) + "　　　地址:" +
+            esc(cert.vendorAddr) + "　　代表人:" + esc(cert.vendorRep) + "</p>" +
+          gap(12, "var(--ls-360)") + gap(12, "var(--ls-360)") +
+          '<p class="s-date">中　華　民　國　　' + esc(cert.year) +
+            "　　年　　" + esc(cert.month) + "　　月　　" + esc(cert.day) + "　　日</p>" +
+        "</div>" +
       "</div>";
 
     if (cert.photo) {
       cert.rows.forEach(function (row) {
         html +=
           '<div class="sub-sheet">' +
-            '<div class="photo-title">個案姓名: <span class="ul">' + esc(cert.applicant) + "</span><br>" +
-              '購買項目： <span class="ul long">' + esc(row.name) + "</span></div>" +
-            '<div class="photo-box">照片黏貼處</div>' +
+            gap(18, "30pt") + gap(18, "30pt") + gap(18, "30pt") +
+            '<p class="s-photo-line">　　　　　　　　　個案姓名: ' +
+              ul(cert.applicant, 8) + "</p>" +
+            '<p class="s-photo-line s-photo-item">購買項目： ' +
+              ul(row.name, 16) + "</p>" +
+            '<div class="s-photo-box">照片黏貼處</div>' +
           "</div>";
       });
     }
     return html;
   }
 
-  /* ── DOCX（純前端組 zip） ────────────────────────────────────────── */
+  /* ── ZIP 打包（docx 就是一個 zip） ───────────────────────────────── */
   function crc32(bytes) {
     var crc = 0xFFFFFFFF;
     for (var i = 0; i < bytes.length; i++) {
@@ -504,215 +547,303 @@
                    u32(cd.length), u32(ld.length), u16(0)]);
     return cat([ld, cd, end]);
   }
-  function xEsc(v) {
-    return String(v === null || v === undefined ? "" : v)
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+  /* ── DOCX：沿用衛生局範本，只替換文字 ───────────────────────────────
+     範本由 scripts/prepare_certificate_template.py 拆成 JSON（各部件的
+     XML 原文），這裡只改 word/document.xml 的文字節點後重新打包，
+     欄寬、邊界、行距等排版一律沿用正本，不重畫。
+     ------------------------------------------------------------------ */
+  var W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+  var tplPromise = null;
+
+  function loadTemplate() {
+    if (!tplPromise) {
+      var url = $("sbWord").dataset.template;
+      tplPromise = fetch(url).then(function (res) {
+        if (!res.ok) throw new Error("載入範本失敗（HTTP " + res.status + "）");
+        return res.json();
+      });
+    }
+    return tplPromise;
   }
-  function tx(text, size, bold, underline) {
-    size = size || 28;
-    return '<w:r><w:rPr><w:rFonts w:ascii="DFKai-SB" w:hAnsi="DFKai-SB" w:eastAsia="標楷體"/>' +
-      '<w:sz w:val="' + size + '"/><w:szCs w:val="' + size + '"/>' +
-      (bold ? "<w:b/>" : "") + (underline ? '<w:u w:val="single"/>' : "") +
-      '</w:rPr><w:t xml:space="preserve">' + xEsc(text) + "</w:t></w:r>";
+
+  function tagged(node, name) {
+    return Array.prototype.slice.call(node.getElementsByTagNameNS(W_NS, name));
   }
-  function para(runs, align, before, after, line) {
-    return '<w:p><w:pPr><w:jc w:val="' + (align || "left") + '"/>' +
-      '<w:spacing w:before="' + (before || 0) + '" w:after="' + (after || 0) +
-      '" w:line="' + (line || 300) + '" w:lineRule="auto"/></w:pPr>' + runs + "</w:p>";
+  function nodeText(node) {
+    return tagged(node, "t").map(function (t) { return t.textContent; }).join("");
   }
-  function cell(text, width, size, bold, align) {
-    var paras = String(text === null || text === undefined ? "" : text).split("\n")
-      .map(function (l) { return para(tx(l, size || 20, bold), align || "center", 0, 0, 220); })
-      .join("");
-    return '<w:tc><w:tcPr><w:tcW w:w="' + width + '" w:type="dxa"/>' +
-      '<w:vAlign w:val="center"/><w:tcMar><w:top w:w="30" w:type="dxa"/>' +
-      '<w:left w:w="40" w:type="dxa"/><w:bottom w:w="30" w:type="dxa"/>' +
-      '<w:right w:w="40" w:type="dxa"/></w:tcMar></w:tcPr>' + paras + "</w:tc>";
+  /* 直接子元素；getElementsByTagNameNS 會抓到孫層，取段落屬性時不能用 */
+  function childNamed(node, name) {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var c = node.childNodes[i];
+      if (c.nodeType === 1 && c.localName === name) return c;
+    }
+    return null;
   }
-  function trow(cells, height) {
-    return '<w:tr><w:trPr><w:trHeight w:val="' + (height || 460) +
-      '" w:hRule="atLeast"/></w:trPr>' + cells + "</w:tr>";
+  function elemChildren(node, name) {
+    return Array.prototype.slice.call(node.childNodes).filter(function (n) {
+      return n.nodeType === 1 && n.localName === name;
+    });
   }
-  function tbl(rows, widths) {
-    var total = widths.reduce(function (a, b) { return a + b; }, 0);
-    var b = ["top", "left", "bottom", "right", "insideH", "insideV"].map(function (k) {
-      return "<w:" + k + ' w:val="single" w:sz="8" w:color="000000"/>';
-    }).join("");
-    return '<w:tbl><w:tblPr><w:tblW w:w="' + total + '" w:type="dxa"/>' +
-      '<w:tblLayout w:type="fixed"/><w:tblBorders>' + b + "</w:tblBorders></w:tblPr><w:tblGrid>" +
-      widths.map(function (w) { return '<w:gridCol w:w="' + w + '"/>'; }).join("") +
-      "</w:tblGrid>" + rows + "</w:tbl>";
+  function setRunText(run, value) {
+    var t = childNamed(run, "t");
+    if (!t) {
+      t = run.ownerDocument.createElementNS(W_NS, "w:t");
+      run.appendChild(t);
+    }
+    t.setAttribute("xml:space", "preserve");
+    t.textContent = value;
   }
-  function ulRun(text, width, size) {
-    var pad = String(text === null || text === undefined ? "" : text);
-    width = width || 14;
-    while (pad.length < width) pad += " ";
-    return tx(pad, size || 26, false, true);
+
+  /* 範本的填寫欄位都是「連續數個加底線的 run」。把第 groupIndex 組換成
+     value，其餘清空；value 補空白至原長度，底線長度才不會縮短。 */
+  function fillUnderlineGroup(para, groupIndex, value) {
+    var groups = [], cur = null;
+    tagged(para, "r").forEach(function (r) {
+      var rPr = childNamed(r, "rPr");
+      if (rPr && childNamed(rPr, "u")) {
+        if (!cur) { cur = []; groups.push(cur); }
+        cur.push(r);
+      } else {
+        cur = null;
+      }
+    });
+    var g = groups[groupIndex];
+    if (!g) return false;
+    var width = g.reduce(function (n, r) { return n + nodeText(r).length; }, 0);
+    var text = String(value == null ? "" : value);
+    while (text.length < width) text += " ";
+    setRunText(g[0], text);
+    g.slice(1).forEach(function (r) { setRunText(r, ""); });
+    return true;
   }
-  function photoPage(row, cert) {
-    return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>' +
-      '<w:p><w:pPr><w:spacing w:line="360" w:lineRule="auto"/></w:pPr>' +
-        tx("　　　　　　　　　個案姓名: ") + ulRun(cert.applicant, 12) + "</w:p>" +
-      '<w:p><w:pPr><w:spacing w:after="120" w:line="360" w:lineRule="auto"/></w:pPr>' +
-        tx("購買項目： ") + ulRun(row.name, 20) + "</w:p>" +
-      tbl(trow(cell("照片黏貼處", 9000, 24), 9600), [9000]);
+
+  /* 把整段併成一個 run，沿用第一個 run 的格式（日期列用） */
+  function replaceParaText(para, value) {
+    var runs = tagged(para, "r");
+    if (!runs.length) return false;
+    setRunText(runs[0], value);
+    runs.slice(1).forEach(function (r) { setRunText(r, ""); });
+    return true;
+  }
+
+  function findPara(paras, predicate) {
+    for (var i = 0; i < paras.length; i++) {
+      if (predicate(nodeText(paras[i]))) return paras[i];
+    }
+    return null;
+  }
+
+  /* 表格儲存格：沿用該格段落屬性裡的 rPr 當文字格式 */
+  function setCellText(tc, value) {
+    var doc = tc.ownerDocument;
+    var p = childNamed(tc, "p");
+    if (!p) return;
+    tagged(p, "r").forEach(function (r) { r.parentNode.removeChild(r); });
+    if (!value) return;
+    var run = doc.createElementNS(W_NS, "w:r");
+    var pPr = childNamed(p, "pPr");
+    var rPr = pPr && childNamed(pPr, "rPr");
+    if (rPr) run.appendChild(rPr.cloneNode(true));
+    var t = doc.createElementNS(W_NS, "w:t");
+    t.setAttribute("xml:space", "preserve");
+    t.textContent = value;
+    run.appendChild(t);
+    p.appendChild(run);
+  }
+
+  function fillDocumentXml(xml, cert) {
+    var doc = new DOMParser().parseFromString(xml, "application/xml");
+    if (doc.getElementsByTagName("parsererror").length) {
+      throw new Error("範本 XML 解析失敗");
+    }
+    var body = doc.getElementsByTagNameNS(W_NS, "body")[0];
+    var paras = tagged(body, "p");
+
+    /* 本人 ___ 確已收到 ___ 販售（或修繕）… */
+    var pIntro = findPara(paras, function (t) { return t.indexOf("確已收到") > -1; });
+    if (pIntro) {
+      fillUnderlineGroup(pIntro, 0, cert.applicant);
+      fillUnderlineGroup(pIntro, 1, " " + cert.vendor + " ");
+    }
+
+    /* 立契約人…與 ___ (以下簡稱乙方) */
+    var pContract = findPara(paras, function (t) { return t.indexOf("立契約人") > -1; });
+    if (pContract) fillUnderlineGroup(pContract, 0, cert.vendor);
+
+    /* 身分證字號與電話；簽名欄留白供手寫 */
+    var pSign = findPara(paras, function (t) { return t.indexOf("申請人簽名或蓋章") > -1; });
+    if (pSign) fillUnderlineGroup(pSign, 1, cert.applicantId);
+    var pTel = findPara(paras, function (t) {
+      return t.replace(/\s/g, "").indexOf("聯絡電話") === 0;
+    });
+    if (pTel) fillUnderlineGroup(pTel, 0, cert.applicantTel);
+
+    /* 乙方：名稱在加底線的 run，地址與代表人在其後的一般 run */
+    var pVendor = findPara(paras, function (t) { return t.indexOf("乙方:") === 0; });
+    if (pVendor) {
+      fillUnderlineGroup(pVendor, 0, " " + cert.vendor + " ");
+      tagged(pVendor, "r").forEach(function (r) {
+        var txt = nodeText(r);
+        if (txt.indexOf("地址:") > -1 && txt.indexOf("代表人:") > -1) {
+          setRunText(r, "     地址:" + cert.vendorAddr + "  代表人:" + cert.vendorRep);
+        }
+      });
+    }
+
+    /* 中華民國 ○ 年 ○ 月 ○ 日 */
+    var pDate = findPara(paras, function (t) { return t.indexOf("中   華   民   國") > -1; });
+    if (pDate) {
+      replaceParaText(pDate,
+        "中   華   民   國    " + cert.year + "    年    " + cert.month +
+        "    月    " + cert.day + "    日");
+    }
+
+    /* 購買明細表：範本給兩列空白，不足則複製。
+       編號欄是 Word 的自動編號（numPr），不要自己填。 */
+    var mainTbl = null;
+    tagged(body, "tbl").forEach(function (t) {
+      if (!mainTbl && nodeText(t).indexOf("編號") > -1) mainTbl = t;
+    });
+    if (mainTbl) {
+      var blanks = elemChildren(mainTbl, "tr").slice(1);
+      while (blanks.length < cert.rows.length) {
+        var clone = blanks[blanks.length - 1].cloneNode(true);
+        mainTbl.appendChild(clone);
+        blanks.push(clone);
+      }
+      /* 多出來的空白列刪掉，與列印版一致 */
+      blanks.slice(cert.rows.length).forEach(function (tr) {
+        if (tr.parentNode) tr.parentNode.removeChild(tr);
+      });
+      blanks = blanks.slice(0, cert.rows.length);
+      cert.rows.forEach(function (row, idx) {
+        var cells = elemChildren(blanks[idx], "tc");
+        if (cells.length < 8) return;
+        setCellText(cells[1], row.name);
+        setCellText(cells[2], row.brand);
+        setCellText(cells[3], row.model);
+        setCellText(cells[4], row.serial);
+        setCellText(cells[5], money(row.price));
+        setCellText(cells[6], money(row.gov));
+        setCellText(cells[7], money(row.self));
+      });
+    }
+
+    /* 照片黏貼頁：範本內建兩頁，依項目數整塊增減 */
+    var starts = paras.filter(function (p) { return nodeText(p).indexOf("個案姓名") > -1; });
+    if (starts.length) {
+      var top = starts[0].parentNode;
+      var kids = Array.prototype.slice.call(top.childNodes);
+      var blocks = starts.map(function (startPara, bi) {
+        var from = kids.indexOf(startPara);
+        var to = bi + 1 < starts.length ? kids.indexOf(starts[bi + 1]) : kids.length;
+        /* 版面結尾的 sectPr 不屬於任何一塊 */
+        while (to > from && kids[to - 1].nodeType === 1 &&
+               kids[to - 1].localName === "sectPr") { to -= 1; }
+        return kids.slice(from, to);
+      });
+
+      var want = cert.photo ? cert.rows.length : 0;
+      while (blocks.length < want) {
+        var src = blocks[blocks.length - 1];
+        var copy = src.map(function (n) { return n.cloneNode(true); });
+        copy.reduce(function (prev, node) {
+          prev.parentNode.insertBefore(node, prev.nextSibling);
+          return node;
+        }, src[src.length - 1]);
+        blocks.push(copy);
+      }
+      blocks.slice(want).forEach(function (block) {
+        block.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+      });
+      /* 範本的照片頁是靠表格撐滿版面自然溢出分頁的。複製之後張數不固定，
+         而且只有 Word 會這樣分頁，改成加上明確的分頁符號，Word 與畫面
+         渲染才會得到相同的頁數。第一塊沿用範本原本的位置，不另外加。 */
+      blocks.slice(1, want).forEach(function (block) {
+        var first = block[0];
+        var br = doc.createElementNS(W_NS, "w:p");
+        var run = doc.createElementNS(W_NS, "w:r");
+        var brk = doc.createElementNS(W_NS, "w:br");
+        brk.setAttribute("w:type", "page");
+        run.appendChild(brk);
+        br.appendChild(run);
+        first.parentNode.insertBefore(br, first);
+      });
+
+      blocks.slice(0, want).forEach(function (block, bi) {
+        block.forEach(function (node) {
+          if (node.nodeType !== 1 || node.localName !== "p") return;
+          var txt = nodeText(node);
+          if (txt.indexOf("個案姓名") > -1) {
+            fillUnderlineGroup(node, 0, cert.applicant);
+          } else if (txt.indexOf("購買項目") > -1) {
+            var runs = tagged(node, "r");
+            if (runs.length) setRunText(runs[runs.length - 1], " " + cert.rows[bi].name);
+          }
+        });
+      });
+    }
+
+    return new XMLSerializer().serializeToString(doc);
   }
 
   function buildDocx(cert) {
-    var widths = [560, 2500, 1150, 1150, 1250, 1150, 1150, 1180];
-    var totalW = widths.reduce(function (a, b) { return a + b; }, 0);
-
-    var rows = trow(
-      cell("編號", widths[0], 20, true) +
-      cell("輔具／環境改善\n項目名稱", widths[1], 20, true) +
-      cell("產品廠牌", widths[2], 20, true) +
-      cell("產品型號", widths[3], 20, true) +
-      cell("產品序號", widths[4], 20, true) +
-      cell("購買金額", widths[5], 20, true) +
-      cell("給付金額", widths[6], 20, true) +
-      cell("民眾部分負擔", widths[7], 20, true), 560);
-
-    cert.rows.forEach(function (row) {
-      rows += trow(
-        cell(String(row.no), widths[0]) +
-        cell(row.name, widths[1], 20, false, "left") +
-        cell(row.brand, widths[2]) +
-        cell(row.model, widths[3]) +
-        cell(row.serial, widths[4]) +
-        cell(money(row.price), widths[5]) +
-        cell(money(row.gov), widths[6]) +
-        cell(money(row.self), widths[7]), 520);
+    return loadTemplate().then(function (tpl) {
+      var files = Object.keys(tpl).map(function (name) {
+        return {
+          name: name,
+          data: name === "word/document.xml" ? fillDocumentXml(tpl[name], cert) : tpl[name]
+        };
+      });
+      return new Blob([createZip(files)], {
+        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      });
     });
-    for (var i = cert.rows.length; i < 3; i++) {
-      rows += trow(widths.map(function (w) { return cell("", w); }).join(""), 520);
-    }
-    var intro =
-      '<w:p><w:pPr><w:jc w:val="both"/><w:spacing w:line="340" w:lineRule="auto"/></w:pPr>' +
-      tx("　　本人 ") + ulRun(cert.applicant, 12) +
-      tx(" 確已收到 ") + ulRun(cert.vendor, 18) +
-      tx(" 販售（或修繕）之輔助器具，明細如下表，本人同意經廠商申報下列輔具給付額度後，自本人長照輔具服務額度中扣除，" +
-         "所請代辦之憑證若經縣市政府查核有不符規定情事，願自行負擔購買費用，且如涉及詐欺或其他不法行為請領給付費用，" +
-         "願負一切法律責任，絕無異議。") +
-      "</w:p>";
-
-    var headRow =
-      '<w:p><w:pPr><w:tabs><w:tab w:val="right" w:pos="' + totalW + '"/></w:tabs>' +
-      '<w:spacing w:before="160" w:after="60"/></w:pPr>' +
-      tx("購買明細：", 26) + "<w:r><w:tab/></w:r>" + tx("單位：元", 26) + "</w:p>";
-
-    var doc =
-      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-      '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>' +
-      para(tx("長照輔具服務給付證明暨契約書", 36, true), "center", 0, 200) +
-      intro + headRow + tbl(rows, widths) +
-      para(tx("註：購買金額應等於申請給付金額及民眾部分負擔之加總。", 22), "left", 80, 200) +
-      para(tx("此　致", 28), "left", 120, 60) +
-      para(tx("台南市政府衛生局", 30, true), "center", 0, 240) +
-      para(tx("立契約人(以下簡稱申請人)與" + cert.vendor +
-              "(以下簡稱乙方)同意訂立輔具買賣契約，雙方議定條件如上:", 24), "both", 0, 120) +
-      '<w:p><w:pPr><w:spacing w:line="360" w:lineRule="auto"/></w:pPr>' +
-        tx("申請人簽名或蓋章：") + ulRun("", 14) +
-        tx("　身分證字號：") + ulRun(cert.applicantId, 12) + "</w:p>" +
-      '<w:p><w:pPr><w:spacing w:line="360" w:lineRule="auto"/></w:pPr>' +
-        tx("聯 絡 電 話：") + ulRun(cert.applicantTel, 14) + "</w:p>" +
-      '<w:p><w:pPr><w:spacing w:line="360" w:lineRule="auto"/></w:pPr>' +
-        tx("受託人簽名或蓋章：") + ulRun("", 14) +
-        tx("　身分證字號：") + ulRun("", 12) + "</w:p>" +
-      '<w:p><w:pPr><w:spacing w:line="360" w:lineRule="auto"/></w:pPr>' +
-        tx("受託人與申請人之關係：") + ulRun("", 12) + "</w:p>" +
-      para(tx("乙方: " + cert.vendor + "　　地址:" + cert.vendorAddr +
-              "　　代表人:" + cert.vendorRep, 24), "left", 200, 200) +
-      para(tx("中　華　民　國　" + cert.year + "　年　" + cert.month +
-              "　月　" + cert.day + "　日", 28), "center", 200, 0) +
-      (cert.photo ? cert.rows.map(function (row) { return photoPage(row, cert); }).join("") : "") +
-      '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/>' +
-      '<w:pgMar w:top="1000" w:right="1000" w:bottom="1000" w:left="1000" w:header="0" w:footer="0" w:gutter="0"/>' +
-      '<w:cols w:space="0"/></w:sectPr></w:body></w:document>';
-
-    var styles =
-      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-      '<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
-      "<w:docDefaults><w:rPrDefault><w:rPr>" +
-      '<w:rFonts w:ascii="DFKai-SB" w:hAnsi="DFKai-SB" w:eastAsia="標楷體"/>' +
-      '<w:sz w:val="28"/><w:szCs w:val="28"/></w:rPr></w:rPrDefault></w:docDefaults>' +
-      '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/></w:style>' +
-      "</w:styles>";
-
-    var types =
-      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-      '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
-      '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
-      '<Default Extension="xml" ContentType="application/xml"/>' +
-      '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
-      '<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>' +
-      "</Types>";
-
-    var rootRels =
-      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
-      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
-      "</Relationships>";
-
-    var docRels =
-      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
-      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
-      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' +
-      "</Relationships>";
-
-    return new Blob([createZip([
-      { name: "[Content_Types].xml", data: types },
-      { name: "_rels/.rels", data: rootRels },
-      { name: "word/document.xml", data: doc },
-      { name: "word/styles.xml", data: styles },
-      { name: "word/_rels/document.xml.rels", data: docRels }
-    ])], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
   }
 
-  /* ── 預覽、列印、下載 ────────────────────────────────────────────── */
+  /* ── 列印與下載 ──────────────────────────────────────────────────── */
   function setStatus(msg) {
-    var el = $("sbPvStatus");
-    if (el) el.textContent = msg || "";
+    var el = $("sbMsg");
+    if (!el) return;
+    el.hidden = !msg;
+    el.textContent = msg || "";
   }
 
-  function openPreview() {
+  function printCertificate() {
     var cert = certificateData();
     if (!cert) return;
-    $("sbPvScroll").innerHTML = buildSheets(cert);
-    $("sbPreview").classList.add("open");
-    $("sbPvScroll").scrollTop = 0;
-    setStatus("確認內容無誤後即可列印或下載 Word 檔。");
-    $("sbPvClose").focus();
-  }
-
-  function closePreview() {
-    $("sbPreview").classList.remove("open");
-    $("sbCert").focus();
+    $("sbPrintArea").innerHTML = buildSheets(cert);
+    setStatus("");
+    setTimeout(function () { window.print(); }, 80);
   }
 
   function downloadWord() {
     var cert = certificateData();
     if (!cert) return;
-    var blob;
-    try {
-      blob = buildDocx(cert);
-    } catch (err) {
+    var btn = $("sbWord");
+    btn.disabled = true;
+    setStatus("正在依範本產生 Word 檔…");
+    buildDocx(cert).then(function (blob) {
+      var safe = (cert.applicant || "未填寫姓名").replace(/[\\/:*?"<>|]/g, "_");
+      var pad = function (v) { return String(v).length < 2 ? "0" + v : String(v); };
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "長照輔具服務給付證明暨契約書_" + safe + "_" +
+                   cert.year + pad(cert.month) + pad(cert.day) + ".docx";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { a.remove(); }, 1000);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 15000);
+      setStatus("Word 檔已下載。");
+    }).catch(function (err) {
+      console.error(err);
       setStatus("Word 檔產生失敗：" + (err && err.message ? err.message : err));
-      return;
-    }
-    var safe = (cert.applicant || "未填寫姓名").replace(/[\\/:*?"<>|]/g, "_");
-    var pad = function (s) { return String(s).length < 2 ? "0" + s : String(s); };
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = "長照輔具服務給付證明暨契約書_" + safe + "_" +
-                 cert.year + pad(cert.month) + pad(cert.day) + ".docx";
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function () { a.remove(); }, 1000);
-    setTimeout(function () { URL.revokeObjectURL(url); }, 15000);
-    setStatus("Word 檔已下載。");
+    }).then(function () {
+      btn.disabled = false;
+    });
   }
 
   /* ── 啟動 ────────────────────────────────────────────────────────── */
@@ -739,9 +870,6 @@
       else if (d.limit) { e.target.dataset.auto = "0"; calculate(false); }
       else if (d.price) calculate(false);
     });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && $("sbPreview").classList.contains("open")) closePreview();
-    });
 
     VENDOR_FIELDS.forEach(function (id) {
       $(id).addEventListener("input", saveVendor);
@@ -749,10 +877,8 @@
     $("sbVendorClear").addEventListener("click", clearVendor);
     $("sbAdd").addEventListener("click", addRow);
     $("sbCalc").addEventListener("click", function () { calculate(true); });
-    $("sbCert").addEventListener("click", openPreview);
-    $("sbPvClose").addEventListener("click", closePreview);
-    $("sbPvPrint").addEventListener("click", function () { window.print(); });
-    $("sbPvWord").addEventListener("click", downloadWord);
+    $("sbPrint").addEventListener("click", printCertificate);
+    $("sbWord").addEventListener("click", downloadWord);
     $("sbCopay").addEventListener("change", function () { calculate(false); });
     $("sbQuota").addEventListener("input", function () { calculate(false); });
   }

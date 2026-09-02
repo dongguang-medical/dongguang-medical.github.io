@@ -272,131 +272,197 @@
 }
 .sub-disclaimer strong { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
 
-/* ── 證明書預覽 ───────────────────────────────────────────────────── */
-.sub-preview {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(48, 26, 8, .72);
-  display: none;
-  flex-direction: column;
-}
-.sub-preview.open { display: flex; }
-.sub-pv-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  align-items: center;
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-}
-.sub-pv-bar .sub-pv-title {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-md);
-  margin-right: auto;
-  color: var(--color-text-primary);
-}
-.sub-pv-bar button { padding: 9px 16px; font-weight: var(--font-weight-bold); }
-.sub-pv-bar button[hidden] { display: none; }
-.sub-pv-close {
-  background: transparent;
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
-}
-.sub-pv-status {
-  width: 100%;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
-}
-.sub-pv-scroll {
-  flex: 1;
-  overflow: auto;
-  padding: var(--space-6) var(--space-3) 60px;
-}
+/* ══════════════════════════════════════════════════════════════════════
+   紙本樣式：台南市「長照輔具服務給付證明暨契約書」
 
-/* ── 紙本樣式（台南市範本）：固定黑字白紙，不隨站台配色變動 ────────── */
-/* 固定 19cm 紙寬，畫面上不隨視窗縮放，預覽才會與列印結果一致；
-   螢幕較窄時由 .sub-pv-scroll 橫向捲動。 */
+   所有數值皆由範本的 OOXML 換算，不是目測估計：
+     1440 twips = 1 吋 = 72pt，故 pt = twips / 20
+
+   頁面     11906 × 16840 twips → 595.3 × 842pt（A4），頁面邊界全為 0，
+            內容位置一律由段落縮排決定
+   內文字型 標楷體，預設字級 24（12pt，來自 styles.xml 的 docDefaults）
+
+   仍與 Word 不同之處（HTML 排版引擎的先天限制，無法消除）：
+     · Word 的「單行」行距取決於字型的 ascent/descent，此處以 --single
+       近似；欄寬、縮排、字級可以精確，行距只能逼近
+     · 中文斷行規則與 Word 不完全相同，長字串的換行點可能有差
+   正式送件請以「下載 Word 版給付證明」產出的檔案為準。
+   ══════════════════════════════════════════════════════════════════════ */
+
+.sub-print { display: none; }
+
 .sub-sheet {
-  width: 19cm;
-  margin: 0 auto var(--space-5);
-  padding: 1.4cm 1.2cm;
+  /* 單行行高。理論值取自標楷體 kaiu.ttf 的字型度量：
+       (ascent 820 + descent 204 + lineGap 204) / unitsPerEm 1024 = 1.1992
+     這是 Word 對 TrueType 字型計算「單行」的方式，範本也未設 w:docGrid
+     （無格線吸附），照理可直接套用。
+
+     但實測用 1.1992 排出來，第一頁內容為 855pt，超出 842pt 的頁面約
+     1.5%，而 Word 是排得下的。逐段核對過字級、行距、縮排與表格列高後
+     仍找不出這 13pt 的來源，推測與 Word 逐行取整或字元間距(w:spacing
+     val=-1)造成的細微差異有關。此處改用校準值，讓內容確實容納於一頁；
+     其餘位置（欄寬、縮排、各區塊的相對順序）皆已與範本核對一致。 */
+  --single: 1.165;
+  --ls-360: calc(1.5 * var(--single));      /* w:line=360 lineRule=auto */
+  --ls-212: calc(0.8833 * var(--single));   /* w:line=212 lineRule=auto */
+
+  box-sizing: border-box;
+  /* A4 用 mm 表示才會與紙張完全一致：595.3pt / 842pt 換算後會比
+     210mm × 297mm(841.89pt) 多出零點幾 pt，列印時足以擠出第二頁。 */
+  width: 210mm;
+  height: 296mm;
+
+  /* 依實際核銷件（0805、0816）與範本比對：表格加列時，「立契約人」
+     以下的下半部位置幾乎不動，變動全部由「台南市政府衛生局」與
+     「立契約人」之間的空白吸收。因此上半部自然流動、中間留彈性空白、
+     下半部貼齊頁尾，明細變多也不會把日期擠到第二頁。 */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 auto;
   background: #fff;
   color: #000;
-  font-family: "DFKai-SB", "標楷體", "BiauKai", serif;
-  box-shadow: 0 2px 18px rgba(0, 0, 0, .3);
-}
-.sub-sheet .t { text-align: center; font-size: 20pt; font-weight: 700; letter-spacing: 2px; margin: 0 0 14px; }
-.sub-sheet .intro { font-size: 13.5pt; line-height: 1.9; text-align: justify; margin-bottom: 12px; }
-.sub-sheet .headrow { display: flex; justify-content: space-between; font-size: 13pt; margin-bottom: 4px; }
-.sub-sheet table { width: 100%; border-collapse: collapse; font-size: 11pt; }
-.sub-sheet th,
-.sub-sheet td {
-  border: 1px solid #000;
-  padding: 5px 3px;
-  text-align: center;
-  vertical-align: middle;
-  word-break: break-all;
-}
-.sub-sheet th { font-weight: 700; }
-.sub-sheet .note { font-size: 11pt; margin-top: 6px; line-height: 1.7; }
-.sub-sheet .cause { font-size: 14pt; margin-top: 16px; letter-spacing: 2px; }
-.sub-sheet .dept { font-size: 15pt; font-weight: 700; margin: 6px 0 18px; text-align: center; letter-spacing: 3px; }
-.sub-sheet .contract { font-size: 12.5pt; line-height: 1.9; margin-bottom: 10px; text-align: justify; }
-.sub-sheet .sign { font-size: 13pt; line-height: 2.4; }
-.sub-sheet .ul { display: inline-block; border-bottom: 1px solid #000; min-width: 150px; text-align: center; }
-.sub-sheet .ul.short { min-width: 105px; }
-.sub-sheet .ul.long { min-width: 220px; }
-.sub-sheet .vendor { font-size: 12.5pt; margin-top: 12px; line-height: 1.9; }
-/* 日期整行不得斷行（「日」被擠到次行），底線也收窄以留出寬度 */
-.sub-sheet .date {
-  font-size: 14pt;
-  text-align: center;
-  margin-top: 20px;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-.sub-sheet .date .ul { min-width: 70px; }
-.sub-sheet .photo-title { font-size: 14pt; margin-bottom: 10px; line-height: 2.1; }
-.sub-sheet .photo-box {
-  border: 1px solid #000;
-  height: 18cm;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 8px;
+  font-family: "標楷體", "DFKai-SB", "BiauKai", serif;
   font-size: 12pt;
+  line-height: var(--single);
+  /* 不裁切：不同機器的字型度量略有差異，內容若稍微超過一頁，
+     寧可讓它溢出被看見，也不要被無聲切掉 */
+  overflow: visible;
+}
+.sub-sheet p { margin: 0; }
+.sub-sheet .u {                    /* 填寫欄位的底線 */
+  display: inline-block;
+  border-bottom: 0.75pt solid #000;
+  text-align: center;
+  white-space: pre;
 }
 
-/* ── 列印：只留紙本，站台外框全部隱藏 ─────────────────────────────── */
+/* ── 標題與前言 ───────────────────────────────────────────────────── */
+.sub-sheet .s-title {                                     /* sz=48 粗體 置中 */
+  font-size: 24pt;
+  font-weight: 700;
+  text-align: center;
+}
+.sub-sheet .s-intro {                                     /* ind 709/706 firstLine 640 */
+  margin-left: 35.45pt;
+  margin-right: 35.3pt;
+  text-indent: 32pt;
+  font-size: 16pt;
+  line-height: var(--ls-360);
+  text-align: justify;
+}
+
+/* ── 購買明細標頭：單位：元 落在 9851 twips 的定位點 ──────────────── */
+.sub-sheet .s-dhead {
+  position: relative;
+  margin-left: 35.45pt;
+  margin-top: 1.85pt;                          /* before=37 */
+  font-size: 16pt;
+}
+.sub-sheet .s-dhead .unit { position: absolute; left: 457.1pt; top: 0; }
+
+/* ── 明細表：tblInd 453、固定版面、欄寬取自 tblGrid ───────────────── */
+.sub-sheet .s-table {
+  margin-left: 22.65pt;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 544.25pt;
+}
+.sub-sheet .s-table td,
+.sub-sheet .s-table th {
+  border: 0.5pt solid #000;                    /* tcBorders sz=3（0.375pt） */
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: normal;
+  word-break: break-all;
+}
+.sub-sheet .s-table thead tr { height: 39.05pt; }         /* trHeight 781 exact */
+/* 列高用最小值：項目名稱換行時整列自動長高，與實際核銷件（0805）一致 */
+.sub-sheet .s-table tbody td { height: 38.35pt; }         /* trHeight 767 */
+.sub-sheet .s-table .c0 { text-align: justify; font-size: 11pt; }   /* 編號欄 sz=22 */
+
+/* ── 註記、此致、受文機關 ─────────────────────────────────────────── */
+.sub-sheet .s-note,
+.sub-sheet .s-cause {                            /* ind 705 right 5099 hanging 139 */
+  margin-left: 35.25pt;
+  margin-right: 254.95pt;
+  text-indent: -6.95pt;
+  margin-top: 2.65pt;                          /* before=53 */
+  line-height: var(--ls-212);
+}
+.sub-sheet .s-cause { font-size: 18pt; letter-spacing: 0; }
+.sub-sheet .s-dept { margin-left: 63.7pt; font-size: 16pt; }   /* ind 1274 */
+
+/* ── 契約條款與簽名欄 ─────────────────────────────────────────────── */
+.sub-sheet .s-contract,
+.sub-sheet .s-sign,
+.sub-sheet .s-vendor {
+  margin-left: 35.4pt;                         /* ind 708 */
+  line-height: var(--ls-360);
+}
+.sub-sheet .s-sign { font-size: 16pt; }
+
+/* ── 日期：w:jc=distribute，兩端對齊且末行也對齊 ──────────────────── */
+.sub-sheet .s-date {
+  /* 範本的 w:ind 只有 right=564、firstLine=140，左邊從頁緣起算，
+     散開後會比上方文字寬。實際印出來應與上方區塊切齊，
+     因此左右改用與前言相同的縮排。 */
+  margin-left: 35.4pt;
+  margin-right: 35.3pt;
+  font-size: 18pt;
+  text-align: justify;
+  text-align-last: justify;
+}
+
+/* ── 照片黏貼頁 ───────────────────────────────────────────────────── */
+.sub-sheet .s-photo-line {                                /* ind 709/1133 line 600 exact */
+  margin-left: 35.45pt;
+  margin-right: 56.65pt;
+  line-height: 30pt;
+  font-size: 18pt;
+}
+.sub-sheet .s-photo-item { text-align: center; }
+.sub-sheet .s-photo-box {                                 /* 9667 × 10909 twips，置中 */
+  width: 483.35pt;
+  height: 545.45pt;
+  margin: 0 auto;
+  border: 0.5pt solid #000;
+  text-align: center;
+  font-size: 18pt;
+  line-height: 30pt;
+}
+
+/* 空段落：高度等於該段落標記的行高，用來還原範本的垂直節奏 */
+.sub-sheet .s-gap::before { content: "\00a0"; }
+
+/* 版面三段：上半部與下半部依內容決定高度，中間吸收剩餘空間 */
+.sub-sheet .s-top,
+.sub-sheet .s-bottom { flex: 0 0 auto; }
+.sub-sheet .s-flex { flex: 1 1 auto; min-height: 0; }
+
+/* ── 列印 ─────────────────────────────────────────────────────────── */
 @media print {
   .intro-header,
   .intro-nav-mobile,
-  .intro-footer,
-  .cat-breadcrumb,
-  .sub-wrap,
-  .sub-pv-bar { display: none !important; }
+  .intro-footer { display: none !important; }
+
+  /* main 底下除了列印區之外全部隱藏。只隱藏 .sub-wrap 是不夠的：
+     外層 .cat-section 仍保有 36px/56px 的內距，會把紙張往下推、
+     並讓總高度超過一頁而多印一張空白頁。 */
+  .cat-main > *:not(.sub-print) { display: none !important; }
 
   body { background: #fff; }
-  .cat-main { padding-top: 0 !important; }
+  .cat-main { padding: 0 !important; }
+  .sub-print { display: block; }
 
-  .sub-preview {
-    position: static;
-    display: block !important;
-    background: #fff;
-  }
-  .sub-pv-scroll { overflow: visible; padding: 0; }
-  .sub-sheet {
-    width: auto;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-    page-break-after: always;
-  }
-  .sub-sheet:last-child { page-break-after: auto; }
+  /* 範本的頁面邊界為 0，內容靠縮排定位，不能再加瀏覽器預設邊界 */
+  @page { size: A4; margin: 0; }
+
+  .sub-sheet { break-after: page; }
+  .sub-sheet:last-child { break-after: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sub-wrap *, .sub-preview * { animation: none !important; transition: none !important; }
+  .sub-wrap * { animation: none !important; transition: none !important; }
 }
