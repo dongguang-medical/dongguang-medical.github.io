@@ -1767,7 +1767,6 @@ def build_subsidy_page():
               <div>
                 <label for="sbQuota">本次可用給付額度（元）</label>
                 <input id="sbQuota" type="number" min="0" step="1" value="40000">
-                <div class="sub-hint">第一組每 3 年 4 萬元。請依核定通知書上的剩餘額度填寫。</div>
               </div>
               <div>
                 <label for="sbY">證明書日期（民國）</label>
@@ -1799,18 +1798,12 @@ def build_subsidy_page():
                 <input id="sbVendorRep" placeholder="代表人姓名">
               </div>
             </div>
-            <div class="sub-hint">
-              輸入後會記在您這台裝置的瀏覽器裡，下次開啟自動帶入，不會上傳到本站或任何地方。換裝置、換瀏覽器或清除瀏覽資料後需要重新輸入；門市共用電腦請用上方的清除按鈕。
-            </div>
           </section>
 
           <section class="sub-card">
             <h2>購買／修繕明細</h2>
             <div id="sbRows"></div>
             <button type="button" class="sub-btn-add" id="sbAdd">＋ 新增明細</button>
-            <div class="sub-hint" style="margin-top:9px">
-              各項目要分開計列。例如居家用照顧床、附加功能 A 款、附加功能 B 款算三筆，不要把金額合併填成一筆，否則給付金額會算錯。
-            </div>
           </section>
 
           <section class="sub-card">
@@ -1827,22 +1820,8 @@ def build_subsidy_page():
             </div>
             <div class="sub-note" id="sbWarn" hidden></div>
 
-            <div class="sub-check">
-              <input type="checkbox" id="sbOptReal">
-              <label for="sbOptReal">證明書「購買金額」欄填實際購買金額（含超額自費）</label>
-            </div>
-            <div class="sub-hint">
-              台南市範本沒有「超額自費」欄，註記又要求購買金額＝給付金額＋部分負擔。不勾選時，證明書的購買金額會印核定給付範圍內的金額，讓表格三個數字對得起來。
-            </div>
-
-            <div class="sub-check">
-              <input type="checkbox" id="sbOptPhoto" checked>
-              <label for="sbOptPhoto">一併產生「照片黏貼處」頁（每個項目一頁）</label>
-            </div>
-
             <div class="sub-actions">
-              <button type="button" class="sub-btn-main" id="sbCalc">計算補助金額</button>
-              <button type="button" class="sub-btn-ghost" id="sbPrint">產生正式給付證明並列印</button>
+              <button type="button" class="sub-btn-main" id="sbPrint">產生正式給付證明並列印</button>
               <button type="button" class="sub-btn-ghost" id="sbWord"
                       data-template="/assets/templates/certificate-template.json?v={SUBSIDY_ASSET_VERSION}">下載 Word 版給付證明</button>
             </div>

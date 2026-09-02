@@ -415,23 +415,29 @@
   text-align-last: justify;
 }
 
-/* ── 照片黏貼頁 ───────────────────────────────────────────────────── */
-.sub-sheet .s-photo-line {                                /* ind 709/1133 line 600 exact */
-  margin-left: 35.45pt;
-  margin-right: 56.65pt;
-  line-height: 30pt;
-  font-size: 18pt;
+/* ── 照片黏貼頁 ───────────────────────────────────────────────────
+   三行文字置中，「照片黏貼處」在框線之外的上方。
+   框依範本 tblpPr 的 tblpY=3288 twips 固定錨定於距頁頂 164.4pt，
+   寬 9667 twips、高 10909 twips，水平置中（tblpXSpec="center"）。 */
+.sub-sheet.s-photo-sheet {
+  display: block;            /* 照片頁不用上／中／下三段式版面 */
+  padding-top: 12pt;
 }
-.sub-sheet .s-photo-item { text-align: center; }
-.sub-sheet .s-photo-box {                                 /* 9667 × 10909 twips，置中 */
-  width: 483.35pt;
-  height: 545.45pt;
-  margin: 0 auto;
-  border: 0.5pt solid #000;
+.sub-sheet .s-photo-line {
+  margin: 0;
   text-align: center;
   font-size: 18pt;
-  line-height: 30pt;
+  line-height: 30pt;         /* w:line=600 lineRule=exact */
 }
+.sub-sheet .s-photo-box {
+  /* 留在正常流中：品項多時框會被文字往下推，與 0805 那份一致。
+     上方留白讓三行標題時框上緣落在 164.4pt（範本 tblpY=3288 twips）。 */
+  margin: 31.6pt auto 0;
+  width: 483.35pt;
+  height: 545.45pt;
+  border: 0.5pt solid #000;
+}
+
 
 /* 空段落：高度等於該段落標記的行高，用來還原範本的垂直節奏 */
 .sub-sheet .s-gap::before { content: "\00a0"; }

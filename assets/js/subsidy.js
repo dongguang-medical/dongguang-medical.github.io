@@ -14,25 +14,30 @@
 (function () {
   "use strict";
 
-  /* p = 購置價格給付上限；y = 購置最低使用年限；u = 給付單位 */
+  /* p = 購置價格給付上限；y = 購置最低使用年限；u = 給付單位
+     pg = 共用照片頁的群組。輪椅與居家用照顧床的附加功能依附表四規定
+          必須搭配主體同時申請，實務上是同一件實體，照片頁合併成一張
+          （見 0805 許黃麗水那份，床與兩項附加功能共用一頁）。 */
   var ITEMS = [
-    {c:"EA01",n:"馬桶增高器、便盆椅或沐浴椅",p:1200,y:3,u:"件",g:"個人照顧與沐浴排泄"},
+    {c:"EA01",n:"便盆椅",p:1200,y:3,u:"件",g:"個人照顧與沐浴排泄"},
+    {c:"EA01",n:"沐浴椅",p:1200,y:3,u:"件",g:"個人照顧與沐浴排泄"},
+    {c:"EA01",n:"馬桶增高器",p:1200,y:3,u:"件",g:"個人照顧與沐浴排泄"},
 
     {c:"EB01",n:"單支枴杖-不銹鋼製",p:1000,y:5,u:"支",g:"行動輔助"},
     {c:"EB02",n:"單支枴杖-鋁製",p:500,y:3,u:"支",g:"行動輔助"},
     {c:"EB03",n:"助行器",p:800,y:3,u:"件",g:"行動輔助"},
     {c:"EB04",n:"帶輪型助步車（助行椅）",p:3000,y:3,u:"件",g:"行動輔助"},
 
-    {c:"EC01",n:"輪椅-A款（非輕量化量產型）",p:3500,y:3,u:"台",g:"輪椅與擺位系統"},
-    {c:"EC02",n:"輪椅-B款（輕量化量產型）",p:4000,y:3,u:"台",g:"輪椅與擺位系統"},
-    {c:"EC03",n:"輪椅-C款（量身訂製型）",p:9000,y:3,u:"台",g:"輪椅與擺位系統"},
-    {c:"EC04",n:"輪椅附加功能-A款（具利於移位功能）",p:5000,y:3,u:"組",g:"輪椅與擺位系統"},
-    {c:"EC05",n:"輪椅附加功能-B款（具仰躺功能）",p:2000,y:3,u:"組",g:"輪椅與擺位系統"},
-    {c:"EC06",n:"輪椅附加功能-C款（具空中傾倒功能）",p:4000,y:3,u:"組",g:"輪椅與擺位系統"},
-    {c:"EC07",n:"擺位系統-A款（平面型輪椅背靠）",p:1000,y:3,u:"組",g:"輪椅與擺位系統"},
-    {c:"EC08",n:"擺位系統-B款（曲面適形輪椅背靠）",p:6000,y:3,u:"組",g:"輪椅與擺位系統"},
-    {c:"EC09",n:"擺位系統-C款（輪椅軀幹側支撐架）",p:3000,y:3,u:"組",g:"輪椅與擺位系統"},
-    {c:"EC10",n:"擺位系統-D款（輪椅頭靠系統）",p:2500,y:3,u:"組",g:"輪椅與擺位系統"},
+    {c:"EC01",n:"輪椅-A款（非輕量化量產型）",p:3500,y:3,u:"台",g:"輪椅與擺位系統",pg:"wheelchair"},
+    {c:"EC02",n:"輪椅-B款（輕量化量產型）",p:4000,y:3,u:"台",g:"輪椅與擺位系統",pg:"wheelchair"},
+    {c:"EC03",n:"輪椅-C款（量身訂製型）",p:9000,y:3,u:"台",g:"輪椅與擺位系統",pg:"wheelchair",f:1},
+    {c:"EC04",n:"輪椅附加功能-A款（具利於移位功能）",p:5000,y:3,u:"組",g:"輪椅與擺位系統",pg:"wheelchair",f:1},
+    {c:"EC05",n:"輪椅附加功能-B款（具仰躺功能）",p:2000,y:3,u:"組",g:"輪椅與擺位系統",pg:"wheelchair",f:1},
+    {c:"EC06",n:"輪椅附加功能-C款（具空中傾倒功能）",p:4000,y:3,u:"組",g:"輪椅與擺位系統",pg:"wheelchair",f:1},
+    {c:"EC07",n:"擺位系統-A款（平面型輪椅背靠）",p:1000,y:3,u:"組",g:"輪椅與擺位系統",f:1},
+    {c:"EC08",n:"擺位系統-B款（曲面適形輪椅背靠）",p:6000,y:3,u:"組",g:"輪椅與擺位系統",f:1},
+    {c:"EC09",n:"擺位系統-C款（輪椅軀幹側支撐架）",p:3000,y:3,u:"組",g:"輪椅與擺位系統",f:1},
+    {c:"EC10",n:"擺位系統-D款（輪椅頭靠系統）",p:2500,y:3,u:"組",g:"輪椅與擺位系統",f:1},
 
     {c:"ED01",n:"移位腰帶",p:1500,y:3,u:"件",g:"移位輔具"},
     {c:"ED02",n:"移位板",p:2000,y:5,u:"件",g:"移位輔具"},
@@ -53,19 +58,19 @@
     {c:"EF02",n:"居家用生活輔具",p:500,y:3,u:"件",g:"生活輔具"},
     {c:"EF03",n:"飲食用輔具",p:500,y:3,u:"件",g:"生活輔具"},
 
-    {c:"EG01",n:"氣墊床-A款",p:8000,y:3,u:"組",g:"壓力分散輔具"},
-    {c:"EG02",n:"氣墊床-B款",p:12000,y:3,u:"組",g:"壓力分散輔具"},
-    {c:"EG03",n:"輪椅座墊-A款（連通管型氣囊氣墊座-塑膠材質）",p:5000,y:2,u:"個",g:"壓力分散輔具"},
-    {c:"EG04",n:"輪椅座墊-B款（連通管型氣囊氣墊座-橡膠材質）",p:10000,y:2,u:"個",g:"壓力分散輔具"},
-    {c:"EG05",n:"輪椅座墊-C款（液態凝膠座墊）",p:10000,y:2,u:"個",g:"壓力分散輔具"},
-    {c:"EG06",n:"輪椅座墊-D款（固態凝膠座墊）",p:8000,y:5,u:"個",g:"壓力分散輔具"},
-    {c:"EG07",n:"輪椅座墊-E款（填充式氣囊氣墊座）",p:8000,y:5,u:"個",g:"壓力分散輔具"},
-    {c:"EG08",n:"輪椅座墊-F款（交替充氣型座墊）",p:5000,y:3,u:"個",g:"壓力分散輔具"},
-    {c:"EG09",n:"輪椅座墊-G款（量製型座墊）",p:10000,y:3,u:"個",g:"壓力分散輔具"},
+    {c:"EG01",n:"氣墊床-A款",p:8000,y:3,u:"組",g:"壓力分散輔具",f:1},
+    {c:"EG02",n:"氣墊床-B款",p:12000,y:3,u:"組",g:"壓力分散輔具",f:1},
+    {c:"EG03",n:"輪椅座墊-A款（連通管型氣囊氣墊座-塑膠材質）",p:5000,y:2,u:"個",g:"壓力分散輔具",f:1},
+    {c:"EG04",n:"輪椅座墊-B款（連通管型氣囊氣墊座-橡膠材質）",p:10000,y:2,u:"個",g:"壓力分散輔具",f:1},
+    {c:"EG05",n:"輪椅座墊-C款（液態凝膠座墊）",p:10000,y:2,u:"個",g:"壓力分散輔具",f:1},
+    {c:"EG06",n:"輪椅座墊-D款（固態凝膠座墊）",p:8000,y:5,u:"個",g:"壓力分散輔具",f:1},
+    {c:"EG07",n:"輪椅座墊-E款（填充式氣囊氣墊座）",p:8000,y:5,u:"個",g:"壓力分散輔具",f:1},
+    {c:"EG08",n:"輪椅座墊-F款（交替充氣型座墊）",p:5000,y:3,u:"個",g:"壓力分散輔具",f:1},
+    {c:"EG09",n:"輪椅座墊-G款（量製型座墊）",p:10000,y:3,u:"個",g:"壓力分散輔具",f:1},
 
-    {c:"EH01",n:"居家用照顧床",p:8000,y:5,u:"張",g:"居家照顧床"},
-    {c:"EH02",n:"居家用照顧床-附加功能A款（床面升降功能）",p:5000,y:5,u:"組",g:"居家照顧床"},
-    {c:"EH03",n:"居家用照顧床-附加功能B款（電動升降功能）",p:5000,y:5,u:"組",g:"居家照顧床"},
+    {c:"EH01",n:"居家用照顧床",p:8000,y:5,u:"張",g:"居家照顧床",pg:"bed"},
+    {c:"EH02",n:"居家用照顧床-附加功能A款（床面升降功能）",p:5000,y:5,u:"組",g:"居家照顧床",pg:"bed"},
+    {c:"EH03",n:"居家用照顧床-附加功能B款（電動升降功能）",p:5000,y:5,u:"組",g:"居家照顧床",pg:"bed"},
 
     {c:"FA08",n:"居家無障礙修繕-反光貼條或消光處理",p:3000,y:3,u:"處",g:"居家無障礙環境改善（F碼）"},
     {c:"FA13",n:"居家無障礙修繕-水龍頭(單處)（新增、改換）",p:3000,y:10,u:"處",g:"居家無障礙環境改善（F碼）"},
@@ -97,6 +102,12 @@
     {c:"FA43",n:"居家無障礙設備-移動式身體清洗槽-局部型",p:2000,y:3,u:"組",g:"居家無障礙環境改善（F碼）"},
     {c:"FA44",n:"居家無障礙設備-移動式身體清洗槽-全身型",p:5000,y:3,u:"組",g:"居家無障礙環境改善（F碼）"}
   ];
+
+  /* 選了居家用照顧床，附加功能 A、B 款一定一起申報，自動補上兩列，
+     並讓廠牌、型號、序號跟著主體同步（對照表註記「一定一起出現」）。 */
+  var BED_BASE = "居家用照顧床";
+  var BED_ADDONS = ["居家用照顧床-附加功能A款（床面升降功能）",
+                    "居家用照顧床-附加功能B款（電動升降功能）"];
 
   var MAX_ROWS = 8;
   var VENDOR_KEY = "dongguang.subsidy.vendor";
@@ -134,7 +145,6 @@
   function clearVendor() {
     VENDOR_FIELDS.forEach(function (id) { if ($(id)) $(id).value = ""; });
     try { localStorage.removeItem(VENDOR_KEY); } catch (e) { /* 同上 */ }
-    setStatus("已清除這台裝置上儲存的廠商資料。");
   }
 
   /* ── 明細列 ──────────────────────────────────────────────────────── */
@@ -147,14 +157,14 @@
         group = it.g;
         html += '<optgroup label="' + esc(group) + '">';
       }
-      html += '<option value="' + i + '">' + esc(it.c + "　" + it.n) +
+      html += '<option value="' + i + '">' + esc(it.n) +
               "（" + money(it.p) + " 元／" + esc(it.u) + "）</option>";
     });
     return html + "</optgroup>";
   }
 
   function addRow() {
-    if (document.querySelectorAll(".sub-row").length >= MAX_ROWS) return;
+    if (document.querySelectorAll(".sub-row").length >= MAX_ROWS) return null;
     rowSeq += 1;
     var r = rowSeq;
     var box = document.createElement("div");
@@ -183,9 +193,9 @@
         '</div>' +
       '</div>' +
       '<div class="sub-grid sub-g4" style="margin-top:12px">' +
-        '<div><label for="sbBrand' + r + '">產品廠牌</label><input id="sbBrand' + r + '" placeholder="廠牌"></div>' +
-        '<div><label for="sbModel' + r + '">產品型號</label><input id="sbModel' + r + '" placeholder="型號"></div>' +
-        '<div><label for="sbSerial' + r + '">產品序號</label><input id="sbSerial' + r + '" placeholder="序號"></div>' +
+        '<div><label for="sbBrand' + r + '">產品廠牌</label><input id="sbBrand' + r + '" placeholder="廠牌" data-prod="' + r + '"></div>' +
+        '<div><label for="sbModel' + r + '">產品型號</label><input id="sbModel' + r + '" placeholder="型號" data-prod="' + r + '"></div>' +
+        '<div><label for="sbSerial' + r + '">產品序號</label><input id="sbSerial' + r + '" placeholder="序號" data-prod="' + r + '"></div>' +
         '<div>' +
           '<label for="sbPrice' + r + '">實際購買金額（元）</label>' +
           '<input id="sbPrice' + r + '" type="number" min="0" step="1" placeholder="未填則以核定上限計" data-price="' + r + '">' +
@@ -200,6 +210,7 @@
     $("sbRows").appendChild(box);
     renumber();
     updateAddBtn();
+    return r;
   }
 
   function delRow(r) {
@@ -242,10 +253,51 @@
     var it = ITEMS[sel.value];
     var qty = Math.max(1, parseInt($("sbQty" + r).value, 10) || 1);
     meta.textContent = "給付上限 " + money(it.p) + " 元／" + it.u +
-                       "　·　購置最低使用年限 " + it.y + " 年";
+                       "　·　購置最低使用年限 " + it.y + " 年" +
+                       (it.f ? "　·　免部分負擔" : "");
     limit.value = it.p * qty;
     limit.dataset.auto = "1";
+    if (it.n === BED_BASE) addBedAddons(r);
     calculate(false);
+  }
+
+  /* 居家用照顧床與兩款附加功能一定一起申報，選了主體就自動補列，
+     廠牌、型號、序號沿用主體那列，之後主體改動也會跟著同步。 */
+  function addBedAddons(baseRow) {
+    var existing = {};
+    document.querySelectorAll(".sub-row").forEach(function (box) {
+      var i = Number(box.id.replace("sbBox", ""));
+      var sel = $("sbItem" + i);
+      if (sel && sel.value !== "") existing[ITEMS[sel.value].n] = true;
+    });
+    BED_ADDONS.forEach(function (name) {
+      if (existing[name]) return;
+      var idx = -1;
+      ITEMS.forEach(function (it, i) { if (it.n === name) idx = i; });
+      if (idx < 0) return;
+      var r = addRow();
+      if (!r) return;
+      $("sbBox" + r).dataset.linkedTo = String(baseRow);
+      $("sbItem" + r).value = String(idx);
+      onItemChange(r);
+    });
+    syncBedFields(baseRow);
+  }
+
+  /* 把主體那列的產品欄位複製到跟著它的附加功能列 */
+  function syncBedFields(baseRow) {
+    var targets = document.querySelectorAll(
+      '.sub-row[data-linked-to="' + baseRow + '"]');
+    if (!targets.length) return;
+    ["Brand", "Model", "Serial"].forEach(function (f) {
+      var src = $("sb" + f + baseRow);
+      if (!src) return;
+      targets.forEach(function (box) {
+        var i = Number(box.id.replace("sbBox", ""));
+        var dst = $("sb" + f + i);
+        if (dst) dst.value = src.value;
+      });
+    });
   }
 
   function onQtyChange(r) {
@@ -293,7 +345,8 @@
     rows.forEach(function (row) {
       var base = Math.min(row.price, row.limit, left);
       if (base < 0) base = 0;
-      var self = Math.floor(base * ratio);
+      /* 部分品項免部分負擔，不隨身分別變動（見長照 3.0 對照表） */
+      var self = row.item.f ? 0 : Math.floor(base * ratio);
       var gov = base - self;
       var over = row.price - base;
 
@@ -313,7 +366,7 @@
         $("sbROver" + row.r).textContent = money(over) + " 元";
       }
       if (row.price > row.limit) {
-        warns.push("「" + row.item.c + " " + row.item.n + "」購買金額超過核定給付上限 " +
+        warns.push("「" + row.item.n + "」購買金額超過核定給付上限 " +
                    money(row.limit) + " 元，超出的 " + money(row.price - row.limit) + " 元要自費。");
       }
     });
@@ -368,16 +421,18 @@
       $("sbVendorName").focus();
       return null;
     }
-    var useReal = $("sbOptReal").checked;
     var rows = lastResult.rows.map(function (row, i) {
       return {
         no: i + 1,
-        name: row.item.c + "　" + row.item.n +
-              (row.qty > 1 ? "　×" + row.qty + row.item.u : ""),
+        /* 碼別只作為資料鍵，不出現在網頁與產出的文件上 */
+        name: row.item.n + (row.qty > 1 ? "　×" + row.qty + row.item.u : ""),
+        photoGroup: row.item.pg || null,
         brand: row.brand,
         model: row.model,
         serial: row.serial,
-        price: useReal ? row.price : row.base,
+        /* 台南市範本沒有超額自費欄，註記要求購買金額＝給付金額＋部分負擔，
+           因此印核定給付範圍內的金額 */
+        price: row.base,
         gov: row.gov,
         self: row.self
       };
@@ -393,8 +448,7 @@
       year: $("sbY").value.trim() || String(today.getFullYear() - 1911),
       month: $("sbM").value.trim() || String(today.getMonth() + 1),
       day: $("sbD").value.trim() || String(today.getDate()),
-      rows: rows,
-      photo: $("sbOptPhoto").checked
+      rows: rows
     };
   }
 
@@ -415,6 +469,20 @@
     return '<span class="u' + (cls ? " " + cls : "") +
            '" style="min-width:' + minChars + 'em">' +
            (text ? esc(text) : "&nbsp;") + "</span>";
+  }
+
+  /* 依 photoGroup 把明細分組：同組共用一張照片頁，沒有分組的各自一頁。
+     以首次出現的順序排列，不要求相鄰。 */
+  function photoGroups(rows) {
+    var out = [], byKey = {};
+    rows.forEach(function (row) {
+      var key = row.photoGroup;
+      if (key && byKey[key]) { byKey[key].push(row); return; }
+      var g = [row];
+      if (key) byKey[key] = g;
+      out.push(g);
+    });
+    return out;
   }
 
   function buildSheets(cert) {
@@ -493,19 +561,29 @@
         "</div>" +
       "</div>";
 
-    if (cert.photo) {
-      cert.rows.forEach(function (row) {
+    {
+      /* 照片頁的三行文字都置中，「照片黏貼處」在框線之外的上方（範本與
+         0805、0816 兩份實際核銷件皆同）。框的寬高取自範本的 tblGrid 與
+         trHeight，位置對應 tblpY=3288 twips（距頁頂 164.4pt）；品項多時
+         框會被文字往下推，與 0805 那份的表現一致。
+
+         主體與其附加功能是同一件實體，合併成一張照片頁，購買項目逐行列出。 */
+      photoGroups(cert.rows).forEach(function (group) {
+        var items = group.map(function (row, i) {
+          return '<p class="s-photo-line">' +
+                 (i === 0 ? "購買項目：" : "") + esc(row.name) + "</p>";
+        }).join("");
         html +=
-          '<div class="sub-sheet">' +
-            gap(18, "30pt") + gap(18, "30pt") + gap(18, "30pt") +
-            '<p class="s-photo-line">　　　　　　　　　個案姓名: ' +
-              ul(cert.applicant, 8) + "</p>" +
-            '<p class="s-photo-line s-photo-item">購買項目： ' +
-              ul(row.name, 16) + "</p>" +
-            '<div class="s-photo-box">照片黏貼處</div>' +
+          '<div class="sub-sheet s-photo-sheet">' +
+            gap(18, "30pt") +
+            '<p class="s-photo-line">個案姓名: ' + ul(cert.applicant, 8) + "</p>" +
+            items +
+            '<p class="s-photo-line">照片黏貼處</p>' +
+            '<div class="s-photo-box"></div>' +
           "</div>";
       });
     }
+
     return html;
   }
 
@@ -744,7 +822,9 @@
         return kids.slice(from, to);
       });
 
-      var want = cert.photo ? cert.rows.length : 0;
+      /* 與列印版相同：主體與其附加功能共用一張照片頁 */
+      var groups = photoGroups(cert.rows);
+      var want = groups.length;
       while (blocks.length < want) {
         var src = blocks[blocks.length - 1];
         var copy = src.map(function (n) { return n.cloneNode(true); });
@@ -772,6 +852,7 @@
       });
 
       blocks.slice(0, want).forEach(function (block, bi) {
+        var items = groups[bi];
         block.forEach(function (node) {
           if (node.nodeType !== 1 || node.localName !== "p") return;
           var txt = nodeText(node);
@@ -779,7 +860,18 @@
             fillUnderlineGroup(node, 0, cert.applicant);
           } else if (txt.indexOf("購買項目") > -1) {
             var runs = tagged(node, "r");
-            if (runs.length) setRunText(runs[runs.length - 1], " " + cert.rows[bi].name);
+            if (runs.length) setRunText(runs[runs.length - 1], " " + items[0].name);
+            /* 同組的其他品項：複製這一段，去掉「購買項目：」只留品項名 */
+            var anchor = node;
+            items.slice(1).forEach(function (it) {
+              var clone = node.cloneNode(true);
+              var cr = tagged(clone, "r");
+              cr.forEach(function (r, i) {
+                setRunText(r, i === cr.length - 1 ? it.name : "");
+              });
+              anchor.parentNode.insertBefore(clone, anchor.nextSibling);
+              anchor = clone;
+            });
           }
         });
       });
@@ -869,6 +961,7 @@
       if (d.qty) onQtyChange(Number(d.qty));
       else if (d.limit) { e.target.dataset.auto = "0"; calculate(false); }
       else if (d.price) calculate(false);
+      else if (d.prod) syncBedFields(Number(d.prod));
     });
 
     VENDOR_FIELDS.forEach(function (id) {
@@ -876,7 +969,6 @@
     });
     $("sbVendorClear").addEventListener("click", clearVendor);
     $("sbAdd").addEventListener("click", addRow);
-    $("sbCalc").addEventListener("click", function () { calculate(true); });
     $("sbPrint").addEventListener("click", printCertificate);
     $("sbWord").addEventListener("click", downloadWord);
     $("sbCopay").addEventListener("change", function () { calculate(false); });

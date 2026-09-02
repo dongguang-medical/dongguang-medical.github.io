@@ -6,7 +6,7 @@
   <title>長照輔具補助試算 — 東光醫療器材</title>
   <meta name="description" content="台南長照輔具補助試算：依長期照顧服務申請及給付辦法附表四、附表五，試算輔具購置與居家無障礙環境改善的給付金額、民眾部分負擔與超額自費，並可產生台南市格式的長照輔具服務給付證明暨契約書。">
   <link rel="canonical" href="https://dongguang-medical.github.io/subsidy/">
-  <link rel="stylesheet" href="/assets/css/subsidy.css?v=5df3af0e0f">
+  <link rel="stylesheet" href="/assets/css/subsidy.css?v=abdaa2c4c4">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="台南東光儀器有限公司">
@@ -56,9 +56,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=5df3af0e0f">
-  <link rel="stylesheet" href="/assets/css/intro.css?v=5df3af0e0f">
-  <link rel="stylesheet" href="/assets/css/catalog.css?v=5df3af0e0f">
+  <link rel="stylesheet" href="/assets/css/design-system.css?v=abdaa2c4c4">
+  <link rel="stylesheet" href="/assets/css/intro.css?v=abdaa2c4c4">
+  <link rel="stylesheet" href="/assets/css/catalog.css?v=abdaa2c4c4">
 </head>
 <body>
 
@@ -165,7 +165,6 @@
               <div>
                 <label for="sbQuota">本次可用給付額度（元）</label>
                 <input id="sbQuota" type="number" min="0" step="1" value="40000">
-                <div class="sub-hint">第一組每 3 年 4 萬元。請依核定通知書上的剩餘額度填寫。</div>
               </div>
               <div>
                 <label for="sbY">證明書日期（民國）</label>
@@ -197,18 +196,12 @@
                 <input id="sbVendorRep" placeholder="代表人姓名">
               </div>
             </div>
-            <div class="sub-hint">
-              輸入後會記在您這台裝置的瀏覽器裡，下次開啟自動帶入，不會上傳到本站或任何地方。換裝置、換瀏覽器或清除瀏覽資料後需要重新輸入；門市共用電腦請用上方的清除按鈕。
-            </div>
           </section>
 
           <section class="sub-card">
             <h2>購買／修繕明細</h2>
             <div id="sbRows"></div>
             <button type="button" class="sub-btn-add" id="sbAdd">＋ 新增明細</button>
-            <div class="sub-hint" style="margin-top:9px">
-              各項目要分開計列。例如居家用照顧床、附加功能 A 款、附加功能 B 款算三筆，不要把金額合併填成一筆，否則給付金額會算錯。
-            </div>
           </section>
 
           <section class="sub-card">
@@ -225,24 +218,10 @@
             </div>
             <div class="sub-note" id="sbWarn" hidden></div>
 
-            <div class="sub-check">
-              <input type="checkbox" id="sbOptReal">
-              <label for="sbOptReal">證明書「購買金額」欄填實際購買金額（含超額自費）</label>
-            </div>
-            <div class="sub-hint">
-              台南市範本沒有「超額自費」欄，註記又要求購買金額＝給付金額＋部分負擔。不勾選時，證明書的購買金額會印核定給付範圍內的金額，讓表格三個數字對得起來。
-            </div>
-
-            <div class="sub-check">
-              <input type="checkbox" id="sbOptPhoto" checked>
-              <label for="sbOptPhoto">一併產生「照片黏貼處」頁（每個項目一頁）</label>
-            </div>
-
             <div class="sub-actions">
-              <button type="button" class="sub-btn-main" id="sbCalc">計算補助金額</button>
-              <button type="button" class="sub-btn-ghost" id="sbPrint">產生正式給付證明並列印</button>
+              <button type="button" class="sub-btn-main" id="sbPrint">產生正式給付證明並列印</button>
               <button type="button" class="sub-btn-ghost" id="sbWord"
-                      data-template="/assets/templates/certificate-template.json?v=cdaad3a2ad">下載 Word 版給付證明</button>
+                      data-template="/assets/templates/certificate-template.json?v=e2c2dc5e9d">下載 Word 版給付證明</button>
             </div>
             <div class="sub-note" id="sbMsg" hidden></div>
           </section>
@@ -371,7 +350,7 @@
       lastScrollY = y;
     }, { passive: true });
   </script>
-  <script src="/assets/js/subsidy.js?v=cdaad3a2ad"></script>
+  <script src="/assets/js/subsidy.js?v=e2c2dc5e9d"></script>
 
 </body>
 </html>
