@@ -43,7 +43,15 @@ BASE_URL = "https://dongguang-medical.github.io"
 # 樣式一有變動網址就不同，訪客瀏覽器不會再拿到舊快取
 CSS_VERSION = hashlib.md5(b"".join(
     (ROOT / "assets" / "css" / f).read_bytes()
-    for f in ("design-system.css", "intro.css", "catalog.css")
+    for f in ("design-system.css", "intro.css", "catalog.css", "subsidy.css")
+)).hexdigest()[:10]
+# 補助試算頁的資產版本號（前端程式與 Word 範本）：只影響 /subsidy/，
+# 不與全站 CSS 版本綁在一起，範本更新時才不會白白讓所有頁面的樣式失效
+SUBSIDY_ASSET_VERSION = hashlib.md5(b"".join(
+    (ROOT / f).read_bytes() for f in (
+        "assets/js/subsidy.js",
+        "assets/templates/certificate-template.json",
+    ) if (ROOT / f).is_file()
 )).hexdigest()[:10]
 SITE_NAME = "東光醫療器材"
 SITE_NAME_FULL = "台南東光醫療器材"  # 頁首、頁尾顯示用店名
@@ -460,6 +468,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </a>
         </div>
+        <a class="intro-footer-about intro-footer-about-desktop" href="/subsidy/">長照輔具補助試算</a>
         <a class="intro-footer-about intro-footer-about-desktop" href="/about/">關於我們</a>
       </div>
       <div class="intro-footer-col">
@@ -1697,9 +1706,181 @@ def build_brand_pages(products, brands):
     return made
 
 
+# ── 長照輔具補助試算（/subsidy/） ────────────────────────────────────
+#
+# 給付項目、購置價格上限、最低使用年限：
+#   長期照顧服務申請及給付辦法「附表四 照顧組合表」第一組（E、F 碼）
+# 部分負擔比率：
+#   同辦法「附表五」— E、F 碼 第一類 0%、第二類 10%、第三類 30%
+#
+# 品項資料與計算邏輯都在 assets/js/subsidy.js，不在本檔；
+# 法規修正時請一併更新 SUBSIDY_BASIS 的版本日期，讓頁面標示與資料一致。
+
+SUBSIDY_BASIS = "115.07.01 施行版本"
+SUBSIDY_UPDATED = "115.08.30"
+
+
+def build_subsidy_page():
+    """長照輔具補助試算頁：試算金額並產生台南市格式之給付證明暨契約書。廠商資料（名稱／地址／代表人）刻意不預設帶入，由使用者輸入後存於自己瀏覽器的 localStorage；本站原始碼為公開 repo，不放公司資料。
+    """
+    bc = [("首頁", "/"), ("長照輔具補助試算", None)]
+
+    main = f"""    <div class="cat-section">
+      <div class="cat-container">
+        {breadcrumb(bc)}
+        <div class="sub-wrap">
+
+          <header class="sub-intro">
+            <h1>長照輔具補助試算</h1>
+            <p>依中央「長期照顧服務申請及給付辦法」試算長照輔具及居家無障礙環境改善服務（第一組 E、F 碼）的購買與修繕補助金額，並可產生台南市格式的「長照輔具服務給付證明暨契約書」列印或下載。</p>
+            <div class="sub-basis">
+              <span>第一組 E、F 碼</span>
+              <span>每 3 年 4 萬元額度</span>
+              <span>依據 {SUBSIDY_BASIS}</span>
+              <span>資料更新 {SUBSIDY_UPDATED}</span>
+            </div>
+          </header>
+
+          <section class="sub-card">
+            <h2>申請資料</h2>
+            <div class="sub-grid sub-g3">
+              <div>
+                <label for="sbName">申請人姓名</label>
+                <input id="sbName" placeholder="請輸入申請人姓名">
+              </div>
+              <div>
+                <label for="sbId">身分證字號（選填）</label>
+                <input id="sbId" placeholder="未填則印空白欄">
+              </div>
+              <div>
+                <label for="sbTel">聯絡電話（選填）</label>
+                <input id="sbTel" placeholder="未填則印空白欄">
+              </div>
+              <div>
+                <label for="sbCopay">部分負擔類別</label>
+                <select id="sbCopay">
+                  <option value="0">第一類　低收入戶（部分負擔 0%）</option>
+                  <option value="0.1">第二類　中低收入戶（部分負擔 10%）</option>
+                  <option value="0.3" selected>第三類　一般戶（部分負擔 30%）</option>
+                </select>
+              </div>
+              <div>
+                <label for="sbQuota">本次可用給付額度（元）</label>
+                <input id="sbQuota" type="number" min="0" step="1" value="40000">
+              </div>
+              <div>
+                <label for="sbY">證明書日期（民國）</label>
+                <div class="sub-grid sub-g3" style="gap:6px">
+                  <input id="sbY" type="number" aria-label="年" placeholder="年">
+                  <input id="sbM" type="number" aria-label="月" placeholder="月">
+                  <input id="sbD" type="number" aria-label="日" placeholder="日">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sub-card">
+            <h2>
+              <span>廠商資料（乙方）</span>
+              <button type="button" class="sub-btn-link" id="sbVendorClear">清除已儲存的廠商資料</button>
+            </h2>
+            <div class="sub-grid sub-g3">
+              <div>
+                <label for="sbVendorName">廠商名稱</label>
+                <input id="sbVendorName" placeholder="販售或修繕之單位名稱">
+              </div>
+              <div>
+                <label for="sbVendorAddr">地址</label>
+                <input id="sbVendorAddr" placeholder="廠商地址">
+              </div>
+              <div>
+                <label for="sbVendorRep">代表人</label>
+                <input id="sbVendorRep" placeholder="代表人姓名">
+              </div>
+            </div>
+          </section>
+
+          <section class="sub-card">
+            <h2>購買／修繕明細</h2>
+            <div id="sbRows"></div>
+            <button type="button" class="sub-btn-add" id="sbAdd">＋ 新增明細</button>
+          </section>
+
+          <section class="sub-card">
+            <h2>試算結果</h2>
+            <div class="sub-stats">
+              <div class="sub-stat"><div class="k">購買總金額</div><div class="v" id="sbSumPrice">0 元</div></div>
+              <div class="sub-stat sub-stat-gov"><div class="k">申請給付金額（政府）</div><div class="v" id="sbSumGov">0 元</div></div>
+              <div class="sub-stat sub-stat-self"><div class="k">民眾部分負擔</div><div class="v" id="sbSumSelf">0 元</div></div>
+              <div class="sub-stat sub-stat-over"><div class="k">超額自費</div><div class="v" id="sbSumOver">0 元</div></div>
+            </div>
+            <div class="sub-stats" style="margin-top:12px">
+              <div class="sub-stat"><div class="k">本次扣除長照額度</div><div class="v" id="sbSumUse">0 元</div></div>
+              <div class="sub-stat"><div class="k">剩餘給付額度</div><div class="v" id="sbSumLeft">0 元</div></div>
+            </div>
+            <div class="sub-note" id="sbWarn" hidden></div>
+
+            <div class="sub-actions">
+              <button type="button" class="sub-btn-main" id="sbPrint">產生正式給付證明並列印</button>
+              <button type="button" class="sub-btn-ghost" id="sbWord"
+                      data-template="/assets/templates/certificate-template.json?v={SUBSIDY_ASSET_VERSION}">下載 Word 版給付證明</button>
+            </div>
+            <div class="sub-note" id="sbMsg" hidden></div>
+          </section>
+
+          <p class="sub-disclaimer">
+            <strong>計算依據</strong>：給付項目、購置價格上限與最低使用年限依「長期照顧服務申請及給付辦法」附表四；部分負擔比率依同辦法附表五，E、F 碼為第一類 0%、第二類 10%、第三類 30%，金額小數點後無條件捨去。長照額度以給付價格（含部分負擔）扣除。<br>
+            本試算工具由{SITE_NAME_FULL}自行製作，<strong>非中央機關或台南市政府提供之系統</strong>，僅供初步試算與作業參考。實際給付金額以主管機關核定為準；送件前請以衛生局最新公告之表單格式為準。<br>
+            填寫內容僅在您的瀏覽器中計算，不會上傳。試算有疑問歡迎來電
+            <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 洽詢。
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-print" id="sbPrintArea" aria-hidden="true"></div>
+"""
+
+    desc = ("台南長照輔具補助試算：依長期照顧服務申請及給付辦法附表四、附表五，"
+            "試算輔具購置與居家無障礙環境改善的給付金額、民眾部分負擔與超額自費，"
+            "並可產生台南市格式的長照輔具服務給付證明暨契約書。")
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebApplication",
+                "name": "長照輔具補助試算",
+                "url": BASE_URL + "/subsidy/",
+                "applicationCategory": "FinanceApplication",
+                "operatingSystem": "Web",
+                "description": desc,
+                "offers": {"@type": "Offer", "price": "0",
+                           "priceCurrency": "TWD"},
+            },
+            breadcrumb_jsonld(bc),
+        ],
+    }
+    html_out = render_page(
+        title=f"長照輔具補助試算 — {SITE_NAME}",
+        description=desc,
+        path="subsidy/",
+        og_type="website",
+        og_image=f"{BASE_URL}/{LOGO}",
+        jsonld=jsonld,
+        main_html=main,
+        extra_head=(f'\n  <link rel="stylesheet" '
+                    f'href="/assets/css/subsidy.css?v={CSS_VERSION}">'),
+        extra_js=f'  <script src="/assets/js/subsidy.js?v={SUBSIDY_ASSET_VERSION}"></script>\n',
+    )
+    out = ROOT / "subsidy" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html_out, encoding="utf-8")
+
+
 def build_sitemap(products, brand_slugs=()):
     today = date.today().isoformat()
-    paths = ["", "rental/", "about/"]
+    paths = ["", "rental/", "about/", "subsidy/"]
     paths += [f"category/{c}/" for c in CATEGORY_NAMES]
     paths += [f"category/{c}/{sub}/"
               for c in CATEGORY_NAMES for sub in NAV_SUBS.get(c, [])]
@@ -1807,7 +1988,7 @@ def main():
     NAV_SUBS.update(compute_nav_subs(products))
 
     # 重建產出目錄（皆為純產生內容，可安全清除）
-    for d in ("catalog", "category", "product", "rental", "brand"):
+    for d in ("catalog", "category", "product", "rental", "brand", "subsidy"):
         shutil.rmtree(ROOT / d, ignore_errors=True)
 
     build_home_page(products)
@@ -1815,6 +1996,7 @@ def main():
     build_category_pages(products)
     build_subcategory_pages(products)
     build_rental_page(products)
+    build_subsidy_page()
     brand_slugs = build_brand_pages(products, brands)
     build_product_pages(products)
     build_search_index(products)
@@ -1822,8 +2004,8 @@ def main():
     sync_about_chrome()
 
     rentable = sum(1 for p in products if p["rentable"])
-    pages = 2 + len(CATEGORIES) + len(brand_slugs) + len(products)
-    print(f"✅ 產生完成：{pages} 個頁面（首頁目錄 + 1 租賃專區 + {len(CATEGORIES)} 分類 + "
+    pages = 3 + len(CATEGORIES) + len(brand_slugs) + len(products)
+    print(f"✅ 產生完成：{pages} 個頁面（首頁目錄 + 1 租賃專區 + 1 補助試算 + {len(CATEGORIES)} 分類 + "
           f"{len(brand_slugs)} 品牌 + {len(products)} 商品）、sitemap.xml、search-index.json")
     print(f"   其中可租賃 {rentable} 項")
 

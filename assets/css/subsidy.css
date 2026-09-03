@@ -1,0 +1,566 @@
+/* ==========================================================================
+   subsidy.css — 長照輔具補助試算頁（/subsidy/）
+   沿用 design-system.css 的暖橘配色與間距變數；類別一律以 sub- 開頭，
+   避免與 catalog.css / intro.css 衝突。
+   ========================================================================== */
+
+.sub-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── 語意色：與 CTA 橘區隔，避免試算數字看起來像按鈕 ────────────────── */
+.sub-wrap {
+  --sub-gov:  #1F7A5A;  /* 政府給付 */
+  --sub-self: #A96412;  /* 民眾部分負擔 */
+  --sub-over: #B3261E;  /* 超額自費 */
+}
+
+/* ── 頁面開頭 ─────────────────────────────────────────────────────── */
+.sub-intro h1 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+.sub-intro p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.sub-basis {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.sub-basis span {
+  font-size: var(--font-size-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-pale);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
+}
+
+/* ── 卡片 ─────────────────────────────────────────────────────────── */
+.sub-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5) var(--space-6);
+}
+.sub-card > h2 {
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* ── 表單 ─────────────────────────────────────────────────────────── */
+.sub-grid { display: grid; gap: var(--space-4); }
+.sub-g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sub-g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sub-g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 820px) {
+  .sub-g2, .sub-g3, .sub-g4 { grid-template-columns: 1fr; }
+}
+
+.sub-wrap label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+  font-weight: var(--font-weight-medium);
+}
+.sub-wrap input,
+.sub-wrap select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-family: var(--font-primary);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+.sub-wrap input[type="number"] { font-variant-numeric: tabular-nums; }
+.sub-wrap input:focus-visible,
+.sub-wrap select:focus-visible,
+.sub-wrap button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.sub-wrap input::placeholder { color: var(--color-text-muted); }
+.sub-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  line-height: 1.7;
+}
+
+/* ── 明細列 ───────────────────────────────────────────────────────── */
+.sub-row {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  background: var(--color-bg);
+}
+.sub-row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.sub-row-head h3 {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: .1em;
+  color: var(--color-primary-dark);
+}
+/* ── 品項選擇器：自訂清單，每項右側一顆星可釘選 ──────────────────── */
+.sub-picker { position: relative; }
+
+.sub-picker-field {
+  width: 100%;
+  text-align: left;
+  padding: 9px 11px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+}
+.sub-picker-field.is-placeholder { color: var(--color-text-muted); }
+.sub-picker-field::after {
+  content: "▾";
+  float: right;
+  color: var(--color-text-secondary);
+}
+
+.sub-picker-panel {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.sub-picker.open .sub-picker-panel { display: block; }
+
+.sub-picker-search {
+  border: none !important;
+  border-bottom: 1px solid var(--color-border-light) !important;
+  border-radius: 0 !important;
+}
+
+.sub-picker-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.sub-opt-group {
+  padding: 6px 11px 3px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+}
+.sub-opt {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.sub-opt.is-chosen { background: var(--color-primary-pale); }
+.sub-opt-pick {
+  flex: 1;
+  text-align: left;
+  padding: 7px 11px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+.sub-opt-pick:hover { background: var(--color-primary-pale); }
+.sub-opt-star {
+  flex: none;
+  width: 34px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 1;
+}
+.sub-opt-star:hover { background: var(--color-primary-pale); color: var(--color-primary-dark); }
+.sub-opt-star.is-pinned { color: var(--color-primary); }
+.sub-opt-empty {
+  padding: 12px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.sub-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-dark);
+  margin-top: var(--space-1);
+  min-height: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 按鈕 ─────────────────────────────────────────────────────────── */
+.sub-wrap button {
+  font-family: var(--font-primary);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+}
+.sub-btn-del {
+  background: transparent;
+  color: var(--sub-over);
+  border: 1px solid var(--color-border);
+  padding: 5px 10px;
+  font-size: var(--font-size-sm);
+}
+.sub-btn-add {
+  background: var(--color-primary-pale);
+  color: var(--color-primary-dark);
+  border: 1px dashed var(--color-primary-light);
+  padding: 11px 18px;
+  font-weight: var(--font-weight-bold);
+  width: 100%;
+}
+.sub-btn-add[disabled] { opacity: .5; cursor: not-allowed; }
+.sub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.sub-btn-main {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 13px 22px;
+  font-weight: var(--font-weight-bold);
+  flex: 1 1 190px;
+}
+.sub-btn-main:hover { background: var(--color-primary-dark); }
+.sub-btn-ghost {
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary);
+  padding: 13px 22px;
+  font-weight: var(--font-weight-bold);
+  flex: 1 1 190px;
+}
+.sub-btn-ghost:hover { background: var(--color-primary-pale); }
+.sub-btn-link {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-decoration: underline;
+  padding: 0;
+}
+.sub-btn-link:hover { color: var(--color-primary-dark); }
+
+/* ── 數字卡 ───────────────────────────────────────────────────────── */
+.sub-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.sub-row-stats {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
+}
+@media (max-width: 820px) {
+  .sub-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.sub-stat {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 9px 12px;
+}
+.sub-stat .k {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+.sub-stat .v {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-top: 1px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+.sub-stat-gov  { border-left: 3px solid var(--sub-gov); }
+.sub-stat-gov  .v { color: var(--sub-gov); }
+.sub-stat-self { border-left: 3px solid var(--sub-self); }
+.sub-stat-self .v { color: var(--sub-self); }
+.sub-stat-over { border-left: 3px solid var(--sub-over); }
+.sub-stat-over .v { color: var(--sub-over); }
+
+/* ── 提醒 ─────────────────────────────────────────────────────────── */
+.sub-note {
+  background: var(--color-primary-pale);
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-4);
+  color: var(--color-primary-dark);
+  line-height: 1.8;
+}
+.sub-note[hidden] { display: none; }
+
+.sub-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.sub-check input { width: auto; margin-top: 4px; flex: none; }
+.sub-check label {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+}
+
+.sub-disclaimer {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  padding: 0 var(--space-1);
+}
+.sub-disclaimer strong { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   紙本樣式：台南市「長照輔具服務給付證明暨契約書」
+
+   所有數值皆由範本的 OOXML 換算，不是目測估計：
+     1440 twips = 1 吋 = 72pt，故 pt = twips / 20
+
+   頁面     11906 × 16840 twips → 595.3 × 842pt（A4），頁面邊界全為 0，
+            內容位置一律由段落縮排決定
+   內文字型 標楷體，預設字級 24（12pt，來自 styles.xml 的 docDefaults）
+
+   仍與 Word 不同之處（HTML 排版引擎的先天限制，無法消除）：
+     · Word 的「單行」行距取決於字型的 ascent/descent，此處以 --single
+       近似；欄寬、縮排、字級可以精確，行距只能逼近
+     · 中文斷行規則與 Word 不完全相同，長字串的換行點可能有差
+   正式送件請以「下載 Word 版給付證明」產出的檔案為準。
+   ══════════════════════════════════════════════════════════════════════ */
+
+.sub-print { display: none; }
+
+.sub-sheet {
+  /* 單行行高。理論值取自標楷體 kaiu.ttf 的字型度量：
+       (ascent 820 + descent 204 + lineGap 204) / unitsPerEm 1024 = 1.1992
+     這是 Word 對 TrueType 字型計算「單行」的方式，範本也未設 w:docGrid
+     （無格線吸附），照理可直接套用。
+
+     但實測用 1.1992 排出來，第一頁內容為 855pt，超出 842pt 的頁面約
+     1.5%，而 Word 是排得下的。逐段核對過字級、行距、縮排與表格列高後
+     仍找不出這 13pt 的來源，推測與 Word 逐行取整或字元間距(w:spacing
+     val=-1)造成的細微差異有關。此處改用校準值，讓內容確實容納於一頁；
+     其餘位置（欄寬、縮排、各區塊的相對順序）皆已與範本核對一致。 */
+  --single: 1.165;
+  --ls-360: calc(1.5 * var(--single));      /* w:line=360 lineRule=auto */
+  --ls-212: calc(0.8833 * var(--single));   /* w:line=212 lineRule=auto */
+
+  box-sizing: border-box;
+  /* A4 用 mm 表示才會與紙張完全一致：595.3pt / 842pt 換算後會比
+     210mm × 297mm(841.89pt) 多出零點幾 pt，列印時足以擠出第二頁。 */
+  width: 210mm;
+  height: 296mm;
+
+  /* 依實際核銷件（0805、0816）與範本比對：表格加列時，「立契約人」
+     以下的下半部位置幾乎不動，變動全部由「台南市政府衛生局」與
+     「立契約人」之間的空白吸收。因此上半部自然流動、中間留彈性空白、
+     下半部貼齊頁尾，明細變多也不會把日期擠到第二頁。 */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 auto;
+  background: #fff;
+  color: #000;
+  font-family: "標楷體", "DFKai-SB", "BiauKai", serif;
+  font-size: 12pt;
+  line-height: var(--single);
+  /* 不裁切：不同機器的字型度量略有差異，內容若稍微超過一頁，
+     寧可讓它溢出被看見，也不要被無聲切掉 */
+  overflow: visible;
+}
+.sub-sheet p { margin: 0; }
+.sub-sheet .u {                    /* 填寫欄位的底線 */
+  display: inline-block;
+  border-bottom: 0.75pt solid #000;
+  text-align: center;
+  white-space: pre;
+}
+
+/* ── 標題與前言 ───────────────────────────────────────────────────── */
+.sub-sheet .s-title {                                     /* sz=48 粗體 置中 */
+  font-size: 24pt;
+  font-weight: 700;
+  text-align: center;
+}
+.sub-sheet .s-intro {                                     /* ind 709/706 firstLine 640 */
+  margin-left: 35.45pt;
+  margin-right: 35.3pt;
+  text-indent: 32pt;
+  font-size: 16pt;
+  line-height: var(--ls-360);
+  text-align: justify;
+}
+
+/* ── 購買明細標頭：單位：元 落在 9851 twips 的定位點 ──────────────── */
+.sub-sheet .s-dhead {
+  position: relative;
+  margin-left: 35.45pt;
+  margin-top: 1.85pt;                          /* before=37 */
+  font-size: 16pt;
+}
+.sub-sheet .s-dhead .unit { position: absolute; left: 457.1pt; top: 0; }
+
+/* ── 明細表：tblInd 453、固定版面、欄寬取自 tblGrid ───────────────── */
+.sub-sheet .s-table {
+  margin-left: 22.65pt;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 544.25pt;
+}
+.sub-sheet .s-table td,
+.sub-sheet .s-table th {
+  border: 0.5pt solid #000;                    /* tcBorders sz=3（0.375pt） */
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: normal;
+  word-break: break-all;
+}
+.sub-sheet .s-table thead tr { height: 39.05pt; }         /* trHeight 781 exact */
+/* 列高用最小值：項目名稱換行時整列自動長高，與實際核銷件（0805）一致 */
+.sub-sheet .s-table tbody td { height: 38.35pt; }         /* trHeight 767 */
+.sub-sheet .s-table .c0 { text-align: justify; font-size: 11pt; }   /* 編號欄 sz=22 */
+
+/* ── 註記、此致、受文機關 ─────────────────────────────────────────── */
+.sub-sheet .s-note,
+.sub-sheet .s-cause {                            /* ind 705 right 5099 hanging 139 */
+  margin-left: 35.25pt;
+  margin-right: 254.95pt;
+  text-indent: -6.95pt;
+  margin-top: 2.65pt;                          /* before=53 */
+  line-height: var(--ls-212);
+}
+.sub-sheet .s-cause { font-size: 18pt; letter-spacing: 0; }
+.sub-sheet .s-dept { margin-left: 63.7pt; font-size: 16pt; }   /* ind 1274 */
+
+/* ── 契約條款與簽名欄 ─────────────────────────────────────────────── */
+.sub-sheet .s-contract,
+.sub-sheet .s-sign,
+.sub-sheet .s-vendor {
+  margin-left: 35.4pt;                         /* ind 708 */
+  line-height: var(--ls-360);
+}
+.sub-sheet .s-sign { font-size: 16pt; }
+
+/* ── 日期：w:jc=distribute，兩端對齊且末行也對齊 ──────────────────── */
+.sub-sheet .s-date {
+  /* 範本的 w:ind 只有 right=564、firstLine=140，左邊從頁緣起算，
+     散開後會比上方文字寬。實際印出來應與上方區塊切齊，
+     因此左右改用與前言相同的縮排。 */
+  margin-left: 35.4pt;
+  margin-right: 35.3pt;
+  font-size: 18pt;
+  text-align: justify;
+  text-align-last: justify;
+}
+
+/* ── 照片黏貼頁 ───────────────────────────────────────────────────
+   三行文字置中，「照片黏貼處」在框線之外的上方。
+   框依範本 tblpPr 的 tblpY=3288 twips 固定錨定於距頁頂 164.4pt，
+   寬 9667 twips、高 10909 twips，水平置中（tblpXSpec="center"）。 */
+.sub-sheet.s-photo-sheet {
+  display: block;            /* 照片頁不用上／中／下三段式版面 */
+  padding-top: 12pt;
+}
+.sub-sheet .s-photo-line {
+  margin: 0;
+  text-align: center;
+  font-size: 18pt;
+  line-height: 30pt;         /* w:line=600 lineRule=exact */
+}
+.sub-sheet .s-photo-box {
+  /* 留在正常流中：品項多時框會被文字往下推，與 0805 那份一致。
+     上方留白讓三行標題時框上緣落在 164.4pt（範本 tblpY=3288 twips）。 */
+  margin: 31.6pt auto 0;
+  width: 483.35pt;
+  height: 545.45pt;
+  border: 0.5pt solid #000;
+}
+
+
+/* 空段落：高度等於該段落標記的行高，用來還原範本的垂直節奏 */
+.sub-sheet .s-gap::before { content: "\00a0"; }
+
+/* 版面三段：上半部與下半部依內容決定高度，中間吸收剩餘空間 */
+.sub-sheet .s-top,
+.sub-sheet .s-bottom { flex: 0 0 auto; }
+.sub-sheet .s-flex { flex: 1 1 auto; min-height: 0; }
+
+/* ── 列印 ─────────────────────────────────────────────────────────── */
+@media print {
+  .intro-header,
+  .intro-nav-mobile,
+  .intro-footer { display: none !important; }
+
+  /* main 底下除了列印區之外全部隱藏。只隱藏 .sub-wrap 是不夠的：
+     外層 .cat-section 仍保有 36px/56px 的內距，會把紙張往下推、
+     並讓總高度超過一頁而多印一張空白頁。 */
+  .cat-main > *:not(.sub-print) { display: none !important; }
+
+  body { background: #fff; }
+  .cat-main { padding: 0 !important; }
+  .sub-print { display: block; }
+
+  /* 範本的頁面邊界為 0，內容靠縮排定位，不能再加瀏覽器預設邊界 */
+  @page { size: A4; margin: 0; }
+
+  .sub-sheet { break-after: page; }
+  .sub-sheet:last-child { break-after: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sub-wrap * { animation: none !important; transition: none !important; }
+}
