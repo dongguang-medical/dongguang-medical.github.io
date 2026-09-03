@@ -111,6 +111,10 @@
 
   var MAX_ROWS = 8;
   var VENDOR_KEY = "dongguang.subsidy.vendor";
+  /* 常用品項：存這台裝置的品項名稱（名稱在 ITEMS 中唯一），
+     選單最上方會多一組「常用品項」，方便門市重複開立同類單據。 */
+  var PIN_KEY = "dongguang.subsidy.pins";
+  var pins = [];
   var VENDOR_FIELDS = ["sbVendorName", "sbVendorAddr", "sbVendorRep"];
 
   var rowSeq = 0;
@@ -147,22 +151,152 @@
     try { localStorage.removeItem(VENDOR_KEY); } catch (e) { /* 同上 */ }
   }
 
-  /* ── 明細列 ──────────────────────────────────────────────────────── */
-  function itemOptions() {
-    var html = '<option value="">請選擇品項</option>';
-    var group = "";
-    ITEMS.forEach(function (it, i) {
-      if (it.g !== group) {
-        if (group) html += "</optgroup>";
-        group = it.g;
-        html += '<optgroup label="' + esc(group) + '">';
+  /* ── 常用品項與品項選擇器 ──────────────────────────────────────────
+     原生 select 的選項裡放不了可點擊的元素，改用自訂清單：
+     每個品項右邊一顆星，點星星釘選、點名稱選取。品項有 74 個，
+     順帶加上搜尋。實際值仍放在隱藏欄位 sbItem{r}，其餘程式不必改動。
+     ------------------------------------------------------------------ */
+  function loadPins() {
+    var raw;
+    try { raw = localStorage.getItem(PIN_KEY); } catch (e) { return; }
+    if (!raw) return;
+    try {
+      var arr = JSON.parse(raw);
+      if (Array.isArray(arr)) {
+        /* 只留現有品項，名稱改過或項目移除時自動失效 */
+        pins = arr.filter(function (n) {
+          return ITEMS.some(function (it) { return it.n === n; });
+        });
       }
-      html += '<option value="' + i + '">' + esc(it.n) +
-              "（" + money(it.p) + " 元／" + esc(it.u) + "）</option>";
-    });
-    return html + "</optgroup>";
+    } catch (e) { /* 資料壞掉就當作沒有 */ }
   }
 
+  function savePins() {
+    try { localStorage.setItem(PIN_KEY, JSON.stringify(pins)); } catch (e) { /* 無痕視窗等 */ }
+  }
+
+  function togglePin(name) {
+    var at = pins.indexOf(name);
+    if (at > -1) pins.splice(at, 1); else pins.push(name);
+    savePins();
+    document.querySelectorAll(".sub-row").forEach(function (box) {
+      renderPickerList(Number(box.id.replace("sbBox", "")));
+    });
+  }
+
+  function itemLabel(it) {
+    return it.n + "（" + money(it.p) + " 元／" + it.u + "）";
+  }
+
+  /* 依關鍵字重建某一列的清單；常用品項排在最前面 */
+  function renderPickerList(r) {
+    var list = $("sbList" + r);
+    if (!list) return;
+    var q = ($("sbSearch" + r) ? $("sbSearch" + r).value : "").trim();
+    var chosen = $("sbItem" + r).value;
+
+    function row(it, i) {
+      var on = pins.indexOf(it.n) > -1;
+      return '<li class="sub-opt' + (String(i) === chosen ? " is-chosen" : "") + '">' +
+               '<button type="button" class="sub-opt-pick" data-pick="' + r + '" data-idx="' + i + '">' +
+                 esc(itemLabel(it)) +
+               "</button>" +
+               '<button type="button" class="sub-opt-star' + (on ? " is-pinned" : "") + '"' +
+                 ' data-star="' + r + '" data-name="' + esc(it.n) + '"' +
+                 ' title="' + (on ? "取消釘選" : "釘選為常用品項") + '"' +
+                 ' aria-label="' + (on ? "取消釘選" : "釘選") + esc(it.n) + '">' +
+                 (on ? "★" : "☆") +
+               "</button>" +
+             "</li>";
+    }
+
+    function hit(it) {
+      return !q || it.n.indexOf(q) > -1;
+    }
+
+    var html = "";
+    var pinned = [];
+    pins.forEach(function (name) {
+      ITEMS.forEach(function (it, i) { if (it.n === name && hit(it)) pinned.push([it, i]); });
+    });
+    if (pinned.length) {
+      html += '<li class="sub-opt-group">常用品項</li>';
+      pinned.forEach(function (pair) { html += row(pair[0], pair[1]); });
+    }
+
+    var group = "";
+    ITEMS.forEach(function (it, i) {
+      if (!hit(it)) return;
+      if (it.g !== group) {
+        group = it.g;
+        html += '<li class="sub-opt-group">' + esc(group) + "</li>";
+      }
+      html += row(it, i);
+    });
+
+    list.innerHTML = html || '<li class="sub-opt-empty">找不到符合的品項</li>';
+  }
+
+  function pickerLabel(r) {
+    var v = $("sbItem" + r).value;
+    var field = $("sbField" + r);
+    if (!field) return;
+    field.textContent = v === "" ? "請選擇品項" : itemLabel(ITEMS[v]);
+    field.classList.toggle("is-placeholder", v === "");
+  }
+
+  function openPicker(r) {
+    closePicker();
+    var box = $("sbPicker" + r);
+    if (!box) return;
+    box.classList.add("open");
+    $("sbField" + r).setAttribute("aria-expanded", "true");
+    var s = $("sbSearch" + r);
+    s.value = "";
+    renderPickerList(r);
+    s.focus();
+    /* 捲到目前選取的項目 */
+    var cur = $("sbList" + r).querySelector(".is-chosen");
+    if (cur) cur.scrollIntoView({ block: "nearest" });
+  }
+
+  function closePicker() {
+    document.querySelectorAll(".sub-picker.open").forEach(function (box) {
+      box.classList.remove("open");
+      var f = box.querySelector(".sub-picker-field");
+      if (f) f.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  /* 選定品項：更新隱藏欄位與顯示文字，再跑原本的品項變更流程 */
+  function setItem(r, idx) {
+    $("sbItem" + r).value = String(idx);
+    pickerLabel(r);
+    onItemChange(r);
+  }
+
+  /* 鍵盤操作：上下移動、Enter 選取、Esc 關閉 */
+  function pickerKey(r, e) {
+    var list = $("sbList" + r);
+    var opts = Array.prototype.slice.call(list.querySelectorAll(".sub-opt-pick"));
+    if (!opts.length) return;
+    var at = opts.indexOf(document.activeElement);
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      (opts[at + 1] || opts[0]).focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      (at > 0 ? opts[at - 1] : opts[opts.length - 1]).focus();
+    } else if (e.key === "Enter" && at === -1) {
+      e.preventDefault();
+      opts[0].click();
+    }
+  }
+
+  /* ── 明細列 ──────────────────────────────────────────────────────── */
+  /* selName：該列目前選的品項名稱，用來決定動作項目要顯示釘選還是取消。
+     原生 select 放不了按鈕，改用一個動作項目，選到它就切換釘選狀態，
+     再把選取跳回原本的品項。 */
   function addRow() {
     if (document.querySelectorAll(".sub-row").length >= MAX_ROWS) return null;
     rowSeq += 1;
@@ -177,8 +311,18 @@
       '</div>' +
       '<div class="sub-grid sub-g2">' +
         '<div>' +
-          '<label for="sbItem' + r + '">品項（給付碼別）</label>' +
-          '<select id="sbItem' + r + '" data-item="' + r + '">' + itemOptions() + '</select>' +
+          '<label id="sbItemLbl' + r + '">品項</label>' +
+          '<div class="sub-picker" id="sbPicker' + r + '" data-picker="' + r + '">' +
+            '<button type="button" class="sub-picker-field is-placeholder" id="sbField' + r + '"' +
+              ' data-open="' + r + '" aria-haspopup="listbox" aria-expanded="false"' +
+              ' aria-labelledby="sbItemLbl' + r + '">請選擇品項</button>' +
+            '<div class="sub-picker-panel">' +
+              '<input type="text" class="sub-picker-search" id="sbSearch' + r + '"' +
+                ' data-search="' + r + '" placeholder="輸入關鍵字篩選" autocomplete="off">' +
+              '<ul class="sub-picker-list" id="sbList' + r + '" role="listbox"></ul>' +
+            "</div>" +
+            '<input type="hidden" id="sbItem' + r + '" value="">' +
+          "</div>" +
           '<div class="sub-meta" id="sbMeta' + r + '"></div>' +
         '</div>' +
         '<div class="sub-grid sub-g2" style="gap:12px">' +
@@ -208,6 +352,8 @@
         '<div class="sub-stat sub-stat-over"><div class="k">超額自費</div><div class="v" id="sbROver' + r + '">0 元</div></div>' +
       '</div>';
     $("sbRows").appendChild(box);
+    pickerLabel(r);
+    renderPickerList(r);
     renumber();
     updateAddBtn();
     return r;
@@ -242,6 +388,7 @@
     var sel = $("sbItem" + r);
     var meta = $("sbMeta" + r);
     var limit = $("sbLimit" + r);
+
     if (sel.value === "") {
       meta.textContent = "";
       limit.value = "";
@@ -278,8 +425,7 @@
       var r = addRow();
       if (!r) return;
       $("sbBox" + r).dataset.linkedTo = String(baseRow);
-      $("sbItem" + r).value = String(idx);
-      onItemChange(r);
+      setItem(r, idx);
     });
     syncBedFields(baseRow);
   }
@@ -929,7 +1075,7 @@
       a.click();
       setTimeout(function () { a.remove(); }, 1000);
       setTimeout(function () { URL.revokeObjectURL(url); }, 15000);
-      setStatus("Word 檔已下載。");
+      setStatus("");
     }).catch(function (err) {
       console.error(err);
       setStatus("Word 檔產生失敗：" + (err && err.message ? err.message : err));
@@ -946,18 +1092,60 @@
     $("sbD").value = today.getDate();
 
     loadVendor();
+    loadPins();
     addRow();
 
     document.addEventListener("click", function (e) {
-      var del = e.target.closest ? e.target.closest("[data-del]") : null;
-      if (del) delRow(Number(del.dataset.del));
+      var t = e.target.closest ? e.target : null;
+      if (!t) return;
+
+      var del = t.closest("[data-del]");
+      if (del) { delRow(Number(del.dataset.del)); return; }
+
+      /* 星星：切換釘選，清單原地更新，不關閉面板 */
+      var star = t.closest("[data-star]");
+      if (star) {
+        e.preventDefault();
+        togglePin(star.dataset.name);
+        return;
+      }
+
+      /* 選取品項 */
+      var pick = t.closest("[data-pick]");
+      if (pick) {
+        setItem(Number(pick.dataset.pick), Number(pick.dataset.idx));
+        closePicker();
+        return;
+      }
+
+      /* 開合清單 */
+      var open = t.closest("[data-open]");
+      if (open) {
+        var r = Number(open.dataset.open);
+        var box = $("sbPicker" + r);
+        if (box.classList.contains("open")) closePicker();
+        else openPicker(r);
+        return;
+      }
+
+      /* 點面板以外的地方就收起來 */
+      if (!t.closest(".sub-picker")) closePicker();
     });
-    document.addEventListener("change", function (e) {
-      var d = e.target.dataset || {};
-      if (d.item) onItemChange(Number(d.item));
+
+    document.addEventListener("keydown", function (e) {
+      var box = document.querySelector(".sub-picker.open");
+      if (!box) return;
+      if (e.key === "Escape") {
+        closePicker();
+        var f = box.querySelector(".sub-picker-field");
+        if (f) f.focus();
+        return;
+      }
+      pickerKey(Number(box.dataset.picker), e);
     });
     document.addEventListener("input", function (e) {
       var d = e.target.dataset || {};
+      if (d.search) { renderPickerList(Number(d.search)); return; }
       if (d.qty) onQtyChange(Number(d.qty));
       else if (d.limit) { e.target.dataset.auto = "0"; calculate(false); }
       else if (d.price) calculate(false);
