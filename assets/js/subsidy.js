@@ -576,11 +576,12 @@
         brand: row.brand,
         model: row.model,
         serial: row.serial,
-        /* 台南市範本沒有超額自費欄，註記要求購買金額＝給付金額＋部分負擔，
-           因此印核定給付範圍內的金額 */
-        price: row.base,
+        /* 台南市範本沒有超額自費欄，註記要求購買金額＝給付金額＋部分負擔。
+           購買金額印實際成交金額；部分負擔＝購買金額－給付金額，
+           超出核定給付上限或額度的部分一併落在民眾部分負擔裡。 */
+        price: row.price,
         gov: row.gov,
-        self: row.self
+        self: row.price - row.gov
       };
     });
     var today = new Date();
