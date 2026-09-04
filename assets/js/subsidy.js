@@ -486,7 +486,6 @@
 
     var left = quota;
     var sumPrice = 0, sumGov = 0, sumSelf = 0, sumOver = 0, sumBase = 0;
-    var warns = [];
 
     rows.forEach(function (row) {
       var base = Math.min(row.price, row.limit, left);
@@ -514,10 +513,6 @@
         $("sbRSelf" + row.r).textContent = money(self) + " 元";
         $("sbROver" + row.r).textContent = money(over) + " 元";
       }
-      if (row.price > row.limit) {
-        warns.push("「" + row.item.n + "」購買金額超過核定給付上限 " +
-                   money(row.limit) + " 元，超出的 " + money(row.price - row.limit) + " 元要自費。");
-      }
     });
 
     Array.prototype.forEach.call(document.querySelectorAll(".sub-row"), function (box) {
@@ -529,10 +524,6 @@
       }
     });
 
-    if (sumBase > 0 && left <= 0) {
-      warns.push("可用額度 " + money(quota) + " 元已用完，超過額度的金額都列為超額自費。");
-    }
-
     $("sbSumPrice").textContent = money(sumPrice) + " 元";
     $("sbSumGov").textContent = money(sumGov) + " 元";
     $("sbSumSelf").textContent = money(sumSelf) + " 元";
@@ -540,14 +531,11 @@
     $("sbSumUse").textContent = money(sumBase) + " 元";
     $("sbSumLeft").textContent = money(Math.max(0, left)) + " 元";
 
+    /* 提示區只用來擋下真正停住流程的錯誤，
+       超額、額度用完這些卡片上看得到的事不再重複提醒。 */
     var warnBox = $("sbWarn");
-    if (warns.length) {
-      warnBox.hidden = false;
-      warnBox.innerHTML = warns.map(esc).join("<br>");
-    } else {
-      warnBox.hidden = true;
-      warnBox.innerHTML = "";
-    }
+    warnBox.hidden = true;
+    warnBox.innerHTML = "";
 
     if (strict && rows.length === 0) {
       warnBox.hidden = false;
