@@ -37,8 +37,35 @@
         "lowPrice": "45",
         "highPrice": "125",
         "priceCurrency": "TWD",
+        "offerCount": 3,
         "availability": "https://schema.org/InStock",
-        "url": "https://dongguang-medical.github.io/product/supplies-73/"
+        "url": "https://dongguang-medical.github.io/product/supplies-73/",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "2x2",
+            "price": "45",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://dongguang-medical.github.io/product/supplies-73/"
+          },
+          {
+            "@type": "Offer",
+            "name": "3x3",
+            "price": "95",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://dongguang-medical.github.io/product/supplies-73/"
+          },
+          {
+            "@type": "Offer",
+            "name": "4x4",
+            "price": "125",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://dongguang-medical.github.io/product/supplies-73/"
+          }
+        ]
       }
     },
     {
@@ -70,9 +97,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=bbde844c98">
-  <link rel="stylesheet" href="/assets/css/intro.css?v=bbde844c98">
-  <link rel="stylesheet" href="/assets/css/catalog.css?v=bbde844c98">
+  <link rel="stylesheet" href="/assets/css/design-system.css?v=2970c106c4">
+  <link rel="stylesheet" href="/assets/css/intro.css?v=2970c106c4">
+  <link rel="stylesheet" href="/assets/css/catalog.css?v=2970c106c4">
 </head>
 <body>
 
@@ -179,9 +206,19 @@
           </div>
         </section>
         <section class="cat-block">
+          <h2>規格與價格</h2>
+          <div style="overflow-x:auto;">
+            <table class="cat-spec-table cat-variant-table">
+              <thead><tr><th scope="col">規格</th>
+                <th scope="col">價格</th></tr></thead>
+              <tbody><tr><th scope="row">2x2</th><td>NT$45</td></tr><tr><th scope="row">3x3</th><td>NT$95</td></tr><tr><th scope="row">4x4</th><td>NT$125</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="cat-block">
           <h2>商品規格</h2>
           <div style="overflow-x:auto;">
-            <table class="cat-spec-table"><tr><th scope="row">產地</th><td>台灣製造</td></tr><tr><th scope="row">規格選項</th><td>2x2｜3x3｜4x4</td></tr></table>
+            <table class="cat-spec-table"><tr><th scope="row">產地</th><td>台灣製造</td></tr></table>
           </div>
         </section>
         <section class="cat-related">

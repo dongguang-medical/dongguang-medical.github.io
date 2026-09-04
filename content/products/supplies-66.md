@@ -1,8 +1,19 @@
 ---
 name: 中衛 CSD 3吋棉棒（滅菌）
 taxonomy: 照護耗材/紗布棉棒
-price: 3
-price_max: 6
+price: ""
+variant_label: "規格"
+variants:
+  - label: "3吋小棉棒10支入(中衛)"
+    price: 3
+  - label: "ENT棉棒10支入(中衛)"
+    price: 4
+  - label: "普通棉棒(中衛)10支入"
+    price: 4
+  - label: "口腔棉棒10支入(中衛)"
+    price: 5
+  - label: "沖洗棉棒6支入(中衛)"
+    price: 6
 brand: 中衛
 offering:
   - 線上選購
@@ -17,8 +28,6 @@ specs:
     value: 已滅菌
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: "沖洗棉棒6支入(中衛)｜ENT棉棒10支入(中衛)｜口腔棉棒10支入(中衛)｜普通棉棒(中衛)10支入｜3吋小棉棒10支入(中衛)"
 images:
   - /assets/uploads/supplies-66-1.jpg
   - /assets/uploads/supplies-66-2.jpg

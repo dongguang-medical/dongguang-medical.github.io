@@ -1,8 +1,17 @@
 ---
 name: 多倍 PROTOS 乳膠無粉檢診手套（未滅菌）
 taxonomy: 照護耗材/手套
-price: 169
-price_max: 170
+price: ""
+variant_label: "顏色"
+variants:
+  - label: "無粉M"
+    price: 169
+  - label: "無粉L"
+    price: 169
+  - label: "無粉SS"
+    price: 170
+  - label: "無粉S"
+    price: 170
 brand: 多倍
 offering:
   - 線上選購
@@ -15,8 +24,6 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
-  - label: 顏色
-    value: "無粉SS｜無粉S｜無粉M｜無粉L"
 images:
   - /assets/uploads/supplies-57-1.jpg
 published: true

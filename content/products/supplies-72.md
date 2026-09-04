@@ -1,7 +1,13 @@
 ---
 name: 3M Nexcare 克淋濕防水透氣繃
 taxonomy: 照護耗材/敷料與人工皮
-price: 69
+price: ""
+variant_label: "規格"
+variants:
+  - label: "10入(切割傷用)"
+    price: 69
+  - label: "8入(擦傷用)"
+    price: 69
 brand: 3m
 offering:
   - 線上選購
@@ -11,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/903302722
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "8入(擦傷用)｜10入(切割傷用)"
+specs: []
 images:
   - /assets/uploads/supplies-72-1.jpg
   - /assets/uploads/supplies-72-2.jpg

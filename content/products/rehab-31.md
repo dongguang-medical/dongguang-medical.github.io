@@ -1,8 +1,17 @@
 ---
 name: 帝通 子母型冰枕 冷熱敷袋
 taxonomy: 復健理療/冷熱敷用品
-price: 119
-price_max: 149
+price: ""
+variant_label: "規格"
+variants:
+  - label: "一般型冰枕(一個母型)-粉紅"
+    price: 119
+  - label: "一般型冰枕(一個母型)-綠"
+    price: 119
+  - label: "子母型(大小各一)-綠"
+    price: 149
+  - label: "子母型(大小各一-)粉紅"
+    price: 149
 brand: 帝通
 offering:
   - 線上選購
@@ -12,9 +21,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1296616099
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "一般型冰枕(一個母型)-綠｜一般型冰枕(一個母型)-粉紅｜子母型(大小各一)-綠｜子母型(大小各一-)粉紅"
+specs: []
 images:
   - /assets/uploads/rehab-31-1.jpg
   - /assets/uploads/rehab-31-2.jpg

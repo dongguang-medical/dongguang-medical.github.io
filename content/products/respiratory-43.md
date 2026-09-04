@@ -1,8 +1,13 @@
 ---
 name: 士康 洗鼻器
 taxonomy: 呼吸照護/洗鼻器
-price: 139
-price_max: 290
+price: ""
+variant_label: "規格"
+variants:
+  - label: "洗鼻鹽-士康"
+    price: 139
+  - label: "洗鼻器"
+    price: 290
 brand: 士康
 offering:
   - 線上選購

@@ -1,8 +1,15 @@
 ---
 name: 雃博 APEX 恆溫濕熱電毯 14x20／14x27／肩頸
 taxonomy: 復健理療/熱敷墊
-price: 1390
-price_max: 1950
+price: ""
+variant_label: "規格"
+variants:
+  - label: "14x20"
+    price: 1390
+  - label: "14x27"
+    price: 1850
+  - label: "肩頸"
+    price: 1950
 brand: 雃博
 offering:
   - 線上選購
@@ -16,8 +23,6 @@ tags:
 specs:
   - label: 產地
     value: 台灣製造
-  - label: 規格
-    value: "14x20｜14x27｜肩頸"
 images:
   - /assets/uploads/rehab-34-1.jpg
   - /assets/uploads/rehab-34-2.jpg

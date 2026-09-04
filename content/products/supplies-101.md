@@ -1,8 +1,13 @@
 ---
 name: 安適康 AnsCare 皙佳疤痕護理矽凝膠 7g／15g
 taxonomy: 照護耗材/敷料與人工皮
-price: 960
-price_max: 1760
+price: ""
+variant_label: "規格"
+variants:
+  - label: "凝膠7g"
+    price: 960
+  - label: "凝膠15g"
+    price: 1760
 brand: anscare
 offering:
   - 線上選購
@@ -12,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3500398976
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "凝膠7g｜凝膠15g"
+specs: []
 images:
   - /assets/uploads/supplies-101-1.jpg
   - /assets/uploads/supplies-101-2.jpg

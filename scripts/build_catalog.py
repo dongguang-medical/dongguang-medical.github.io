@@ -18,9 +18,10 @@ build_catalog.py
   python3 scripts/build_catalog.py        # 在 repo 任意位置執行皆可
 
 frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
-  name(必填)、category(必填，九選一)、subcategory、price、price_max(多規格價格上限)、
-  brand、tags(字串清單)、specs(label/value 清單)、images(路徑清單，相對網站根目錄)、
-  published(預設 true)
+  name(必填)、category(必填，九選一)、subcategory、price、brand、
+  variants(label/price 清單，多規格商品用；有填則 price 由此推導)、
+  variant_label(規格表欄名，如「尺寸」)、tags(字串清單)、
+  specs(label/value 清單)、images(路徑清單，相對網站根目錄)、published(預設 true)
 """
 
 import hashlib
@@ -300,6 +301,17 @@ def load_products(brands, taxonomy=None):
 
         specs = [d for d in fm.get("specs", []) or []
                  if isinstance(d, dict) and d.get("label")]
+
+        # 規格與價格一對一。有 variants 時，商品的價格區間由此推導，
+        # 不再另外維護上下限欄位——只有一份資料就不會對不起來。
+        variants = [{"label": d["label"], "price": parse_price(d.get("price"))}
+                    for d in fm.get("variants", []) or []
+                    if isinstance(d, dict) and d.get("label")]
+        variant_prices = [v["price"] for v in variants if v["price"] is not None]
+        if variant_prices:
+            price, price_max = min(variant_prices), max(variant_prices)
+        else:
+            price = price_max = parse_price(fm.get("price"))
         images = [str(p).lstrip("/") for p in fm.get("images", []) or []
                   if isinstance(p, str) and p.strip()]
         tags = [t for t in fm.get("tags", []) or [] if isinstance(t, str) and t]
@@ -314,11 +326,12 @@ def load_products(brands, taxonomy=None):
             "category": category,
             "subcategory": subcategory,
             # price 是數字（供排序與結構化資料），price_text 是顯示用的「NT$3,500」
-            "price": parse_price(fm.get("price")),
-            # 多規格商品（如尺寸 S/M/L 不同價）填 price_max，顯示成「NT$199～990」
-            "price_max": parse_price(fm.get("price_max")),
-            "price_text": format_price(parse_price(fm.get("price")),
-                                       parse_price(fm.get("price_max"))),
+            "price": price,
+            "price_max": price_max,
+            "price_text": format_price(price, price_max),
+            "variants": variants,
+            # 規格表的欄位名稱，如「尺寸」；沒填就用通用的「規格」
+            "variant_label": s("variant_label") or "規格",
             "brand": brand,
             "brand_slug": brand_slug if brand else "",
             "offering": offering,
@@ -1469,15 +1482,30 @@ def product_jsonld(product, bc):
     if product["price"] is not None:
         price_max = product["price_max"]
         if price_max is not None and price_max > product["price"]:
-            # 多規格商品用 AggregateOffer，搜尋結果才會顯示成價格區間
+            # 多規格商品用 AggregateOffer，搜尋結果才會顯示成價格區間；
+            # 底下再逐一列出每個規格的報價，讓搜尋引擎拿得到明細
             prod["offers"] = {
                 "@type": "AggregateOffer",
                 "lowPrice": str(product["price"]),
                 "highPrice": str(price_max),
                 "priceCurrency": "TWD",
+                "offerCount": len(product["variants"]) or None,
                 "availability": "https://schema.org/InStock",
                 "url": BASE_URL + product["url"],
+                "offers": [
+                    {
+                        "@type": "Offer",
+                        "name": v["label"],
+                        "price": str(v["price"]),
+                        "priceCurrency": "TWD",
+                        "availability": "https://schema.org/InStock",
+                        "url": BASE_URL + product["url"],
+                    }
+                    for v in product["variants"] if v["price"] is not None
+                ] or None,
             }
+            prod["offers"] = {k: v for k, v in prod["offers"].items()
+                              if v is not None}
         else:
             prod["offers"] = {
                 "@type": "Offer",
@@ -1503,6 +1531,24 @@ def build_product_pages(products):
                     cls=' class="active"' if i == 0 else "")
                 for i, img in enumerate(images))
             thumbs = f'<div class="cat-gallery-thumbs">{btns}</div>'
+
+        variants_html = ""
+        if product["variants"]:
+            rows = "".join(
+                f'<tr><th scope="row">{esc(v["label"])}</th>'
+                f'<td>{esc(format_price(v["price"])) or "洽詢"}</td></tr>'
+                for v in product["variants"])
+            variants_html = f"""        <section class="cat-block">
+          <h2>規格與價格</h2>
+          <div style="overflow-x:auto;">
+            <table class="cat-spec-table cat-variant-table">
+              <thead><tr><th scope="col">{esc(product["variant_label"])}</th>
+                <th scope="col">價格</th></tr></thead>
+              <tbody>{rows}</tbody>
+            </table>
+          </div>
+        </section>
+"""
 
         specs_html = ""
         if product["specs"]:
@@ -1629,7 +1675,7 @@ def build_product_pages(products):
             </div>
           </div>
         </div>
-{desc_html}{specs_html}{related_html}
+{desc_html}{variants_html}{specs_html}{related_html}
       </div>
     </div>
 """

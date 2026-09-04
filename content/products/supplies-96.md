@@ -1,8 +1,15 @@
 ---
 name: 愛樂康 ALCARE Pospack 萬用造口袋 10入/盒
 taxonomy: 照護耗材/造口與泌尿用品
-price: 420
-price_max: 1049
+price: ""
+variant_label: "規格"
+variants:
+  - label: "脫膠噴霧"
+    price: 420
+  - label: "保護噴霧"
+    price: 620
+  - label: "13361"
+    price: 1049
 brand: 愛樂康
 offering:
   - 線上選購
@@ -15,8 +22,6 @@ tags: []
 specs:
   - label: 包裝規格
     value: 10入/盒
-  - label: 規格選項
-    value: "13361｜保護噴霧｜脫膠噴霧"
 images:
   - /assets/uploads/supplies-96-1.jpg
   - /assets/uploads/supplies-96-2.jpg

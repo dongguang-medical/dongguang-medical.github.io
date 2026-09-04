@@ -1,8 +1,21 @@
 ---
 name: 醫強 克司博 75%酒精 500ml（乙類成藥）
 taxonomy: 照護耗材/消毒與清潔
-price: 29
-price_max: 95
+price: ""
+variant_label: "規格"
+variants:
+  - label: "一般噴頭(不含酒精)"
+    price: 29
+  - label: "噴霧押頭(不含酒精)"
+    price: 42
+  - label: "醫强(一單限8瓶)"
+    price: 69
+  - label: "克司博(1單限8瓶)"
+    price: 69
+  - label: "派頓(1單限8瓶)"
+    price: 69
+  - label: "克司博含噴頭(1單限8瓶)"
+    price: 95
 brand: 醫強
 offering:
   - 線上選購
@@ -15,8 +28,6 @@ tags: []
 specs:
   - label: 尺寸／容量
     value: 500ml
-  - label: 規格選項
-    value: "醫强(一單限8瓶)｜克司博(1單限8瓶)｜克司博含噴頭(1單限8瓶)｜派頓(1單限8瓶)｜一般噴頭(不含酒精)｜噴霧押頭(不含酒精)"
 images:
   - /assets/uploads/supplies-54-1.jpg
   - /assets/uploads/supplies-54-2.jpg

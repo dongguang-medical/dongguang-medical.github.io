@@ -1,7 +1,19 @@
 ---
 name: 愛民 I-M SS-717 竹炭護膝（側邊軟鐵條）
 taxonomy: 復健理療/護具
-price: 590
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "M(29~33cm)"
+    price: 590
+  - label: "L(37-41cm)"
+    price: 590
+  - label: "XL(41~46cm)"
+    price: 590
+  - label: "XXL(46~51cm)"
+    price: 590
+  - label: "S(29~33cm)"
+    price: 590
 brand: 愛民
 offering:
   - 線上選購
@@ -16,8 +28,6 @@ specs:
     value: SS-717
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "S(29~33cm)｜M(29~33cm)｜L(37-41cm)｜XL(41~46cm)｜XXL(46~51cm)"
 images:
   - /assets/uploads/rehab-ss-717-1.jpg
   - /assets/uploads/rehab-ss-717-2.jpg

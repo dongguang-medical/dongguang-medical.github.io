@@ -1,8 +1,13 @@
 ---
 name: 宜瑪氏 EasyMax 專業型採血筆
 taxonomy: 照護耗材/血糖試紙與採血針
-price: 199
-price_max: 990
+price: ""
+variant_label: "規格"
+variants:
+  - label: "採血筆"
+    price: 199
+  - label: "宜瑪氏試紙50支+針50支"
+    price: 990
 brand: easymax
 offering:
   - 線上選購
@@ -12,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2493733383
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "採血筆｜宜瑪氏試紙50支+針50支"
+specs: []
 images:
   - /assets/uploads/supplies-91-1.jpg
 published: true

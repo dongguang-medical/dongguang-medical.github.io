@@ -1,7 +1,19 @@
 ---
 name: 愛民 I-M WB-605 護腰（寬版）
 taxonomy: 復健理療/護具
-price: 1600
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "M"
+    price: 1600
+  - label: "L"
+    price: 1600
+  - label: "XL"
+    price: 1600
+  - label: "XXL"
+    price: 1600
+  - label: "S"
+    price: 1600
 brand: 愛民
 offering:
   - 線上選購
@@ -16,8 +28,6 @@ specs:
     value: WB-605
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "S｜M｜L｜XL｜XXL"
 images:
   - /assets/uploads/rehab-wb-605-1.jpg
   - /assets/uploads/rehab-wb-605-2.jpg

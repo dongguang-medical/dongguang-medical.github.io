@@ -1,8 +1,15 @@
 ---
 name: 龍勝 一次性PE手套（抽取式）
 taxonomy: 照護耗材/手套
-price: 23
-price_max: 28
+price: ""
+variant_label: "樣式"
+variants:
+  - label: "三花"
+    price: 23
+  - label: "龍勝"
+    price: 25
+  - label: "大友"
+    price: 28
 brand: 龍勝
 offering:
   - 線上選購
@@ -12,9 +19,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/9754469041
 subsidy: []
 tags: []
-specs:
-  - label: 樣式
-    value: "龍勝｜大友｜三花"
+specs: []
 images:
   - /assets/uploads/supplies-62-1.jpg
   - /assets/uploads/supplies-62-2.jpg

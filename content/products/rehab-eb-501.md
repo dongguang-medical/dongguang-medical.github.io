@@ -1,7 +1,19 @@
 ---
 name: 愛民 I-M EB-501 產後束腹帶（寬版）
 taxonomy: 復健理療/護具
-price: 300
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "XXL"
+    price: 300
+  - label: "S"
+    price: 300
+  - label: "M"
+    price: 300
+  - label: "L"
+    price: 300
+  - label: "XL"
+    price: 300
 brand: 愛民
 offering:
   - 線上選購
@@ -16,8 +28,6 @@ specs:
     value: EB-501
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "S｜M｜L｜XL｜XXL"
 images:
   - /assets/uploads/rehab-eb-501-1.jpg
 published: true

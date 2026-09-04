@@ -1,8 +1,15 @@
 ---
 name: 雙效冷熱敷水袋
 taxonomy: 復健理療/冷熱敷用品
-price: 99
-price_max: 149
+price: ""
+variant_label: "規格"
+variants:
+  - label: "6吋"
+    price: 99
+  - label: "9吋"
+    price: 129
+  - label: "11吋"
+    price: 149
 brand: ""
 offering:
   - 線上選購

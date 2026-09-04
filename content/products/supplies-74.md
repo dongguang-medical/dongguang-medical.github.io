@@ -1,8 +1,13 @@
 ---
 name: 中衛 CSD 石膏繃帶 10cm／15cm（未滅菌）
 taxonomy: 照護耗材/敷料與人工皮
-price: 45
-price_max: 65
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "10公分X4.5m"
+    price: 45
+  - label: "15公分X4.5m"
+    price: 65
 brand: 中衛
 offering:
   - 線上選購
@@ -17,8 +22,6 @@ specs:
     value: 未滅菌
   - label: 尺寸／容量
     value: 10cm、15cm
-  - label: 尺寸
-    value: "10公分X4.5m｜15公分X4.5m"
 images:
   - /assets/uploads/supplies-74-1.jpg
   - /assets/uploads/supplies-74-2.jpg

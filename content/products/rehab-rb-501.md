@@ -1,7 +1,17 @@
 ---
 name: 愛民 I-M RB-501 骨盆帶
 taxonomy: 復健理療/護具
-price: 780
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "L"
+    price: 780
+  - label: "XL"
+    price: 780
+  - label: "S"
+    price: 780
+  - label: "M"
+    price: 780
 brand: 愛民
 offering:
   - 線上選購
@@ -16,8 +26,6 @@ specs:
     value: RB-501
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "S｜M｜L｜XL"
 images:
   - /assets/uploads/rehab-rb-501-1.jpg
   - /assets/uploads/rehab-rb-501-2.jpg

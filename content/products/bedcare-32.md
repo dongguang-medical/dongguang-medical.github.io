@@ -1,7 +1,13 @@
 ---
 name: 保衛 加厚型乒乓約束手套
 taxonomy: 臥床照護/約束與安全帶
-price: 150
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "M(單支)"
+    price: 150
+  - label: "L(單支)"
+    price: 150
 brand: 保衛
 offering:
   - 線上選購
@@ -14,8 +20,6 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "M(單支)｜L(單支)"
 images:
   - /assets/uploads/bedcare-32-1.jpg
 published: true

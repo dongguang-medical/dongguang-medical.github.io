@@ -1,8 +1,15 @@
 ---
 name: 養根命 艾條溫灸棒
 taxonomy: 其他/居家生活用品
-price: 150
-price_max: 200
+price: ""
+variant_label: "規格"
+variants:
+  - label: "益康"
+    price: 150
+  - label: "養根命"
+    price: 160
+  - label: "溫灸棒"
+    price: 200
 brand: ""
 offering:
   - 線上選購
@@ -12,9 +19,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044845368
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "養根命｜益康｜溫灸棒"
+specs: []
 images:
   - /assets/uploads/misc-25-1.jpg
   - /assets/uploads/misc-25-2.jpg

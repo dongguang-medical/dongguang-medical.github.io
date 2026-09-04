@@ -1,8 +1,21 @@
 ---
 name: 中衛 CSD 醫療防護口罩 第二等級
 taxonomy: 照護耗材/口罩
-price: 158
-price_max: 310
+price: ""
+variant_label: "顏色"
+variants:
+  - label: "二級粉色"
+    price: 158
+  - label: "二級藍色"
+    price: 158
+  - label: "二級綠色"
+    price: 158
+  - label: "二級粉色(二盒入)"
+    price: 310
+  - label: "二級藍色(二盒入)"
+    price: 310
+  - label: "二級綠色(二盒入)"
+    price: 310
 brand: 中衛
 offering:
   - 線上選購
@@ -12,9 +25,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3183420138
 subsidy: []
 tags: []
-specs:
-  - label: 顏色
-    value: "二級藍色(二盒入)｜二級藍色｜二級綠色(二盒入)｜二級綠色｜二級粉色(二盒入)｜二級粉色"
+specs: []
 images:
   - /assets/uploads/supplies-47-1.jpg
   - /assets/uploads/supplies-47-2.jpg

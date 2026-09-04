@@ -1,7 +1,17 @@
 ---
 name: 康威利 Conwell 5319 手指保護套
 taxonomy: 復健理療/護具
-price: 180
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "S"
+    price: 180
+  - label: "M"
+    price: 180
+  - label: "XL"
+    price: 180
+  - label: "L"
+    price: 180
 brand: 康威利
 offering:
   - 線上選購
@@ -11,9 +21,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/7862824630
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "S｜M｜L｜XL"
+specs: []
 images:
   - /assets/uploads/rehab-7-1.jpg
 published: true

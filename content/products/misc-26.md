@@ -1,8 +1,13 @@
 ---
 name: 精國 Spirit 雙面聽診器（未滅菌）
 taxonomy: 其他/診所與醫護設備
-price: 220
-price_max: 350
+price: ""
+variant_label: "品項"
+variants:
+  - label: "益江雙面聽診"
+    price: 220
+  - label: "Spirit精國 雙面聽診器"
+    price: 350
 brand: 精國
 offering:
   - 線上選購
@@ -17,8 +22,6 @@ specs:
     value: 未滅菌
   - label: 產地
     value: 台灣製造
-  - label: 品項
-    value: "Spirit精國 雙面聽診器｜益江雙面聽診"
 images:
   - /assets/uploads/misc-26-1.jpg
   - /assets/uploads/misc-26-2.jpg

@@ -1,8 +1,13 @@
 ---
 name: 國發 乒乓約束帶 單支入
 taxonomy: 臥床照護/約束與安全帶
-price: 398
-price_max: 420
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "M"
+    price: 398
+  - label: "L"
+    price: 420
 brand: 國發
 offering:
   - 線上選購
@@ -15,8 +20,6 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "M｜L"
 images:
   - /assets/uploads/bedcare-38-1.jpg
 published: true

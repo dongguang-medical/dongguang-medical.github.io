@@ -35,8 +35,35 @@
         "lowPrice": "150",
         "highPrice": "200",
         "priceCurrency": "TWD",
+        "offerCount": 3,
         "availability": "https://schema.org/InStock",
-        "url": "https://dongguang-medical.github.io/product/misc-25/"
+        "url": "https://dongguang-medical.github.io/product/misc-25/",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "益康",
+            "price": "150",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://dongguang-medical.github.io/product/misc-25/"
+          },
+          {
+            "@type": "Offer",
+            "name": "養根命",
+            "price": "160",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://dongguang-medical.github.io/product/misc-25/"
+          },
+          {
+            "@type": "Offer",
+            "name": "溫灸棒",
+            "price": "200",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://dongguang-medical.github.io/product/misc-25/"
+          }
+        ]
       }
     },
     {
@@ -68,9 +95,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=bbde844c98">
-  <link rel="stylesheet" href="/assets/css/intro.css?v=bbde844c98">
-  <link rel="stylesheet" href="/assets/css/catalog.css?v=bbde844c98">
+  <link rel="stylesheet" href="/assets/css/design-system.css?v=2970c106c4">
+  <link rel="stylesheet" href="/assets/css/intro.css?v=2970c106c4">
+  <link rel="stylesheet" href="/assets/css/catalog.css?v=2970c106c4">
 </head>
 <body>
 
@@ -176,9 +203,13 @@
           </div>
         </section>
         <section class="cat-block">
-          <h2>商品規格</h2>
+          <h2>規格與價格</h2>
           <div style="overflow-x:auto;">
-            <table class="cat-spec-table"><tr><th scope="row">規格選項</th><td>養根命｜益康｜溫灸棒</td></tr></table>
+            <table class="cat-spec-table cat-variant-table">
+              <thead><tr><th scope="col">規格</th>
+                <th scope="col">價格</th></tr></thead>
+              <tbody><tr><th scope="row">益康</th><td>NT$150</td></tr><tr><th scope="row">養根命</th><td>NT$160</td></tr><tr><th scope="row">溫灸棒</th><td>NT$200</td></tr></tbody>
+            </table>
           </div>
         </section>
         <section class="cat-related">

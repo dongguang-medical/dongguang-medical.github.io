@@ -1,7 +1,13 @@
 ---
 name: 護多樂 FUTURO 拉繩式拇指支撐護腕
 taxonomy: 復健理療/護具
-price: 925
+price: ""
+variant_label: "規格"
+variants:
+  - label: "L-XL(45844)"
+    price: 925
+  - label: "S-M(45843)"
+    price: 925
 brand: futuro
 offering:
   - 線上選購
@@ -11,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2159630858
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "S-M(45843)｜L-XL(45844)"
+specs: []
 images:
   - /assets/uploads/rehab-28-1.jpg
   - /assets/uploads/rehab-28-2.jpg

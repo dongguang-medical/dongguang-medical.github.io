@@ -1,8 +1,17 @@
 ---
 name: 雃博 APEX 福康抽痰機 連接管與過濾器
 taxonomy: 呼吸照護/抽痰機耗材
-price: 100
-price_max: 490
+price: ""
+variant_label: "規格"
+variants:
+  - label: "抽痰機用矽膠管"
+    price: 100
+  - label: "雃博原廠抽痰杯"
+    price: 390
+  - label: "雃博原廠過濾器"
+    price: 420
+  - label: "新豐抽痰管12Fr(100支入)"
+    price: 490
 brand: 雃博
 offering:
   - 線上選購
@@ -15,8 +24,6 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: "新豐抽痰管12Fr(100支入)｜雃博原廠抽痰杯｜雃博原廠過濾器｜抽痰機用矽膠管"
 images:
   - /assets/uploads/respiratory-38-1.jpg
 published: true

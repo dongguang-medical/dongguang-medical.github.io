@@ -1,7 +1,17 @@
 ---
 name: 愛民 I-M OH-008 軟式頸圈 8cm
 taxonomy: 復健理療/護具
-price: 250
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "XL"
+    price: 250
+  - label: "S"
+    price: 250
+  - label: "M"
+    price: 250
+  - label: "L"
+    price: 250
 brand: 愛民
 offering:
   - 線上選購
@@ -18,8 +28,6 @@ specs:
     value: 8cm
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "S｜M｜L｜XL"
 images:
   - /assets/uploads/rehab-oh-008-1.jpg
   - /assets/uploads/rehab-oh-008-2.jpg

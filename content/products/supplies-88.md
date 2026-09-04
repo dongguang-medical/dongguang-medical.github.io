@@ -1,8 +1,13 @@
 ---
 name: 芬蒂思 透氣膠帶 1吋／半吋（單顆）
 taxonomy: 照護耗材/醫用膠帶
-price: 10
-price_max: 20
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "半吋 單顆"
+    price: 10
+  - label: "一吋 單顆"
+    price: 20
 brand: 芬蒂思
 offering:
   - 線上選購
@@ -12,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/974031587
 subsidy: []
 tags: []
-specs:
-  - label: 尺寸
-    value: "半吋 單顆｜一吋 單顆"
+specs: []
 images:
   - /assets/uploads/supplies-88-1.jpg
 published: true

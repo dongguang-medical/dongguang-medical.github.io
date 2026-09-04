@@ -1,8 +1,13 @@
 ---
 name: 木製壓舌板（未滅菌）
 taxonomy: 其他/醫療器械
-price: 35
-price_max: 45
+price: ""
+variant_label: "規格"
+variants:
+  - label: "瑞玉壓舌板(陸製)"
+    price: 35
+  - label: "豐全壓舌板(台灣製)"
+    price: 45
 brand: ""
 offering:
   - 線上選購
@@ -19,8 +24,6 @@ specs:
     value: 100支/包
   - label: 產地
     value: 台灣製造
-  - label: 規格選項
-    value: "豐全壓舌板(台灣製)｜瑞玉壓舌板(陸製)"
 images:
   - /assets/uploads/misc-32-1.jpg
   - /assets/uploads/misc-32-2.jpg

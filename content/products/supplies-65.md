@@ -1,8 +1,15 @@
 ---
 name: 中衛 CSD 棉棒（未滅菌）
 taxonomy: 照護耗材/紗布棉棒
-price: 25
-price_max: 70
+price: ""
+variant_label: "規格"
+variants:
+  - label: "普通棉棒(未滅菌)(不限品牌)"
+    price: 25
+  - label: "口腔棉棒(未滅菌)(不限品牌)"
+    price: 30
+  - label: "沖洗棉棒(未滅菌)(不限品牌1"
+    price: 70
 brand: 中衛
 offering:
   - 線上選購
@@ -15,8 +22,6 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
-  - label: 規格選項
-    value: "普通棉棒(未滅菌)(不限品牌)｜口腔棉棒(未滅菌)(不限品牌)｜沖洗棉棒(未滅菌)(不限品牌1"
 images:
   - /assets/uploads/supplies-65-1.jpg
 published: true

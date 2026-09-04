@@ -1,8 +1,13 @@
 ---
 name: 3M 防水透氣透明敷料(OP-Site)
 taxonomy: 照護耗材/敷料與人工皮
-price: 650
-price_max: 860
+price: ""
+variant_label: "規格"
+variants:
+  - label: "6*7cm(小) 整盒100片入"
+    price: 650
+  - label: "10*12cm(大) 整盒50片入"
+    price: 860
 brand: 3m
 offering:
   - 線上選購
@@ -12,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/457415870
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "10*12cm(大) 整盒50片入｜6*7cm(小) 整盒100片入"
+specs: []
 images:
   - /assets/uploads/supplies-68-1.jpg
   - /assets/uploads/supplies-68-2.jpg

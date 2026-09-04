@@ -1,7 +1,19 @@
 ---
 name: 愛民 I-M WB-512 強化支撐護腰
 taxonomy: 復健理療/護具
-price: 880
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "M"
+    price: 880
+  - label: "L"
+    price: 880
+  - label: "XL"
+    price: 880
+  - label: "XXL"
+    price: 880
+  - label: "S"
+    price: 880
 brand: 愛民
 offering:
   - 線上選購
@@ -16,8 +28,6 @@ specs:
     value: WB-512
   - label: 產地
     value: 台灣製造
-  - label: 尺寸
-    value: "S｜M｜L｜XL｜XXL"
 images:
   - /assets/uploads/rehab-wb-512-1.jpg
   - /assets/uploads/rehab-wb-512-2.jpg

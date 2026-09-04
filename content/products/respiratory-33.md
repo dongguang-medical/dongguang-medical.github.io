@@ -1,7 +1,13 @@
 ---
 name: 三樂事 Sunlus 熊貝比電動吸鼻器
 taxonomy: 呼吸照護/吸鼻器
-price: 2380
+price: ""
+variant_label: "規格"
+variants:
+  - label: "粉紅"
+    price: 2380
+  - label: "粉藍"
+    price: 2380
 brand: 三樂事
 offering:
   - 線上選購
@@ -11,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2639364153
 subsidy: []
 tags: []
-specs:
-  - label: 規格選項
-    value: "粉藍｜粉紅"
+specs: []
 images:
   - /assets/uploads/respiratory-33-1.jpg
   - /assets/uploads/respiratory-33-2.jpg

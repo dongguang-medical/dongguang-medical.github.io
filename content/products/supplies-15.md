@@ -1,7 +1,15 @@
 ---
 name: 來復易 防漏安心復健褲 4包/箱
 taxonomy: 照護耗材/成人紙尿褲
-price: 339
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "XL(一單限2包)"
+    price: 339
+  - label: "M(一單限2包)"
+    price: 339
+  - label: "L(一單限2包)"
+    price: 339
 brand: 來復易
 offering:
   - 線上選購

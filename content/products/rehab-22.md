@@ -1,8 +1,19 @@
 ---
 name: 舒摩 SUMO 濕熱敷墊
 taxonomy: 復健理療/熱敷墊
-price: 1100
-price_max: 1350
+price: ""
+variant_label: "規格"
+variants:
+  - label: "7x20吋"
+    price: 1100
+  - label: "14x14吋"
+    price: 1250
+  - label: "14x20吋"
+    price: 1250
+  - label: "14x27吋"
+    price: 1350
+  - label: "20x20吋(ㄇ字型:肩頸專用)"
+    price: 1350
 brand: 舒摩
 offering:
   - 線上選購

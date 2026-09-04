@@ -1,8 +1,17 @@
 ---
 name: 水煮式熱敷墊 背部／頸部／腰部
 taxonomy: 復健理療/熱敷墊
-price: 800
-price_max: 1200
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "24x7"
+    price: 800
+  - label: "10x12"
+    price: 800
+  - label: "10x18"
+    price: 1000
+  - label: "10x24"
+    price: 1200
 brand: ""
 offering:
   - 線上選購
@@ -12,9 +21,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4946456288
 subsidy: []
 tags: []
-specs:
-  - label: 尺寸
-    value: "10x12｜10x18｜10x24｜24x7"
+specs: []
 images:
   - /assets/uploads/rehab-29-1.jpg
 published: true

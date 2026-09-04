@@ -1,8 +1,13 @@
 ---
 name: 三合一多功能牙醫器材
 taxonomy: 臥床照護/口腔照護
-price: 15
-price_max: 30
+price: ""
+variant_label: "包裝"
+variants:
+  - label: "牙鏡(廠牌不限)"
+    price: 15
+  - label: "三合一組(廠牌不限)"
+    price: 30
 brand: ""
 offering:
   - 線上選購
@@ -12,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6992702559
 subsidy: []
 tags: []
-specs:
-  - label: 包裝
-    value: "牙鏡(廠牌不限)｜三合一組(廠牌不限)"
+specs: []
 images:
   - /assets/uploads/bedcare-37-1.jpg
   - /assets/uploads/bedcare-37-2.jpg

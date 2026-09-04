@@ -1,8 +1,21 @@
 ---
 name: 拐杖腳墊腳套 通用型
 taxonomy: 行動輔具/助行器配件
-price: 20
-price_max: 50
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "【適用四腳拐】1.4公分"
+    price: 20
+  - label: "【適用四腳拐】1.2公分"
+    price: 20
+  - label: "【適用助行器】2.7公分"
+    price: 30
+  - label: "【適用沐浴椅】2.7公分"
+    price: 30
+  - label: "【適用四腳、單手拐】1.9公分"
+    price: 30
+  - label: "【適用腋下拐】2公分"
+    price: 50
 brand: ""
 offering:
   - 線上選購
@@ -12,9 +25,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/40910445739
 subsidy: []
 tags: []
-specs:
-  - label: 尺寸
-    value: "【適用腋下拐】2公分｜【適用四腳拐】1.4公分｜【適用沐浴椅】2.7公分｜【適用四腳拐】1.2公分｜【適用四腳、單手拐】1.9公分｜【適用助行器】2.7公分"
+specs: []
 images:
   - /assets/uploads/mobility-50-1.jpg
   - /assets/uploads/mobility-50-2.jpg

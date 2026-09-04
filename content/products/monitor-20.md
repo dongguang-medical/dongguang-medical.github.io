@@ -1,7 +1,13 @@
 ---
 name: 日本精密 NISSEI 血壓計變壓器
 taxonomy: 健康量測/血壓計配件
-price: 250
+price: ""
+variant_label: "型號"
+variants:
+  - label: "NS1"
+    price: 250
+  - label: "NS2"
+    price: 250
 brand: 日本精密
 offering:
   - 線上選購
@@ -11,9 +17,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6996109993
 subsidy: []
 tags: []
-specs:
-  - label: 型號
-    value: "NS2｜NS1"
+specs: []
 images:
   - /assets/uploads/monitor-20-1.jpg
   - /assets/uploads/monitor-20-2.jpg

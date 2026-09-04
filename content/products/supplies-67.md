@@ -1,8 +1,15 @@
 ---
 name: 禾捷 棉花棒
 taxonomy: 照護耗材/紗布棉棒
-price: 3
-price_max: 6
+price: ""
+variant_label: "規格"
+variants:
+  - label: "普通棉棒(10支/包) 買十贈一"
+    price: 3
+  - label: "口腔棉棒(10支/包) 買十贈一"
+    price: 4
+  - label: "沖洗棉棒(6支/包) 買十贈一"
+    price: 6
 brand: 禾捷
 offering:
   - 線上選購
@@ -12,9 +19,7 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4851461713
 subsidy: []
 tags: []
-specs:
-  - label: 規格
-    value: "普通棉棒(10支/包) 買十贈一｜口腔棉棒(10支/包) 買十贈一｜沖洗棉棒(6支/包) 買十贈一"
+specs: []
 images:
   - /assets/uploads/supplies-67-1.jpg
 published: true

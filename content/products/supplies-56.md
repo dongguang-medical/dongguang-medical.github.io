@@ -1,7 +1,15 @@
 ---
 name: 多倍 PROTOS NBR無粉檢診手套（加厚）
 taxonomy: 照護耗材/手套
-price: 199
+price: ""
+variant_label: "尺寸"
+variants:
+  - label: "M"
+    price: 199
+  - label: "L"
+    price: 199
+  - label: "S"
+    price: 199
 brand: 多倍
 offering:
   - 線上選購
@@ -14,8 +22,6 @@ tags: []
 specs:
   - label: 包裝規格
     value: 100入/盒
-  - label: 尺寸
-    value: "S｜M｜L"
 images:
   - /assets/uploads/supplies-56-1.jpg
   - /assets/uploads/supplies-56-2.jpg
