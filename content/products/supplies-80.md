@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/217514841
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "一吋 整盒(12入)｜半吋 整盒(24入)"
 images:
   - /assets/uploads/supplies-80-1.jpg
   - /assets/uploads/supplies-80-2.jpg

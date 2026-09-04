@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 尺寸
+    value: "M｜L"
 images:
   - /assets/uploads/supplies-98-1.jpg
   - /assets/uploads/supplies-98-2.jpg

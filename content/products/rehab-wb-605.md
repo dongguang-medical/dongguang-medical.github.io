@@ -16,6 +16,8 @@ specs:
     value: WB-605
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S｜M｜L｜XL｜XXL"
 images:
   - /assets/uploads/rehab-wb-605-1.jpg
   - /assets/uploads/rehab-wb-605-2.jpg

@@ -17,6 +17,8 @@ specs:
     value: 已滅菌
   - label: 適用尺寸
     value: 12Fr／14Fr
+  - label: 尺寸
+    value: "12Fr｜14Fr"
 images:
   - /assets/uploads/respiratory-32-1.jpg
 published: true

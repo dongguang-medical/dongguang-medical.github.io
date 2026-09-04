@@ -17,6 +17,8 @@ specs:
     value: 未滅菌
   - label: 包裝規格
     value: 100入/盒
+  - label: 規格選項
+    value: "無粉SS｜無粉S｜無粉M｜無粉L"
 images:
   - /assets/uploads/supplies-58-1.jpg
   - /assets/uploads/supplies-58-2.jpg

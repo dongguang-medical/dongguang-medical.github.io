@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1296616099
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "一般型冰枕(一個母型)-綠｜一般型冰枕(一個母型)-粉紅｜子母型(大小各一)-綠｜子母型(大小各一-)粉紅"
 images:
   - /assets/uploads/rehab-31-1.jpg
   - /assets/uploads/rehab-31-2.jpg

@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4851461713
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格
+    value: "普通棉棒(10支/包) 買十贈一｜口腔棉棒(10支/包) 買十贈一｜沖洗棉棒(6支/包) 買十贈一"
 images:
   - /assets/uploads/supplies-67-1.jpg
 published: true

@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 規格
+    value: "貝斯美德2M【鼻管】｜醫技6M【鼻管】｜醫技2M【接管】｜醫技2M【鼻管】｜勤達2M超軟【鼻管】"
 images:
   - /assets/uploads/respiratory-40-1.jpg
   - /assets/uploads/respiratory-40-2.jpg

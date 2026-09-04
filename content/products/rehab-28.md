@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2159630858
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "S-M(45843)｜L-XL(45844)"
 images:
   - /assets/uploads/rehab-28-1.jpg
   - /assets/uploads/rehab-28-2.jpg

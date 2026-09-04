@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/903302722
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "8入(擦傷用)｜10入(切割傷用)"
 images:
   - /assets/uploads/supplies-72-1.jpg
   - /assets/uploads/supplies-72-2.jpg

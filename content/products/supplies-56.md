@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 包裝規格
     value: 100入/盒
+  - label: 尺寸
+    value: "S｜M｜L"
 images:
   - /assets/uploads/supplies-56-1.jpg
   - /assets/uploads/supplies-56-2.jpg

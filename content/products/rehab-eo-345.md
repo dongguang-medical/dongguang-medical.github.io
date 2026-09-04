@@ -16,6 +16,8 @@ specs:
     value: EO-345
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S/M｜L/XL"
 images:
   - /assets/uploads/rehab-eo-345-1.jpg
 published: true

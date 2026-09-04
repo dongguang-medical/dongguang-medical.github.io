@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044845368
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "養根命｜益康｜溫灸棒"
 images:
   - /assets/uploads/misc-25-1.jpg
   - /assets/uploads/misc-25-2.jpg

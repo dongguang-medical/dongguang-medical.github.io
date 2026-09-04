@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 已滅菌
+  - label: 規格選項
+    value: "2x2 純紗紗布塊 10入｜3x3 純紗紗布塊 10入｜4x4 純紗紗布塊 10入｜2x2 不織布紗布塊 10入｜3x3 不織布紗布塊 10入｜4x4 不織布紗布塊 10入｜3x3不織布紗布塊 5入(Yasco)｜4x4不織布紗布塊 3入(Yasco)｜2x2不織布紗布塊10入(Yasco)"
 images:
   - /assets/uploads/supplies-77-1.jpg
 published: true

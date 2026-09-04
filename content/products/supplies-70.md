@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 尺寸
+    value: "1號｜2號｜3號｜4號｜5號｜6號｜7號"
 images:
   - /assets/uploads/supplies-70-1.jpg
   - /assets/uploads/supplies-70-2.jpg

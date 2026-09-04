@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/974031587
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "半吋 單顆｜一吋 單顆"
 images:
   - /assets/uploads/supplies-88-1.jpg
 published: true

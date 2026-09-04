@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047544895
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "直頭蚊式止血鉗｜彎頭蚊式止血鉗｜16公分止血鉗-彎｜16公分止血鉗-直"
 images:
   - /assets/uploads/misc-29-1.jpg
   - /assets/uploads/misc-29-2.jpg

@@ -16,6 +16,8 @@ specs:
     value: RB-501
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S｜M｜L｜XL"
 images:
   - /assets/uploads/rehab-rb-501-1.jpg
   - /assets/uploads/rehab-rb-501-2.jpg

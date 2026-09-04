@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 型號
     value: HBF-222T
+  - label: 規格選項
+    value: "贈康寧強強化餐盤｜贈樂美雅料理盤｜贈多功能自動傘｜無贈品"
 images:
   - /assets/uploads/monitor-hbf-222t-1.jpg
   - /assets/uploads/monitor-hbf-222t-2.jpg

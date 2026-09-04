@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 規格選項
+    value: "2x2｜3x3｜4x4"
 images:
   - /assets/uploads/supplies-73-1.jpg
 published: true

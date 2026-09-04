@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 產地
     value: 日本製
+  - label: 尺寸
+    value: "M(24-37)｜L(31-49)"
 images:
   - /assets/uploads/supplies-100-1.jpg
   - /assets/uploads/supplies-100-2.jpg

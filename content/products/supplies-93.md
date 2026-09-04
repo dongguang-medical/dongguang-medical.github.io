@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 已滅菌
+  - label: 規格選項
+    value: "2024/12月到期｜2026/1月到期｜2030/09月到期"
 images:
   - /assets/uploads/supplies-93-1.jpg
   - /assets/uploads/supplies-93-2.jpg

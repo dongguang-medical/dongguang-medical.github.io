@@ -17,6 +17,8 @@ specs:
     value: 已滅菌
   - label: 產地
     value: 台灣製造
+  - label: 規格選項
+    value: "沖洗棉棒6支入(中衛)｜ENT棉棒10支入(中衛)｜口腔棉棒10支入(中衛)｜普通棉棒(中衛)10支入｜3吋小棉棒10支入(中衛)"
 images:
   - /assets/uploads/supplies-66-1.jpg
   - /assets/uploads/supplies-66-2.jpg

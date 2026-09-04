@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1045116434
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "洗鼻器｜洗鼻鹽-士康｜洗鼻鹽-舒得適"
 images:
   - /assets/uploads/respiratory-43-1.jpg
   - /assets/uploads/respiratory-43-2.jpg

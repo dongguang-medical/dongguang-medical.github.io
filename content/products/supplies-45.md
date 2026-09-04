@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 已滅菌
+  - label: 廠牌
+    value: "優美｜明傑"
 images:
   - /assets/uploads/supplies-45-1.jpg
   - /assets/uploads/supplies-45-2.jpg

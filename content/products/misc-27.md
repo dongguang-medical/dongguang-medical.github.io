@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 規格選項
+    value: "筆燈(自帶燈泡1顆)｜筆燈+替換燈泡1顆｜筆燈+替換燈泡2顆｜筆燈+替換燈泡3顆｜筆燈+替換燈泡4顆｜筆燈+替換燈泡5顆"
 images:
   - /assets/uploads/misc-27-1.jpg
   - /assets/uploads/misc-27-2.jpg

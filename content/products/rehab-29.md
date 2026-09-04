@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4946456288
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "10x12｜10x18｜10x24｜24x7"
 images:
   - /assets/uploads/rehab-29-1.jpg
 published: true

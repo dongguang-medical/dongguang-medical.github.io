@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 包裝規格
     value: 10入/盒
+  - label: 規格選項
+    value: "13361｜保護噴霧｜脫膠噴霧"
 images:
   - /assets/uploads/supplies-96-1.jpg
   - /assets/uploads/supplies-96-2.jpg

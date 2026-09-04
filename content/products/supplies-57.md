@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 顏色
+    value: "無粉SS｜無粉S｜無粉M｜無粉L"
 images:
   - /assets/uploads/supplies-57-1.jpg
 published: true

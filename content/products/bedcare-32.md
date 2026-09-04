@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "M(單支)｜L(單支)"
 images:
   - /assets/uploads/bedcare-32-1.jpg
 published: true

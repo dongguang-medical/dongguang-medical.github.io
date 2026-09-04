@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1440608300
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "一支｜二支｜GS700/組｜GE100/組"
 images:
   - /assets/uploads/supplies-89-1.jpg
 published: true

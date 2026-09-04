@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 尺寸／容量
     value: 500ml
+  - label: 規格選項
+    value: "潔淨寧500ml(花草香)｜專用霧化噴頭"
 images:
   - /assets/uploads/supplies-52-1.jpg
   - /assets/uploads/supplies-52-2.jpg

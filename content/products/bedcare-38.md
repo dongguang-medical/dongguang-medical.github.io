@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "M｜L"
 images:
   - /assets/uploads/bedcare-38-1.jpg
 published: true

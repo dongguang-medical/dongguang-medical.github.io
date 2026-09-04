@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 尺寸
+    value: "S(三花H3291)｜M(三花H3291)｜L(三花H3291)｜S(華新)｜M(華新)｜L(華新)"
 images:
   - /assets/uploads/supplies-60-1.jpg
   - /assets/uploads/supplies-60-2.jpg

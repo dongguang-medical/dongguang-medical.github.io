@@ -16,6 +16,8 @@ specs:
     value: SS-717
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S(29~33cm)｜M(29~33cm)｜L(37-41cm)｜XL(41~46cm)｜XXL(46~51cm)"
 images:
   - /assets/uploads/rehab-ss-717-1.jpg
   - /assets/uploads/rehab-ss-717-2.jpg

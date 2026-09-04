@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 尺寸
+    value: "小棉球｜中棉球"
 images:
   - /assets/uploads/supplies-50-1.jpg
   - /assets/uploads/supplies-50-2.jpg

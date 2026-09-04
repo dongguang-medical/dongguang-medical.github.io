@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/28560169805
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "歐姆龍TYPE-A｜歐姆龍TYPE-B｜NISSEL日本精密｜TERUMO舊款(通用新款)｜新款優勝ROSSMAX｜ROSSMAX優盛｜C款｜D款｜E款"
 images:
   - /assets/uploads/monitor-21-1.jpg
   - /assets/uploads/monitor-21-2.jpg

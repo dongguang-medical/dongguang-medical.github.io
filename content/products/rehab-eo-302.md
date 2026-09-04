@@ -16,6 +16,8 @@ specs:
     value: EO-302
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S｜M｜L"
 images:
   - /assets/uploads/rehab-eo-302-1.jpg
 published: true

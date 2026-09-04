@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2493733383
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "採血筆｜宜瑪氏試紙50支+針50支"
 images:
   - /assets/uploads/supplies-91-1.jpg
 published: true

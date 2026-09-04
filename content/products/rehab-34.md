@@ -16,6 +16,8 @@ tags:
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 規格
+    value: "14x20｜14x27｜肩頸"
 images:
   - /assets/uploads/rehab-34-1.jpg
   - /assets/uploads/rehab-34-2.jpg

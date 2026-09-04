@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 尺寸／容量
     value: 5吋
+  - label: 規格選項
+    value: "1吋/1粒入｜05吋/2粒入"
 images:
   - /assets/uploads/supplies-83-1.jpg
 published: true

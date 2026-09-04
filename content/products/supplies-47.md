@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3183420138
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 顏色
+    value: "二級藍色(二盒入)｜二級藍色｜二級綠色(二盒入)｜二級綠色｜二級粉色(二盒入)｜二級粉色"
 images:
   - /assets/uploads/supplies-47-1.jpg
   - /assets/uploads/supplies-47-2.jpg

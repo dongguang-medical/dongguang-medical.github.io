@@ -16,6 +16,8 @@ specs:
     value: EB-501
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S｜M｜L｜XL｜XXL"
 images:
   - /assets/uploads/rehab-eb-501-1.jpg
 published: true

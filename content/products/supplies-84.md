@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/210082873
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 數量
+    value: "30個｜1個"
 images:
   - /assets/uploads/supplies-84-1.jpg
 published: true

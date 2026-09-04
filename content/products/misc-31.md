@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044729260
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "3吋(乳缽+乳缽棒)｜4吋(乳缽+乳缽棒)｜3吋乳鉢棒(只有缽棒)｜4吋乳鉢棒(只有缽棒)｜3吋(乳缽+乳缽棒)加購刷子1支｜4吋(乳缽+乳缽棒)加購刷子1支"
 images:
   - /assets/uploads/misc-31-1.jpg
   - /assets/uploads/misc-31-2.jpg

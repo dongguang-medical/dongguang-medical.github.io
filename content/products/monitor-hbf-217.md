@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 型號
     value: HBF-217
+  - label: 規格選項
+    value: "白+雙層便當盒｜粉紅+雙層便當盒｜白+樂美雅料理盤｜粉紅+樂美雅料理盤"
 images:
   - /assets/uploads/monitor-hbf-217-1.jpg
   - /assets/uploads/monitor-hbf-217-2.jpg

@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4850928895
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "#1,   寬度1.1cm｜#2,   寬度2.0cm｜#3,   寬度3.0cm｜#4,  寬度 3.8cm｜#5,   寬度4.5cm｜#6,   寬度5.9cm｜#7,   寬度7.8cm｜#8,   寬度9.7cm｜#9,   寬度11.5cm"
 images:
   - /assets/uploads/supplies-69-1.jpg
 published: true

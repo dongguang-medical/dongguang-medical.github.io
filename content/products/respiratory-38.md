@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 產地
     value: 台灣製造
+  - label: 規格選項
+    value: "新豐抽痰管12Fr(100支入)｜雃博原廠抽痰杯｜雃博原廠過濾器｜抽痰機用矽膠管"
 images:
   - /assets/uploads/respiratory-38-1.jpg
 published: true

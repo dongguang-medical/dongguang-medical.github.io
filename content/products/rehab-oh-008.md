@@ -18,6 +18,8 @@ specs:
     value: 8cm
   - label: 產地
     value: 台灣製造
+  - label: 尺寸
+    value: "S｜M｜L｜XL"
 images:
   - /assets/uploads/rehab-oh-008-1.jpg
   - /assets/uploads/rehab-oh-008-2.jpg

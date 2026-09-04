@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6992702559
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 包裝
+    value: "牙鏡(廠牌不限)｜三合一組(廠牌不限)"
 images:
   - /assets/uploads/bedcare-37-1.jpg
   - /assets/uploads/bedcare-37-2.jpg

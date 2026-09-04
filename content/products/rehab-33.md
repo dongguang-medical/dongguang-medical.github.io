@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044792028
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "圓球型｜橄欖球型｜刺球型"
 images:
   - /assets/uploads/rehab-33-1.jpg
 published: true

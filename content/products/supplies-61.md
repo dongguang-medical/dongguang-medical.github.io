@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/16637127600
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "S｜M｜L｜XL"
 images:
   - /assets/uploads/supplies-61-1.jpg
   - /assets/uploads/supplies-61-2.jpg

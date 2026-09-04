@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4051309155
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 長度
+    value: "1節"
 images:
   - /assets/uploads/respiratory-41-1.jpg
 published: true

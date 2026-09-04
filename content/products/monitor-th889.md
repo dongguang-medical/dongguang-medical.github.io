@@ -16,6 +16,8 @@ specs:
     value: TH889
   - label: 產地
     value: 台灣製造
+  - label: 規格選項
+    value: "一支｜一支(贈酒精棉片1盒)"
 images:
   - /assets/uploads/monitor-th889-1.jpg
   - /assets/uploads/monitor-th889-2.jpg

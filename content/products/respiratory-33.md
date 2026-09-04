@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2639364153
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "粉藍｜粉紅"
 images:
   - /assets/uploads/respiratory-33-1.jpg
   - /assets/uploads/respiratory-33-2.jpg

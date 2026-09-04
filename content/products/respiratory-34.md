@@ -17,6 +17,8 @@ specs:
     value: 100條/包
   - label: 適用尺寸
     value: 10Fr／12Fr／14Fr
+  - label: 尺寸
+    value: "12F(1單限2包)｜14F｜10F｜12F(帶刻度)"
 images:
   - /assets/uploads/respiratory-34-1.jpg
 published: true

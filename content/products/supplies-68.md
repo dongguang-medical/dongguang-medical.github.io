@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/457415870
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "10*12cm(大) 整盒50片入｜6*7cm(小) 整盒100片入"
 images:
   - /assets/uploads/supplies-68-1.jpg
   - /assets/uploads/supplies-68-2.jpg

@@ -19,6 +19,8 @@ specs:
     value: 100支/包
   - label: 產地
     value: 台灣製造
+  - label: 規格選項
+    value: "豐全壓舌板(台灣製)｜瑞玉壓舌板(陸製)"
 images:
   - /assets/uploads/misc-32-1.jpg
   - /assets/uploads/misc-32-2.jpg

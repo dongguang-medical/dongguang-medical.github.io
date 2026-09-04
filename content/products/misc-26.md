@@ -17,6 +17,8 @@ specs:
     value: 未滅菌
   - label: 產地
     value: 台灣製造
+  - label: 品項
+    value: "Spirit精國 雙面聽診器｜益江雙面聽診"
 images:
   - /assets/uploads/misc-26-1.jpg
   - /assets/uploads/misc-26-2.jpg

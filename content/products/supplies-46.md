@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 包裝規格
     value: 50入/盒
+  - label: 規格選項
+    value: "我是藍色｜紫色在這｜黃色點我｜這是粉紅｜炫彩綠唷｜亮眼橘呀"
 images:
   - /assets/uploads/supplies-46-1.jpg
 published: true

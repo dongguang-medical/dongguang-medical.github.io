@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044984598
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "M｜L｜XL｜XXL"
 images:
   - /assets/uploads/bedcare-41-1.jpg
 published: true

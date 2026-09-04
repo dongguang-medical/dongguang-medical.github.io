@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/287210504
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "5公尺｜1.37公尺"
 images:
   - /assets/uploads/supplies-86-1.jpg
 published: true

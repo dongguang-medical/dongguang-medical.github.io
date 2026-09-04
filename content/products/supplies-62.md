@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/9754469041
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 樣式
+    value: "龍勝｜大友｜三花"
 images:
   - /assets/uploads/supplies-62-1.jpg
   - /assets/uploads/supplies-62-2.jpg

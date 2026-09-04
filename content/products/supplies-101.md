@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3500398976
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 規格選項
+    value: "凝膠7g｜凝膠15g"
 images:
   - /assets/uploads/supplies-101-1.jpg
   - /assets/uploads/supplies-101-2.jpg

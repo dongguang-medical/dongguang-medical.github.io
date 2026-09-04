@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 規格選項
+    value: "S(華新)｜M(華新)｜L(華新)｜XL(華新)｜S(醫博康)｜M(醫博康)｜L(醫博康)｜XL(醫博康)｜S(三花)｜M(三花)｜L(三花)"
 images:
   - /assets/uploads/supplies-59-1.jpg
   - /assets/uploads/supplies-59-2.jpg

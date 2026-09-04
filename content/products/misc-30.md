@@ -14,6 +14,8 @@ tags: []
 specs:
   - label: 尺寸／容量
     value: 14cm
+  - label: 規格選項
+    value: "直 半圓尖｜直 雙尖｜直 雙圓｜彎 半圓尖｜彎 雙尖｜彎 雙圓"
 images:
   - /assets/uploads/misc-30-1.jpg
   - /assets/uploads/misc-30-2.jpg

@@ -11,7 +11,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6996109993
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 型號
+    value: "NS2｜NS1"
 images:
   - /assets/uploads/monitor-20-1.jpg
   - /assets/uploads/monitor-20-2.jpg

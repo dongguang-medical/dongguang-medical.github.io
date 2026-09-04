@@ -16,6 +16,8 @@ specs:
     value: 台灣製造
   - label: 適用機型
     value: 噴霧器、吸鼻器
+  - label: 規格
+    value: "成人噴霧面罩｜兒童噴霧面罩"
 images:
   - /assets/uploads/respiratory-39-1.jpg
 published: true

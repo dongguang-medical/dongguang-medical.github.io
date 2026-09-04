@@ -12,7 +12,9 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/40910445739
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 尺寸
+    value: "【適用腋下拐】2公分｜【適用四腳拐】1.4公分｜【適用沐浴椅】2.7公分｜【適用四腳拐】1.2公分｜【適用四腳、單手拐】1.9公分｜【適用助行器】2.7公分"
 images:
   - /assets/uploads/mobility-50-1.jpg
   - /assets/uploads/mobility-50-2.jpg

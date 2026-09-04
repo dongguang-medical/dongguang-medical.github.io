@@ -15,6 +15,8 @@ tags: []
 specs:
   - label: 滅菌狀態
     value: 未滅菌
+  - label: 規格選項
+    value: "普通棉棒(未滅菌)(不限品牌)｜口腔棉棒(未滅菌)(不限品牌)｜沖洗棉棒(未滅菌)(不限品牌1"
 images:
   - /assets/uploads/supplies-65-1.jpg
 published: true

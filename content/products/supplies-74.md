@@ -17,6 +17,8 @@ specs:
     value: 未滅菌
   - label: 尺寸／容量
     value: 10cm、15cm
+  - label: 尺寸
+    value: "10公分X4.5m｜15公分X4.5m"
 images:
   - /assets/uploads/supplies-74-1.jpg
   - /assets/uploads/supplies-74-2.jpg
