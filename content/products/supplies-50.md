@@ -2,12 +2,12 @@
 name: 棉球／棉花 一磅裝（未滅菌）
 taxonomy: 照護耗材/紗布棉棒
 price: ""
-variant_label: "尺寸"
 variants:
   - label: "小棉球"
     price: 190
   - label: "中棉球"
     price: 190
+variant_label: "尺寸"
 brand: ""
 offering:
   - 線上選購
@@ -27,10 +27,8 @@ published: true
 source: shopee
 ---
 
-紗布棉棒。傷口清潔與換藥的基本耗材，分滅菌與未滅菌兩種。
-
-適合搭配酒精或優碘進行清潔與擦拭消毒。
-
-接觸開放性傷口請務必使用滅菌品項。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+醫療器材許可證所載品名："日炎" 脫脂棉 (未滅菌)
+醫療器材許可證所載核准字號：衛署醫器陸輸壹字第001469號
+醫療器材許可證所載藥商名稱：強利有限公司
+製造廠名稱：MCN0677000 WINNER INDUSTRIES (SHENZHEN) CO., LTD.
+製造廠地址：WINNER INDUSTRIAL PARK BULONG ROAD, LONGHUA 518109 SHENZHEN CHINA

@@ -2,7 +2,6 @@
 name: 養根命 艾條溫灸棒
 taxonomy: 其他/居家生活用品
 price: ""
-variant_label: "規格"
 variants:
   - label: "益康"
     price: 150
@@ -10,6 +9,7 @@ variants:
     price: 160
   - label: "溫灸棒"
     price: 200
+variant_label: "規格"
 brand: ""
 offering:
   - 線上選購
@@ -28,6 +28,9 @@ published: true
 source: shopee
 ---
 
-居家生活用品。日常生活與居家照護的實用小物。
+天然植物製成
+適用於溫灸 薰香 驅蚊
+搭配專用器具使用
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+香條味道較清香
+養根命味道較濃郁

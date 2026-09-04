@@ -2,7 +2,6 @@
 name: 龍勝 一次性PE手套（抽取式）
 taxonomy: 照護耗材/手套
 price: ""
-variant_label: "樣式"
 variants:
   - label: "三花"
     price: 23
@@ -10,6 +9,7 @@ variants:
     price: 25
   - label: "大友"
     price: 28
+variant_label: "樣式"
 brand: 龍勝
 offering:
   - 線上選購
@@ -30,10 +30,11 @@ published: true
 source: shopee
 ---
 
-龍勝｜手套。檢診、換藥與照護時的手部防護。
+材質：高密度聚乙烯
+保存期限：15年
+製造地：台灣
 
-一次性拋棄式設計，除備餐使用外，也常用於染髮等作業。
-
-檢診手套分滅菌與未滅菌，接觸開放性傷口請選用滅菌品項。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+防塵、防污、輕便、靈活
+手套表面經特殊加工
+經濟耐用，可左右手混用
+單一尺寸

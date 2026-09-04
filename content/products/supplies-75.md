@@ -23,8 +23,14 @@ published: true
 source: shopee
 ---
 
-蓓莉雅｜紗布棉棒。傷口清潔與換藥的基本耗材，分滅菌與未滅菌兩種。
+商品規格：
+-尺寸(直徑)：4*8吋(10*20公分)
+-數量:10片/包
 
-接觸開放性傷口請務必使用滅菌品項。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+醫療器材許可證所載核准字號：衛部醫器陸輸壹字第003765號
+廠商名稱：蓓莉雅股份有限公司
+廠商地址：台中市西區忠明南路340巷7號1樓
+製造廠名稱：JIANGMEN SURE&ME MEDICAL PRODUCT CO., LTD
+製造廠地址：JINGSHUIWAN, CHAKENG VILLAGE COMMITTEE, HUICHENG TOWN, XINHUI DISTRICT, JIANGMEN CITY, GUANGDONG PROVINCE  CHINA
+提醒您：
+-使用前請詳閱使用說明書-

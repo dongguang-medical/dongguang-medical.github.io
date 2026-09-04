@@ -18,8 +18,13 @@ published: true
 source: shopee
 ---
 
-Leukoplast｜醫用膠帶。固定敷料與管路，兼顧黏著力與透氣度。
+規格：2.5cm寬 X 4.6m長
 
-膚質敏感者建議選用低敏或矽膠材質。
+抗水防手汗
+防割傷摩擦
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+品名：Leukoplast"旭昇"抗水透氣醫用膠帶(未滅菌)
+許可證核准字號：衛部醫器輸壹字第018644號
+藥商名稱：旭昇儀器有限公司
+製造廠名稱：BSN medical GmbH
+製造廠地址：Rue du Millenaire, 72320 Vibraye, France

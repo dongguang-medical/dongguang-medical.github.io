@@ -21,8 +21,16 @@ published: true
 source: shopee
 ---
 
-富廣｜血糖試紙與採血針。血糖自我監測所需的耗材。
+產品特色：
+-安全型獨立使用
+-微創無痛設計
+產品規格：
+30G 50入/盒
 
-採血針為單次使用品，請勿重複使用。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+醫療器材許可證所載品名：富廣採血針 (滅菌)
+醫療器材許可證所載核准字號：衛部醫器陸輸壹字第002231號
+醫療器材許可證所載藥商名稱：富廣國際有限公司
+製造廠名稱：TIANJIN HUAHONG TECHNOLOGY CO., LTD.
+製造廠地址：AIR PORT INDUSTRIAL PARK NO.1 PLANT, BUILDING C, JING' ER ROAD NO.225 AIRPORT ECONOMIC AREA 300308 TIANJIN, CHINA
+提醒您：
+-使用前請詳閱使用說明書-

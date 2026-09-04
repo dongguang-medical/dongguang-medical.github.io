@@ -2,16 +2,16 @@
 name: 柔麗思 棉質免洗褲 5入（產後加大型）
 taxonomy: 臥床照護/照護衣物
 price: ""
-variant_label: "規格"
 variants:
-  - label: "XXL"
-    price: 79
   - label: "M"
     price: 79
   - label: "L"
     price: 79
   - label: "XL"
     price: 79
+  - label: "XXL"
+    price: 79
+variant_label: "規格"
 brand: 柔麗思
 offering:
   - 線上選購
@@ -28,8 +28,10 @@ published: true
 source: shopee
 ---
 
-柔麗思｜照護衣物。方便穿脫、適合臥床照護的衣物。
+免洗褲.己洗淨.即刻可穿.舒適好穿
+單件包裝
+棉質製造
+居家旅遊
+衛生方便
 
-適合孕婦待產與產後住院期間更換使用，加大型剪裁較為舒適。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+XL  XXL 大尺寸 孕婦生產前後可穿

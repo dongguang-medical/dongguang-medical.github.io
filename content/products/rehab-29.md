@@ -2,7 +2,6 @@
 name: 水煮式熱敷墊 背部／頸部／腰部
 taxonomy: 復健理療/熱敷墊
 price: ""
-variant_label: "尺寸"
 variants:
   - label: "24x7"
     price: 800
@@ -12,6 +11,7 @@ variants:
     price: 1000
   - label: "10x24"
     price: 1200
+variant_label: "尺寸"
 brand: ""
 offering:
   - 線上選購
@@ -28,8 +28,10 @@ published: true
 source: shopee
 ---
 
-熱敷墊。熱敷促進局部循環，緩解痠痛與僵硬。
+1.標準型6格(10x12)  長30.4x寬25cm
 
-以熱水煮沸加熱、不需插電，也常稱為熱敷包或水煮袋，中醫診所常用。
+2.大型9格(10x18)      長46x寬25cm
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+3.背部12格(10x24)    長61x寬25cm
+
+4.頸部弧型(24x7)      長60x寬17cm

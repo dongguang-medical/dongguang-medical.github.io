@@ -2,12 +2,12 @@
 name: 3M 溫和剝離矽膠帶（敏感肌適用）
 taxonomy: 照護耗材/醫用膠帶
 price: ""
-variant_label: "尺寸"
 variants:
   - label: "1.37公尺"
     price: 79
   - label: "5公尺"
     price: 199
+variant_label: "尺寸"
 brand: 3m
 offering:
   - 線上選購
@@ -24,10 +24,13 @@ published: true
 source: shopee
 ---
 
-3M｜醫用膠帶。固定敷料與管路，兼顧黏著力與透氣度。
+全長有137cm和5尺两種
+溫和剝離 不易過敏
 
-矽膠材質溫和剝離、不殘膠，適合敏感脆弱肌膚，可徒手撕取不需剪刀。
+品名 : 3M 溫和剝離矽膠帶 (未滅菌)
+醫療器材許可證核准字號 : 衛部醫器輸壹字第014734號
+藥商名稱 : 台灣明尼蘇達礦業製造股份有限公司
+製造廠名稱 : 3M Company, 3M Health Care
+製造廠地址 : 3M Center, 2510 Conway Ave., Bldg 275-5W-06, Saint Paul, MN USA 55144
 
-膚質敏感者建議選用低敏或矽膠材質。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+提醒您：

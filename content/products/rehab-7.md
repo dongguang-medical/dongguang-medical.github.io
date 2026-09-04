@@ -2,16 +2,16 @@
 name: 康威利 Conwell 5319 手指保護套
 taxonomy: 復健理療/護具
 price: ""
-variant_label: "尺寸"
 variants:
   - label: "S"
     price: 180
   - label: "M"
     price: 180
-  - label: "XL"
-    price: 180
   - label: "L"
     price: 180
+  - label: "XL"
+    price: 180
+variant_label: "尺寸"
 brand: 康威利
 offering:
   - 線上選購
@@ -28,8 +28,11 @@ published: true
 source: import
 ---
 
-康威利 Conwell｜護具。固定與支撐受傷或不穩定的關節部位，協助日常活動與復原。
-
-尺寸與鬆緊會影響支撐效果，建議依實際圍度挑選。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+產品規格：
+材質:尼龍、EVA
+尺寸:
+S:5.7cm
+M:6.8cm
+L:8.3cm
+XL:9.3cm
+數量:一入

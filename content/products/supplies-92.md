@@ -20,8 +20,14 @@ published: true
 source: shopee
 ---
 
-瑞特 RIGHTEST｜血糖試紙與採血針。血糖自我監測所需的耗材。
+市面上一般型採血筆適用！
+一盒50入
 
-採血針為單次使用品，請勿重複使用。
+醫療器材許可證：
+品名：瑞特BIONIME採血針(50支/盒)
+許可證核准字號：衛署醫器陸輸壹字第000666號
+藥商名稱：華廣生技股份有限公司大慶廠
+製造廠名稱：STERILANCE MEDICAL (SUZHOU) INC.
+製造廠地址：NO. 68 LITANGHE ROAD, XIANGCHENG, SUZHOU, JIANGSU 215133, P.R. CHINA
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+提醒您：

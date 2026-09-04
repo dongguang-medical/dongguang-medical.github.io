@@ -2,7 +2,6 @@
 name: 拐杖腳墊腳套 通用型
 taxonomy: 行動輔具/助行器配件
 price: ""
-variant_label: "尺寸"
 variants:
   - label: "【適用四腳拐】1.4公分"
     price: 20
@@ -16,6 +15,7 @@ variants:
     price: 30
   - label: "【適用腋下拐】2公分"
     price: 50
+variant_label: "尺寸"
 brand: ""
 offering:
   - 線上選購
@@ -36,8 +36,8 @@ published: true
 source: shopee
 ---
 
-助行器配件。拐杖與助行器的腳墊等替換件。
+各式輔具腳墊，實體店家合法經營，正當貨源。
 
-通用型設計，可替換於四腳拐、腋下拐、單手拐、助行器與沐浴椅的腳管。
+尺寸上為手動量測，可能有誤差，請見諒。
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+仍有其他規格可以購買，

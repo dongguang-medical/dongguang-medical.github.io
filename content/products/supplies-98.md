@@ -2,12 +2,12 @@
 name: 綠十字 男用泌尿套（未滅菌）
 taxonomy: 照護耗材/造口與泌尿用品
 price: ""
-variant_label: "尺寸"
 variants:
   - label: "M"
     price: 40
   - label: "L"
     price: 40
+variant_label: "尺寸"
 brand: 綠十字
 offering:
   - 線上選購
@@ -27,8 +27,17 @@ published: true
 source: shopee
 ---
 
-綠十字 GreenCross｜造口與泌尿用品。造口與排泄照護的專用耗材。
+產品規格：
+1入 未滅菌
 
-尺寸與底盤規格各廠牌不同，選購前建議先確認原用品型號。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+商品名稱：“綠十字” 泌尿導管附件(未滅菌)
+醫療器材許可證核准字號：衛署醫器陸輸壹字第000808號
+廠商名稱：益江企業股份有限公司
+廠商地址：高雄市前鎮區和平二路192號
+製造廠名稱：NANTONG ANGEL MEDICAL INSTRUMENT CO., LTD.
+製造廠地址：XIAYUAN TOWN NANTONG CITY JIANGSU PROVINCE CHINA
+原產地：CHINA
+製造日期: 詳見商品包裝標示及說明
+有效日期(或保存期限)：詳見商品包裝標示及說明
+提醒您：
+-使用前請詳閱使用說明書-

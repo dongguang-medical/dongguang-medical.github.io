@@ -22,6 +22,12 @@ published: true
 source: shopee
 ---
 
-綠十字 GreenCross｜管路照護用品。鼻胃管、氣切等管路的清潔與灌食用品。
+商品規格：
+60ml (單支含接頭)
+25支/盒
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+醫療器材許可證所載品名：“綠十字”塑膠灌食空針(滅菌)
+醫療器材許可證所載核准字號：衛署醫器陸輸壹字第000846號
+醫療器材許可證所載藥商名稱：益江企業股份有限公司
+製造廠名稱：MCN0656000 JIANGSU WEBEST MEDICAL PRODUCT CO., LTD.
+製造廠地址：YINGCHUN ROAD, INDUSTRIAL PARK 211700 XUYI, JIANGSU CHINA

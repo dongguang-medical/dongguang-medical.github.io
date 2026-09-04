@@ -2,16 +2,16 @@
 name: 多倍 PROTOS PVC無粉檢診手套 S/M/L/XL
 taxonomy: 照護耗材/手套
 price: ""
-variant_label: "尺寸"
 variants:
-  - label: "XL"
-    price: 109
-  - label: "L"
-    price: 120
   - label: "S"
     price: 120
   - label: "M"
     price: 120
+  - label: "L"
+    price: 120
+  - label: "XL"
+    price: 109
+variant_label: "尺寸"
 brand: 多倍
 offering:
   - 線上選購
@@ -29,8 +29,14 @@ published: true
 source: shopee
 ---
 
-多倍 PROTOS｜手套。檢診、換藥與照護時的手部防護。
+商品規格：
+材質:PVC
+數量:100隻/盒
 
-檢診手套分滅菌與未滅菌，接觸開放性傷口請選用滅菌品項。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+醫療器材許可證所載核准字號：衛部醫器陸輸壹字第 002546 號
+醫療器材許可證所載品名：衛部醫器陸輸壹字第 002546 號
+醫療器材許可證所載藥商名稱：佾岳股份有限公司
+製造廠名稱：ZHANGJIAGANG HUAYUAN PLASTIC CO.,LTD.
+製造廠廠址：HENGJING VILLAGE,TANGQIAO TOWN, ZHANGJIAGANG CITY,JIANGSU PROVINCE,215615,CHINA
+提醒您：
+-使用前請詳閱使用說明書-

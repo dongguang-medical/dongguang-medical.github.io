@@ -2,7 +2,6 @@
 name: 血壓計壓脈帶專用接頭 歐姆龍／日本精密適用
 taxonomy: 健康量測/血壓計配件
 price: ""
-variant_label: "規格"
 variants:
   - label: "ROSSMAX優盛"
     price: 80
@@ -22,6 +21,7 @@ variants:
     price: 180
   - label: "C款"
     price: 180
+variant_label: "規格"
 brand: ""
 offering:
   - 線上選購
@@ -42,6 +42,8 @@ published: true
 source: shopee
 ---
 
-血壓計配件。血壓計的壓脈帶、變壓器等替換件。
+各式血壓計接頭，實體店家合法經營，正當貨源。
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+尺寸上為手動量測，可能有誤差，請見諒。
+
+仍有其他規格可以購買，但因數量較少沒有一一放上網拍

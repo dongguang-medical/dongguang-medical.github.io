@@ -2,7 +2,6 @@
 name: 富廣 採血針 (滅菌)
 taxonomy: 照護耗材/血糖試紙與採血針
 price: ""
-variant_label: "規格"
 variants:
   - label: "2024/12月到期"
     price: 29
@@ -10,6 +9,7 @@ variants:
     price: 39
   - label: "2030/09月到期"
     price: 45
+variant_label: "規格"
 brand: 富廣
 offering:
   - 線上選購
@@ -29,8 +29,13 @@ published: true
 source: shopee
 ---
 
-富廣｜血糖試紙與採血針。血糖自我監測所需的耗材。
+商品規格：
+數量:50入/盒
 
-採血針為單次使用品，請勿重複使用。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+品名: “富廣”採血針 (滅菌)
+許可證核准字號：衛部醫器陸輸壹字第003240號
+藥商名稱：富廣國際有限公司
+製造廠名稱: M641183100 TIANJIN HUAHONG TECHNOLOGY CO., LTD.
+製造廠地址：A 01, PLANT B, NO.278, HANGKONG ROAD, TIANJIN PILOT FREE TRADE ZONE (AIR PORT INDUSTRIAL PARK), TIANJIN 300308, CHINA
+提醒您：
+-使用前請詳閱使用說明書-

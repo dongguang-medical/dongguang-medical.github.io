@@ -20,8 +20,23 @@ published: true
 source: import
 ---
 
-百略 microlife MT200｜體溫計。快速量測體溫，適合居家日常監測與照護記錄。
+商品特色：
+-軟式感測頭
+-背光顯示
+-防水保護
+-10秒量測
+-閒置自動關機
+-自動儲存上一次的測溫
 
-耳溫與額溫的量測條件不同，建議固定使用同一種方式以利數值比較。
+商品規格：
+型號 MT200
+商品內附保護蓋
+產地 中國
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+醫療器材許可證所載品名：百略醫學電子體溫計
+商品許可證字號：衛署醫器陸輸字第000130號
+醫療器材許可證所載藥商名稱：百略醫學科技股份有限公司
+製造廠名稱：MCN5012000 Onbo Electronic (Shenzhen) Co., Ltd.
+製造廠廠址：No. 138, Huasheng Road, Langkou Community, Dalang Street, Longhua District, Shenzhen, China
+提醒您：
+-使用前請詳閱使用說明書-

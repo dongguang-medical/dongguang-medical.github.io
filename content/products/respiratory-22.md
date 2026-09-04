@@ -18,8 +18,10 @@ published: true
 source: import
 ---
 
-邁康｜洗鼻器。以生理食鹽水沖洗鼻腔，緩解鼻塞、過敏與鼻涕倒流不適。
-
-請使用專用洗鼻鹽並依說明調配濃度，避免使用未經處理的自來水。
-
-實際庫存與價格以門市為準，歡迎來電洽詢。
+品名："和豐國際" 洗鼻器 (未滅菌)
+許可證核准字號：衛部醫器陸輸壹字第002944號
+藥商名稱：和豐國際行銷股份有限公司
+製造廠名稱：M644316000 SHENZHEN ACHEPOWER ELECTRONIC CO., LTD
+製造廠地址：5F, SAMWO INTERNATIONAL BUILDING, LAIWU NEW VILLAGE, DALANG STREET, LONGHUA TOWN, SHENZHEN, CHINA
+有效期間（保存期限）：8年
+提醒您：

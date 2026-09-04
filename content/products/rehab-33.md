@@ -2,7 +2,6 @@
 name: 復健球 握力球
 taxonomy: 復健理療/復健器材
 price: ""
-variant_label: "規格"
 variants:
   - label: "圓球型"
     price: 40
@@ -10,6 +9,7 @@ variants:
     price: 40
   - label: "刺球型"
     price: 50
+variant_label: "規格"
 brand: ""
 offering:
   - 線上選購
@@ -26,6 +26,9 @@ published: true
 source: shopee
 ---
 
-復健器材。居家復健與肌力訓練使用。
+復健用握力球
+握力訓練
+耐用，不易變形
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+圓球形/橄欖球型：約七公分大小，高密度泡棉製
+刺球形：約七公分大小，PVC製，無塑膠臭味

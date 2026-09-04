@@ -19,8 +19,10 @@ published: true
 source: import
 ---
 
-歐姆龍 OMRON｜血壓計配件。血壓計的壓脈帶、變壓器等替換件與加購配件。
+台灣歐姆龍原廠公司貨
 
-壓脈帶尺寸與機型須相符，過鬆或過緊都會影響數值。
+適用型號HEM7320，HEM7230，HEM7310，JPN500，JPN600，HEM8712，HEM7121
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+製造廠名稱: MITSUMI PHILIPPINES INC
+
+產地:菲律賓

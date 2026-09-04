@@ -2,12 +2,12 @@
 name: 日本精密 NISSEI 血壓計變壓器
 taxonomy: 健康量測/血壓計配件
 price: ""
-variant_label: "型號"
 variants:
   - label: "NS1"
     price: 250
   - label: "NS2"
     price: 250
+variant_label: "型號"
 brand: 日本精密
 offering:
   - 線上選購
@@ -25,6 +25,12 @@ published: true
 source: shopee
 ---
 
-日本精密 NISSEI｜血壓計配件。血壓計的壓脈帶、變壓器等替換件。
+### 商品規格
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+👉型號：AD-AMS66-NS2
+適用機型 G10J、N10J、S10J、DS-B33
+適用國際電壓100-240V
+
+👉型號：AD-AMS66-NS1
+適用機型 DSK-1011J、DSK-1031J、DSK-1051J、DS-A10、DS-B10、DS-11、
+適用國際電壓100-240V

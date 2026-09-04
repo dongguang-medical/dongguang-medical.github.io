@@ -2,12 +2,12 @@
 name: 木製壓舌板（未滅菌）
 taxonomy: 其他/醫療器械
 price: ""
-variant_label: "規格"
 variants:
   - label: "瑞玉壓舌板(陸製)"
     price: 35
   - label: "豐全壓舌板(台灣製)"
     price: 45
+variant_label: "規格"
 brand: ""
 offering:
   - 線上選購
@@ -32,8 +32,21 @@ published: true
 source: shopee
 ---
 
-醫療器械。換藥與處置使用的基本器械。
+尺 寸：約15*1.7公分
 
-除了臨床壓舌檢查，也常用於挖藥、調蠟與熱蠟除毛。
+豐全
+醫療器材許可證所載品名：豐全壓舌板 (未滅菌)
+醫療器材許可證所載核准字號：衛署醫器製壹字第000799號
+製造廠名稱：豐全興業有限公司
+製造廠地址：高雄市大樹區竹寮路331及332號
+材質:木質
 
-實際庫存與價格以門市為準，歡迎來電洽詢。
+瑞玉
+醫療器材許可證所載品名：瑞玉壓舌板 (未滅菌)
+醫療器材許可證所載核准字號：衛署醫器輸壹字第003426號
+醫療器材許可證所載藥商名稱：瑞玉國際有限公司
+製造廠名稱：WEISHAN DAWEI WOOD CO.,LTD
+製造廠地址：XIPING TOWN,INDUSTRIAL PARK WEISHAN COUNTY,JINING CITY,SHANDONG PROVINCE,CHINA
+材質：木材
+
+提醒您：消費者使用前應詳閱產品說明書
