@@ -1886,8 +1886,8 @@ def build_subsidy_page():
             <div class="sub-stats">
               <div class="sub-stat"><div class="k">購買總金額</div><div class="v" id="sbSumPrice">0 元</div></div>
               <div class="sub-stat sub-stat-gov"><div class="k">申請給付金額（政府）</div><div class="v" id="sbSumGov">0 元</div></div>
-              <div class="sub-stat sub-stat-self"><div class="k">民眾部分負擔</div><div class="v" id="sbSumSelf">0 元</div></div>
-              <div class="sub-stat sub-stat-over"><div class="k">超額自費</div><div class="v" id="sbSumOver">0 元</div></div>
+              <div class="sub-stat sub-stat-self"><div class="k">民眾部分負擔（含超額）</div><div class="v" id="sbSumSelf">0 元</div></div>
+              <div class="sub-stat sub-stat-over"><div class="k">其中超額自費</div><div class="v" id="sbSumOver">0 元</div></div>
             </div>
             <div class="sub-stats" style="margin-top:12px">
               <div class="sub-stat"><div class="k">本次扣除長照額度</div><div class="v" id="sbSumUse">0 元</div></div>

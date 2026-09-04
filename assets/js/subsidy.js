@@ -348,8 +348,8 @@
       '<div class="sub-stats sub-row-stats">' +
         '<div class="sub-stat"><div class="k">購買金額</div><div class="v" id="sbRPrice' + r + '">0 元</div></div>' +
         '<div class="sub-stat sub-stat-gov"><div class="k">申請給付金額</div><div class="v" id="sbRGov' + r + '">0 元</div></div>' +
-        '<div class="sub-stat sub-stat-self"><div class="k">民眾部分負擔</div><div class="v" id="sbRSelf' + r + '">0 元</div></div>' +
-        '<div class="sub-stat sub-stat-over"><div class="k">超額自費</div><div class="v" id="sbROver' + r + '">0 元</div></div>' +
+        '<div class="sub-stat sub-stat-self"><div class="k">民眾部分負擔（含超額）</div><div class="v" id="sbRSelf' + r + '">0 元</div></div>' +
+        '<div class="sub-stat sub-stat-over"><div class="k">其中超額自費</div><div class="v" id="sbROver' + r + '">0 元</div></div>' +
       '</div>';
     $("sbRows").appendChild(box);
     pickerLabel(r);
@@ -491,10 +491,13 @@
     rows.forEach(function (row) {
       var base = Math.min(row.price, row.limit, left);
       if (base < 0) base = 0;
-      /* 部分品項免部分負擔，不隨身分別變動（見長照 3.0 對照表） */
-      var self = row.item.f ? 0 : Math.floor(base * ratio);
-      var gov = base - self;
+      /* 部分品項免部分負擔，不隨身分別變動（見長照 3.0 對照表）。
+         免的只是核定給付範圍內那一段，超出上限或額度的部分一律自付。 */
+      var copay = row.item.f ? 0 : Math.floor(base * ratio);
+      var gov = base - copay;
       var over = row.price - base;
+      /* 民眾實際要付的錢＝比率部分負擔＋超額，與證明書上那一欄同一個數字 */
+      var self = row.price - gov;
 
       row.base = base; row.self = self; row.gov = gov; row.over = over;
 
@@ -581,7 +584,7 @@
            超出核定給付上限或額度的部分一併落在民眾部分負擔裡。 */
         price: row.price,
         gov: row.gov,
-        self: row.price - row.gov
+        self: row.self
       };
     });
     var today = new Date();
