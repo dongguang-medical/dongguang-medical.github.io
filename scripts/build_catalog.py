@@ -40,20 +40,32 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "products"
 BASE_URL = "https://dongguang-medical.github.io"
 
+def _content_hash(paths):
+    """依檔案內容算版本號。
+
+    換行字元先正規化成 LF：Windows 的 git checkout 會把文字檔
+    轉成 CRLF，CI 的 Linux 則是 LF。直接雜湊原始位元組會讓
+    兩邊算出不同的號碼，產生的頁面就會來回跳。
+    """
+    blob = b"".join(
+        (ROOT / f).read_bytes().replace(b"\r\n", b"\n")
+        for f in paths if (ROOT / f).is_file()
+    )
+    return hashlib.md5(blob).hexdigest()[:10]
+
+
 # CSS 版本號（內容雜湊）：附加於樣式連結的 ?v=，
 # 樣式一有變動網址就不同，訪客瀏覽器不會再拿到舊快取
-CSS_VERSION = hashlib.md5(b"".join(
-    (ROOT / "assets" / "css" / f).read_bytes()
+CSS_VERSION = _content_hash(
+    "assets/css/" + f
     for f in ("design-system.css", "intro.css", "catalog.css", "subsidy.css")
-)).hexdigest()[:10]
+)
 # 補助試算頁的資產版本號（前端程式與 Word 範本）：只影響 /subsidy/，
 # 不與全站 CSS 版本綁在一起，範本更新時才不會白白讓所有頁面的樣式失效
-SUBSIDY_ASSET_VERSION = hashlib.md5(b"".join(
-    (ROOT / f).read_bytes() for f in (
-        "assets/js/subsidy.js",
-        "assets/templates/certificate-template.json",
-    ) if (ROOT / f).is_file()
-)).hexdigest()[:10]
+SUBSIDY_ASSET_VERSION = _content_hash((
+    "assets/js/subsidy.js",
+    "assets/templates/certificate-template.json",
+))
 SITE_NAME = "東光醫療器材"
 SITE_NAME_FULL = "台南東光醫療器材"  # 頁首、頁尾顯示用店名
 PLACEHOLDER = "assets/images/placeholder.svg"
