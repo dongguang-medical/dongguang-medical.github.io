@@ -1,7 +1,7 @@
 ---
 name: 中衛 CSD 海綿潔牙棒 5支/包（滅菌）
 taxonomy: 臥床照護/口腔照護
-price: ""
+price: 19
 brand: 中衛
 offering:
   - 線上選購

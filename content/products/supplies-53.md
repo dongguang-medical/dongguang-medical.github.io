@@ -1,7 +1,7 @@
 ---
 name: 康乃馨 Carnation 純水濕紙巾 80抽/包
 taxonomy: 照護耗材/消毒與清潔
-price: ""
+price: 40
 brand: 康乃馨
 offering:
   - 線上選購

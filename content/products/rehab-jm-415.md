@@ -1,7 +1,7 @@
 ---
 name: 杰奇 JM-415 運動復健手套
 taxonomy: 復健理療/復健器材
-price: ""
+price: 280
 brand: 杰奇
 offering:
   - 線上選購

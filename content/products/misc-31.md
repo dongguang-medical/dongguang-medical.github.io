@@ -1,7 +1,8 @@
 ---
 name: 陶瓷乳缽研磨組（缽碗＋研磨棒）
 taxonomy: 其他/醫療器械
-price: ""
+price: 60
+price_max: 155
 brand: ""
 offering:
   - 線上選購

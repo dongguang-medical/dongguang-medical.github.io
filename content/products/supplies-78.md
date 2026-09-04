@@ -1,7 +1,7 @@
 ---
 name: 3M Nexcare 膚色通氣膠帶 1吋 12入/盒
 taxonomy: 照護耗材/醫用膠帶
-price: ""
+price: 199
 brand: 3m
 offering:
   - 線上選購

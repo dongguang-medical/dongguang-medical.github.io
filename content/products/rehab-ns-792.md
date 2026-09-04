@@ -1,7 +1,7 @@
 ---
 name: 愛民 I-M NS-792 開放式護膝
 taxonomy: 復健理療/護具
-price: ""
+price: 500
 brand: 愛民
 offering:
   - 線上選購

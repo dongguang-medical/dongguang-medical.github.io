@@ -1,7 +1,8 @@
 ---
 name: SOHO BACK 舒活透氣雙背墊
 taxonomy: 其他/居家生活用品
-price: ""
+price: 275
+price_max: 1250
 brand: soho-back
 offering:
   - 線上選購

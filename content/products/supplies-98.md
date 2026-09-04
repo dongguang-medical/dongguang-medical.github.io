@@ -1,7 +1,7 @@
 ---
 name: 綠十字 男用泌尿套（未滅菌）
 taxonomy: 照護耗材/造口與泌尿用品
-price: ""
+price: 40
 brand: 綠十字
 offering:
   - 線上選購

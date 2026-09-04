@@ -1,7 +1,7 @@
 ---
 name: 綠十字 塑膠灌食空針 60ml（滅菌／含接頭）
 taxonomy: 臥床照護/管路照護用品
-price: ""
+price: 17
 brand: 綠十字
 offering:
   - 線上選購

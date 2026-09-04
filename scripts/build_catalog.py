@@ -18,8 +18,8 @@ build_catalog.py
   python3 scripts/build_catalog.py        # 在 repo 任意位置執行皆可
 
 frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
-  name(必填)、category(必填，九選一)、subcategory、price、brand、
-  tags(字串清單)、specs(label/value 清單)、images(路徑清單，相對網站根目錄)、
+  name(必填)、category(必填，九選一)、subcategory、price、price_max(多規格價格上限)、
+  brand、tags(字串清單)、specs(label/value 清單)、images(路徑清單，相對網站根目錄)、
   published(預設 true)
 """
 
@@ -315,7 +315,10 @@ def load_products(brands, taxonomy=None):
             "subcategory": subcategory,
             # price 是數字（供排序與結構化資料），price_text 是顯示用的「NT$3,500」
             "price": parse_price(fm.get("price")),
-            "price_text": format_price(parse_price(fm.get("price"))),
+            # 多規格商品（如尺寸 S/M/L 不同價）填 price_max，顯示成「NT$199～990」
+            "price_max": parse_price(fm.get("price_max")),
+            "price_text": format_price(parse_price(fm.get("price")),
+                                       parse_price(fm.get("price_max"))),
             "brand": brand,
             "brand_slug": brand_slug if brand else "",
             "offering": offering,
@@ -652,9 +655,17 @@ def parse_price(raw):
     return int(digits) if digits else None
 
 
-def format_price(value):
-    """數字轉成網站上顯示的樣子；幣別固定台幣，由這裡統一加上。"""
-    return f"NT${value:,}" if value is not None else ""
+def format_price(value, value_max=None):
+    """數字轉成網站上顯示的樣子；幣別固定台幣，由這裡統一加上。
+
+    多規格商品（不同尺寸／型號不同價）傳入 value_max 即顯示為區間，
+    上限沒填或不大於下限時退回單一價格。
+    """
+    if value is None:
+        return ""
+    if value_max is not None and value_max > value:
+        return f"NT${value:,}～{value_max:,}"
+    return f"NT${value:,}"
 
 
 def price_html(product, big=False):
@@ -962,9 +973,15 @@ def pick_featured(products):
         # 多層備援：可租賃且有標價 → 有標價 → 只要有圖。
         # 資料尚在補建時（如 rentable 全空）輪播才不會整個開天窗。
         with_img = [p for p in products if p not in feats and p["images"]]
-        pool = [p for p in with_img if p["rentable"] and p["price"]] \
-            or [p for p in with_img if p["price"]] \
-            or with_img
+        # 優先序：可租賃且有標價 → 有標價 → 只要有圖。三層相接後去重，
+        # 而不是取第一個非空的清單——否則高優先層只有一兩項時輪播會塌掉。
+        seen, pool = set(), []
+        for p in ([p for p in with_img if p["rentable"] and p["price"]]
+                  + [p for p in with_img if p["price"]]
+                  + with_img):
+            if p["slug"] not in seen:
+                seen.add(p["slug"])
+                pool.append(p)
         # 依主分類輪流取，避免整排都是同一類商品——照檔名順序直接取前 N 筆
         # 會讓輪播全是 bedcare-*，首頁看起來像只賣臥床用品。
         buckets = {}
@@ -1450,13 +1467,25 @@ def product_jsonld(product, bc):
     if product["brand"]:
         prod["brand"] = {"@type": "Brand", "name": product["brand"]}
     if product["price"] is not None:
-        prod["offers"] = {
-            "@type": "Offer",
-            "price": str(product["price"]),
-            "priceCurrency": "TWD",
-            "availability": "https://schema.org/InStock",
-            "url": BASE_URL + product["url"],
-        }
+        price_max = product["price_max"]
+        if price_max is not None and price_max > product["price"]:
+            # 多規格商品用 AggregateOffer，搜尋結果才會顯示成價格區間
+            prod["offers"] = {
+                "@type": "AggregateOffer",
+                "lowPrice": str(product["price"]),
+                "highPrice": str(price_max),
+                "priceCurrency": "TWD",
+                "availability": "https://schema.org/InStock",
+                "url": BASE_URL + product["url"],
+            }
+        else:
+            prod["offers"] = {
+                "@type": "Offer",
+                "price": str(product["price"]),
+                "priceCurrency": "TWD",
+                "availability": "https://schema.org/InStock",
+                "url": BASE_URL + product["url"],
+            }
     return data
 
 

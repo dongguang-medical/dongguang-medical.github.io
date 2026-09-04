@@ -1,7 +1,7 @@
 ---
 name: 小白兔 手握式暖暖包 24小時
 taxonomy: 復健理療/冷熱敷用品
-price: ""
+price: 129
 brand: ""
 offering:
   - 線上選購

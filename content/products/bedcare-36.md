@@ -1,7 +1,7 @@
 ---
 name: 雷峰 H1 標準成人牙刷
 taxonomy: 臥床照護/口腔照護
-price: ""
+price: 18
 brand: 雷峰
 offering:
   - 線上選購

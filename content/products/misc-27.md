@@ -1,7 +1,8 @@
 ---
 name: 筆燈 附瞳孔尺標
 taxonomy: 其他/診所與醫護設備
-price: ""
+price: 119
+price_max: 294
 brand: ""
 offering:
   - 線上選購

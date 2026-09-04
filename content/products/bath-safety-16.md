@@ -1,7 +1,7 @@
 ---
 name: 不鏽鋼洗澡便器椅 四輪固定式
 taxonomy: 衛浴與居家安全/洗澡椅
-price: ""
+price: 5500
 brand: ""
 offering:
   - 線上選購

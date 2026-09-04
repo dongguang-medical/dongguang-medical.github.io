@@ -1,7 +1,8 @@
 ---
 name: 滅菌紗布塊 2x2／3x3／4x4
 taxonomy: 照護耗材/紗布棉棒
-price: ""
+price: 4
+price_max: 15
 brand: ""
 offering:
   - 線上選購

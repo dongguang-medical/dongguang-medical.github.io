@@ -1,7 +1,7 @@
 ---
 name: 佳好 盒裝脫脂棉（未滅菌）
 taxonomy: 照護耗材/紗布棉棒
-price: ""
+price: 75
 brand: 佳好
 offering:
   - 線上選購

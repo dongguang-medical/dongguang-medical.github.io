@@ -1,7 +1,7 @@
 ---
 name: 勤達 滅菌PE手套 100入/盒
 taxonomy: 照護耗材/手套
-price: ""
+price: 225
 brand: 勤達
 offering:
   - 線上選購

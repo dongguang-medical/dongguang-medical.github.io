@@ -1,7 +1,7 @@
 ---
 name: ORALDENT 假牙雙層清潔盒
 taxonomy: 臥床照護/口腔照護
-price: ""
+price: 165
 brand: oraldent
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 中衛 CSD 酒精棉片 100片入
 taxonomy: 照護耗材/消毒與清潔
-price: ""
+price: 54
 brand: 中衛
 offering:
   - 線上選購

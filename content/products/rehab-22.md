@@ -1,7 +1,8 @@
 ---
 name: 舒摩 SUMO 濕熱敷墊
 taxonomy: 復健理療/熱敷墊
-price: ""
+price: 1100
+price_max: 1350
 brand: 舒摩
 offering:
   - 線上選購

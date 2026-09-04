@@ -1,7 +1,8 @@
 ---
 name: 養根命 艾條溫灸棒
 taxonomy: 其他/居家生活用品
-price: ""
+price: 150
+price_max: 200
 brand: ""
 offering:
   - 線上選購

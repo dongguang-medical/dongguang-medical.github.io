@@ -1,7 +1,7 @@
 ---
 name: 達摩 易筋伸展拉筋板
 taxonomy: 復健理療/復健器材
-price: ""
+price: 1790
 brand: 達摩
 offering:
   - 線上選購

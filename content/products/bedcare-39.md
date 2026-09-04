@@ -1,7 +1,7 @@
 ---
 name: 床邊扶手護欄 高低可調
 taxonomy: 臥床照護/床邊配件
-price: ""
+price: 1250
 brand: ""
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 四爪拐杖防滑腳墊
 taxonomy: 行動輔具/助行器配件
-price: ""
+price: 245
 brand: ""
 offering:
   - 線上選購

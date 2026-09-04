@@ -1,7 +1,8 @@
 ---
 name: 中衛 CSD 醫療平面口罩 一級／二級
 taxonomy: 照護耗材/口罩
-price: ""
+price: 135
+price_max: 400
 brand: 中衛
 offering:
   - 線上選購

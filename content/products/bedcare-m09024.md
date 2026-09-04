@@ -1,7 +1,7 @@
 ---
 name: 太平洋 M09024 灌腸袋（含肛管）
 taxonomy: 臥床照護/管路照護用品
-price: ""
+price: 160
 brand: 太平洋
 offering:
   - 線上選購

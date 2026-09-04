@@ -1,7 +1,8 @@
 ---
 name: 佑合 不織布紗布墊 200片 2x2／3x3／4x4
 taxonomy: 照護耗材/紗布棉棒
-price: ""
+price: 45
+price_max: 125
 brand: 佑合
 offering:
   - 線上選購

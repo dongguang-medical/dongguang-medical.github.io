@@ -1,7 +1,8 @@
 ---
 name: 國發 乒乓約束帶 單支入
 taxonomy: 臥床照護/約束與安全帶
-price: ""
+price: 398
+price_max: 420
 brand: 國發
 offering:
   - 線上選購

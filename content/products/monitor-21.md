@@ -1,7 +1,8 @@
 ---
 name: 血壓計壓脈帶專用接頭 歐姆龍／日本精密適用
 taxonomy: 健康量測/血壓計配件
-price: ""
+price: 80
+price_max: 180
 brand: ""
 offering:
   - 線上選購

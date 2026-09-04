@@ -1,7 +1,7 @@
 ---
 name: U-MED 進口橡膠洗鼻器
 taxonomy: 呼吸照護/洗鼻器
-price: ""
+price: 330
 brand: umed
 offering:
   - 線上選購

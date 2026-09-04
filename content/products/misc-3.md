@@ -1,7 +1,8 @@
 ---
 name: 益江 聽診器
 taxonomy: 其他/診所與醫護設備
-price: ""
+price: 220
+price_max: 350
 brand: 益江
 offering:
   - 線上選購

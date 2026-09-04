@@ -1,7 +1,7 @@
 ---
 name: 斯巴 洗眼器
 taxonomy: 其他/醫療器械
-price: ""
+price: 123
 brand: ""
 offering:
   - 線上選購

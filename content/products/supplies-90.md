@@ -1,7 +1,7 @@
 ---
 name: 富廣 無痛採血針 30G 50支/盒
 taxonomy: 照護耗材/血糖試紙與採血針
-price: ""
+price: 219
 brand: 富廣
 offering:
   - 線上選購

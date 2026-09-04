@@ -1,7 +1,7 @@
 ---
 name: 杰奇 JM 多功能握式移位帶（無跨式）
 taxonomy: 臥床照護/移位輔具
-price: ""
+price: 1200
 brand: 杰奇
 offering:
   - 線上選購

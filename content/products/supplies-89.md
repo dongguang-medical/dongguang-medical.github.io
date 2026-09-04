@@ -1,7 +1,8 @@
 ---
 name: 瑞特 採血筆（血糖機通用型）
 taxonomy: 照護耗材/血糖試紙與採血針
-price: ""
+price: 245
+price_max: 850
 brand: 瑞特
 offering:
   - 線上選購

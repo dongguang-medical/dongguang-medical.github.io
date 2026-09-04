@@ -1,7 +1,7 @@
 ---
 name: 富士康 FZK 加大防水洗頭帽
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: ""
+price: 150
 brand: 富士康
 offering:
   - 線上選購

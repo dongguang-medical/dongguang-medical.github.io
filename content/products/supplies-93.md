@@ -1,7 +1,8 @@
 ---
 name: 富廣 採血針 (滅菌)
 taxonomy: 照護耗材/血糖試紙與採血針
-price: ""
+price: 29
+price_max: 45
 brand: 富廣
 offering:
   - 線上選購

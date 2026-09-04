@@ -1,7 +1,8 @@
 ---
 name: 芬蒂思 透氣膠帶 1吋／半吋（單顆）
 taxonomy: 照護耗材/醫用膠帶
-price: ""
+price: 10
+price_max: 20
 brand: 芬蒂思
 offering:
   - 線上選購

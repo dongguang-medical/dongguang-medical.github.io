@@ -1,7 +1,7 @@
 ---
 name: 愛民 I-M WB-512 強化支撐護腰
 taxonomy: 復健理療/護具
-price: ""
+price: 880
 brand: 愛民
 offering:
   - 線上選購

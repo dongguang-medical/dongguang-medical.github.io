@@ -1,7 +1,7 @@
 ---
 name: 康威利 Conwell 5319 手指保護套
 taxonomy: 復健理療/護具
-price: ""
+price: 180
 brand: 康威利
 offering:
   - 線上選購

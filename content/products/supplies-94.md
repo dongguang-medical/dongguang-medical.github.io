@@ -1,7 +1,7 @@
 ---
 name: 愛樂康 ALCARE C100 造口袋（封口／未滅菌）
 taxonomy: 照護耗材/造口與泌尿用品
-price: ""
+price: 499
 brand: 愛樂康
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 大王 attento 透氣舒適復健褲 M／L
 taxonomy: 照護耗材/成人紙尿褲
-price: ""
+price: 239
 brand: attento
 offering:
   - 線上選購

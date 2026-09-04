@@ -165,6 +165,15 @@ collections:
         required: false
         hint: 只填數字，例 3500（網站會顯示成 NT$3,500）。留空會顯示「歡迎洽詢」
 
+      # 多規格商品（尺寸／型號不同價）填這欄，售價欄放最低價
+      - label: 售價上限
+        name: price_max
+        widget: number
+        value_type: int
+        min: 0
+        required: false
+        hint: 只有「不同規格不同價」時才填最高價，例 990（會顯示成 NT$199～990）。單一價格請留空
+
       - label: 提供方式
         name: offering
         widget: select

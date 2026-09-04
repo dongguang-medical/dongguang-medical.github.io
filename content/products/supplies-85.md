@@ -1,7 +1,7 @@
 ---
 name: 不鏽鋼紙膠切台
 taxonomy: 照護耗材/醫用膠帶
-price: ""
+price: 115
 brand: ""
 offering:
   - 線上選購

@@ -1,7 +1,7 @@
 ---
 name: 充氣式洗頭槽
 taxonomy: 衛浴與居家安全/沐浴清潔用品
-price: ""
+price: 950
 brand: ""
 offering:
   - 線上選購

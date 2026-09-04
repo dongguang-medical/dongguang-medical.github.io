@@ -1,7 +1,7 @@
 ---
 name: 德國Leukoplast 膠布
 taxonomy: 照護耗材/醫用膠帶
-price: ""
+price: 135
 brand: leukoplast
 offering:
   - 線上選購

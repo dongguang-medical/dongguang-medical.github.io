@@ -1,7 +1,8 @@
 ---
 name: 中衛 CSD 3吋棉棒（滅菌）
 taxonomy: 照護耗材/紗布棉棒
-price: ""
+price: 3
+price_max: 6
 brand: 中衛
 offering:
   - 線上選購

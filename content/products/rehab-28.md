@@ -1,7 +1,7 @@
 ---
 name: 護多樂 FUTURO 拉繩式拇指支撐護腕
 taxonomy: 復健理療/護具
-price: ""
+price: 925
 brand: futuro
 offering:
   - 線上選購

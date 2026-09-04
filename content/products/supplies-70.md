@@ -1,7 +1,7 @@
 ---
 name: 宜鴻 彈性網狀繃帶（未滅菌）
 taxonomy: 照護耗材/敷料與人工皮
-price: ""
+price: 135
 brand: 宜鴻
 offering:
   - 線上選購

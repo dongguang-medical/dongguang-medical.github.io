@@ -1,7 +1,8 @@
 ---
 name: 多倍 PROTOS PVC無粉檢診手套 S/M/L/XL
 taxonomy: 照護耗材/手套
-price: ""
+price: 109
+price_max: 120
 brand: 多倍
 offering:
   - 線上選購

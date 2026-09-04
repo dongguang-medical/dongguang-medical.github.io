@@ -1,7 +1,7 @@
 ---
 name: 芬蒂思 舒眠不透光眼罩
 taxonomy: 其他/居家生活用品
-price: ""
+price: 59
 brand: 芬蒂思
 offering:
   - 線上選購

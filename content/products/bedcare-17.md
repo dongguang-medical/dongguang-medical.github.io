@@ -1,7 +1,7 @@
 ---
 name: 伽瑪 海綿牙刷（含牙粉／無牙粉）
 taxonomy: 臥床照護/口腔照護
-price: ""
+price: 30
 brand: 伽瑪
 offering:
   - 線上選購

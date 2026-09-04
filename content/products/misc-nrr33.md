@@ -1,7 +1,7 @@
 ---
 name: 邁康 KATO NRR33 防音耳塞
 taxonomy: 其他/居家生活用品
-price: ""
+price: 59
 brand: 邁康
 offering:
   - 線上選購

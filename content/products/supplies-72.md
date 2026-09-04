@@ -1,7 +1,7 @@
 ---
 name: 3M Nexcare 克淋濕防水透氣繃
 taxonomy: 照護耗材/敷料與人工皮
-price: ""
+price: 69
 brand: 3m
 offering:
   - 線上選購

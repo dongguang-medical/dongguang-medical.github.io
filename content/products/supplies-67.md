@@ -1,7 +1,8 @@
 ---
 name: 禾捷 棉花棒
 taxonomy: 照護耗材/紗布棉棒
-price: ""
+price: 3
+price_max: 6
 brand: 禾捷
 offering:
   - 線上選購

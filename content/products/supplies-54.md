@@ -1,7 +1,8 @@
 ---
 name: 醫強 克司博 75%酒精 500ml（乙類成藥）
 taxonomy: 照護耗材/消毒與清潔
-price: ""
+price: 29
+price_max: 95
 brand: 醫強
 offering:
   - 線上選購
