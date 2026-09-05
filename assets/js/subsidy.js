@@ -684,7 +684,7 @@
           '<p class="s-contract">立契約人(以下簡稱申請人)與' + ul(cert.vendor, 10) +
             "(以下簡稱乙方)同意訂立輔具買賣契約，雙方議定</p>" +
           '<p class="s-contract">條件如上:</p>' +
-          '<p class="s-sign">申請人簽名或蓋章：' + ul("", 11) +
+          '<p class="s-sign">申請人簽名或蓋章：' + ul(cert.applicant, 11) +
             "　身分證字號：" + ul(cert.applicantId, 7) + "</p>" +
           '<p class="s-sign">聯 絡 電 話：' + ul(cert.applicantTel, 7) + "</p>" +
           '<p class="s-sign">受託人簽名或蓋章：' + ul("", 11) +
@@ -938,9 +938,12 @@
     var pContract = findPara(paras, function (t) { return t.indexOf("立契約人") > -1; });
     if (pContract) fillUnderlineGroup(pContract, 0, cert.vendor);
 
-    /* 身分證字號與電話；簽名欄留白供手寫 */
+    /* 申請人這一欄先印姓名，蓋章或親簽仍在同一格上；受託人欄維持空白 */
     var pSign = findPara(paras, function (t) { return t.indexOf("申請人簽名或蓋章") > -1; });
-    if (pSign) fillUnderlineGroup(pSign, 1, cert.applicantId);
+    if (pSign) {
+      fillUnderlineGroup(pSign, 0, cert.applicant);
+      fillUnderlineGroup(pSign, 1, cert.applicantId);
+    }
     var pTel = findPara(paras, function (t) {
       return t.replace(/\s/g, "").indexOf("聯絡電話") === 0;
     });
