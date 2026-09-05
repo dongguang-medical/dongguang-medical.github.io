@@ -1818,7 +1818,7 @@ def build_subsidy_page():
         <div class="sub-wrap">
 
           <header class="sub-intro">
-            <h1>長照輔具補助試算</h1>
+            <h1>台南長照輔具補助試算</h1>
             <p>依中央「長期照顧服務申請及給付辦法」試算長照輔具及居家無障礙環境改善服務（第一組 E、F 碼）的購買與修繕補助金額，並可產生台南市格式的「長照輔具服務給付證明暨契約書」列印或下載。</p>
             <div class="sub-basis">
               <span>第一組 E、F 碼</span>
@@ -1937,7 +1937,7 @@ def build_subsidy_page():
         "@graph": [
             {
                 "@type": "WebApplication",
-                "name": "長照輔具補助試算",
+                "name": "台南長照輔具補助試算",
                 "url": BASE_URL + "/subsidy/",
                 "applicationCategory": "FinanceApplication",
                 "operatingSystem": "Web",
@@ -1949,7 +1949,7 @@ def build_subsidy_page():
         ],
     }
     html_out = render_page(
-        title=f"長照輔具補助試算 — {SITE_NAME}",
+        title=f"台南長照輔具補助試算 — {SITE_NAME}",
         description=desc,
         path="subsidy/",
         og_type="website",
@@ -1981,6 +1981,14 @@ def build_sitemap(products, brand_slugs=()):
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
            f"{entries}\n</urlset>\n")
     (ROOT / "sitemap.xml").write_text(xml, encoding="utf-8")
+
+
+def build_robots():
+    """robots.txt：全站開放，並指出 sitemap 位置讓搜尋引擎自己找得到。"""
+    txt = ("User-agent: *\n"
+           "Allow: /\n\n"
+           f"Sitemap: {BASE_URL}/sitemap.xml\n")
+    (ROOT / "robots.txt").write_text(txt, encoding="utf-8")
 
 
 def build_search_index(products):
@@ -2088,6 +2096,7 @@ def main():
     build_product_pages(products)
     build_search_index(products)
     build_sitemap(products, brand_slugs)
+    build_robots()
     sync_about_chrome()
 
     rentable = sum(1 for p in products if p["rentable"])
