@@ -843,6 +843,57 @@
     return true;
   }
 
+  /* ── 頁面高度的調節閥 ──────────────────────────────────────────────
+     範本的第一頁是「剛好填滿」的：明細表兩列空白時，日期正好落在頁尾，
+     照片頁才會從第二頁乾淨地開始。明細多一列就往下擠一列，少一列就往上
+     縮一列，於是一筆時照片頁的個案姓名跑上第一頁，三筆時日期被擠到第二頁。
+
+     實件的做法是拿「台南市政府衛生局」到「立契約人」中間的空白去吸收，
+     這裡照做：把那幾行空白併成一行，改用固定行高，明細每多一列就少一列
+     的高度。空白用完（約五列）才會真的溢出，那時改用分頁符號收尾。
+
+     兩個數字都是拿 Word 量範本得到的：空白段落 23.5pt、明細列 38.35pt
+     （trHeight 767）。空白段落改成固定行高後高度才可控，所以用量到的值，
+     不用字型度量去推算。 */
+  var GAP_LINE = 470;
+  var GAP_ROW = 767;
+  var GAP_BASE_ROWS = 2;
+
+  function setExactLine(para, twips) {
+    var doc = para.ownerDocument;
+    var pPr = childNamed(para, "pPr");
+    if (!pPr) {
+      pPr = doc.createElementNS(W_NS, "w:pPr");
+      para.insertBefore(pPr, para.firstChild);
+    }
+    var sp = childNamed(pPr, "spacing");
+    if (!sp) {
+      sp = doc.createElementNS(W_NS, "w:spacing");
+      pPr.insertBefore(sp, pPr.firstChild);
+    }
+    sp.setAttribute("w:line", String(twips));
+    sp.setAttribute("w:lineRule", "exact");
+  }
+
+  function tuneBottomGap(pDept, pContract, rowCount) {
+    if (!pDept || !pContract || pDept.parentNode !== pContract.parentNode) return;
+    var kids = Array.prototype.slice.call(pDept.parentNode.childNodes);
+    var gaps = kids.slice(kids.indexOf(pDept) + 1, kids.indexOf(pContract))
+      .filter(function (n) {
+        return n.nodeType === 1 && n.localName === "p" && !nodeText(n).trim();
+      });
+    if (!gaps.length) return;
+
+    var want = gaps.length * GAP_LINE - (rowCount - GAP_BASE_ROWS) * GAP_ROW;
+    gaps.slice(1).forEach(function (n) { n.parentNode.removeChild(n); });
+    if (want <= 0) {
+      /* 空白全用完了（約五列以上），日期只能落到第二頁 */
+      gaps[0].parentNode.removeChild(gaps[0]);
+      return;
+    }
+    setExactLine(gaps[0], want);
+  }
+
   function findPara(paras, predicate) {
     for (var i = 0; i < paras.length; i++) {
       if (predicate(nodeText(paras[i]))) return paras[i];
@@ -946,6 +997,12 @@
       });
     }
 
+    /* 調節第一頁的高度，讓日期不論幾筆明細都停在頁尾原本的位置 */
+    var pDept = findPara(paras, function (t) {
+      return t.replace(/\s/g, "") === "台南市政府衛生局";
+    });
+    tuneBottomGap(pDept, pContract, cert.rows.length);
+
     /* 照片黏貼頁：範本內建兩頁，依項目數整塊增減 */
     var starts = paras.filter(function (p) { return nodeText(p).indexOf("個案姓名") > -1; });
     if (starts.length) {
@@ -975,18 +1032,28 @@
       blocks.slice(want).forEach(function (block) {
         block.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
       });
-      /* 範本的照片頁是靠表格撐滿版面自然溢出分頁的。複製之後張數不固定，
-         而且只有 Word 會這樣分頁，改成加上明確的分頁符號，Word 與畫面
-         渲染才會得到相同的頁數。第一塊沿用範本原本的位置，不另外加。 */
-      blocks.slice(1, want).forEach(function (block) {
-        var first = block[0];
-        var br = doc.createElementNS(W_NS, "w:p");
-        var run = doc.createElementNS(W_NS, "w:r");
-        var brk = doc.createElementNS(W_NS, "w:br");
-        brk.setAttribute("w:type", "page");
-        run.appendChild(brk);
-        br.appendChild(run);
-        first.parentNode.insertBefore(br, first);
+      /* 範本的照片頁是靠內容剛好填滿一頁自然分頁的，複製之後只要前面
+         差一行就會整塊挪位。改成在每一塊的第一段掛 pageBreakBefore，
+         一塊一頁與前面的高度無關。用段落屬性而不是插一段分頁符號，
+         是因為多插的那一段自己也會佔一行，容易多出一張空白頁。
+         同理，每塊尾端的空白段落會溢到下一頁，一併移除。 */
+      blocks.slice(0, want).forEach(function (block) {
+        var head = block[0];
+        var pPr = childNamed(head, "pPr");
+        if (!pPr) {
+          pPr = doc.createElementNS(W_NS, "w:pPr");
+          head.insertBefore(pPr, head.firstChild);
+        }
+        if (!childNamed(pPr, "pageBreakBefore")) {
+          pPr.insertBefore(doc.createElementNS(W_NS, "w:pageBreakBefore"),
+                           pPr.firstChild);
+        }
+        for (var t = block.length - 1; t > 0; t--) {
+          var node = block[t];
+          if (node.nodeType !== 1 || node.localName !== "p" ||
+              nodeText(node).trim()) break;
+          if (node.parentNode) node.parentNode.removeChild(node);
+        }
       });
 
       blocks.slice(0, want).forEach(function (block, bi) {
