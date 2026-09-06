@@ -75,6 +75,17 @@ LOGO = "assets/images/logo.png"
 PHONE_DISPLAY = "(06) 290-7244"
 PHONE_TEL = "062907244"
 
+# Google Analytics 4。改追蹤碼只需改這裡，全站頁面與手刻的 about 頁一起生效。
+GA_MEASUREMENT_ID = "G-JYEZY3YK74"
+GA_TAG = f"""  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{GA_MEASUREMENT_ID}');
+  </script>"""
+
 # 九大分類（固定順序）：名稱、簡介、代表圖
 CATEGORIES = [
     ("行動輔具", "輪椅、電動代步車、助行器、拐杖與相關配件"),
@@ -582,6 +593,34 @@ NAV_JS = """  <script>
 """
 
 
+GA_EVENTS_JS = """  <script>
+    // GA4 的加強型評估會自動記錄外部連結點擊，但 tel: 不算外部連結、不會被
+    // 記錄——而撥電話正是本站最主要的成交動作，所以在這裡自己送。
+    (function () {
+      var PATTERNS = [
+        [/^tel:/i, 'phone_call'],
+        [/(line\\.me|lin\\.ee)/i, 'line_click'],
+        [/shopee\\./i, 'shopee_click'],
+        [/(maps\\.app\\.goo\\.gl|google\\.[a-z.]+\\/maps)/i, 'map_click']
+      ];
+      var h1 = document.querySelector('h1');
+      var pageName = (h1 ? h1.textContent : document.title).trim();
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a || typeof gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        for (var i = 0; i < PATTERNS.length; i++) {
+          if (PATTERNS[i][0].test(href)) {
+            gtag('event', PATTERNS[i][1], { page_name: pageName });
+            return;
+          }
+        }
+      }, { passive: true });
+    })();
+  </script>
+"""
+
+
 def render_page(*, title, description, path, og_type, og_image, jsonld,
                 main_html, extra_js="", active_url="", extra_head=""):
     """組出完整 HTML 頁面。path 為不含開頭斜線的網站路徑（用於 canonical）。"""
@@ -596,6 +635,7 @@ def render_page(*, title, description, path, og_type, og_image, jsonld,
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{GA_TAG}
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
   <link rel="canonical" href="{canonical}">{extra_head}
@@ -624,7 +664,7 @@ def render_page(*, title, description, path, og_type, og_image, jsonld,
   </main>
 
 {PAGE_FOOTER}
-{NAV_JS}{extra_js}
+{NAV_JS}{GA_EVENTS_JS}{extra_js}
 </body>
 </html>
 """
@@ -798,6 +838,20 @@ CATALOG_SEARCH_JS = """  <script>
         resultsWrap.hidden = false;
         browse.hidden = true;
         extras.forEach(function (el) { el.hidden = true; });
+        reportSearch(q, hits.length);
+      }
+
+      // 搜尋是純前端的，GA4 內建的站內搜尋追蹤（看網址參數）抓不到，得自己送。
+      // run() 每敲一個字就跑一次，等停手再送，否則「輪椅」會拆成兩三筆。
+      // results_count 為 0 的關鍵字最有價值：那是客人想買而店裡沒有的東西。
+      var searchTimer;
+      function reportSearch(term, count) {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+          if (typeof gtag === 'function') {
+            gtag('event', 'search', { search_term: term, results_count: count });
+          }
+        }, 1200);
       }
 
       input.addEventListener('input', function () {
@@ -2055,6 +2109,18 @@ def sync_about_chrome():
         if j_start != -1 and j_end != -1:
             j_end += len("</script>")
             text = text[:j_start] + NAV_JS.strip() + text[j_end:]
+
+    # GA4：手刻頁不經 render_page，追蹤碼與事件 JS 得在這裡補上，否則會漏掉
+    # 這一頁的流量。已存在就整段換掉，維持與模板同步。
+    ga_start = text.find("<!-- Google tag (gtag.js) -->")
+    if ga_start != -1:
+        ga_end = text.find("</script>", text.find("gtag('config'", ga_start))
+        text = text[:ga_start] + GA_TAG.strip() + text[ga_end + len("</script>"):]
+    else:
+        text = text.replace("<title>", GA_TAG.strip() + "\n  <title>", 1)
+
+    if "PATTERNS[i][0].test(href)" not in text:
+        text = text.replace("</body>", GA_EVENTS_JS.rstrip() + "\n</body>", 1)
 
     # CSS 版本號同步（避免 about 頁拿到舊快取樣式）
     text = re.sub(r'(href="/assets/css/[\w-]+\.css)(\?v=\w+)?"',

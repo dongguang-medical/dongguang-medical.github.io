@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYEZY3YK74"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JYEZY3YK74');
+  </script>
   <title>永猷 成人醫用口罩 50入/盒（雙鋼印） — 東光醫療器材</title>
   <meta name="description" content="永猷 成人醫用口罩 50入/盒（雙鋼印），品牌 永猷，售價 NT$179～209。&quot;永猷&quot;成人醫用口罩50入/盒現貨供應醫療口罩通過國家標準CNS14774「消費者使用前應詳閱產品說明書」保存期限：5年商品保存方法請置於乾燥陰涼通風處，避免陽光直射。●商品名稱：｜台南東光醫療器材，電話 (06) 290-7244。">
   <link rel="canonical" href="https://dongguang-medical.github.io/product/supplies-46/">
@@ -434,6 +442,31 @@
       }
       lastScrollY = y;
     }, { passive: true });
+  </script>
+  <script>
+    // GA4 的加強型評估會自動記錄外部連結點擊，但 tel: 不算外部連結、不會被
+    // 記錄——而撥電話正是本站最主要的成交動作，所以在這裡自己送。
+    (function () {
+      var PATTERNS = [
+        [/^tel:/i, 'phone_call'],
+        [/(line\.me|lin\.ee)/i, 'line_click'],
+        [/shopee\./i, 'shopee_click'],
+        [/(maps\.app\.goo\.gl|google\.[a-z.]+\/maps)/i, 'map_click']
+      ];
+      var h1 = document.querySelector('h1');
+      var pageName = (h1 ? h1.textContent : document.title).trim();
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a || typeof gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        for (var i = 0; i < PATTERNS.length; i++) {
+          if (PATTERNS[i][0].test(href)) {
+            gtag('event', PATTERNS[i][1], { page_name: pageName });
+            return;
+          }
+        }
+      }, { passive: true });
+    })();
   </script>
   <script>
     (function () {
