@@ -75,6 +75,12 @@ LOGO = "assets/images/logo.png"
 PHONE_DISPLAY = "(06) 290-7244"
 PHONE_TEL = "062907244"
 
+# 蝦皮總開關。關閉時全站不出現任何蝦皮連結（頁首資訊列、頁尾圖示、商品頁
+# 下單按鈕），商品卡片的「線上可購」標記也一併隱藏——沒有可下單的去處時，
+# 那個標記等於在騙人。商品的 shopee_url 資料不動，改回 True 就全部回來。
+SHOPEE_ENABLED = False
+SHOPEE_SHOP_URL = "https://shopee.tw/shop/8642264"
+
 # Google Analytics 4。改追蹤碼只需改這裡，全站頁面與手刻的 about 頁一起生效。
 GA_MEASUREMENT_ID = "G-JYEZY3YK74"
 GA_TAG = f"""  <!-- Google tag (gtag.js) -->
@@ -380,6 +386,18 @@ def load_products(brands, taxonomy=None):
 
 MAPS_URL = "https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA"
 
+# 蝦皮連結片段：SHOPEE_ENABLED 為 False 時整段變空字串，版面自動收合
+SHOPEE_INFOBAR_LINK = (f"""
+        <a class="intro-infobar-shopee" href="{SHOPEE_SHOP_URL}" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          蝦皮<span class="intro-infobar-shopee-text"> 咚滋商城</span>
+        </a>""" if SHOPEE_ENABLED else "")
+
+SHOPEE_FOOTER_LINK = (f"""
+          <a href="{SHOPEE_SHOP_URL}" target="_blank" rel="noopener" aria-label="蝦皮商城" title="蝦皮商城：咚滋商城">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.2 6.2C8.2 3.9 9.9 2 12 2s3.8 1.9 3.8 4.2"/><path d="M4.5 6.2h15l1 13.6a2.2 2.2 0 0 1-2.2 2.2H5.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M14.6 10.9c-.5-.7-1.5-1.2-2.6-1.2-1.4 0-2.6.8-2.6 1.9 0 1.2 1.1 1.6 2.6 2 1.5.4 2.8.9 2.8 2.2 0 1.2-1.3 2-2.8 2-1.2 0-2.3-.5-2.8-1.3"/></svg>
+          </a>""" if SHOPEE_ENABLED else "")
+
 
 def nav_links():
     # 導覽列：九大商品分類＋租賃專區（綠色強調，排在「其他」之後）；
@@ -465,10 +483,7 @@ def page_header(active_url=""):
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           LINE<span class="intro-infobar-line-text"> {PHONE_TEL}</span>
         </a>
-        <a class="intro-infobar-shopee" href="https://shopee.tw/shop/8642264" target="_blank" rel="noopener">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          蝦皮<span class="intro-infobar-shopee-text"> 咚滋商城</span>
-        </a>
+{SHOPEE_INFOBAR_LINK}
         <span class="intro-infobar-hours">營業 9:30–22:00（週日 10:00–17:00）</span>
       </div>
     </div>
@@ -491,9 +506,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
           <a href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener" aria-label="LINE" title="LINE：{PHONE_TEL}">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
           </a>
-          <a href="https://shopee.tw/shop/8642264" target="_blank" rel="noopener" aria-label="蝦皮商城" title="蝦皮商城：咚滋商城">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.2 6.2C8.2 3.9 9.9 2 12 2s3.8 1.9 3.8 4.2"/><path d="M4.5 6.2h15l1 13.6a2.2 2.2 0 0 1-2.2 2.2H5.7a2.2 2.2 0 0 1-2.2-2.2z"/><path d="M14.6 10.9c-.5-.7-1.5-1.2-2.6-1.2-1.4 0-2.6.8-2.6 1.9 0 1.2 1.1 1.6 2.6 2 1.5.4 2.8.9 2.8 2.2 0 1.2-1.3 2-2.8 2-1.2 0-2.3-.5-2.8-1.3"/></svg>
-          </a>
+{SHOPEE_FOOTER_LINK}
           <a class="intro-footer-social-desktop" href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook：{SITE_NAME}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
@@ -745,7 +758,8 @@ def badge_spans(product):
     marks = []
     if product["rentable"]:
         marks.append('<span class="cat-badge cat-badge-rent">可租賃</span>')
-    if "線上選購" in product["offering"]:
+    # 蝦皮關閉時站上沒有任何可下單的去處，再標「線上可購」等於誤導
+    if SHOPEE_ENABLED and "線上選購" in product["offering"]:
         marks.append('<span class="cat-badge cat-badge-online">線上可購</span>')
     if product["subsidy"]:
         marks.append('<span class="cat-badge cat-badge-subsidy">可申請補助</span>')
@@ -802,7 +816,7 @@ CATALOG_SEARCH_JS = """  <script>
         if (p.rentable) {
           badges += '<span class="cat-badge cat-badge-rent">可租賃</span>';
         }
-        if ((p.offering || []).indexOf('線上選購') !== -1) {
+        if (SHOPEE_ENABLED && (p.offering || []).indexOf('線上選購') !== -1) {
           badges += '<span class="cat-badge cat-badge-online">線上可購</span>';
         }
         if ((p.subsidy || []).length) {
@@ -863,7 +877,8 @@ CATALOG_SEARCH_JS = """  <script>
       });
     })();
   </script>
-"""
+""".replace("SHOPEE_ENABLED", "true" if SHOPEE_ENABLED else "false")
+# ↑ 這段是普通字串不是 f-string（內含大量 JS 大括號），故以字面替換注入開關值
 
 
 # 目前未使用：首頁聯絡資訊區塊已移除（資訊整合至頁尾）。
@@ -1673,7 +1688,7 @@ def build_product_pages(products):
 
         # 可網購且填了連結時，在電話按鈕下方補一個蝦皮下單的次要按鈕
         shopee_cta = ""
-        if "線上選購" in product["offering"] and product["shopee_url"]:
+        if SHOPEE_ENABLED and "線上選購" in product["offering"] and product["shopee_url"]:
             shopee_cta = (
                 f'              <a href="{esc(product["shopee_url"])}" class="cat-cta-shopee"'
                 f' target="_blank" rel="noopener noreferrer">\n'
