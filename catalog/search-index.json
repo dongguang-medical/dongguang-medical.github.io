@@ -425,8 +425,8 @@
       ],
       "rentable": false,
       "subsidy": [],
-      "price": 220,
-      "price_text": "NT$220～350",
+      "price": 350,
+      "price_text": "NT$350",
       "url": "/product/misc-26/",
       "image": "/assets/uploads/misc-26-1.jpg"
     },
@@ -477,7 +477,7 @@
       "rentable": false,
       "subsidy": [],
       "price": 165,
-      "price_text": "NT$165～250",
+      "price_text": "NT$165",
       "url": "/product/misc-29/",
       "image": "/assets/uploads/misc-29-1.jpg"
     },
@@ -494,7 +494,7 @@
       "rentable": false,
       "subsidy": [],
       "price": 220,
-      "price_text": "NT$220～350",
+      "price_text": "NT$220",
       "url": "/product/misc-3/",
       "image": "/assets/uploads/misc-3-1.jpg"
     },
@@ -533,7 +533,7 @@
       "image": "/assets/uploads/misc-31-1.jpg"
     },
     {
-      "name": "木製壓舌板（未滅菌）",
+      "name": "豐全 木製壓舌板（未滅菌）",
       "brand": "",
       "tags": [],
       "category": "其他",
@@ -544,8 +544,8 @@
       ],
       "rentable": false,
       "subsidy": [],
-      "price": 35,
-      "price_text": "NT$35～45",
+      "price": 45,
+      "price_text": "NT$45",
       "url": "/product/misc-32/",
       "image": "/assets/uploads/misc-32-1.jpg"
     },
@@ -616,6 +616,40 @@
       "price_text": "NT$49",
       "url": "/product/misc-36/",
       "image": "/assets/uploads/misc-36-1.jpg"
+    },
+    {
+      "name": "瑞玉 木製壓舌板（未滅菌）",
+      "brand": "",
+      "tags": [],
+      "category": "其他",
+      "subcategory": "醫療器械",
+      "offering": [
+        "線上選購",
+        "門市洽詢"
+      ],
+      "rentable": false,
+      "subsidy": [],
+      "price": 35,
+      "price_text": "NT$35",
+      "url": "/product/misc-37/",
+      "image": "/assets/uploads/misc-37-1.jpg"
+    },
+    {
+      "name": "不鏽鋼止血鉗 16cm",
+      "brand": "",
+      "tags": [],
+      "category": "其他",
+      "subcategory": "醫療器械",
+      "offering": [
+        "線上選購",
+        "門市洽詢"
+      ],
+      "rentable": false,
+      "subsidy": [],
+      "price": 250,
+      "price_text": "NT$250",
+      "url": "/product/misc-38/",
+      "image": "/assets/uploads/misc-38-1.jpg"
     },
     {
       "name": "SOHO BACK 舒活透氣雙背墊",
@@ -1462,8 +1496,8 @@
       ],
       "rentable": false,
       "subsidy": [],
-      "price": 139,
-      "price_text": "NT$139～290",
+      "price": 290,
+      "price_text": "NT$290",
       "url": "/product/respiratory-43/",
       "image": "/assets/uploads/respiratory-43-1.jpg"
     },
@@ -1519,6 +1553,57 @@
       "image": "/assets/uploads/supplies-101-1.jpg"
     },
     {
+      "name": "明傑 採血針 200入/盒（滅菌）",
+      "brand": "",
+      "tags": [],
+      "category": "照護耗材",
+      "subcategory": "血糖試紙與採血針",
+      "offering": [
+        "線上選購",
+        "門市洽詢"
+      ],
+      "rentable": false,
+      "subsidy": [],
+      "price": 175,
+      "price_text": "NT$175",
+      "url": "/product/supplies-102/",
+      "image": "/assets/uploads/supplies-102-1.jpg"
+    },
+    {
+      "name": "派頓 潔康75%酒精液 500ml（乙類成藥）",
+      "brand": "",
+      "tags": [],
+      "category": "照護耗材",
+      "subcategory": "消毒與清潔",
+      "offering": [
+        "線上選購",
+        "門市洽詢"
+      ],
+      "rentable": false,
+      "subsidy": [],
+      "price": 69,
+      "price_text": "NT$69",
+      "url": "/product/supplies-103/",
+      "image": "/assets/uploads/supplies-103-1.jpg"
+    },
+    {
+      "name": "華新 PVC無粉檢診手套 S/M/L（未滅菌）",
+      "brand": "",
+      "tags": [],
+      "category": "照護耗材",
+      "subcategory": "手套",
+      "offering": [
+        "線上選購",
+        "門市洽詢"
+      ],
+      "rentable": false,
+      "subsidy": [],
+      "price": 129,
+      "price_text": "NT$129",
+      "url": "/product/supplies-106/",
+      "image": "/assets/uploads/supplies-106-1.jpg"
+    },
+    {
       "name": "中衛 CSD Y型不織布紗布墊 3吋／4吋",
       "brand": "中衛 CSD",
       "tags": [],
@@ -1565,7 +1650,7 @@
       "rentable": false,
       "subsidy": [],
       "price": 164,
-      "price_text": "NT$164～175",
+      "price_text": "NT$164",
       "url": "/product/supplies-45/",
       "image": "/assets/uploads/supplies-45-1.jpg"
     },
@@ -1706,7 +1791,7 @@
       "image": "/assets/uploads/supplies-53-1.jpg"
     },
     {
-      "name": "醫強 克司博 75%酒精 500ml（乙類成藥）",
+      "name": "醫強 75%酒精液 500ml（乙類成藥）",
       "brand": "醫強",
       "tags": [],
       "category": "照護耗材",
@@ -1717,8 +1802,8 @@
       ],
       "rentable": false,
       "subsidy": [],
-      "price": 29,
-      "price_text": "NT$29～95",
+      "price": 69,
+      "price_text": "NT$69",
       "url": "/product/supplies-54/",
       "image": "/assets/uploads/supplies-54-1.jpg"
     },
@@ -1808,7 +1893,7 @@
       "image": "/assets/uploads/supplies-59-1.jpg"
     },
     {
-      "name": "三花 華新 PVC無粉檢診手套 S/M/L（未滅菌）",
+      "name": "三花 H3291 PVC無粉塑膠手套 S/M/L（未滅菌）",
       "brand": "三花 華新",
       "tags": [],
       "category": "照護耗材",
@@ -1820,7 +1905,7 @@
       "rentable": false,
       "subsidy": [],
       "price": 109,
-      "price_text": "NT$109～129",
+      "price_text": "NT$109～119",
       "url": "/product/supplies-60/",
       "image": "/assets/uploads/supplies-60-1.jpg"
     },

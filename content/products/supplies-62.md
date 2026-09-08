@@ -9,7 +9,7 @@ variants:
     price: 25
   - label: "大友"
     price: 28
-variant_label: "樣式"
+variant_label: "廠牌"
 brand: 龍勝
 offering:
   - 線上選購
@@ -19,7 +19,15 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/9754469041
 subsidy: []
 tags: []
-specs: []
+specs:
+  - label: 材質
+    value: "高密度聚乙烯"
+  - label: 尺寸
+    value: "單一尺寸"
+  - label: 保存期限
+    value: "15年"
+  - label: 產地
+    value: "台灣"
 images:
   - /assets/uploads/supplies-62-1.jpg
   - /assets/uploads/supplies-62-2.jpg
@@ -30,11 +38,6 @@ published: true
 source: shopee
 ---
 
-材質：高密度聚乙烯
-保存期限：15年
-製造地：台灣
-
-防塵、防污、輕便、靈活
-手套表面經特殊加工
-經濟耐用，可左右手混用
-單一尺寸
+- 防塵、防污、輕便、靈活
+- 手套表面經特殊加工
+- 經濟耐用，可左右手混用
