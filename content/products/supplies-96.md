@@ -19,9 +19,27 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/21722724553
 subsidy: []
 tags: []
+regulatory: |
+  許可證字號：衛署醫器輸壹字第001977號
+  許可證品名："愛樂康" 造口術用袋及其附件 (未滅菌)
+  持證藥商：和豐國際行銷股份有限公司
+  製造廠：M260431000 ALCARE CO., LTD., CHIBA FACTORY WEST
+  製造廠地址：36-2 CHIGUSA-CHO, HANAMIGAWA-KU, CHIBA-SHI, CHIBA, JAPAN
 specs:
-  - label: 包裝規格
-    value: 10入/盒
+  - label: 滅菌狀態
+    value: "未滅菌"
+  - label: 英文品名
+    value: "＂Alcare＂ Ostomy Pouch and Accessories (Non-Sterile)"
+  - label: 醫療器材級數
+    value: "第一等級"
+  - label: 主要成分
+    value: "卡拉亞膠、柑橘果膠、PE、PET、PP、PVDC、EVA"
+  - label: 尺寸（直徑）
+    value: "70mm"
+  - label: 保存期限
+    value: "5年"
+  - label: 產地
+    value: "日本"
 images:
   - /assets/uploads/supplies-96-1.jpg
   - /assets/uploads/supplies-96-2.jpg
@@ -29,30 +47,8 @@ published: true
 source: shopee
 ---
 
-商品規格：
--材質
-卡拉亞膠, 柑橘果膠, PE, PET, PP, PVDC, EVA
--尺寸(直徑)
-70mm
-產地:日本
+### 使用注意
 
-中文品名 : "愛樂康" 造口術用袋及其附件 (未滅菌)
-英文品名 : "Alcare" Ostomy Pouch and Accessories (Non-Sterile)
-衛署醫器輸壹字第001977號
-醫療器材級數 : 第一等級
-主要成分 : 卡拉亞膠, 柑橘果膠, PE, PET, PP, PVDC, EVA
-批號 : 如外包裝上所示
-製造日期 : 依批號前五碼-年月日(YMMDD)
-保存期限 : 5年
-使用注意 :
-1. 使用便袋前, 請清潔造口周圍皮膚
-2. 請避免黏貼面產生皺折, 以免導致滲漏
-3. 請勿置於陽光直射及高溫潮濕的場所
-製造商 : ALCARE CO., LTD., CHIBA FACTORY WEST
-製造廠廠址 : 36-2 CHIGUSA-CHO, HANAMIGAWA-KU, CHIBA-SHI, CHIBA, JAPAN
-製造廠國別 : JAPAN 日本製
-總代理進口商 : 和豐國際行銷股份有限公司
-地址 : 104 台北市中山區中山北路三段31號6樓
-
-提醒您：
--使用前請詳閱使用說明書-
+- 使用便袋前，請清潔造口周圍皮膚
+- 請避免黏貼面產生皺折，以免導致滲漏
+- 請勿置於陽光直射及高溫潮濕的場所

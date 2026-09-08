@@ -21,18 +21,18 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1440608300
 subsidy: []
 tags: []
-specs: []
+regulatory: |
+  許可證字號：衛署醫器製壹字第001990號
+  許可證品名：瑞特採血筆 (未滅菌)
+  持證藥商：華廣生技股份有限公司大慶廠
+  製造廠地址：臺中市南區大慶街2段100號
+specs:
+  - label: 滅菌狀態
+    value: "未滅菌"
+  - label: 包裝
+    value: "單支出貨，不含盒裝"
 images:
   - /assets/uploads/supplies-89-1.jpg
 published: true
 source: shopee
 ---
-
-全新單支出貨不含盒裝
-
-醫療器材許可證所載核准字號：衛署醫器製壹字第001990號
-醫療器材許可證所載品名：瑞特採血筆 (未滅菌)
-醫療器材許可證所載藥商名稱：華廣生技股份有限公司大慶廠
-製造廠名稱及地址：臺中市南區大慶街2段100號
-
-提醒您：

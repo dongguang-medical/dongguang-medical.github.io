@@ -12,8 +12,10 @@ shopee_url: https://shopee.tw/product/8642264/4248377938
 subsidy: []
 tags: []
 specs:
+  - label: 容量
+    value: "500cc"
   - label: 產地
-    value: 台灣製造
+    value: "台灣製造"
 images:
   - /assets/uploads/supplies-97-1.jpg
   - /assets/uploads/supplies-97-2.jpg
@@ -22,10 +24,9 @@ published: true
 source: shopee
 ---
 
-產品特色：
--特殊材料能立即吸收尿液並轉變成膠狀物質,避免尿液外洩。
--吸尿性強一只容量500cc。
--台灣製造品質安全耐用。
--適用於高速公路塞車或野外旅遊或行動不便人士
+### 產品特色
 
--消費者使用前應詳閱產品說明書
+- 特殊材料能立即吸收尿液並轉變成膠狀物質，避免尿液外洩
+- 吸尿性強
+- 品質安全耐用
+- 適用於高速公路塞車或野外旅遊或行動不便人士

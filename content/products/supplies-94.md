@@ -11,26 +11,23 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/14826772675
 subsidy: []
 tags: []
+regulatory: |
+  許可證字號：衛署醫器輸壹字第001977號
+  許可證品名："愛樂康" 造口術用袋及其附件 (未滅菌)
+  持證藥商：和豐國際行銷股份有限公司
+  製造廠：M260431000 ALCARE CO., LTD., CHIBA FACTORY WEST
+  製造廠地址：36-2 CHIGUSA-CHO, HANAMIGAWA-KU, CHIBA-SHI, CHIBA, JAPAN
 specs:
   - label: 滅菌狀態
-    value: 未滅菌
-  - label: 產地
-    value: 日本製
+    value: "未滅菌"
+  - label: 尺寸
+    value: "200mm*140mm"
+  - label: 數量
+    value: "30片/包"
+  - label: 有效期間
+    value: "3年"
 images:
   - /assets/uploads/supplies-94-1.jpg
 published: true
 source: shopee
 ---
-
-商品規格：
-尺寸：200mm*140mm
-數量:30片/包
-
-品名："愛樂康" 造口術用袋及其附件 (未滅菌)
-許可證核准字號：衛署醫器輸壹字第001977號
-藥商名稱：和豐國際行銷股份有限公司
-製造廠名稱: M260431000 ALCARE CO., LTD., CHIBA FACTORY WEST
-製造廠地址：36-2 CHIGUSA-CHO, HANAMIGAWA-KU, CHIBA-SHI, CHIBA, JAPAN
-有效期間:3年
-提醒您：
--使用前請詳閱使用說明書-

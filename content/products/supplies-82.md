@@ -11,20 +11,23 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047578202
 subsidy: []
 tags: []
+regulatory: |
+  許可證字號：衛署醫器輸壹字第001148號
+  許可證品名：愛樂康 醫用黏性繃帶 (未滅菌)
+  持證藥商：620118B424 和豐國際行銷股份有限公司
+  製造廠：M260431000 ALCARE CO., LTD., CHIBA FACTORY
+  製造廠地址：36-2 CHIGUSA-CHO, HANAMIGAWA-KU, CHIBA-SHI, CHIBA, JAPAN
 specs:
-  - label: 產地
-    value: 日本製
+  - label: 滅菌狀態
+    value: "未滅菌"
+  - label: 尺寸
+    value: "2.5cm x 10 m"
+  - label: 顏色
+    value: "白色"
+  - label: 包裝
+    value: "單卷"
 images:
   - /assets/uploads/supplies-82-1.jpg
 published: true
 source: shopee
 ---
-
-尺寸：2.5cm x 10 m (白色/單卷)
-
-醫療器材許可證所載核准字號：衛署醫器輸壹字第001148號
-醫療器材許可證所載品名：愛樂康 醫用黏性繃帶 (未滅菌)
-醫療器材許可證所載藥商名稱：620118B424 和豐國際行銷股份有限公司
-製造廠名稱及地址：M260431000 ALCARE CO., LTD., CHIBA FACTORY 36-2 CHIGUSA-CHO, HANAMIGAWA-KU, CHIBA-SHI, CHIBA, JAPAN
-
-提醒您：

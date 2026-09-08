@@ -12,8 +12,14 @@ shopee_url: https://shopee.tw/product/8642264/2255651713
 subsidy: []
 tags: []
 specs:
+  - label: 材質
+    value: "不鏽鋼"
+  - label: 數量
+    value: "1入"
+  - label: 適用
+    value: "1吋、半吋都通用"
   - label: 產地
-    value: 台灣製造
+    value: "台灣製造"
 images:
   - /assets/uploads/supplies-85-1.jpg
   - /assets/uploads/supplies-85-2.jpg
@@ -22,13 +28,8 @@ published: true
 source: shopee
 ---
 
-商品特色：
-不鏽鋼製
-方便撕取
-輕巧好上手
-新型專利切台
-1吋/半吋都通用
+### 商品特色
 
-數量:1入
-
-產地:台灣製造
+- 方便撕取
+- 輕巧好上手
+- 新型專利切台
