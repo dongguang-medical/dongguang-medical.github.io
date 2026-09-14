@@ -1474,6 +1474,16 @@
   font-size: 14px;
 }
 
+/* 首頁分類區的兩種面貌：寬螢幕給分類卡，手機直接列各類的商品
+   （手機上九張分類卡就是九塊只有標籤的版面，看不到東西） */
+.home-cat-products {
+  display: none;
+}
+
+.home-cat-products .cat-cat-block:last-child {
+  margin-bottom: 0;
+}
+
 /* 分類頁子分類輪播：一次四格 */
 .cat-sub-carousel {
   grid-auto-columns: calc((100% - 42px) / 4); /* 3 個 14px 間距 */
@@ -1601,4 +1611,8 @@
   .intro-cat-grid { grid-template-columns: 1fr; }
   .intro-footer-bottom { flex-direction: column; text-align: center; }
   .intro-backcta { padding: 24px 20px; }
+
+  /* 首頁：分類卡換成各類商品本身 */
+  .home-cats { display: none; }
+  .home-cat-products { display: block; }
 }

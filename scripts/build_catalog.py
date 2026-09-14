@@ -1070,7 +1070,11 @@ HOME_JSONLD_STORE = {
 
 FEATURED_FALLBACK_COUNT = 8
 
-CAROUSEL_JS = """  <script>
+# 首頁手機版每個分類先出幾項（其餘走「查看全部」進分類頁）。
+# 照護耗材有 63 項，全塞進首頁只是讓頁面變重，滑不完也沒人滑。
+HOME_CAT_PREVIEW = 12
+
+CAROUSEL_JS ="""  <script>
     (function () {
       document.querySelectorAll('.carousel-wrap').forEach(function (wrap) {
         var track = wrap.querySelector('.home-carousel');
@@ -1195,6 +1199,30 @@ def build_home_page(products):
             <span class="intro-cat-more">瀏覽商品 →</span>
           </a>""" for name, desc in CATEGORIES)
 
+    # 手機版改列出各類商品本身：分類卡在窄螢幕上只剩九塊佔版面的標籤，
+    # 要看到東西還得再點一層。每類先出 HOME_CAT_PREVIEW 項，其餘走「查看全部」。
+    cat_prod_blocks = []
+    for name, _desc in CATEGORIES:
+        items = [p for p in products if p["category"] == name]
+        if not items:
+            continue
+        cat_url = url_path(f"category/{name}/")
+        cards = "\n".join(product_card(p) for p in items[:HOME_CAT_PREVIEW])
+        cat_prod_blocks.append(f"""          <section class="cat-cat-block">
+            <div class="cat-cat-head">
+              <h2><a href="{cat_url}">{esc(name)}</a><span class="cat-cat-sub">{len(items)} 項</span></h2>
+              <a class="cat-cat-more" href="{cat_url}">查看全部 →</a>
+            </div>
+            <div class="carousel-wrap">
+              <button class="car-prev" aria-label="上一批">‹</button>
+              <div class="home-carousel">
+{cards}
+              </div>
+              <button class="car-next" aria-label="下一批">›</button>
+            </div>
+          </section>""")
+    cat_products = "\n".join(cat_prod_blocks)
+
     main = f"""    <div class="cat-section home-screen1">
       <div class="cat-container">
         <div class="cat-page-head home-hero-head">
@@ -1226,6 +1254,9 @@ def build_home_page(products):
 {cat_cards}
           </div>
         </section>
+        <div class="home-cat-products">
+{cat_products}
+        </div>
       </div>
     </div>
 """
