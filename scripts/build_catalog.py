@@ -1140,8 +1140,78 @@ def pick_featured(products):
     return feats
 
 
+CAT_ICONS = {
+    "行動輔具": '<circle cx="7" cy="17" r="4"/><circle cx="17" cy="19" r="2"/><path d="M7 13V5h2l5 6h3l2 4"/>',
+    "臥床照護": '<path d="M2 17V7"/><path d="M2 13h20v4"/><path d="M2 11h7a3 3 0 0 1 3 3"/><circle cx="6" cy="9" r="1.6"/>',
+    "衛浴與居家安全": '<path d="M4 12h16v2a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z"/><path d="M6 12V6a3 3 0 0 1 6 0"/><path d="M15 8l1.5-1.5M17 11l2-.5M16 5l.5-2"/>',
+    "呼吸照護": '<path d="M9 4v8a4 4 0 0 1-8 0"/><path d="M15 4v8a4 4 0 0 0 8 0"/><path d="M12 3v12"/><circle cx="12" cy="18" r="2.4"/>',
+    "健康量測": '<path d="M3 12h4l2-6 4 12 2-6h6"/>',
+    "復健理療": '<path d="M6 3v18M18 3v18"/><path d="M6 8h12M6 16h12"/>',
+    "照護耗材": '<path d="M4 8l8-5 8 5v8l-8 5-8-5z"/><path d="M4 8l8 5 8-5M12 13v8"/>',
+    "營養保健": '<rect x="7" y="8" width="10" height="13" rx="3"/><path d="M9 8V5h6v3M9 13h6"/>',
+    "其他": '<circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>',
+}
+
+
+def cat_icon_sm(name):
+    """分類名稱左側的小圖示。"""
+    path = CAT_ICONS.get(name, "")
+    return (f'<span class="intro-cat-ic-sm"><svg width="17" height="17" viewBox="0 0 24 24" '
+            f'fill="none" stroke="currentColor" stroke-width="1.9" '
+            f'stroke-linecap="round" stroke-linejoin="round">{path}</svg></span>')
+
+
+def cat_chips(name):
+    """子分類標籤：清楚示意每類實際有哪些品項（最多五個，其餘 +N）。"""
+    subs = NAV_SUBS.get(name, [])
+    if not subs:
+        return ""
+    shown = subs[:5]
+    more = (f'<span class="intro-cat-chip intro-cat-chip-more">+{len(subs)-5}</span>'
+            if len(subs) > 5 else "")
+    return ('<span class="intro-cat-chips">'
+            + "".join(f'<span class="intro-cat-chip">{esc(s)}</span>' for s in shown)
+            + more + "</span>")
+
+
+def category_cards(products):
+    """九大分類的卡片（分類頁用）。"""
+    counts = {c: sum(1 for p in products if p["category"] == c)
+              for c in CATEGORY_NAMES}
+    return "\n".join(f"""          <a class="intro-cat-card" href="{url_path(f"category/{name}/")}">
+            <h3>{cat_icon_sm(name)}{esc(name)}<span class="intro-cat-count">{counts[name]} 項</span></h3>
+            {cat_chips(name)}
+            <span class="intro-cat-more">瀏覽商品 →</span>
+          </a>""" for name, _desc in CATEGORIES)
+
+
+def category_product_blocks(products, limit):
+    """依主分類分區的商品輪播，每類最多 limit 項。空分類不輸出。"""
+    blocks = []
+    for name, _desc in CATEGORIES:
+        items = [p for p in products if p["category"] == name]
+        if not items:
+            continue
+        cat_url = url_path(f"category/{name}/")
+        cards = "\n".join(product_card(p) for p in items[:limit])
+        blocks.append(f"""          <section class="cat-cat-block">
+            <div class="cat-cat-head">
+              <h2><a href="{cat_url}">{esc(name)}</a><span class="cat-cat-sub">{len(items)} 項</span></h2>
+              <a class="cat-cat-more" href="{cat_url}">查看全部 →</a>
+            </div>
+            <div class="carousel-wrap">
+              <button class="car-prev" aria-label="上一批">‹</button>
+              <div class="home-carousel">
+{cards}
+              </div>
+              <button class="car-next" aria-label="下一批">›</button>
+            </div>
+          </section>""")
+    return "\n".join(blocks)
+
+
 def build_home_page(products):
-    """首頁：資訊列（醫院對面）→ 搜尋 → 熱銷輪播 → 分類卡 → 聯絡資訊。"""
+    """首頁：資訊列（醫院對面）→ 搜尋 → 熱銷輪播 → 各分類商品 → 聯絡資訊。"""
     featured = pick_featured(products)
     carousel = "\n".join(product_card(p) for p in featured)
     feat_section = ""
@@ -1159,69 +1229,9 @@ def build_home_page(products):
           </div>
         </section>"""
 
-    cat_counts = {c: sum(1 for p in products if p["category"] == c)
-                  for c in CATEGORY_NAMES}
-
-    CAT_ICONS = {
-        "行動輔具": '<circle cx="7" cy="17" r="4"/><circle cx="17" cy="19" r="2"/><path d="M7 13V5h2l5 6h3l2 4"/>',
-        "臥床照護": '<path d="M2 17V7"/><path d="M2 13h20v4"/><path d="M2 11h7a3 3 0 0 1 3 3"/><circle cx="6" cy="9" r="1.6"/>',
-        "衛浴與居家安全": '<path d="M4 12h16v2a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6z"/><path d="M6 12V6a3 3 0 0 1 6 0"/><path d="M15 8l1.5-1.5M17 11l2-.5M16 5l.5-2"/>',
-        "呼吸照護": '<path d="M9 4v8a4 4 0 0 1-8 0"/><path d="M15 4v8a4 4 0 0 0 8 0"/><path d="M12 3v12"/><circle cx="12" cy="18" r="2.4"/>',
-        "健康量測": '<path d="M3 12h4l2-6 4 12 2-6h6"/>',
-        "復健理療": '<path d="M6 3v18M18 3v18"/><path d="M6 8h12M6 16h12"/>',
-        "照護耗材": '<path d="M4 8l8-5 8 5v8l-8 5-8-5z"/><path d="M4 8l8 5 8-5M12 13v8"/>',
-        "營養保健": '<rect x="7" y="8" width="10" height="13" rx="3"/><path d="M9 8V5h6v3M9 13h6"/>',
-        "其他": '<circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>',
-    }
-
-    def cat_icon_sm(name):
-        """分類名稱左側的小圖示。"""
-        path = CAT_ICONS.get(name, "")
-        return (f'<span class="intro-cat-ic-sm"><svg width="17" height="17" viewBox="0 0 24 24" '
-                f'fill="none" stroke="currentColor" stroke-width="1.9" '
-                f'stroke-linecap="round" stroke-linejoin="round">{path}</svg></span>')
-
-    def cat_chips(name):
-        """子分類標籤：清楚示意每類實際有哪些品項（最多五個，其餘 +N）。"""
-        subs = NAV_SUBS.get(name, [])
-        if not subs:
-            return ""
-        shown = subs[:5]
-        more = (f'<span class="intro-cat-chip intro-cat-chip-more">+{len(subs)-5}</span>'
-                if len(subs) > 5 else "")
-        return ('<span class="intro-cat-chips">'
-                + "".join(f'<span class="intro-cat-chip">{esc(s)}</span>' for s in shown)
-                + more + "</span>")
-
-    cat_cards = "\n".join(f"""          <a class="intro-cat-card" href="{url_path(f"category/{name}/")}">
-            <h3>{cat_icon_sm(name)}{esc(name)}<span class="intro-cat-count">{cat_counts[name]} 項</span></h3>
-            {cat_chips(name)}
-            <span class="intro-cat-more">瀏覽商品 →</span>
-          </a>""" for name, desc in CATEGORIES)
-
-    # 手機版改列出各類商品本身：分類卡在窄螢幕上只剩九塊佔版面的標籤，
-    # 要看到東西還得再點一層。每類先出 HOME_CAT_PREVIEW 項，其餘走「查看全部」。
-    cat_prod_blocks = []
-    for name, _desc in CATEGORIES:
-        items = [p for p in products if p["category"] == name]
-        if not items:
-            continue
-        cat_url = url_path(f"category/{name}/")
-        cards = "\n".join(product_card(p) for p in items[:HOME_CAT_PREVIEW])
-        cat_prod_blocks.append(f"""          <section class="cat-cat-block">
-            <div class="cat-cat-head">
-              <h2><a href="{cat_url}">{esc(name)}</a><span class="cat-cat-sub">{len(items)} 項</span></h2>
-              <a class="cat-cat-more" href="{cat_url}">查看全部 →</a>
-            </div>
-            <div class="carousel-wrap">
-              <button class="car-prev" aria-label="上一批">‹</button>
-              <div class="home-carousel">
-{cards}
-              </div>
-              <button class="car-next" aria-label="下一批">›</button>
-            </div>
-          </section>""")
-    cat_products = "\n".join(cat_prod_blocks)
+    # 首頁直接列各分類的商品，不再放分類卡——分類卡只是名稱與子分類標籤，
+    # 要看到東西還得再點一層。純分類目錄移到 /category/。
+    cat_products = category_product_blocks(products, HOME_CAT_PREVIEW)
 
     main = f"""    <div class="cat-section home-screen1">
       <div class="cat-container">
@@ -1246,17 +1256,10 @@ def build_home_page(products):
 
     <div class="cat-section home-screen2 search-hide" id="categories">
       <div class="cat-container">
-        <section class="home-cats">
-          <div class="cat-cat-head">
-            <h2>商品分類</h2>
-          </div>
-          <div class="intro-cat-grid">
-{cat_cards}
-          </div>
-        </section>
         <div class="home-cat-products">
 {cat_products}
         </div>
+        <p class="home-cat-all"><a href="/category/">查看全部商品分類 →</a></p>
       </div>
     </div>
 """
@@ -1287,6 +1290,53 @@ def build_home_page(products):
                    'content="c2vod6zryQNa5_kj1qKnbEpmSReGXSjPSgtubfUTuUw">',
     )
     (ROOT / "index.html").write_text(html_out, encoding="utf-8")
+
+
+def build_categories_page(products):
+    """商品分類總覽：九大分類的卡片，各頁麵包屑的「商品分類」落點。"""
+    total = sum(1 for p in products)
+    bc = [("商品分類", None)]
+    main = f"""    <div class="cat-section">
+      <div class="cat-container">
+        {breadcrumb(bc)}
+        <div class="cat-page-head">
+          <h1>商品分類</h1>
+          <p>共 {total} 項商品，分為九大類。點入分類可依子分類瀏覽，或直接使用
+             <a href="/">首頁搜尋</a>找特定品名、品牌。</p>
+        </div>
+        <div class="intro-cat-grid">
+{category_cards(products)}
+        </div>
+      </div>
+    </div>
+"""
+    desc = (f"東光醫療器材商品分類總覽：行動輔具、臥床照護、衛浴與居家安全、呼吸照護、"
+            f"健康量測、復健理療、照護耗材等九大類共 {total} 項商品。"
+            f"台南醫療輔具租賃與販售，歡迎來電 {PHONE_DISPLAY} 洽詢。")
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                "name": f"商品分類 — {SITE_NAME}",
+                "url": BASE_URL + "/category/",
+                "description": desc,
+            },
+            breadcrumb_jsonld(bc),
+        ],
+    }
+    html_out = render_page(
+        title=f"商品分類 — {SITE_NAME}",
+        description=desc,
+        path="category/",
+        og_type="website",
+        og_image=f"{BASE_URL}/{LOGO}",
+        jsonld=jsonld,
+        main_html=main,
+    )
+    out = ROOT / "category" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html_out, encoding="utf-8")
 
 
 def build_catalog_redirect():
@@ -1359,7 +1409,7 @@ def build_category_pages(products):
             content = (f'<div class="cat-empty">此分類商品陸續上架中，門市備有多款現貨。<br>'
                        f'歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 洽詢庫存與租賃方案。</div>')
 
-        bc = [("商品分類", "/#categories"), (cat_name, None)]
+        bc = [("商品分類", "/category/"), (cat_name, None)]
         main = f"""    <div class="cat-section">
       <div class="cat-container">
         {breadcrumb(bc)}
@@ -1408,7 +1458,7 @@ def build_subcategory_pages(products):
             content = ('<div class="cat-grid">'
                        + "\n".join(product_card(p) for p in items)
                        + "</div>")
-            bc = [("商品分類", "/#categories"), (cat_name, cat_url), (sub, None)]
+            bc = [("商品分類", "/category/"), (cat_name, cat_url), (sub, None)]
             main = f"""    <div class="cat-section">
       <div class="cat-container">
         {breadcrumb(bc)}
@@ -1819,7 +1869,7 @@ def build_product_pages(products):
 """
 
         cat_url = url_path(f"category/{product['category']}/")
-        bc = [("商品分類", "/#categories"),
+        bc = [("商品分類", "/category/"),
               (product["category"], cat_url), (product["name"], None)]
 
         main = f"""    <div class="cat-section">
@@ -1913,7 +1963,7 @@ def build_brand_pages(products, brands):
                          f' rel="noopener noreferrer">{esc(brand["website"])}</a></p>')
         note = md_to_html(brand["body"])
 
-        bc = [("商品分類", "/#categories"), (brand["name"], None)]
+        bc = [("商品分類", "/category/"), (brand["name"], None)]
         main = f"""    <div class="cat-section">
       <div class="cat-container">
         {breadcrumb(bc)}
@@ -2131,7 +2181,7 @@ def build_subsidy_page():
 
 def build_sitemap(products, brand_slugs=()):
     today = date.today().isoformat()
-    paths = ["", "rental/", "about/", "subsidy/"]
+    paths = ["", "category/", "rental/", "about/", "subsidy/"]
     paths += [f"category/{c}/" for c in CATEGORY_NAMES]
     paths += [f"category/{c}/{sub}/"
               for c in CATEGORY_NAMES for sub in NAV_SUBS.get(c, [])]
@@ -2264,6 +2314,7 @@ def main():
 
     build_home_page(products)
     build_catalog_redirect()
+    build_categories_page(products)
     build_category_pages(products)
     build_subcategory_pages(products)
     build_rental_page(products)
@@ -2276,9 +2327,10 @@ def main():
     sync_about_chrome()
 
     rentable = sum(1 for p in products if p["rentable"])
-    pages = 3 + len(CATEGORIES) + len(brand_slugs) + len(products)
-    print(f"✅ 產生完成：{pages} 個頁面（首頁目錄 + 1 租賃專區 + 1 補助試算 + {len(CATEGORIES)} 分類 + "
-          f"{len(brand_slugs)} 品牌 + {len(products)} 商品）、sitemap.xml、search-index.json")
+    pages = 4 + len(CATEGORIES) + len(brand_slugs) + len(products)
+    print(f"✅ 產生完成：{pages} 個頁面（首頁 + 1 分類總覽 + 1 租賃專區 + 1 補助試算 + "
+          f"{len(CATEGORIES)} 分類 + {len(brand_slugs)} 品牌 + {len(products)} 商品）、"
+          "sitemap.xml、search-index.json")
     print(f"   其中可租賃 {rentable} 項")
 
 
