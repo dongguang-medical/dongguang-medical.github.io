@@ -738,12 +738,10 @@
   color: var(--color-text-secondary);
 }
 
-/* 販售藥商資訊：每頁相同，比商品自己的標示再淡一階 */
+/* 販售藥商資訊：每頁相同，但與商品自己的標示同一組資料，字級顏色一致 */
 .cat-legal-store {
   margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--color-border-light);
-  color: var(--color-text-muted);
+  color: inherit;
 }
 
 /* Related products */
