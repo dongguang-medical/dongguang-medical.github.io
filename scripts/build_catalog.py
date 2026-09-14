@@ -1294,16 +1294,12 @@ def build_home_page(products):
 
 def build_categories_page(products):
     """商品分類總覽：九大分類的卡片，各頁麵包屑的「商品分類」落點。"""
-    total = sum(1 for p in products)
+    total = len(products)
     bc = [("商品分類", None)]
     main = f"""    <div class="cat-section">
       <div class="cat-container">
         {breadcrumb(bc)}
-        <div class="cat-page-head">
-          <h1>商品分類</h1>
-          <p>共 {total} 項商品，分為九大類。點入分類可依子分類瀏覽，或直接使用
-             <a href="/">首頁搜尋</a>找特定品名、品牌。</p>
-        </div>
+        <h1 class="visually-hidden">商品分類</h1>
         <div class="intro-cat-grid">
 {category_cards(products)}
         </div>
