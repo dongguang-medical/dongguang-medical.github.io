@@ -2029,7 +2029,7 @@ def build_subsidy_page():
 
           <header class="sub-intro">
             <h1>台南長照輔具補助試算</h1>
-            <p>依中央「長期照顧服務申請及給付辦法」試算長照輔具及居家無障礙環境改善服務（第一組 E、F 碼）的購買與修繕補助金額，並可產生台南市格式的「長照輔具服務給付證明暨契約書」列印或下載。</p>
+            <p>依中央「長期照顧服務申請及給付辦法」試算長照輔具及居家無障礙環境改善服務（第一組 E、F 碼）的購買與修繕補助金額，並可產生台南市格式的「長照輔具服務給付證明暨契約書」Word 檔。</p>
             <div class="sub-basis">
               <span>第一組 E、F 碼</span>
               <span>每 3 年 4 萬元額度</span>
@@ -2118,8 +2118,7 @@ def build_subsidy_page():
             <div class="sub-note" id="sbWarn" hidden></div>
 
             <div class="sub-actions">
-              <button type="button" class="sub-btn-main" id="sbPrint">產生正式給付證明並列印</button>
-              <button type="button" class="sub-btn-ghost" id="sbWord"
+              <button type="button" class="sub-btn-main" id="sbWord"
                       data-template="/assets/templates/certificate-template.json?v={SUBSIDY_ASSET_VERSION}">下載 Word 版給付證明</button>
             </div>
             <div class="sub-note" id="sbMsg" hidden></div>
@@ -2135,8 +2134,6 @@ def build_subsidy_page():
         </div>
       </div>
     </div>
-
-    <div class="sub-print" id="sbPrintArea" aria-hidden="true"></div>
 """
 
     desc = ("台南長照輔具補助試算：依長期照顧服務申請及給付辦法附表四、附表五，"

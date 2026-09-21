@@ -103,6 +103,108 @@
     {c:"FA44",n:"居家無障礙設備-移動式身體清洗槽-全身型",p:5000,y:3,u:"組",g:"居家無障礙環境改善（F碼）"}
   ];
 
+  /* 檔名用的品項簡寫：沿用門市 115 年 1 至 9 月的命名習慣
+     （檔名購買備註習慣分析）。照顧床的附加功能不另外寫，輪椅附加功能
+     以 +A、+B、+C 接在輪椅後面；沒有慣用寫法的就取品項名稱前幾個字。 */
+  var ABBR = {
+    "便盆椅": "便",
+    "沐浴椅": "沐",
+    "馬桶增高器": "馬增",
+    "單支枴杖-不銹鋼製": "拐",
+    "單支枴杖-鋁製": "拐",
+    "助行器": "助",
+    "帶輪型助步車（助行椅）": "助車",
+    "輪椅-A款（非輕量化量產型）": "輪A",
+    "輪椅-B款（輕量化量產型）": "輪B",
+    "輪椅-C款（量身訂製型）": "輪C",
+    "輪椅附加功能-A款（具利於移位功能）": "+A",
+    "輪椅附加功能-B款（具仰躺功能）": "+B",
+    "輪椅附加功能-C款（具空中傾倒功能）": "+C",
+    "擺位系統-A款（平面型輪椅背靠）": "擺A",
+    "擺位系統-B款（曲面適形輪椅背靠）": "擺B",
+    "擺位系統-C款（輪椅軀幹側支撐架）": "擺C",
+    "擺位系統-D款（輪椅頭靠系統）": "擺D",
+    "移位腰帶": "腰",
+    "移位板": "板",
+    "人力移位吊帶": "吊帶",
+    "移位滑墊-A款": "滑A",
+    "移位滑墊-B款": "滑B",
+    "移位轉盤": "轉盤",
+    "移位機": "移位機",
+    "移位機吊帶": "機吊帶",
+    "電話擴音器": "擴音",
+    "電話閃光震動器": "閃震",
+    "火警閃光警示器": "火警",
+    "門鈴閃光器": "門鈴",
+    "無線震動警示器": "震動",
+    "衣著用輔具": "衣著",
+    "居家用生活輔具": "生活",
+    "飲食用輔具": "飲食",
+    "氣墊床-A款": "氣A",
+    "氣墊床-B款": "氣",
+    "輪椅座墊-A款（連通管型氣囊氣墊座-塑膠材質）": "座款",
+    "輪椅座墊-B款（連通管型氣囊氣墊座-橡膠材質）": "座款",
+    "輪椅座墊-C款（液態凝膠座墊）": "座款",
+    "輪椅座墊-D款（固態凝膠座墊）": "座款",
+    "輪椅座墊-E款（填充式氣囊氣墊座）": "座款",
+    "輪椅座墊-F款（交替充氣型座墊）": "座款",
+    "輪椅座墊-G款（量製型座墊）": "座款",
+    "居家用照顧床": "床",
+    "居家用照顧床-附加功能A款（床面升降功能）": "",
+    "居家用照顧床-附加功能B款（電動升降功能）": "",
+    "居家無障礙修繕-反光貼條或消光處理": "反光貼條",
+    "居家無障礙修繕-水龍頭(單處)（新增、改換）": "水龍頭",
+    "居家無障礙修繕-改善洗臉台（槽）(單處)（新增、改換、移除-含原處填補）": "改善洗臉",
+    "居家無障礙修繕-壁掛式淋浴台(單處)": "壁掛式淋",
+    "居家無障礙修繕-改善流理台(單處)（新增、改換）": "改善流理",
+    "居家無障礙修繕-改善抽油煙機(單處)（位置調整）": "改善抽油",
+    "居家無障礙修繕-固定式扶手(每十公分)": "固定式扶",
+    "居家無障礙修繕-可動式扶手(單支)": "可動式扶",
+    "居家無障礙設備-床邊扶手(單處)": "床邊扶手",
+    "居家無障礙設備-門檻斜角(單側)": "門檻斜角",
+    "居家無障礙設備-非固定式斜坡板A款": "非固定式",
+    "居家無障礙設備-非固定式斜坡板B款": "非固定式",
+    "居家無障礙設備-非固定式斜坡板C款": "非固定式",
+    "居家無障礙設備-非固定式斜坡板D款": "非固定式",
+    "居家無障礙修繕-改善高低差(高度十公分以下)(單處)": "改善高低",
+    "居家無障礙修繕-改善高低差(高度二十公分以下)(單處)": "改善高低",
+    "居家無障礙修繕-改善高低差(高度三十公分以下)(單處)": "改善高低",
+    "居家無障礙修繕-改善高低差(高度超過三十公分)(單處)": "改善高低",
+    "居家無障礙修繕-防滑地磚(單處)": "防滑地磚",
+    "居家無障礙設備-防滑措施": "防滑措施",
+    "居家無障礙修繕-隔間(每平方公尺)(新增)": "隔間",
+    "居家無障礙修繕-門簡易型(單處)": "門簡易型",
+    "居家無障礙修繕-門進階型(單處)": "門進階型",
+    "居家無障礙修繕-截水槽(單處)": "截水槽",
+    "居家無障礙修繕-改善浴缸(單處)（新增、改換、移除-含原處填補）": "改善浴缸",
+    "居家無障礙修繕-改善馬桶(單處)（新增、改換、移除-含原處填補）": "改善馬桶",
+    "居家無障礙修繕-馬桶背靠(單處)": "馬桶背靠",
+    "居家無障礙設備-移動式身體清洗槽-局部型": "移動式身",
+    "居家無障礙設備-移動式身體清洗槽-全身型": "移動式身",
+  };
+
+  /* 常用產品型號：由 115 年 1 至 9 月實際送件的 Word 表格整理，去重後 65 種。
+     選單只是候選，型號欄仍可自行輸入。 */
+  var MODELS = {
+    "便盆椅": ["FZK-4301", "FZK-4527", "FZK-4221", "FZK-4330", "FZK-4316", "FZK-4542", "FZK-4306", "FZK-4316+", "FZK-4547"],
+    "輪椅-B款（輕量化量產型）": ["KM-2501", "飛揚100", "KM-1505", "仰樂多2", "舒弧105", "飛揚105", "JW-150", "KM-2500", "AGL", "KM-2500L", "KM-5001", "ERG3", "舒弧205", "仰樂多515", "飛揚825", "飛揚215"],
+    "沐浴椅": ["FZK-185", "FZK-0013", "YC-H178", "FZK-0015", "YC-H189", "YC-H185", "ER-50005", "FZK-189", "YC-H168"],
+    "單支枴杖-不銹鋼製": ["FZK-2101"],
+    "助行器": ["FZK-3430", "FZK-3134", "FZK-3428", "FZK-3431", "FZK-3133", "FZK-3429", "YC-H158", "4080推推 GO5.5"],
+    "單支枴杖-鋁製": ["FZK-2201", "YC-932", "FZK-2057", "ER2038", "FZK-2053"],
+    "居家用照顧床": ["YJ-705A", "YJ-701A"],
+    "移位腰帶": ["JM-230"],
+    "移位板": ["EZ-510"],
+    "氣墊床-B款": ["多美適 悠悅", "多美適3"],
+    "移位滑墊-B款": ["EZ-100"],
+    "輪椅座墊-C款（液態凝膠座墊）": ["GEL-SEAT-027L", "GEL-SEAT-027M"],
+    "帶輪型助步車（助行椅）": ["STAR", "FZK-833", "STAR mini", "ShawnSure"],
+    "輪椅座墊-B款（連通管型氣囊氣墊座-橡膠材質）": ["P06-4540-2"],
+    "馬桶增高器": ["LUXI"],
+    "輪椅座墊-D款（固態凝膠座墊）": ["GEL-SRAT-023L"],
+    "移位滑墊-A款": ["EZ-221"],
+  };
+
   /* 選了居家用照顧床，附加功能 A、B 款一定一起申報，自動補上兩列，
      並讓廠牌、型號、序號跟著主體同步（對照表註記「一定一起出現」）。 */
   var BED_BASE = "居家用照顧床";
@@ -338,7 +440,10 @@
       '</div>' +
       '<div class="sub-grid sub-g4" style="margin-top:12px">' +
         '<div><label for="sbBrand' + r + '">產品廠牌</label><input id="sbBrand' + r + '" placeholder="廠牌" data-prod="' + r + '"></div>' +
-        '<div><label for="sbModel' + r + '">產品型號</label><input id="sbModel' + r + '" placeholder="型號" data-prod="' + r + '"></div>' +
+        '<div><label for="sbModel' + r + '">產品型號</label>' +
+          '<input id="sbModel' + r + '" placeholder="型號，可直接輸入" data-prod="' + r + '"' +
+            ' list="sbModelList' + r + '" autocomplete="off">' +
+          '<datalist id="sbModelList' + r + '"></datalist></div>' +
         '<div><label for="sbSerial' + r + '">產品序號</label><input id="sbSerial' + r + '" placeholder="序號" data-prod="' + r + '"></div>' +
         '<div>' +
           '<label for="sbPrice' + r + '">實際購買金額（元）</label>' +
@@ -384,12 +489,24 @@
       : "＋ 新增第 " + (n + 1) + " 筆明細";
   }
 
+  /* 型號欄：同一個欄位既可下拉挑常用型號，也可以直接打字。
+     用原生 datalist，選單內容隨品項換；沒有紀錄的品項就不給候選。 */
+  function fillModelList(r, itemName) {
+    var list = $("sbModelList" + r);
+    if (!list) return;
+    var models = itemName && MODELS[itemName] ? MODELS[itemName] : [];
+    list.innerHTML = models.map(function (m) {
+      return '<option value="' + esc(m) + '"></option>';
+    }).join("");
+  }
+
   function onItemChange(r) {
     var sel = $("sbItem" + r);
     var meta = $("sbMeta" + r);
     var limit = $("sbLimit" + r);
 
     if (sel.value === "") {
+      fillModelList(r, null);
       meta.textContent = "";
       limit.value = "";
       limit.dataset.auto = "1";
@@ -404,6 +521,7 @@
                        (it.f ? "　·　免部分負擔" : "");
     limit.value = it.p * qty;
     limit.dataset.auto = "1";
+    fillModelList(r, it.n);
     if (it.n === BED_BASE) addBedAddons(r);
     calculate(false);
   }
@@ -563,6 +681,7 @@
         no: i + 1,
         /* 碼別只作為資料鍵，不出現在網頁與產出的文件上 */
         name: row.item.n + (row.qty > 1 ? "　×" + row.qty + row.item.u : ""),
+        itemName: row.item.n,
         photoGroup: row.item.pg || null,
         brand: row.brand,
         model: row.model,
@@ -596,18 +715,6 @@
      行距與中文斷行無法與 Word 完全一致，正式送件請用 Word 檔。
      ---------------------------------------------------------------- */
 
-  /* 空段落：高度由該段落標記的字級與行距決定，用來還原垂直節奏 */
-  function gap(sizePt, lineHeight) {
-    return '<p class="s-gap" style="font-size:' + sizePt + 'pt' +
-           (lineHeight ? ";line-height:" + lineHeight : "") + '"></p>';
-  }
-  /* 填寫欄位：底線寬度以字數估算，維持與範本相近的欄位長度 */
-  function ul(value, minChars, cls) {
-    var text = String(value == null ? "" : value);
-    return '<span class="u' + (cls ? " " + cls : "") +
-           '" style="min-width:' + minChars + 'em">' +
-           (text ? esc(text) : "&nbsp;") + "</span>";
-  }
 
   /* 依 photoGroup 把明細分組：同組共用一張照片頁，沒有分組的各自一頁。
      以首次出現的順序排列，不要求相鄰。 */
@@ -621,108 +728,6 @@
       out.push(g);
     });
     return out;
-  }
-
-  function buildSheets(cert) {
-    /* 範本本身留了兩列空白供手寫，程式填表用不到，只列實際筆數 */
-    var rows = "";
-    for (var i = 0; i < cert.rows.length; i++) {
-      var r = cert.rows[i];
-      rows += "<tr>" +
-        '<td class="c0">' + (r ? i + 1 + "." : "&nbsp;") + "</td>" +
-        "<td>" + (r ? esc(r.name) : "") + "</td>" +
-        "<td>" + (r ? esc(r.brand) : "") + "</td>" +
-        "<td>" + (r ? esc(r.model) : "") + "</td>" +
-        "<td>" + (r ? esc(r.serial) : "") + "</td>" +
-        "<td>" + (r ? money(r.price) : "") + "</td>" +
-        "<td>" + (r ? money(r.gov) : "") + "</td>" +
-        "<td>" + (r ? money(r.self) : "") + "</td>" +
-        "</tr>";
-    }
-
-    /* 版面結構取自實際核銷件（0805、0816）與範本的比對：
-       表格變高時，「立契約人」以下的下半部位置幾乎不動，變動全部由
-       「台南市政府衛生局」與「立契約人」之間的空白吸收。因此上半部
-       自然流動、中間留彈性空白、下半部貼齊頁尾，明細變多也不會分頁。 */
-    var html =
-      '<div class="sub-sheet">' +
-        '<div class="s-top">' +
-          gap(14) +
-          '<p class="s-title">長照輔具服務給付證明暨契約書</p>' +
-          gap(12) +
-          '<p class="s-intro">本人' + ul(cert.applicant, 6) +
-            "確已收到 " + ul(cert.vendor, 10) +
-            " 販售（或修繕）之輔助器具，明細如下表，本人同意經廠商申報下列輔具給付額度後，" +
-            "自本人長照輔具服務額度中扣除，所請代辦之憑證若經縣市政府查核有不符規定情事，" +
-            "願自行負擔購買費用，且如涉及詐欺或其他不法行為請領給付費用，" +
-            "願負一切法律責任，絕無異議。</p>" +
-          gap(10, "var(--ls-360)") +
-          '<p class="s-dhead">購買明細：<span class="unit">單位：元</span></p>' +
-          gap(12) +
-          '<table class="s-table"><colgroup>' +
-            '<col style="width:35.85pt"><col style="width:97.25pt">' +
-            '<col style="width:49.6pt"><col style="width:74.3pt">' +
-            '<col style="width:84.95pt"><col style="width:58.55pt">' +
-            '<col style="width:58.6pt"><col style="width:85.15pt">' +
-          "</colgroup><thead><tr>" +
-            "<th>編號</th><th>輔具/環境改善<br>項目名稱</th>" +
-            "<th>產品廠牌</th><th>產品型號</th><th>產品序號</th>" +
-            "<th>購買金額</th><th>給付金額</th><th>民眾部分負擔</th>" +
-          "</tr></thead><tbody>" + rows + "</tbody></table>" +
-          gap(12) +
-          '<p class="s-note">註：購買金額應等於申請給付金額及民眾部分負擔之加總。</p>' +
-          gap(18, "var(--ls-212)") +
-          gap(18, "var(--ls-212)") +
-          '<p class="s-cause">此　　致</p>' +
-          gap(8, "var(--ls-212)") +
-          '<p class="s-dept">台南市政府衛生局</p>' +
-        "</div>" +
-
-        '<div class="s-flex"></div>' +
-
-        '<div class="s-bottom">' +
-          '<p class="s-contract">立契約人(以下簡稱申請人)與' + ul(cert.vendor, 10) +
-            "(以下簡稱乙方)同意訂立輔具買賣契約，雙方議定</p>" +
-          '<p class="s-contract">條件如上:</p>' +
-          '<p class="s-sign">申請人簽名或蓋章：' + ul(cert.applicant, 11) +
-            "　身分證字號：" + ul(cert.applicantId, 7) + "</p>" +
-          '<p class="s-sign">聯 絡 電 話：' + ul(cert.applicantTel, 7) + "</p>" +
-          '<p class="s-sign">受託人簽名或蓋章：' + ul("", 11) +
-            "　身分證字號：" + ul("", 7) + "</p>" +
-          '<p class="s-sign">受託人與申請人之關係：' + ul("", 7) + "</p>" +
-          gap(16, "var(--ls-360)") +
-          '<p class="s-vendor">乙方: ' + esc(cert.vendor) + "　　　地址:" +
-            esc(cert.vendorAddr) + "　　代表人:" + esc(cert.vendorRep) + "</p>" +
-          gap(12, "var(--ls-360)") + gap(12, "var(--ls-360)") +
-          '<p class="s-date">中　華　民　國　　' + esc(cert.year) +
-            "　　年　　" + esc(cert.month) + "　　月　　" + esc(cert.day) + "　　日</p>" +
-        "</div>" +
-      "</div>";
-
-    {
-      /* 照片頁的三行文字都置中，「照片黏貼處」在框線之外的上方（範本與
-         0805、0816 兩份實際核銷件皆同）。框的寬高取自範本的 tblGrid 與
-         trHeight，位置對應 tblpY=3288 twips（距頁頂 164.4pt）；品項多時
-         框會被文字往下推，與 0805 那份的表現一致。
-
-         主體與其附加功能是同一件實體，合併成一張照片頁，購買項目逐行列出。 */
-      photoGroups(cert.rows).forEach(function (group) {
-        var items = group.map(function (row, i) {
-          return '<p class="s-photo-line">' +
-                 (i === 0 ? "購買項目：" : "") + esc(row.name) + "</p>";
-        }).join("");
-        html +=
-          '<div class="sub-sheet s-photo-sheet">' +
-            gap(18, "30pt") +
-            '<p class="s-photo-line">個案姓名: ' + ul(cert.applicant, 8) + "</p>" +
-            items +
-            '<p class="s-photo-line">照片黏貼處</p>' +
-            '<div class="s-photo-box"></div>' +
-          "</div>";
-      });
-    }
-
-    return html;
   }
 
   /* ── ZIP 打包（docx 就是一個 zip） ───────────────────────────────── */
@@ -855,9 +860,119 @@
      兩個數字都是拿 Word 量範本得到的：空白段落 23.5pt、明細列 38.35pt
      （trHeight 767）。空白段落改成固定行高後高度才可控，所以用量到的值，
      不用字型度量去推算。 */
-  var GAP_LINE = 470;
+  var GAP_BASE = 1856;
   var GAP_ROW = 767;
   var GAP_BASE_ROWS = 2;
+
+  /* ── 明細表自動縮排 ──────────────────────────────────────────────
+     範本只留兩列、列高固定 767 twip，項目名稱一長就會被切掉，筆數一多
+     就把日期擠到第二頁。這裡改成先估每一列要幾行，再決定列高與字級：
+
+       1. 列高先取「平均分配後的高度」，上限維持範本的 767
+       2. 名稱放不下就把產品序號欄的餘裕借給名稱欄（序號通常十來個字元）
+       3. 還是放不下才一級一級降字級，降到 8pt 為止
+
+     估字寬用最粗的近似：全形字約一個字級寬，半形算一半。官方表單欄寬
+     是固定的，寧可估寬一點讓它提早換行，也不要被切掉。 */
+  var TBL_SZ_MIN = 16;                  /* 最小 8pt */
+  var TBL_NAME_COL = 1;                 /* 項目名稱欄 */
+  var TBL_LEND_COL = 4;                 /* 產品序號欄，寬度借給名稱欄 */
+  var TBL_LEND_MIN = 1000;              /* 序號欄至少留 50pt */
+  var TBL_CELL_PAD = 216;               /* 左右內距合計 */
+  var TBL_ROW_PAD = 80;                 /* 列高扣掉文字後的餘裕 */
+
+  function textTwips(text, sz) {
+    var w = 0;
+    for (var i = 0; i < text.length; i++) {
+      w += text.charCodeAt(i) > 0x2E80 ? sz * 10 : sz * 5;
+    }
+    return w;
+  }
+
+  function gridCols(tbl) {
+    var grid = childNamed(tbl, "tblGrid");
+    return grid ? elemChildren(grid, "gridCol") : [];
+  }
+
+  /* 範本資料列原本的字級（這份範本是 11pt，不是內文的 16pt） */
+  function baseRowSize(tbl) {
+    var rows = elemChildren(tbl, "tr");
+    var sz = rows[1] && tagged(rows[1], "sz")[0];
+    return sz ? Number(sz.getAttribute("w:val")) || 22 : 22;
+  }
+
+  /* 某個字級與名稱欄寬之下，每一列需要的高度 */
+  function rowHeights(names, sz, nameColW, budget) {
+    var usable = Math.max(200, nameColW - TBL_CELL_PAD);
+    var target = Math.min(GAP_ROW, Math.floor(budget / names.length));
+    return names.map(function (name) {
+      var lines = Math.max(1, Math.ceil(textTwips(name, sz) / usable));
+      return Math.max(lines * sz * 12 + TBL_ROW_PAD, target);
+    });
+  }
+
+  /* 估算難免偏低（Word 的行距、標點擠壓都會多一點），留一成餘裕，
+     寧可空白多留一點，也不要把日期擠到第二頁 */
+  var TBL_SAFETY = 1.1;
+
+  function sum(list) {
+    return Math.round(list.reduce(function (a, b) { return a + b; }, 0) * TBL_SAFETY);
+  }
+
+  function setColWidth(tbl, cols, index, width) {
+    cols[index].setAttribute("w:w", String(width));
+    elemChildren(tbl, "tr").forEach(function (tr) {
+      var tc = elemChildren(tr, "tc")[index];
+      var pr = tc && childNamed(tc, "tcPr");
+      var w = pr && childNamed(pr, "tcW");
+      if (w) w.setAttribute("w:w", String(width));
+    });
+  }
+
+  /* 依筆數與名稱長度調整表格，回傳這張表實際佔用的高度 */
+  function fitDetailTable(tbl, rows) {
+    var cols = gridCols(tbl);
+    var names = rows.map(function (r) { return r.name; });
+    if (!cols.length || !names.length) return GAP_BASE_ROWS * GAP_ROW;
+
+    var nameW = Number(cols[TBL_NAME_COL].getAttribute("w:w")) || 0;
+    var lendW = Number(cols[TBL_LEND_COL].getAttribute("w:w")) || 0;
+    var budget = GAP_BASE + GAP_BASE_ROWS * GAP_ROW;
+    var baseSz = baseRowSize(tbl);
+
+    var borrow = 0;
+    var sz = baseSz;
+    var heights = rowHeights(names, sz, nameW, budget);
+    if (sum(heights) > budget && lendW > TBL_LEND_MIN) {
+      borrow = lendW - TBL_LEND_MIN;
+      heights = rowHeights(names, sz, nameW + borrow, budget);
+    }
+    while (sum(heights) > budget && sz - 2 >= TBL_SZ_MIN) {
+      sz -= 2;
+      heights = rowHeights(names, sz, nameW + borrow, budget);
+    }
+
+    if (borrow) {
+      setColWidth(tbl, cols, TBL_NAME_COL, nameW + borrow);
+      setColWidth(tbl, cols, TBL_LEND_COL, lendW - borrow);
+    }
+
+    elemChildren(tbl, "tr").slice(1).forEach(function (tr, idx) {
+      if (idx >= names.length) return;
+      var pr = childNamed(tr, "trPr");
+      var th = pr && childNamed(pr, "trHeight");
+      if (th) {
+        th.setAttribute("w:val", String(heights[idx]));
+        /* 估算難免有誤差，改成最小高度，字真的放不下時讓 Word 自己長高 */
+        th.setAttribute("w:hRule", "atLeast");
+      }
+      if (sz !== baseSz) {
+        tagged(tr, "sz").forEach(function (n) { n.setAttribute("w:val", String(sz)); });
+        tagged(tr, "szCs").forEach(function (n) { n.setAttribute("w:val", String(sz)); });
+      }
+    });
+    return sum(heights);
+  }
 
   function setExactLine(para, twips) {
     var doc = para.ownerDocument;
@@ -875,16 +990,16 @@
     sp.setAttribute("w:lineRule", "exact");
   }
 
-  function tuneBottomGap(pDept, pContract, rowCount) {
-    if (!pDept || !pContract || pDept.parentNode !== pContract.parentNode) return;
+  function tuneBottomGap(pDept, sigTbl, tableHeight) {
+    if (!pDept || !sigTbl || pDept.parentNode !== sigTbl.parentNode) return;
     var kids = Array.prototype.slice.call(pDept.parentNode.childNodes);
-    var gaps = kids.slice(kids.indexOf(pDept) + 1, kids.indexOf(pContract))
+    var gaps = kids.slice(kids.indexOf(pDept) + 1, kids.indexOf(sigTbl))
       .filter(function (n) {
         return n.nodeType === 1 && n.localName === "p" && !nodeText(n).trim();
       });
     if (!gaps.length) return;
 
-    var want = gaps.length * GAP_LINE - (rowCount - GAP_BASE_ROWS) * GAP_ROW;
+    var want = GAP_BASE - (tableHeight - GAP_BASE_ROWS * GAP_ROW);
     gaps.slice(1).forEach(function (n) { n.parentNode.removeChild(n); });
     if (want <= 0) {
       /* 空白全用完了（約五列以上），日期只能落到第二頁 */
@@ -892,6 +1007,12 @@
       return;
     }
     setExactLine(gaps[0], want);
+  }
+
+  /* 表格儲存格裡的底線欄位：只有一段，填第一組底線 */
+  function fillCellUnderline(tc, value) {
+    var p = childNamed(tc, "p");
+    if (p) fillUnderlineGroup(p, 0, value);
   }
 
   function findPara(paras, predicate) {
@@ -938,11 +1059,21 @@
     var pContract = findPara(paras, function (t) { return t.indexOf("立契約人") > -1; });
     if (pContract) fillUnderlineGroup(pContract, 0, cert.vendor);
 
-    /* 申請人這一欄先印姓名，蓋章或親簽仍在同一格上；受託人欄維持空白 */
-    var pSign = findPara(paras, function (t) { return t.indexOf("申請人簽名或蓋章") > -1; });
-    if (pSign) {
-      fillUnderlineGroup(pSign, 0, cert.applicant);
-      fillUnderlineGroup(pSign, 1, cert.applicantId);
+    /* 簽名欄是一個表格：標題在第一格，要填的空白在第二、第四格。
+       改成表格之後，申請人姓名不論幾個字都不會把「身分證字號」推走。
+       申請人這一欄先印姓名，蓋章或親簽仍蓋在同一格上；受託人欄留白。 */
+    var sigTbl = null;
+    tagged(body, "tbl").forEach(function (t) {
+      if (!sigTbl && nodeText(t).indexOf("立契約人") > -1) sigTbl = t;
+    });
+    if (sigTbl) {
+      elemChildren(sigTbl, "tr").forEach(function (tr) {
+        var cells = elemChildren(tr, "tc");
+        if (cells.length < 4) return;
+        if (nodeText(cells[0]).replace(/\s/g, "").indexOf("申請人簽名或蓋章") !== 0) return;
+        fillCellUnderline(cells[1], cert.applicant);
+        fillCellUnderline(cells[3], cert.applicantId);
+      });
     }
     var pTel = findPara(paras, function (t) {
       return t.replace(/\s/g, "").indexOf("聯絡電話") === 0;
@@ -972,6 +1103,7 @@
     /* 購買明細表：範本給兩列空白，不足則複製。
        編號欄是 Word 的自動編號（numPr），不要自己填。 */
     var mainTbl = null;
+    var tblHeight = GAP_BASE_ROWS * GAP_ROW;
     tagged(body, "tbl").forEach(function (t) {
       if (!mainTbl && nodeText(t).indexOf("編號") > -1) mainTbl = t;
     });
@@ -998,13 +1130,14 @@
         setCellText(cells[6], money(row.gov));
         setCellText(cells[7], money(row.self));
       });
+      tblHeight = fitDetailTable(mainTbl, cert.rows);
     }
 
     /* 調節第一頁的高度，讓日期不論幾筆明細都停在頁尾原本的位置 */
     var pDept = findPara(paras, function (t) {
       return t.replace(/\s/g, "") === "台南市政府衛生局";
     });
-    tuneBottomGap(pDept, pContract, cert.rows.length);
+    tuneBottomGap(pDept, sigTbl, tblHeight);
 
     /* 照片黏貼頁：範本內建兩頁，依項目數整塊增減 */
     var starts = paras.filter(function (p) { return nodeText(p).indexOf("個案姓名") > -1; });
@@ -1102,7 +1235,7 @@
     });
   }
 
-  /* ── 列印與下載 ──────────────────────────────────────────────────── */
+  /* ── 產生 Word 檔 ──────────────────────────────────────────────────── */
   function setStatus(msg) {
     var el = $("sbMsg");
     if (!el) return;
@@ -1110,12 +1243,19 @@
     el.textContent = msg || "";
   }
 
-  function printCertificate() {
-    var cert = certificateData();
-    if (!cert) return;
-    $("sbPrintArea").innerHTML = buildSheets(cert);
-    setStatus("");
-    setTimeout(function () { window.print(); }, 80);
+  /* 檔名沿用門市既有的命名方式：月日 4 碼＋姓名－品項簡寫，例如
+     0805許黃麗水-床.docx。尾端的 V 是照片核對用的人工註記，不自動加。 */
+  function certificateFileName(cert) {
+    var pad = function (v) { return String(v).length < 2 ? "0" + v : String(v); };
+    var name = (cert.applicant || "未填寫姓名").replace(/[\\/:*?"<>|]/g, "_");
+    var parts = [];
+    cert.rows.forEach(function (row) {
+      var a = ABBR[row.itemName];
+      if (a === undefined) a = row.itemName.slice(0, 4);
+      if (a && parts.indexOf(a) === -1) parts.push(a);
+    });
+    var tail = parts.join("");
+    return pad(cert.month) + pad(cert.day) + name + (tail ? "-" + tail : "") + ".docx";
   }
 
   function downloadWord() {
@@ -1125,13 +1265,10 @@
     btn.disabled = true;
     setStatus("正在依範本產生 Word 檔…");
     buildDocx(cert).then(function (blob) {
-      var safe = (cert.applicant || "未填寫姓名").replace(/[\\/:*?"<>|]/g, "_");
-      var pad = function (v) { return String(v).length < 2 ? "0" + v : String(v); };
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
       a.href = url;
-      a.download = "長照輔具服務給付證明暨契約書_" + safe + "_" +
-                   cert.year + pad(cert.month) + pad(cert.day) + ".docx";
+      a.download = certificateFileName(cert);
       a.style.display = "none";
       document.body.appendChild(a);
       a.click();
@@ -1219,7 +1356,6 @@
     });
     $("sbVendorClear").addEventListener("click", clearVendor);
     $("sbAdd").addEventListener("click", addRow);
-    $("sbPrint").addEventListener("click", printCertificate);
     $("sbWord").addEventListener("click", downloadWord);
     $("sbCopay").addEventListener("change", function () { calculate(false); });
     $("sbQuota").addEventListener("input", function () { calculate(false); });
