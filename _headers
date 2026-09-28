@@ -1,0 +1,4 @@
+# Cloudflare Pages 專用：讓 *.pages.dev 的預覽站不被搜尋引擎收錄。
+# 正式站在 GitHub Pages，而 GitHub Pages（Jekyll）會忽略底線開頭的檔案，所以這份不會影響正式站。
+/*
+  X-Robots-Tag: noindex
