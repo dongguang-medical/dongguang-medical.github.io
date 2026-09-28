@@ -525,7 +525,7 @@ def page_header(active_url=""):
           LINE<span class="intro-infobar-line-text"> {PHONE_TEL}</span>
         </a>
 {SHOPEE_INFOBAR_LINK}
-        <span class="intro-infobar-hours">營業 9:30–22:00（週日 10:00–17:00）</span>
+        <span class="intro-infobar-hours">營業 9:30–22:00（週日公休）</span>
       </div>
     </div>
   </header>
@@ -578,7 +578,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
           </li>
           <li>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="visibility:hidden"><circle cx="12" cy="12" r="10"/></svg>
-            <span>週日 10:00–17:00</span>
+            <span>週日公休</span>
           </li>
         </ul>
         </div>
@@ -957,7 +957,7 @@ HOME_CONTACT_HTML = f"""    <section class="intro-section home-screen3" id="cont
                   </div>
                   <div class="intro-hours-row">
                     <span class="intro-hours-day">週日</span>
-                    <span class="intro-hours-time">10:00 – 17:00</span>
+                    <span class="intro-hours-time">公休</span>
                   </div>
                 </div>
               </div>
@@ -1057,12 +1057,6 @@ HOME_JSONLD_STORE = {
                           "Friday", "Saturday"],
             "opens": "09:30",
             "closes": "22:00",
-        },
-        {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "Sunday",
-            "opens": "10:00",
-            "closes": "17:00",
         },
     ],
 }
