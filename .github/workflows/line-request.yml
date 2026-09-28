@@ -16,6 +16,7 @@ permissions:
   contents: write        # 推 line/* 分支
   pull-requests: write   # 開 PR、在 PR 留言
   issues: write          # 在 issue 回報結果
+  checks: read           # 讀 Cloudflare Pages 的部署狀態
   id-token: write        # claude-code-action 需要
 
 # 同一個 issue 一次只跑一件，後到的排隊，不互相覆蓋
@@ -144,6 +145,29 @@ jobs:
           fi
           echo "number=$pr" >> "$GITHUB_OUTPUT"
 
+      # 等預覽部署好才回報「改好了」：Worker 只需要聽這一則，不用另外等 Cloudflare 的訊號
+      - name: 等 Cloudflare Pages 預覽部署完成
+        id: preview
+        if: steps.pr.outcome == 'success'
+        env:
+          PAGES_PROJECT: dongguang-medical
+        run: |
+          sha=$(git rev-parse HEAD)
+          # 分支預覽網址：分支名轉小寫、非英數換成連字號（Cloudflare 的規則）
+          alias=$(echo "$BRANCH" | tr 'A-Z' 'a-z' | sed 's/[^a-z0-9]/-/g' | cut -c1-28 | sed 's/-*$//')
+          echo "url=https://$alias.$PAGES_PROJECT.pages.dev" >> "$GITHUB_OUTPUT"
+          # 最多等 3 分鐘；逾時也照樣回報，只是提醒預覽可能還在產生
+          for i in $(seq 1 36); do
+            state=$(gh api "repos/$GITHUB_REPOSITORY/commits/$sha/check-runs" \
+              --jq '[.check_runs[] | select(((.app.slug // "") + " " + (.app.name // "")) | test("cloudflare"; "i"))][0] | "\(.status) \(.conclusion)"' 2>/dev/null || true)
+            case "$state" in
+              "completed success") echo "ready=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
+              completed*)          echo "ready=false" >> "$GITHUB_OUTPUT"; exit 0 ;;
+            esac
+            sleep 5
+          done
+          echo "ready=false" >> "$GITHUB_OUTPUT"
+
       - name: 在 issue 回報結果
         if: always()
         env:
@@ -153,12 +177,16 @@ jobs:
           REASON: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).reason }}
           CHANGED: ${{ steps.build.outputs.changed }}
           BLOCKED: ${{ steps.build.outputs.blocked }}
+          PR_OUTCOME: ${{ steps.pr.outcome }}
           PR: ${{ steps.pr.outputs.number }}
+          PREVIEW: ${{ steps.preview.outputs.url }}
+          PREVIEW_READY: ${{ steps.preview.outputs.ready }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           # 第一行是給 LINE 閘道 Worker 判讀的狀態標記，之後是給人看的內容
           {
-            if [ "$OUTCOME" != "success" ] || [ -z "$CHANGED" ]; then
+            if [ "$OUTCOME" != "success" ] || [ -z "$CHANGED" ] || \
+               { [ "$CHANGED" = "true" ] && [ "$PR_OUTCOME" != "success" ]; }; then
               echo "<!-- line-request:status=error -->"
               echo "這次修改沒有完成，系統出了點問題，會再請人看一下。"
               echo
@@ -172,10 +200,15 @@ jobs:
               echo
               echo "（網站內容沒有變動）"
             else
-              echo "<!-- line-request:status=ready;pr=$PR;branch=$BRANCH -->"
+              echo "<!-- line-request:status=ready;pr=$PR;branch=$BRANCH;preview=$PREVIEW -->"
               echo "$SUMMARY"
+              if [ "$PREVIEW_READY" != "true" ]; then
+                echo
+                echo "（預覽可能還在產生，稍等一下再重新整理）"
+              fi
               echo
-              echo "PR：#$PR（預覽網址會由 Cloudflare Pages 貼在 PR 上）"
+              echo "預覽：$PREVIEW"
+              echo "PR：#$PR"
             fi
             if [ "$BLOCKED" = "true" ]; then
               echo

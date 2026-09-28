@@ -10,7 +10,8 @@
    - Claude 依 `CLAUDE.md` 的「LINE 修改請求守則」只改檔案，不碰 git
    - 工作流程還原 `admin/`、`.github/` 的任何改動，重跑 `scripts/build_catalog.py`
    - 推分支；沒有 PR 就開一個（`Closes #<issue>`），有就在 PR 留言說明追加修改
-   - 在 issue 留言回報結果
+   - 等 Cloudflare Pages 把這個分支的預覽部署好（最多 3 分鐘）
+   - 在 issue 留言回報結果（附預覽網址）
 3. **Cloudflare Pages** 對 `line/*` 分支自動部署預覽，網址會貼在 PR 上。
 4. 網站負責人在 LINE 按［上線］→ Worker 合併 PR → main 照舊部署到 GitHub Pages，issue 自動關閉。
 
@@ -32,7 +33,7 @@ Claude 不會推 main，也沒有開 PR 的權限；這些都由工作流程的�
 
 | 標記 | 意思 |
 | --- | --- |
-| `<!-- line-request:status=ready;pr=<編號>;branch=line/<issue> -->` | 改好了，PR 已開或已更新，等預覽 |
+| `<!-- line-request:status=ready;pr=<編號>;branch=line/<issue>;preview=<網址> -->` | 改好了，PR 已開或已更新，預覽已部署 |
 | `<!-- line-request:status=question -->` | 違反守則或需要反問；留言內容就是要轉給對方的話 |
 | `<!-- line-request:status=nochange -->` | 看完沒有需要改的地方 |
 | `<!-- line-request:status=error -->` | 執行失敗，附執行紀錄連結 |
