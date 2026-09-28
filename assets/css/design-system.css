@@ -7,11 +7,11 @@
 
 :root {
   /* Brand Colors — vivid warm orange */
-  --color-primary:        #E8681A;
-  --color-primary-rgb:    232, 104, 26;  /* 供 rgba() 衍生透明色使用 */
-  --color-primary-dark:   #C25007;
-  --color-primary-light:  #F19256;
-  --color-primary-pale:   #FEF0E4;
+  --color-primary:        #E5A800;
+  --color-primary-rgb:    229, 168, 0;  /* 供 rgba() 衍生透明色使用 */
+  --color-primary-dark:   #B07D00;
+  --color-primary-light:  #F2C94C;
+  --color-primary-pale:   #FFF6D6;
 
   /* Warm Neutrals */
   --color-bg:             #FCF8F2;
@@ -21,7 +21,7 @@
   --color-text-primary:   #33200F;
   --color-text-secondary: #8A6A50;
   --color-text-muted:     #C0A98E;
-  --color-footer-bg:      #301A08;
+  --color-footer-bg:      #4A3800;
 
   /* Typography */
   --font-primary:  'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', 'PingFang TC', sans-serif;
