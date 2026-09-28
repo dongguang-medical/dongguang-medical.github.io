@@ -525,7 +525,7 @@ def page_header(active_url=""):
           LINE<span class="intro-infobar-line-text"> {PHONE_TEL}</span>
         </a>
 {SHOPEE_INFOBAR_LINK}
-        <span class="intro-infobar-hours">營業 9:30–22:00（週日 10:00–17:00）</span>
+        <span class="intro-infobar-hours"><strong>營業 9:30–22:00（週日 10:00–17:00）</strong></span>
       </div>
     </div>
   </header>
