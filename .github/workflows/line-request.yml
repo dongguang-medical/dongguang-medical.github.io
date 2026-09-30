@@ -89,15 +89,17 @@ jobs:
             - summary：給店員看的白話中文，2～4 句，說明改了哪裡、看起來會怎樣；不要提檔名、程式或技術名詞。
             - refused：要求違反守則、看不懂、或需要更多資訊時為 true（此時不要改任何檔案）。
             - reason：refused 為 true 時，用白話說明原因，或直接寫出要反問對方的問題。
+            - cancel：最新一則是對方要放棄這件修改（例如「算了」「不用了」）時為 true，此時不要改任何檔案。
           claude_args: >-
             --max-turns 40
             --allowedTools Read,Glob,Grep,Edit,Write,MultiEdit
-            --json-schema '{"type":"object","properties":{"summary":{"type":"string"},"refused":{"type":"boolean"},"reason":{"type":"string"}},"required":["summary","refused"]}'
+            --json-schema '{"type":"object","properties":{"summary":{"type":"string"},"refused":{"type":"boolean"},"reason":{"type":"string"},"cancel":{"type":"boolean"}},"required":["summary","refused"]}'
 
       - name: 擋下禁區改動、重新建置
         id: build
         env:
           REFUSED: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).refused }}
+          CANCEL: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).cancel }}
         run: |
           # 禁區：後台與 CI 設定。就算 Claude 動了也一律還原（守則之外的第二道保險）
           blocked=$(git status --porcelain -- admin .github | wc -l)
@@ -106,7 +108,7 @@ jobs:
             git clean -fdq -- admin .github
             echo "blocked=true" >> "$GITHUB_OUTPUT"
           fi
-          if [ "$REFUSED" = "true" ]; then
+          if [ "$REFUSED" = "true" ] || [ "$CANCEL" = "true" ]; then
             git checkout -- . && git clean -fdq
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
@@ -173,6 +175,7 @@ jobs:
         env:
           OUTCOME: ${{ steps.claude.outcome }}
           REFUSED: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).refused }}
+          CANCEL: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).cancel }}
           SUMMARY: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).summary }}
           REASON: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).reason }}
           CHANGED: ${{ steps.build.outputs.changed }}
@@ -191,6 +194,9 @@ jobs:
               echo "這次修改沒有完成，系統出了點問題，會再請人看一下。"
               echo
               echo "執行紀錄：$RUN_URL"
+            elif [ "$CANCEL" = "true" ]; then
+              echo "<!-- line-request:status=cancel -->"
+              echo "對方表示不用改了，等對方確認取消。"
             elif [ "$REFUSED" = "true" ]; then
               echo "<!-- line-request:status=question -->"
               echo "${REASON:-這個要求目前沒辦法處理。}"

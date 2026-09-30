@@ -36,6 +36,7 @@ Claude 不會推 main，也沒有開 PR 的權限；這些都由工作流程的�
 | `<!-- line-request:status=ready;pr=<編號>;branch=line/<issue>;preview=<網址> -->` | 改好了，PR 已開或已更新，預覽已部署 |
 | `<!-- line-request:status=question -->` | 違反守則或需要反問；留言內容就是要轉給對方的話 |
 | `<!-- line-request:status=nochange -->` | 看完沒有需要改的地方 |
+| `<!-- line-request:status=cancel -->` | 對方要放棄這件；Worker 會用按鈕跟對方確認後才結案 |
 | `<!-- line-request:status=error -->` | 執行失敗，附執行紀錄連結 |
 
 標記之後的內容是給人看的白話說明，可以直接轉發到 LINE。
