@@ -608,6 +608,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
     </div>
     <div class="intro-footer-bottom">
       <span>© 台南東光醫療器材醫療輔具租賃. All Rights Reserved.</span>
+      <a class="intro-footer-staff" href="/admin/" rel="nofollow">員工登入</a>
     </div>
   </footer>
 """

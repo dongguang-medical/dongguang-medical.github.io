@@ -1065,6 +1065,23 @@
   color: rgba(255,255,255,0.25);
 }
 
+/* 員工登入（商品管理後台）：低調放在版權列旁，顧客不會誤點，
+   店裡要改商品時在任何一頁的頁尾都找得到。實際權限由 GitHub 登入把關 */
+.intro-footer-staff {
+  color: rgba(255,255,255,0.32);
+  text-decoration: none;
+  padding: 2px 9px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.intro-footer-staff:hover,
+.intro-footer-staff:focus-visible {
+  color: rgba(255,255,255,0.72);
+  border-color: rgba(255,255,255,0.42);
+}
+
 /* ── Equipment card clickable ── */
 .intro-equipment-card[data-gallery] {
   cursor: pointer;
