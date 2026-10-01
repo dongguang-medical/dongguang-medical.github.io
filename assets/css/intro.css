@@ -95,7 +95,6 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--color-primary-pale);
 }
 
 .intro-logo-name {
@@ -349,7 +348,6 @@
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 20px;
-  border: 3px solid var(--color-border);
   box-shadow: var(--shadow-card);
 }
 
@@ -987,7 +985,6 @@
   height: 36px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.15);
 }
 
 .intro-footer-brand-name {
@@ -1422,7 +1419,6 @@
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 12px;
-  border: 3px solid var(--color-primary-pale);
   box-shadow: var(--shadow-card);
 }
 
