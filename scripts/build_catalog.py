@@ -427,8 +427,10 @@ def load_products(brands, taxonomy=None):
 
 MAPS_URL = "https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA"
 
-# 同一間店在別的平台上的檔案，供首頁 JSON-LD 的 sameAs 使用
-GOOGLE_BUSINESS_URL = "https://share.google/e4RLJ2qzUT1SaVbHA"
+# 同一間店在別的平台上的檔案，供首頁 JSON-LD 的 sameAs 使用。
+# Google 商家用 CID 形式的正式網址（取自地圖網址裡的 ftid
+# 0x346e7422043970a5:0x7baa323c30ecc871，後半轉十進位），不用會過期的分享短網址
+GOOGLE_BUSINESS_URL = "https://maps.google.com/?cid=8910990046806198385"
 FACEBOOK_URL = ("https://www.facebook.com/p/"
                 "%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-"
                 "100063838362289/")
@@ -1057,8 +1059,13 @@ HOME_JSONLD_STORE = {
     },
     "telephone": "+886-6-290-7244",
     "email": "t2907244@seed.net.tw",
-    # 服務範圍與地圖：讓搜尋引擎與 AI 把這個網站和實體店綁成同一個對象
+    # 服務範圍、座標與地圖：讓搜尋引擎與 AI 把這個網站和實體店綁成同一個對象
     "areaServed": {"@type": "City", "name": "台南市"},
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.968946,
+        "longitude": 120.2275862,
+    },
     "hasMap": MAPS_URL,
     # sameAs：同一間店在別的平台上的檔案。缺這個的話，網站與 Google 商家
     # 檔案、FB 粉專會被當成三個互不相干的東西
