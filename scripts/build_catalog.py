@@ -427,6 +427,12 @@ def load_products(brands, taxonomy=None):
 
 MAPS_URL = "https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA"
 
+# 同一間店在別的平台上的檔案，供首頁 JSON-LD 的 sameAs 使用
+GOOGLE_BUSINESS_URL = "https://share.google/e4RLJ2qzUT1SaVbHA"
+FACEBOOK_URL = ("https://www.facebook.com/p/"
+                "%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-"
+                "100063838362289/")
+
 # 蝦皮連結片段：SHOPEE_ENABLED 為 False 時整段變空字串，版面自動收合
 SHOPEE_INFOBAR_LINK = (f"""
         <a class="intro-infobar-shopee" href="{SHOPEE_SHOP_URL}" target="_blank" rel="noopener">
@@ -548,7 +554,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
           </a>
 {SHOPEE_FOOTER_LINK}
-          <a class="intro-footer-social-desktop" href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook：{SITE_NAME}">
+          <a class="intro-footer-social-desktop" href="{FACEBOOK_URL}" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook：{SITE_NAME}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
           <a class="intro-footer-social-desktop" href="mailto:t2907244@seed.net.tw" aria-label="電子信箱" title="電子信箱：t2907244@seed.net.tw">
@@ -984,7 +990,7 @@ HOME_CONTACT_HTML = f"""    <section class="intro-section home-screen3" id="cont
               </div>
             </a>
 
-            <a href="https://www.facebook.com/p/%E6%9D%B1%E5%85%89%E9%86%AB%E7%99%82%E5%99%A8%E6%9D%90-100063838362289/" target="_blank" rel="noopener" class="intro-cc-card intro-cc-card-link">
+            <a href="{FACEBOOK_URL}" target="_blank" rel="noopener" class="intro-cc-card intro-cc-card-link">
               <div class="intro-cc-icon intro-cc-icon-fb">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
               </div>
@@ -1051,6 +1057,15 @@ HOME_JSONLD_STORE = {
     },
     "telephone": "+886-6-290-7244",
     "email": "t2907244@seed.net.tw",
+    # 服務範圍與地圖：讓搜尋引擎與 AI 把這個網站和實體店綁成同一個對象
+    "areaServed": {"@type": "City", "name": "台南市"},
+    "hasMap": MAPS_URL,
+    # sameAs：同一間店在別的平台上的檔案。缺這個的話，網站與 Google 商家
+    # 檔案、FB 粉專會被當成三個互不相干的東西
+    "sameAs": [
+        GOOGLE_BUSINESS_URL,
+        FACEBOOK_URL,
+    ],
     "openingHoursSpecification": [
         {
             "@type": "OpeningHoursSpecification",
