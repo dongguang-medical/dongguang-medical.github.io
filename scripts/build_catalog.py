@@ -533,7 +533,7 @@ def page_header(active_url=""):
           LINE<span class="intro-infobar-line-text"> {PHONE_TEL}</span>
         </a>
 {SHOPEE_INFOBAR_LINK}
-        <span class="intro-infobar-hours"><strong>營業 9:30–22:00（週日 10:00–17:00）</strong></span>
+        <span class="intro-infobar-hours"><strong>營業 9:30–21:30（週日 10:00–17:00）</strong></span>
       </div>
     </div>
   </header>
@@ -582,7 +582,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
           </li>
           <li>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>週一–週六 9:30–22:00</span>
+            <span>週一–週六 9:30–21:30</span>
           </li>
           <li>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="visibility:hidden"><circle cx="12" cy="12" r="10"/></svg>
@@ -962,7 +962,7 @@ HOME_CONTACT_HTML = f"""    <section class="intro-section home-screen3" id="cont
                 <div class="intro-hours-rows">
                   <div class="intro-hours-row">
                     <span class="intro-hours-day">週一 – 週六</span>
-                    <span class="intro-hours-time">9:30 – 22:00</span>
+                    <span class="intro-hours-time">9:30 – 21:30</span>
                   </div>
                   <div class="intro-hours-row">
                     <span class="intro-hours-day">週日</span>
@@ -1079,7 +1079,7 @@ HOME_JSONLD_STORE = {
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday",
                           "Friday", "Saturday"],
             "opens": "09:30",
-            "closes": "22:00",
+            "closes": "21:30",
         },
         {
             "@type": "OpeningHoursSpecification",
@@ -1916,7 +1916,7 @@ def build_product_pages(products):
                   電話洽詢
                 </a>
 {shopee_cta}              </div>
-              <p class="cat-cta-sub">門市：崇德路 677 號（台南市立醫院對面）・營業 9:30–22:00</p>
+              <p class="cat-cta-sub">門市：崇德路 677 號（台南市立醫院對面）・營業 9:30–21:30</p>
             </div>
           </div>
         </div>
