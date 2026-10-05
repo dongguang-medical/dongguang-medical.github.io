@@ -1,6 +1,6 @@
 # LINE 修改流程
 
-店裡的人在 LINE 跟 bot 說要改網站哪裡 → Claude 在 GitHub Actions 裡改好 → 預覽確認 → 網站負責人批准才上線。
+店裡的人在 LINE 跟 bot 說要改網站哪裡 → Claude 在 GitHub Actions 裡改好 → 提出的人看過預覽、按［上線］才上線。
 
 ## 流程
 
@@ -13,7 +13,7 @@
    - 等 Cloudflare Pages 把這個分支的預覽部署好（最多 3 分鐘）
    - 在 issue 留言回報結果（附預覽網址）
 3. **Cloudflare Pages** 對 `line/*` 分支自動部署預覽，網址會貼在 PR 上。
-4. 網站負責人在 LINE 按［上線］→ Worker 合併 PR → main 照舊部署到 GitHub Pages，issue 自動關閉。
+4. 提出的人在 LINE 按［上線］→ Worker 合併 PR → main 照舊部署到 GitHub Pages，issue 自動關閉。
 
 Claude 不會推 main，也沒有開 PR 的權限；這些都由工作流程的固定步驟完成。
 
