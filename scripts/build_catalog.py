@@ -38,7 +38,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "products"
-BASE_URL = "https://dongguang-medical.github.io"
+BASE_URL = "https://dongguang-medical.com"
 
 def _content_hash(paths):
     """依檔案內容算版本號。

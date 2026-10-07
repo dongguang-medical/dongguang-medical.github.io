@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dongguang-medical.github.io/sitemap.xml
+Sitemap: https://dongguang-medical.com/sitemap.xml

@@ -16,8 +16,8 @@ backend:
   base_url: https://sveltia-cms-auth.zirulin810.workers.dev
 
 # 網站資訊（後台右上角可快速開啟正式網站）
-site_url: https://dongguang-medical.github.io
-display_url: https://dongguang-medical.github.io
+site_url: https://dongguang-medical.com
+display_url: https://dongguang-medical.com
 
 # 圖片上傳位置
 media_folder: assets/uploads        # 存進 repo 的實際資料夾
