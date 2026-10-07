@@ -80,6 +80,7 @@
 
 .intro-infobar-hours {
   color: rgba(255,255,255,0.78);
+  font-weight: 700;
 }
 
 .intro-logo {
@@ -1044,10 +1045,17 @@
 .fh-day {
   min-width: 5.5em;
   white-space: nowrap;
+  font-weight: 700;
 }
 
 .fh-time {
   white-space: nowrap;
+  font-weight: 700;
+}
+
+.intro-hours-day,
+.intro-hours-time {
+  font-weight: 700;
 }
 
 .intro-footer-bottom {
