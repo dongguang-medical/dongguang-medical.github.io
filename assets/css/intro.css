@@ -3,6 +3,12 @@
    Aesthetic: 陽春親民感 — warm, simple, functional
    =================================================== */
 
+/* 營業時間加粗 */
+.intro-hours-day,
+.intro-hours-time {
+  font-weight: 700;
+}
+
 /* ── Header ──
    兩層固定：主列 64px + 資訊列 36px（--header-total = 100px）。
    下方版位（.cat-main、.intro-subhero、.intro-nav-mobile）都以此偏移。 */
