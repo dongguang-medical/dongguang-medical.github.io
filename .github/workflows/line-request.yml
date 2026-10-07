@@ -161,7 +161,7 @@ jobs:
           # 最多等 3 分鐘；逾時也照樣回報，只是提醒預覽可能還在產生
           for i in $(seq 1 36); do
             state=$(gh api "repos/$GITHUB_REPOSITORY/commits/$sha/check-runs" \
-              --jq '[.check_runs[] | select(((.app.slug // "") + " " + (.app.name // "")) | test("cloudflare"; "i"))][0] | "\(.status) \(.conclusion)"' 2>/dev/null || true)
+              --jq '[.check_runs[] | select((.name // "") | test("cloudflare pages"; "i"))][0] | "\(.status) \(.conclusion)"' 2>/dev/null || true)
             case "$state" in
               "completed success") echo "ready=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
               completed*)          echo "ready=false" >> "$GITHUB_OUTPUT"; exit 0 ;;
