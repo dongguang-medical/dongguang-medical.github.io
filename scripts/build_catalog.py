@@ -711,6 +711,7 @@ def render_page(*, title, description, path, og_type, og_image, jsonld,
   <meta property="og:url" content="{canonical}">
 
   <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   {jsonld_tag}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
