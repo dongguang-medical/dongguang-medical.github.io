@@ -152,7 +152,7 @@ jobs:
         id: preview
         if: steps.pr.outcome == 'success'
         env:
-          PAGES_PROJECT: dongguang-medical
+          PAGES_PROJECT: dongguang-medical-edit-preview
         run: |
           sha=$(git rev-parse HEAD)
           # 分支預覽網址：分支名轉小寫、非英數換成連字號（Cloudflare 的規則）
