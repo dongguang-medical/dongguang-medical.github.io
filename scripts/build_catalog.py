@@ -819,6 +819,13 @@ def badge_spans(product):
     return marks
 
 
+def thumb_path(img_path):
+    """卡片縮圖（480px WebP，見 scripts/make_thumbs.py）。
+    縮圖還沒產生時回傳 None，product_card() 會退回原圖。"""
+    name = Path(img_path).stem + ".webp"
+    return f"/assets/thumbs/{name}" if (ROOT / "assets" / "thumbs" / name).is_file() else None
+
+
 def product_card(product):
     # 標記與行銷標籤合併為同一列 pill，行銷標籤最多兩個避免過長
     pills = badge_spans(product)
@@ -827,9 +834,17 @@ def product_card(product):
     tags = f'<div class="cat-tags">{"".join(pills)}</div>' if pills else ""
     brand = (f'<div class="cat-card-brand">{esc(product["brand"])}</div>'
              if product["brand"] else "")
+    cover = cover_of(product)
+    # 卡片只有 240px 寬，原圖卻是 800～1024px。支援 WebP 的瀏覽器抓 480px 縮圖，
+    # 不支援的退回原圖——不會破圖，也不用再多產一套 JPEG
+    thumb = thumb_path(cover)
+    img = (f'<img src="{url_path(cover)}" alt="{esc(product["name"])}" '
+           f'loading="lazy" decoding="async" width="400" height="300">')
+    photo = (f'<picture><source srcset="{thumb}" type="image/webp">{img}</picture>'
+             if thumb else img)
     return f"""<a class="cat-card" href="{product['url']}">
   <div class="cat-card-photo">
-    <img src="{url_path(cover_of(product))}" alt="{esc(product['name'])}" loading="lazy" width="400" height="300">
+    {photo}
   </div>
   <div class="cat-card-body">
     <h3>{esc(product['name'])}</h3>
