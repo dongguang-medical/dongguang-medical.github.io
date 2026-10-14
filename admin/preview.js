@@ -104,7 +104,7 @@ function toProduct(data, brandName, imageUrl) {
   const slash = taxonomy.indexOf('/');
   const category = slash < 0 ? taxonomy : taxonomy.slice(0, slash);
 
-  // 「有多種價格」關著時規格清單是藏起來的，殘留資料不採用（同 load_products）
+  // 「多種價格」關著時規格清單是藏起來的，殘留資料不採用（同 load_products）
   const variants = (truthy(data.has_variants ?? false) ? data.variants || [] : [])
     .filter((d) => d && d.label)
     .map((d) => ({ label: d.label, price: parsePrice(d.price) }));

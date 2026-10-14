@@ -20,6 +20,29 @@
         -moz-appearance: textfield;
         appearance: textfield;
       }
+
+      /*
+        商品編輯分成「商品資訊」「價格資訊」兩區（像蝦皮）。Sveltia 沒有分區設定，
+        這裡在每區第一個欄位上方畫出區塊標題，欄位順序由 config.yml 決定。
+        只限有「多種價格」欄位的編輯頁（即商品），品牌頁也有 name 欄位，不受影響。
+        純 CSS，不動 Sveltia 的畫面結構；Sveltia 改版時最多是標題不見。
+      */
+      .content:has(> [data-typed-key-path="has_variants"]) > [data-typed-key-path="name"]::before,
+      .content:has(> [data-typed-key-path="has_variants"]) > [data-typed-key-path="has_variants"]::before {
+        display: block;
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid currentColor;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .content:has(> [data-typed-key-path="has_variants"]) > [data-typed-key-path="name"]::before {
+        content: "商品資訊";
+      }
+      .content:has(> [data-typed-key-path="has_variants"]) > [data-typed-key-path="has_variants"]::before {
+        content: "價格資訊";
+        margin-top: 32px;
+      }
     </style>
   </head>
   <body>
@@ -33,10 +56,10 @@
     -->
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
     <!-- 商品編輯的即時預覽樣板；要排在 CMS 之後才拿得到 window.CMS -->
-    <script src="preview.js?v=0ee62353e7" type="module"></script>
+    <script src="preview.js?v=d5a53b4a4a" type="module"></script>
     <!-- 欄位裡的灰色範例字（Sveltia 沒有 placeholder 設定，由這支補上） -->
-    <script src="field-examples.js?v=0ee62353e7" type="module"></script>
-    <!-- 依開關顯示／隱藏欄位（例如「有多種價格」打開才出現規格與價格） -->
-    <script src="field-rules.js?v=0ee62353e7" type="module"></script>
+    <script src="field-examples.js?v=d5a53b4a4a" type="module"></script>
+    <!-- 依開關顯示／隱藏欄位（例如「多種價格」打開才出現規格與價格） -->
+    <script src="field-rules.js?v=d5a53b4a4a" type="module"></script>
   </body>
 </html>

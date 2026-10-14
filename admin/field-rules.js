@@ -24,7 +24,7 @@ const isChecked = (name, option) =>
 
 // 欄位 name → 什麼時候要顯示
 const RULES = {
-  // 像蝦皮的「開啟商品規格」：關著只填售價，打開改填規格與價格
+  // 像蝦皮的「開啟商品規格」：關著只填價格，打開改填規格與價格
   price: () => !isOn('has_variants'),
   variants: () => isOn('has_variants'),
   rental_price: () => isOn('rentable'),

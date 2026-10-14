@@ -53,18 +53,30 @@ collections:
     editor:
       preview: true
     fields:
-      - label: 商品名稱
+      - label: 名稱
         name: name
         widget: string
         required: true
         hint: 顯示在網站上的商品名稱
+
+      # 品牌改為關聯欄位：只能從「品牌」清單挑選，打不出錯字，
+      # 也讓品牌本身能帶原廠窗口、圖片素材狀態等資訊
+      - label: 品牌
+        name: brand
+        widget: relation
+        collection: brands
+        search_fields: [name, slug]
+        display_fields: [name]
+        value_field: slug
+        required: false
+        hint: 找不到品牌時，請先到左側「品牌」新增一筆
 
       # 主分類與子分類合併為單一欄位，避免選出「行動輔具＋氣墊床」這種
       # 不存在的組合。下拉可直接打字篩選：輸入「行動」只剩該類、輸入
       # 「氣墊」直接命中。
       # ⚠️ 以下選項由 scripts/data/taxonomy.tsv 產生，請勿手改。
       #    新增子分類請改該檔案後執行：python scripts/gen_cms_options.py
-      - label: 商品分類
+      - label: 分類
         name: taxonomy
         widget: select
         required: true
@@ -155,10 +167,48 @@ collections:
           - { label: "其他 › 診療床", value: "其他/診療床" }
         # <<< TAXONOMY_OPTIONS_END
 
-      # 像蝦皮的「開啟商品規格」：關著只看到售價，打開才換成規格與價格清單。
+      - label: 照片
+        name: images
+        widget: list
+        required: false
+        label_singular: 照片
+        hint: 第一張會作為封面。建議每張 500KB 以內。
+        field:
+          label: 照片
+          name: image
+          widget: image
+
+      - label: 規格
+        name: specs
+        widget: list
+        required: false
+        label_singular: 規格
+        summary: "{{fields.label}}：{{fields.value}}"
+        fields:
+          - label: 項目
+            name: label
+            widget: string
+          - label: 數值
+            name: value
+            widget: string
+
+      - label: 說明
+        name: body
+        widget: markdown
+        required: false
+
+      # 法定標示整段收在這裡，不要混進商品說明。販售藥商（東光自己）的資訊
+      # 由產生器自動附在下方，不必寫在這裡。
+      - label: 法定標示
+        name: regulatory
+        widget: text
+        required: false
+        hint: 依序填許可證字號、許可證品名、持證藥商、製造廠、製造廠地址。非管制品（碗盤、保健食品等）請留空
+
+      # 像蝦皮的「開啟商品規格」：關著只看到價格，打開才換成規格與價格清單。
       # 欄位的顯示／隱藏由 admin/field-rules.js 依這個開關切換（Sveltia 沒有條件顯示設定）；
       # 產生器也照這個開關走，關著時不採用規格清單裡殘留的價格。
-      - label: 有多種價格
+      - label: 多種價格
         name: has_variants
         widget: boolean
         default: false
@@ -166,7 +216,7 @@ collections:
 
       # 只填數字，網站上的「NT$」與千分位由產生器加。存成數字後台才排得動序，
       # 存字串的話「NT$12,800」會排在「NT$170」前面。
-      - label: 售價
+      - label: 價格
         name: price
         widget: number
         value_type: int
@@ -187,25 +237,6 @@ collections:
           - { label: 規格, name: label, widget: string }
           - { label: 價格, name: price, widget: number, value_type: int, min: 0 }
 
-      # 法定標示整段收在這裡，不要混進商品說明。販售藥商（東光自己）的資訊
-      # 由產生器自動附在下方，不必寫在這裡。
-      - label: 法定標示
-        name: regulatory
-        widget: text
-        required: false
-        hint: 依序填許可證字號、許可證品名、持證藥商、製造廠、製造廠地址。非管制品（碗盤、保健食品等）請留空
-
-      - label: 提供方式
-        name: offering
-        widget: select
-        multiple: true
-        required: true
-        default: [門市洽詢]
-        options:
-          - 線上選購
-          - 門市洽詢
-        hint: 可複選。勾選「線上選購」請一併填下面的蝦皮商品連結
-
       # 租賃是「是／否」的性質，用開關比多選清單好按，也不會跟提供方式混在一起
       - label: 可租賃
         name: rentable
@@ -219,16 +250,6 @@ collections:
         required: false
         hint: 例 800/月、1500/季（會原樣顯示）。留空會顯示「依租期而定，歡迎來電詢價」
 
-      # 只有「提供方式」勾了網購的商品才需要填，商品頁會據此顯示蝦皮購買按鈕
-      - label: 蝦皮商品連結
-        name: shopee_url
-        widget: string
-        required: false
-        pattern:
-          - '^(https://shopee\.tw/.+)?$'
-          - 請填完整的蝦皮商品網址，需以 https://shopee.tw/ 開頭
-        hint: 商品頁會顯示「到蝦皮下單」按鈕
-
       - label: 可申請補助
         name: subsidy
         widget: select
@@ -239,48 +260,26 @@ collections:
           - 身障輔具補助
         hint: 可複選，沒有就不用勾
 
-      # 品牌改為關聯欄位：只能從「品牌」清單挑選，打不出錯字，
-      # 也讓品牌本身能帶原廠窗口、圖片素材狀態等資訊
-      - label: 品牌
-        name: brand
-        widget: relation
-        collection: brands
-        search_fields: [name, slug]
-        display_fields: [name]
-        value_field: slug
-        required: false
-        hint: 找不到品牌時，請先到左側「品牌」新增一筆
+      - label: 提供方式
+        name: offering
+        widget: select
+        multiple: true
+        required: true
+        default: [門市洽詢]
+        options:
+          - 線上選購
+          - 門市洽詢
+        hint: 可複選。勾選「線上選購」會出現選購連結，請一併填寫
 
-      - label: 標籤
-        name: tags
-        widget: list
+      # 只有「提供方式」勾了網購的商品才需要填，商品頁會據此顯示蝦皮購買按鈕
+      - label: 選購連結
+        name: shopee_url
+        widget: string
         required: false
-        hint: 行銷用語，例：保固一年、台灣製造（補助與租賃已有專屬欄位，不必重複填）
-
-      - label: 規格
-        name: specs
-        widget: list
-        required: false
-        label_singular: 規格
-        summary: "{{fields.label}}：{{fields.value}}"
-        fields:
-          - label: 項目
-            name: label
-            widget: string
-          - label: 數值
-            name: value
-            widget: string
-
-      - label: 商品照片
-        name: images
-        widget: list
-        required: false
-        label_singular: 照片
-        hint: 第一張會作為封面。建議每張 500KB 以內。
-        field:
-          label: 照片
-          name: image
-          widget: image
+        pattern:
+          - '^(https://shopee\.tw/.+)?$'
+          - 請填完整的蝦皮商品網址，需以 https://shopee.tw/ 開頭
+        hint: 商品頁會顯示「到蝦皮下單」按鈕
 
       - label: 上架顯示
         name: published
@@ -294,10 +293,11 @@ collections:
         default: false
         hint: 開啟後會出現在首頁「熱銷精選」輪播
 
-      - label: 商品說明
-        name: body
-        widget: markdown
+      - label: 標籤
+        name: tags
+        widget: list
         required: false
+        hint: 行銷用語，例：保固一年、台灣製造（補助與租賃已有專屬欄位，不必重複填）
 
   # ── 品牌 ────────────────────────────────────────────────
   # 商品的品牌欄位由此清單提供選項。除了避免打錯字，也把原廠聯絡窗口
