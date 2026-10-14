@@ -310,7 +310,7 @@ def load_brands():
     if not brand_dir.is_dir():
         return brands
     for md_file in sorted(brand_dir.glob("*.md")):
-        fm, body = parse_frontmatter(md_file.read_text(encoding="utf-8"))
+        fm, _ = parse_frontmatter(md_file.read_text(encoding="utf-8"))
         slug = str(fm.get("slug", "")).strip() or md_file.stem
         name = str(fm.get("name", "")).strip()
         if not name:
@@ -319,11 +319,6 @@ def load_brands():
         brands[slug] = {
             "slug": slug,
             "name": name,
-            "website": str(fm.get("website", "")).strip(),
-            "asset_status": str(fm.get("asset_status", "")).strip(),
-            "featured": str(fm.get("featured", "false")).strip().lower()
-                        in ("true", "yes", "1"),
-            "body": body,
             "url": f"/brand/{quote(slug)}/",
         }
     return brands
@@ -2001,13 +1996,6 @@ def build_brand_pages(products, brands):
   </div>
 </section>""")
 
-        site_link = ""
-        if brand["website"]:
-            site_link = (f'<p class="cat-brand-site">原廠網站：'
-                         f'<a href="{esc(brand["website"])}" target="_blank"'
-                         f' rel="noopener noreferrer">{esc(brand["website"])}</a></p>')
-        note = md_to_html(brand["body"])
-
         bc = [("商品分類", "/category/"), (brand["name"], None)]
         main = f"""    <div class="cat-section">
       <div class="cat-container">
@@ -2015,9 +2003,7 @@ def build_brand_pages(products, brands):
         <div class="cat-page-head">
           <h1>{esc(brand['name'])}</h1>
           <p>共 {len(items)} 項商品</p>
-          {site_link}
         </div>
-        {note}
 {chr(10).join(blocks)}
       </div>
     </div>

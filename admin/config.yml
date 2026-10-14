@@ -281,8 +281,8 @@ collections:
         default: false
 
   # ── 品牌 ────────────────────────────────────────────────
-  # 商品的品牌欄位由此清單提供選項。除了避免打錯字，也把原廠聯絡窗口
-  # 與「商品圖片素材拿到了沒」集中管理——這是目前最需要追蹤的事。
+  # 商品的品牌欄位由此清單提供選項，避免打錯字。
+  # 代碼是商品指向品牌的依據，也是品牌頁網址；名稱是網站上顯示的字，可隨時改。
   - name: brands
     label: 品牌
     label_singular: 品牌
@@ -292,8 +292,8 @@ collections:
     format: frontmatter
     extension: md
     identifier_field: name
-    summary: "{{name}}｜素材：{{asset_status}}"
-    sortable_fields: [name, asset_status]
+    summary: "{{name}}"
+    sortable_fields: [name]
     slug: "{{fields.slug}}"
     editor:
       preview: false
@@ -309,36 +309,3 @@ collections:
         widget: string
         required: true
         hint: 顯示在網站上的名稱，可隨時修改
-
-      - label: 原廠官網
-        name: website
-        widget: string
-        required: false
-
-      - label: 聯絡窗口
-        name: contact
-        widget: string
-        required: false
-        hint: 業務電話或 email，向原廠索取型錄與商品圖時使用
-
-      - label: 圖片素材狀態
-        name: asset_status
-        widget: select
-        default: 未接洽
-        options:
-          - 未接洽
-          - 已寄信待回覆
-          - 已取得授權
-          - 原廠不提供
-        hint: 追蹤商品照片的取得進度
-
-      - label: 主力品牌
-        name: featured
-        widget: boolean
-        default: false
-        hint: 開啟後會顯示在品牌列表前段
-
-      - label: 備註
-        name: body
-        widget: markdown
-        required: false
