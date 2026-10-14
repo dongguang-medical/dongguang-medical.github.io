@@ -304,7 +304,11 @@ def load_taxonomy():
 
 
 def load_brands():
-    """{代碼: {…}}。品牌是獨立 collection，商品以代碼指向它。"""
+    """{代碼: {…}}。品牌是獨立 collection，商品以代碼指向它。
+
+    代碼就是檔名（後台新增品牌時由名稱自動產生、之後不變），也是品牌頁網址；
+    舊資料若還留著 slug 欄位，仍以它為準。
+    """
     brands = {}
     brand_dir = ROOT / "content" / "brands"
     if not brand_dir.is_dir():

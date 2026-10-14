@@ -1,4 +1,3 @@
 ---
-slug: nitto
 name: Nitto
 ---

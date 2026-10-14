@@ -1,4 +1,3 @@
 ---
-slug: sam
 name: SAM
 ---

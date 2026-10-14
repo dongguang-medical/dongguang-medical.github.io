@@ -26,6 +26,9 @@ const EXAMPLES = {
 };
 
 function applyExamples(root) {
+  // 範例字是給商品用的；品牌也有 name 欄位，不能出現「鋁合金四輪助行車」。
+  // 以「多種價格」欄位判斷目前是商品編輯頁（同 index.html 分區標題的判斷）
+  if (!root.querySelector('[data-typed-key-path="has_variants"]')) return;
   for (const field of root.querySelectorAll('[data-typed-key-path]')) {
     const example = EXAMPLES[field.dataset.typedKeyPath];
     if (!example) continue;

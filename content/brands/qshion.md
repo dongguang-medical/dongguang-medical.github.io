@@ -1,4 +1,3 @@
 ---
-slug: qshion
 name: QSHION
 ---

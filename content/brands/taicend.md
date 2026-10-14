@@ -1,4 +1,3 @@
 ---
-slug: taicend
 name: TAICEND
 ---

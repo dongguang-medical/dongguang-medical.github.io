@@ -1,4 +1,3 @@
 ---
-slug: shima
 name: SHIMA
 ---

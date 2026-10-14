@@ -23,10 +23,13 @@ display_url: https://dongguang-medical.com
 media_folder: assets/uploads        # 存進 repo 的實際資料夾
 public_folder: /assets/uploads      # 網頁上引用的公開路徑
 
-# 檔名（slug）產生規則：轉成 ASCII、去除重音符號，
-# 避免產生中文檔名（中文商品名交由下方 collection 的 slug 樣板處理）
+# 檔名（slug）產生規則：保留中文、去除重音符號。
+# 只影響後台新增項目時的檔名：商品用下方的「日期＋亂數」樣板，本來就是英數；
+# 品牌用名稱當檔名，中文名稱就是中文代碼（品牌頁網址 /brand/均佳/），
+# 英文名稱會轉成小寫連字號（AnsCare → anscare）。上傳照片的檔名不受影響
+# （照片要另開 slugify_filename 才會套用這裡）。
 slug:
-  encoding: ascii
+  encoding: unicode
   clean_accents: true
   sanitize_replacement: "-"
 
@@ -58,15 +61,15 @@ collections:
         widget: string
         required: true
 
-      # 品牌改為關聯欄位：只能從「品牌」清單挑選，打不出錯字，
-      # 也讓品牌本身能帶原廠窗口、圖片素材狀態等資訊
+      # 品牌改為關聯欄位：只能從「品牌」清單挑選，打不出錯字。
+      # 存的是品牌的代碼（品牌檔名），品牌改名不影響已掛上的商品
       - label: 品牌
         name: brand
         widget: relation
         collection: brands
-        search_fields: [name, slug]
+        search_fields: [name]
         display_fields: [name]
-        value_field: slug
+        value_field: "{{slug}}"
         required: false
 
       # 主分類與子分類合併為單一欄位，避免選出「行動輔具＋氣墊床」這種
@@ -282,7 +285,8 @@ collections:
 
   # ── 品牌 ────────────────────────────────────────────────
   # 商品的品牌欄位由此清單提供選項，避免打錯字。
-  # 代碼是商品指向品牌的依據，也是品牌頁網址；名稱是網站上顯示的字，可隨時改。
+  # 代碼＝檔名，新增時由名稱自動產生且不顯示、之後也不再變動；它是商品指向品牌的
+  # 依據，也是品牌頁網址。名稱是網站上顯示的字，可隨時改。
   - name: brands
     label: 品牌
     label_singular: 品牌
@@ -294,16 +298,12 @@ collections:
     identifier_field: name
     summary: "{{name}}"
     sortable_fields: [name]
-    slug: "{{fields.slug}}"
+    slug:
+      template: "{{name}}"
+      editable: false
     editor:
       preview: false
     fields:
-      - label: 品牌代碼
-        name: slug
-        widget: string
-        required: true
-        hint: 英文或中文皆可，建立後請勿修改（商品是靠這個代碼指向品牌的）
-
       - label: 品牌名稱
         name: name
         widget: string

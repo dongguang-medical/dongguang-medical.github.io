@@ -1,4 +1,3 @@
 ---
-slug: leukoplast
 name: Leukoplast
 ---
