@@ -2,6 +2,7 @@
 name: 愛民 I-M EB-501 產後束腹帶（寬版）
 taxonomy: 復健理療/護具
 price: ""
+has_variants: true
 variants:
   - label: "S（22-28吋）"
     price: 300
@@ -13,7 +14,6 @@ variants:
     price: 300
   - label: "XXL（42-48吋）"
     price: 300
-variant_label: "尺寸"
 brand: 愛民
 offering:
   - 線上選購

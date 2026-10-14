@@ -3,21 +3,19 @@
 
 用法：
   python3 scripts/import_shopee.py --sales <mass_update_sales_info_*.xlsx> \\
-                                   [--media <mass_update_media_info_*.xlsx>] \\
                                    [--basic <mass_update_basic_info_*.xlsx>] \\
                                    [--dry-run]
 
 匯出方式（賣家中心 → 商品 → 批次工具 → 批次更新）：
   銷售資訊 = 每個規格一列，含價格 → 決定 price / variants
-  媒體資訊 = 每個商品一列，含規格名稱 → 決定 variant_label（規格表欄名）
   基本資訊 = 每個商品一列，含商品描述 → 決定內文
 
 比對只靠 shopee_url 裡的商品ID 對匯出檔的商品ID，不做名稱模糊比對。
 
 寫入規則（兩者互斥，避免同一筆價格有兩個來源）：
   單一規格 → price 填數字，清掉 variants
-  多個規格 → variants 一列一個規格各自帶價，price 清空（網站顯示的
-             價格區間由 variants 自動推導）
+  多個規格 → has_variants: true，variants 一列一個規格各自帶價，price 清空
+             （網站顯示的價格區間由 variants 自動推導）
 
 蝦皮匯出的 xlsx 內含不合規的 <pane activePane="bottom_left">，openpyxl
 會拒讀，所以這裡直接解析 sheet XML。
@@ -40,8 +38,6 @@ FIRST_DATA_ROW = 7
 
 # 銷售資訊
 S_PRODUCT_ID, S_VARIANT_NAME, S_PRICE = "A", "D", "G"
-# 媒體資訊
-M_PRODUCT_ID, M_VARIATION_NAME = "A", "P"
 # 基本資訊
 B_PRODUCT_ID, B_DESCRIPTION = "A", "D"
 
@@ -60,14 +56,6 @@ BRACKET_HEADING_RE = re.compile(r"^【(.{2,8})】$")
 # 寧可保留現有文案並列出來讓人補寫
 MIN_BODY_CHARS = 30
 
-GENERIC_LABEL = "規格"
-LABEL_ALIASES = {
-    "尺吋": "尺寸", "尺寸寸": "尺寸", "尺丁": "尺寸",
-    "Variation": GENERIC_LABEL, "選項": GENERIC_LABEL, "商品選項": GENERIC_LABEL,
-}
-# 只有這些名稱夠具體才當欄名用，其餘（含把商品名塞進該欄的髒資料）一律用通用值
-KNOWN_LABELS = {"尺寸", "顏色", "規格", "款式", "包裝", "型號",
-                "長度", "數量", "樣式", "品項", "廠牌", "材質", "容量"}
 _SIZE_RE = re.compile(r"^(XS|S|M|L|XL|XXL|XXXL|[234]XL)$", re.I)
 # 尺寸的正確順序；同價時照價格排會退回蝦皮的亂序（M、L、S）
 _SIZE_ORDER = ["XS", "S", "M", "L", "XL", "2XL", "XXL", "3XL", "XXXL", "4XL"]
@@ -124,24 +112,6 @@ def load_sales(path):
             continue
         out[pid].append(((cells.get(S_VARIANT_NAME) or "").strip(),
                          int(float(raw_price))))
-    return out
-
-
-def load_variant_labels(path):
-    """回傳 {商品ID: 規格欄名}，名稱髒的收斂成通用值。"""
-    rows = read_rows(path)
-    check_header(rows, M_PRODUCT_ID, "商品ID", "媒體資訊")
-    check_header(rows, M_VARIATION_NAME, "規格名稱 1", "媒體資訊")
-
-    out = {}
-    for r in sorted(rows):
-        if r < FIRST_DATA_ROW:
-            continue
-        cells = rows[r]
-        pid = cells.get(M_PRODUCT_ID)
-        if pid:
-            raw = (cells.get(M_VARIATION_NAME) or "").strip()
-            out[pid] = LABEL_ALIASES.get(raw, raw)
     return out
 
 
@@ -211,15 +181,6 @@ def set_body(text, body):
     return m.group(0) + "\n" + body + "\n"
 
 
-def pick_variant_label(raw_label, variant_names):
-    """決定規格表的欄名：認得的名稱照用，全是 S/M/L 就叫尺寸，其餘用通用值。"""
-    if raw_label in KNOWN_LABELS:
-        return raw_label
-    if variant_names and all(_SIZE_RE.match(n) for n in variant_names):
-        return "尺寸"
-    return GENERIC_LABEL
-
-
 def yaml_value(text):
     """組出安全的 YAML 值。
 
@@ -273,7 +234,6 @@ def drop_duplicate_spec(text, variant_names):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sales", required=True, help="蝦皮「銷售資訊」匯出檔")
-    ap.add_argument("--media", help="蝦皮「媒體資訊」匯出檔（提供規格欄名）")
     ap.add_argument("--basic", help="蝦皮「基本資訊」匯出檔（提供商品說明）")
     ap.add_argument("--dry-run", action="store_true", help="只顯示會怎麼改，不寫檔")
     args = ap.parse_args()
@@ -283,10 +243,8 @@ def main():
             stream.reconfigure(encoding="utf-8", errors="replace")
 
     sales = load_sales(args.sales)
-    labels = load_variant_labels(args.media) if args.media else {}
     bodies = load_descriptions(args.basic) if args.basic else {}
     print(f"銷售資訊讀到 {len(sales)} 項商品"
-          + (f"、媒體資訊讀到 {len(labels)} 項的規格名稱" if labels else "")
           + (f"、基本資訊讀到 {len(bodies)} 項的商品說明" if bodies else ""))
 
     single, multi, unchanged, unmatched = 0, [], 0, 0
@@ -312,16 +270,16 @@ def main():
             named.sort(key=lambda np: (np[1], order.index(np[0])))
         if len(rows) > 1 and len(named) == len(rows):
             names = [n for n, _ in named]
-            label = pick_variant_label(labels.get(m.group(1), ""), names)
             new_text = set_scalar(text, "price", '""')
             new_text = set_variants(new_text, named)
-            new_text = set_scalar(new_text, "variant_label", yaml_value(label))
+            # 後台的「有多種價格」開關；沒打開的話產生器不採用 variants
+            new_text = set_scalar(new_text, "has_variants", "true")
             new_text = drop_duplicate_spec(new_text, names)
-            kind = (md.name, label, named)
+            kind = (md.name, named)
         else:
             new_text = set_scalar(text, "price", min(p for _, p in rows))
             new_text = set_variants(new_text, [])
-            new_text = re.sub(r"^variant_label:.*\n", "", new_text, flags=re.M)
+            new_text = re.sub(r"^has_variants:.*\n", "", new_text, flags=re.M)
             kind = None
 
         new_text = re.sub(r"^price_max:.*\n", "", new_text, flags=re.M)
@@ -349,12 +307,6 @@ def main():
 
     print(f"\n{'（試跑）' if args.dry_run else ''}多規格 {len(multi)} 項、"
           f"單一價格 {single} 項、無變更 {unchanged} 項、匯出檔查無 {unmatched} 項")
-    by_label = defaultdict(int)
-    for _, label, _ in multi:
-        by_label[label] += 1
-    if by_label:
-        print("規格欄名分布：" + "、".join(
-            f"{k} {v}" for k, v in sorted(by_label.items(), key=lambda x: -x[1])))
     if bodies:
         print(f"\n寫入商品說明 {described} 項")
         if no_body:
@@ -362,9 +314,9 @@ def main():
             for name in no_body[:10]:
                 print(f"    {name}")
     print("\n前幾筆多規格：")
-    for name, label, named in multi[:6]:
+    for name, named in multi[:6]:
         detail = "、".join(f"{n}={p}" for n, p in named[:4])
-        print(f"  {name:22s} [{label}] {detail}")
+        print(f"  {name:22s} {detail}")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@
 name: 三花 華新 PVC無粉檢診手套（未滅菌）
 taxonomy: 照護耗材/手套
 price: ""
+has_variants: true
 variants:
   - label: "L(三花)"
     price: 99
@@ -25,7 +26,6 @@ variants:
     price: 129
   - label: "L(華新)"
     price: 129
-variant_label: "規格"
 brand: 三花
 offering:
   - 線上選購

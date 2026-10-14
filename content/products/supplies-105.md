@@ -2,12 +2,12 @@
 name: 酒精瓶專用噴頭
 taxonomy: 照護耗材/消毒與清潔
 price: ""
+has_variants: true
 variants:
   - label: "一般噴頭"
     price: 29
   - label: "噴霧押頭"
     price: 42
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購

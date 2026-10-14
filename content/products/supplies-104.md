@@ -2,12 +2,12 @@
 name: 克司博 75%酒精液 500ml（乙類成藥）
 taxonomy: 照護耗材/消毒與清潔
 price: ""
+has_variants: true
 variants:
   - label: "克司博"
     price: 69
   - label: "克司博含噴頭"
     price: 95
-variant_label: "規格"
 brand: 克司博
 offering:
   - 線上選購

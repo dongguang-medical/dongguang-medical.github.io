@@ -2,6 +2,7 @@
 name: SOHO BACK 舒活透氣雙背墊
 taxonomy: 其他/居家生活用品
 price: ""
+has_variants: true
 variants:
   - label: "布套"
     price: 275
@@ -11,7 +12,6 @@ variants:
     price: 1250
   - label: "橘色"
     price: 1250
-variant_label: "規格"
 brand: soho-back
 offering:
   - 線上選購

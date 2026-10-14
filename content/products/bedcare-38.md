@@ -2,12 +2,12 @@
 name: 國發 乒乓約束帶 單支入
 taxonomy: 臥床照護/約束與安全帶
 price: ""
+has_variants: true
 variants:
   - label: "M（29 X 19.5 cm）"
     price: 398
   - label: "L（29 X 20.5 cm）"
     price: 420
-variant_label: "尺寸"
 brand: 國發
 offering:
   - 線上選購

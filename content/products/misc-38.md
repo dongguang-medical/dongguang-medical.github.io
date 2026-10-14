@@ -2,12 +2,12 @@
 name: 不鏽鋼止血鉗 16cm
 taxonomy: 其他/醫療器械
 price: ""
+has_variants: true
 variants:
   - label: "直"
     price: 250
   - label: "彎"
     price: 250
-variant_label: "頭型"
 brand: ""
 offering:
   - 線上選購

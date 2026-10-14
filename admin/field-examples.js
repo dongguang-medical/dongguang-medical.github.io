@@ -11,7 +11,6 @@
 const EXAMPLES = {
   name: '鋁合金四輪助行車',
   price: '3500',
-  variant_label: '尺寸',
   'variants.*.label': 'M',
   'variants.*.price': '450',
   regulatory: [

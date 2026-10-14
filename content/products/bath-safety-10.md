@@ -2,6 +2,7 @@
 name: 均佳 便盆椅坐墊
 taxonomy: 衛浴與居家安全/便盆椅配件
 price: ""
+has_variants: true
 variants:
   - label: "1.基礎款"
     price: 450
@@ -11,7 +12,6 @@ variants:
     price: 550
   - label: "4.子母U型款"
     price: 630
-variant_label: "款式"
 brand: 均佳
 offering:
   - 線上選購

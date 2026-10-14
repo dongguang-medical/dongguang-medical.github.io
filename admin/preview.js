@@ -11,10 +11,11 @@
 //    頁首頁尾、相關商品這些跟單一商品無關的部分不畫。
 // ============================================================
 
-// 店家資料與顯示開關由產生器輸出，跟網站用的是同一份
-import {
+// 店家資料與顯示開關由產生器輸出，跟網站用的是同一份。
+// 沿用本檔網址上的版本號（?v=…，產生器加的），常數檔更新時才不會拿到快取的舊版
+const {
   OFFERINGS, PLACEHOLDER, PRODUCT_CTA_SUB, SHOPEE_ENABLED, STORE_REGULATORY, SUBSIDIES,
-} from './preview-constants.js';
+} = await import(`./preview-constants.js${new URL(import.meta.url).search}`);
 
 const CMS = window.CMS;
 const { useEffect, useState } = CMS.React;
@@ -103,7 +104,8 @@ function toProduct(data, brandName, imageUrl) {
   const slash = taxonomy.indexOf('/');
   const category = slash < 0 ? taxonomy : taxonomy.slice(0, slash);
 
-  const variants = (data.variants || [])
+  // 「有多種價格」關著時規格清單是藏起來的，殘留資料不採用（同 load_products）
+  const variants = (truthy(data.has_variants ?? false) ? data.variants || [] : [])
     .filter((d) => d && d.label)
     .map((d) => ({ label: d.label, price: parsePrice(d.price) }));
   const variantPrices = variants.map((v) => v.price).filter((p) => p !== null);
@@ -123,7 +125,6 @@ function toProduct(data, brandName, imageUrl) {
     price,
     priceText: formatPrice(price, priceMax),
     variants,
-    variantLabel: str(data.variant_label) || '規格',
     regulatory: String(data.regulatory || '').trim(),
     brand: brandName,
     offering: offering.length ? offering : ['門市洽詢'],
@@ -187,11 +188,11 @@ function specsHtml(p) {
         .map((v) => `<tr><th scope="row">${esc(v.label)}</th><td>${esc(formatPrice(v.price)) || '洽詢'}</td></tr>`)
         .join('');
       variantPart = `<table class="cat-spec-table cat-variant-table">
-  <thead><tr><th scope="col">${esc(p.variantLabel)}</th><th scope="col">價格</th></tr></thead>
+  <thead><tr><th scope="col">規格</th><th scope="col">價格</th></tr></thead>
   <tbody>${rows}</tbody>
 </table>`;
     } else {
-      specsPart += `<tr><th scope="row">${esc(p.variantLabel)}</th><td>${esc(p.variants.map((v) => v.label).join('、'))}</td></tr>`;
+      specsPart += `<tr><th scope="row">規格</th><td>${esc(p.variants.map((v) => v.label).join('、'))}</td></tr>`;
     }
   }
   specsPart += p.specs.map((d) => `<tr><th scope="row">${esc(d.label)}</th><td>${esc(d.value ?? '')}</td></tr>`).join('');
@@ -224,8 +225,7 @@ function productPage(p) {
   const tagsHtml = tags.length ? `<div class="cat-tags">${tags.map((t) => `<span class="cat-tag">${esc(t)}</span>`).join('')}</div>` : '';
 
   const offerRows = [];
-  if (p.rentalPrice) offerRows.push(['租金', p.rentalPrice]);
-  else if (p.rentable) offerRows.push(['租金', '依租期而定，歡迎來電詢價']);
+  if (p.rentable) offerRows.push(['租金', p.rentalPrice || '依租期而定，歡迎來電詢價']);
   if (p.subsidy.length) offerRows.push(['補助', p.subsidy.join('、')]);
   const offerHtml = offerRows.length
     ? `<div class="cat-offer-rows">${offerRows

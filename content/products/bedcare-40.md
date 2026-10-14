@@ -2,6 +2,7 @@
 name: 雃博 APEX 甜甜圈減壓坐墊
 taxonomy: 臥床照護/擺位枕
 price: ""
+has_variants: true
 variants:
   - label: "S（直徑15公分）"
     price: 799
@@ -9,7 +10,6 @@ variants:
     price: 899
   - label: "L（直徑24公分）"
     price: 999
-variant_label: "尺寸"
 brand: 雃博
 offering:
   - 線上選購

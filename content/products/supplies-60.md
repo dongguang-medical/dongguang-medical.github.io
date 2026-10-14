@@ -2,6 +2,7 @@
 name: 三花 H3291 PVC無粉塑膠手套 S/M/L（未滅菌）
 taxonomy: 照護耗材/手套
 price: ""
+has_variants: true
 variants:
   - label: "S"
     price: 119
@@ -9,7 +10,6 @@ variants:
     price: 109
   - label: "L"
     price: 119
-variant_label: "尺寸"
 brand: 三花
 offering:
   - 線上選購

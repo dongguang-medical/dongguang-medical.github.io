@@ -2,12 +2,12 @@
 name: 日本精密 NISSEI 血壓計變壓器
 taxonomy: 健康量測/血壓計配件
 price: ""
+has_variants: true
 variants:
   - label: "NS1（適用 DSK-1011J、DSK-1031J、DSK-1051J、DS-A10、DS-B10、DS-11）"
     price: 250
   - label: "NS2（適用 G10J、N10J、S10J、DS-B33）"
     price: 250
-variant_label: "型號"
 brand: 日本精密
 offering:
   - 線上選購

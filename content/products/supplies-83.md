@@ -2,12 +2,12 @@
 name: 3M 宜拉膠帶 1吋／0.5吋
 taxonomy: 照護耗材/醫用膠帶
 price: ""
+has_variants: true
 variants:
   - label: "1吋 1捲（寬2.5公分x長500公分）"
     price: 129
   - label: "0.5吋 2捲（寬1.25公分x長500公分）"
     price: 129
-variant_label: "規格"
 brand: 3m
 offering:
   - 線上選購

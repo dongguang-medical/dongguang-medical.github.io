@@ -2,6 +2,7 @@
 name: 滅菌紗布塊 2x2／3x3／4x4
 taxonomy: 照護耗材/紗布棉棒
 price: ""
+has_variants: true
 variants:
   - label: "2x2 不織布紗布塊 10入"
     price: 4
@@ -21,7 +22,6 @@ variants:
     price: 12
   - label: "4x4 純紗紗布塊 10入"
     price: 15
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購

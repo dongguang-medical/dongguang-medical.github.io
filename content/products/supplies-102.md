@@ -3,7 +3,6 @@ name: 明傑 採血針 200入/盒（滅菌）
 taxonomy: 照護耗材/血糖試紙與採血針
 price: 175
 variants: []
-variant_label: ""
 brand: 明傑
 offering:
   - 線上選購

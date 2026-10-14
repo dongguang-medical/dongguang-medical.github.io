@@ -2,6 +2,7 @@
 name: 愛民 I-M WB-613 竹炭護腰
 taxonomy: 復健理療/護具
 price: ""
+has_variants: true
 variants:
   - label: "S（56-72公分）"
     price: 1150
@@ -13,7 +14,6 @@ variants:
     price: 1150
   - label: "XXL（107-122公分）"
     price: 1150
-variant_label: "尺寸"
 brand: 愛民
 offering:
   - 線上選購

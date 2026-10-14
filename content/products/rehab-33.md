@@ -2,6 +2,7 @@
 name: 復健球 握力球
 taxonomy: 復健理療/復健器材
 price: ""
+has_variants: true
 variants:
   - label: "圓球型"
     price: 40
@@ -9,7 +10,6 @@ variants:
     price: 40
   - label: "刺球型"
     price: 50
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購

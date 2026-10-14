@@ -2,6 +2,7 @@
 name: 陶瓷乳缽研磨組（缽碗＋研磨棒）
 taxonomy: 其他/醫療器械
 price: ""
+has_variants: true
 variants:
   - label: "3吋乳鉢棒(只有缽棒)"
     price: 60
@@ -15,7 +16,6 @@ variants:
     price: 139
   - label: "4吋(乳缽+乳缽棒)加購刷子1支"
     price: 155
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購

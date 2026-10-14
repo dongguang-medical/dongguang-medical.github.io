@@ -19,8 +19,9 @@ build_catalog.py
 
 frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
   name(必填)、category(必填，九選一)、subcategory、price、brand、
+  has_variants(布林，後台「有多種價格」開關；關閉時忽略 variants)、
   variants(label/price 清單，多規格商品用；有填則 price 由此推導)、
-  variant_label(規格表欄名，如「尺寸」)、tags(字串清單)、
+  tags(字串清單)、
   specs(label/value 清單)、images(路徑清單，相對網站根目錄)、published(預設 true)
 """
 
@@ -374,8 +375,12 @@ def load_products(brands, taxonomy=None):
 
         # 規格與價格一對一。有 variants 時，商品的價格區間由此推導，
         # 不再另外維護上下限欄位——只有一份資料就不會對不起來。
+        # 後台的「有多種價格」開關關著時，款式欄位是藏起來的，店員看不到，
+        # 裡面殘留的舊資料就不能再影響網站上的價錢。
+        has_variants = str(fm.get("has_variants", "false")).strip().lower() \
+            in ("true", "yes", "1")
         variants = [{"label": d["label"], "price": parse_price(d.get("price"))}
-                    for d in fm.get("variants", []) or []
+                    for d in (fm.get("variants", []) or [] if has_variants else [])
                     if isinstance(d, dict) and d.get("label")]
         variant_prices = [v["price"] for v in variants if v["price"] is not None]
         if variant_prices:
@@ -400,8 +405,6 @@ def load_products(brands, taxonomy=None):
             "price_max": price_max,
             "price_text": format_price(price, price_max),
             "variants": variants,
-            # 規格表的欄位名稱，如「尺寸」；沒填就用通用的「規格」
-            "variant_label": s("variant_label") or "規格",
             # 法定標示（許可證字號、品名、持證藥商、製造廠與地址），整段原文照登。
             # 非管制品（碗盤、保健食品等）留空，前台就不顯示該區塊。
             "regulatory": str(fm.get("regulatory", "") or "").strip(),
@@ -1791,14 +1794,14 @@ def build_product_pages(products):
                     for v in variants)
                 variant_part = (
                     '            <table class="cat-spec-table cat-variant-table">\n'
-                    f'              <thead><tr><th scope="col">{esc(product["variant_label"])}</th>'
+                    '              <thead><tr><th scope="col">規格</th>'
                     '<th scope="col">價格</th></tr></thead>\n'
                     f'              <tbody>{rows}</tbody>\n'
                     '            </table>\n')
             else:
                 # 全部同價：價格上方已經寫過，這裡只需列出有哪些選項
                 specs_part += (
-                    f'<tr><th scope="row">{esc(product["variant_label"])}</th>'
+                    '<tr><th scope="row">規格</th>'
                     f'<td>{esc("、".join(v["label"] for v in variants))}</td></tr>')
 
         specs_part += "".join(
@@ -1858,10 +1861,10 @@ def build_product_pages(products):
         # 提供方式：只留資訊列講不完的細節。「購買方式」本身已由下方的
         # 電話按鈕與蝦皮按鈕表達，不再重複一行。
         offer_rows = []
-        if product["rental_price"]:
-            offer_rows.append(("租金", product["rental_price"]))
-        elif product["rentable"]:
-            offer_rows.append(("租金", "依租期而定，歡迎來電詢價"))
+        # 「可租賃」關著時後台會藏起租金欄位，殘留的租金不顯示
+        if product["rentable"]:
+            offer_rows.append(("租金", product["rental_price"]
+                               or "依租期而定，歡迎來電詢價"))
         if product["subsidy"]:
             offer_rows.append(("補助", "、".join(product["subsidy"])))
         offer_html = ""
@@ -2350,6 +2353,24 @@ def sync_about_chrome():
     print("   about/index.html 頁首頁尾與導覽 JS 已同步為共用模板")
 
 
+def sync_admin_scripts():
+    """後台 admin/index.html 載入的自製 JS 加上內容版本號。
+
+    GitHub Pages 會讓瀏覽器快取 JS 約 10 分鐘，不加版本號的話，改完
+    範例字或欄位規則後店員常常還看到舊版。須在 build_admin_preview_constants()
+    之後執行，版本號才涵蓋最新的常數檔。
+    """
+    path = ROOT / "admin" / "index.html"
+    if not path.is_file():
+        return
+    version = _content_hash("admin/" + f for f in (
+        "preview.js", "preview-constants.js", "field-examples.js", "field-rules.js"))
+    text = path.read_text(encoding="utf-8")
+    text = re.sub(r'src="((?:preview|field-examples|field-rules)\.js)(\?v=\w+)?"',
+                  rf'src="\1?v={version}"', text)
+    path.write_text(text, encoding="utf-8")
+
+
 def main():
     # Windows 主控台預設 cp950，直接印中文／emoji 會 UnicodeEncodeError
     for stream in (sys.stdout, sys.stderr):
@@ -2386,6 +2407,7 @@ def main():
     build_robots()
     sync_about_chrome()
     build_admin_preview_constants()
+    sync_admin_scripts()
 
     rentable = sum(1 for p in products if p["rentable"])
     pages = 4 + len(CATEGORIES) + len(brand_slugs) + len(products)

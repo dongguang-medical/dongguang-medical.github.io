@@ -2,6 +2,7 @@
 name: 中衛 CSD Y型不織布紗布墊 3吋／4吋
 taxonomy: 照護耗材/紗布棉棒
 price: ""
+has_variants: true
 variants:
   - label: "2X2"
     price: 4
@@ -9,7 +10,6 @@ variants:
     price: 5
   - label: "4X4"
     price: 6
-variant_label: "規格"
 brand: 中衛
 offering:
   - 線上選購

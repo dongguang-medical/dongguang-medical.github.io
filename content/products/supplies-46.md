@@ -2,6 +2,7 @@
 name: 永猷 成人醫用口罩 50入/盒（雙鋼印）
 taxonomy: 照護耗材/口罩
 price: ""
+has_variants: true
 variants:
   - label: "藍色"
     price: 179
@@ -15,7 +16,6 @@ variants:
     price: 209
   - label: "亮眼橘"
     price: 209
-variant_label: "顏色"
 brand: 永猷
 offering:
   - 線上選購

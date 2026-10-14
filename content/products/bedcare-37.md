@@ -2,12 +2,12 @@
 name: 三合一多功能牙醫器材
 taxonomy: 臥床照護/口腔照護
 price: ""
+has_variants: true
 variants:
   - label: "牙鏡(廠牌不限)"
     price: 15
   - label: "三合一組(廠牌不限)"
     price: 30
-variant_label: "包裝"
 brand: ""
 offering:
   - 線上選購

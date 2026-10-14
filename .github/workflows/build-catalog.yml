@@ -8,6 +8,7 @@ on:
       - 'content/**'         # 商品資料變更
       - 'assets/uploads/**'  # 商品圖片變更
       - 'scripts/**'         # 產生器變更
+      - 'admin/*.js'         # 後台自製 JS 變更（更新 admin/index.html 的版本號）
 
 permissions:
   contents: write            # 需要寫入產出的靜態頁面
@@ -41,7 +42,7 @@ jobs:
           git add -A catalog category product rental brand subsidy \
                      index.html sitemap.xml robots.txt \
                      assets/images/placeholder.svg assets/thumbs \
-                     admin/preview-constants.js
+                     admin/preview-constants.js admin/index.html
           git diff --staged --quiet && echo "No changes to commit." || \
             git commit -m "chore: 自動建置商品目錄 [skip ci]"
           git push

@@ -155,6 +155,15 @@ collections:
           - { label: "其他 › 診療床", value: "其他/診療床" }
         # <<< TAXONOMY_OPTIONS_END
 
+      # 像蝦皮的「開啟商品規格」：關著只看到售價，打開才換成規格與價格清單。
+      # 欄位的顯示／隱藏由 admin/field-rules.js 依這個開關切換（Sveltia 沒有條件顯示設定）；
+      # 產生器也照這個開關走，關著時不採用規格清單裡殘留的價格。
+      - label: 有多種價格
+        name: has_variants
+        widget: boolean
+        default: false
+        hint: 不同尺寸、顏色、款式賣不同價錢時打開，改成一列一個規格填價格
+
       # 只填數字，網站上的「NT$」與千分位由產生器加。存成數字後台才排得動序，
       # 存字串的話「NT$12,800」會排在「NT$170」前面。
       - label: 售價
@@ -163,23 +172,17 @@ collections:
         value_type: int
         min: 0
         required: false
-        hint: 只填數字，例 3500（網站會顯示成 NT$3,500）。留空會顯示「歡迎洽詢」。不同規格不同價請改用下面的「規格與價格」
+        hint: 只填數字，例 3500（網站會顯示成 NT$3,500）。留空會顯示「歡迎洽詢」
 
-      # 多規格商品：一列一個規格，各自綁自己的價格。有填這裡就不用填上面的售價，
-      # 網站顯示的價格區間（NT$450～630）由這份清單自動算出來。
-      - label: 規格名稱
-        name: variant_label
-        widget: string
-        required: false
-        hint: 這些規格是在分什麼，例「尺寸」「顏色」「款式」。留空會顯示「規格」
-
+      # 多規格商品：一列一個規格，各自綁自己的價格。網站顯示的價格區間
+      # （NT$450～630）由這份清單自動算出來。
       - label: 規格與價格
         name: variants
         widget: list
         required: false
         label_singular: 規格
         summary: "{{fields.label}}　NT${{fields.price}}"
-        hint: 不同規格不同價時用這裡，一列一個規格。只有單一價格的商品請留空，改填上面的售價
+        hint: 一列一個規格，例如 S／M／L 或 紅色／藍色，各填自己的價格
         fields:
           - { label: 規格, name: label, widget: string }
           - { label: 價格, name: price, widget: number, value_type: int, min: 0 }
@@ -214,7 +217,7 @@ collections:
         name: rental_price
         widget: string
         required: false
-        hint: 只有可租賃的商品要填。例 800/月、1500/季（會原樣顯示）
+        hint: 例 800/月、1500/季（會原樣顯示）。留空會顯示「依租期而定，歡迎來電詢價」
 
       # 只有「提供方式」勾了網購的商品才需要填，商品頁會據此顯示蝦皮購買按鈕
       - label: 蝦皮商品連結
@@ -224,7 +227,7 @@ collections:
         pattern:
           - '^(https://shopee\.tw/.+)?$'
           - 請填完整的蝦皮商品網址，需以 https://shopee.tw/ 開頭
-        hint: 勾選「網購」時填入。商品頁會顯示「到蝦皮下單」按鈕
+        hint: 商品頁會顯示「到蝦皮下單」按鈕
 
       - label: 可申請補助
         name: subsidy

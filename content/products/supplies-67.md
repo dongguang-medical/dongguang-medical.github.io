@@ -2,6 +2,7 @@
 name: 禾捷 棉花棒
 taxonomy: 照護耗材/紗布棉棒
 price: ""
+has_variants: true
 variants:
   - label: "普通棉棒（10支/包）"
     price: 3
@@ -9,7 +10,6 @@ variants:
     price: 4
   - label: "沖洗棉棒（6支/包）"
     price: 6
-variant_label: "規格"
 brand: 禾捷
 offering:
   - 線上選購

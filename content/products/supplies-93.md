@@ -2,6 +2,7 @@
 name: 富廣 採血針 (滅菌)
 taxonomy: 照護耗材/血糖試紙與採血針
 price: ""
+has_variants: true
 variants:
   - label: "2024/12月到期"
     price: 29
@@ -9,7 +10,6 @@ variants:
     price: 39
   - label: "2030/09月到期"
     price: 45
-variant_label: "效期"
 brand: 富廣
 offering:
   - 線上選購

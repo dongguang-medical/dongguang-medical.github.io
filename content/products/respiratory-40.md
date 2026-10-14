@@ -2,6 +2,7 @@
 name: 貝斯美德 Besmed 氧氣鼻管 2M／6M
 taxonomy: 呼吸照護/氧氣用品
 price: ""
+has_variants: true
 variants:
   - label: "醫技2M【接管】"
     price: 40
@@ -11,7 +12,6 @@ variants:
     price: 40
   - label: "醫技6M【鼻管】"
     price: 80
-variant_label: "規格"
 brand: 貝斯美德
 offering:
   - 線上選購

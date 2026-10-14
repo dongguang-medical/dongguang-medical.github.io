@@ -2,12 +2,12 @@
 name: 貝斯美德 Besmed 噴霧面罩 成人／兒童
 taxonomy: 呼吸照護/噴霧器配件
 price: ""
+has_variants: true
 variants:
   - label: "兒童"
     price: 50
   - label: "成人"
     price: 50
-variant_label: "適用對象"
 brand: 貝斯美德
 offering:
   - 線上選購

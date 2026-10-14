@@ -2,6 +2,7 @@
 name: 華新 PVC無粉檢診手套 S/M/L（未滅菌）
 taxonomy: 照護耗材/手套
 price: ""
+has_variants: true
 variants:
   - label: "S"
     price: 129
@@ -9,7 +10,6 @@ variants:
     price: 129
   - label: "L"
     price: 129
-variant_label: "尺寸"
 brand: 華新
 offering:
   - 線上選購

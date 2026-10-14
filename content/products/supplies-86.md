@@ -2,12 +2,12 @@
 name: 3M 溫和剝離矽膠帶（敏感肌適用）
 taxonomy: 照護耗材/醫用膠帶
 price: ""
+has_variants: true
 variants:
   - label: "1.37公尺"
     price: 79
   - label: "5公尺"
     price: 199
-variant_label: "尺寸"
 brand: 3m
 offering:
   - 線上選購

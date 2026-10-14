@@ -2,6 +2,7 @@
 name: 瑞特 採血筆（血糖機通用型）
 taxonomy: 照護耗材/血糖試紙與採血針
 price: ""
+has_variants: true
 variants:
   - label: "一支"
     price: 245
@@ -11,7 +12,6 @@ variants:
     price: 850
   - label: "GS700/組"
     price: 850
-variant_label: "規格"
 brand: 瑞特
 offering:
   - 線上選購

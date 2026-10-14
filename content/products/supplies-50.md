@@ -2,12 +2,12 @@
 name: 棉球／棉花 一磅裝（未滅菌）
 taxonomy: 照護耗材/紗布棉棒
 price: ""
+has_variants: true
 variants:
   - label: "小棉球"
     price: 190
   - label: "中棉球"
     price: 190
-variant_label: "尺寸"
 brand: ""
 offering:
   - 線上選購

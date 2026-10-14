@@ -2,6 +2,7 @@
 name: 養根命 艾條溫灸棒
 taxonomy: 其他/居家生活用品
 price: ""
+has_variants: true
 variants:
   - label: "益康"
     price: 150
@@ -9,7 +10,6 @@ variants:
     price: 160
   - label: "溫灸棒"
     price: 200
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購

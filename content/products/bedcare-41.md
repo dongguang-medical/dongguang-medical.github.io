@@ -2,6 +2,7 @@
 name: 柔麗思 棉質免洗褲 5入（產後加大型）
 taxonomy: 臥床照護/照護衣物
 price: ""
+has_variants: true
 variants:
   - label: "M"
     price: 79
@@ -11,7 +12,6 @@ variants:
     price: 79
   - label: "XXL"
     price: 79
-variant_label: "規格"
 brand: 柔麗思
 offering:
   - 線上選購

@@ -3,7 +3,6 @@ name: 派頓 潔康75%酒精液 500ml（乙類成藥）
 taxonomy: 照護耗材/消毒與清潔
 price: 69
 variants: []
-variant_label: ""
 brand: 派頓
 offering:
   - 線上選購

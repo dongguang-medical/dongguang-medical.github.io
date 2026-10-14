@@ -2,12 +2,12 @@
 name: 愛民 I-M EO-345 手臂吊帶（舒適加強型）
 taxonomy: 復健理療/護具
 price: ""
+has_variants: true
 variants:
   - label: "S/M"
     price: 250
   - label: "L/XL"
     price: 250
-variant_label: "尺寸"
 brand: 愛民
 offering:
   - 線上選購

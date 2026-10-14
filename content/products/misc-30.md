@@ -2,6 +2,7 @@
 name: 不鏽鋼外科剪刀 14cm
 taxonomy: 其他/醫療器械
 price: ""
+has_variants: true
 variants:
   - label: "直 半圓尖"
     price: 90
@@ -15,7 +16,6 @@ variants:
     price: 90
   - label: "彎 雙圓"
     price: 90
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購

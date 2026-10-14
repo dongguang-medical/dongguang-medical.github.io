@@ -2,12 +2,12 @@
 name: 恆安 潔淨寧 乾洗手劑(花草香) 500ml
 taxonomy: 照護耗材/消毒與清潔
 price: ""
+has_variants: true
 variants:
   - label: "專用霧化噴頭"
     price: 50
   - label: "500ml（花草香）"
     price: 250
-variant_label: "規格"
 brand: 恆安
 offering:
   - 線上選購

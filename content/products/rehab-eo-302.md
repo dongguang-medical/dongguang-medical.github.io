@@ -2,6 +2,7 @@
 name: 愛民 I-M EO-302 手臂吊帶（藍）
 taxonomy: 復健理療/護具
 price: ""
+has_variants: true
 variants:
   - label: "S（23-29公分）"
     price: 99
@@ -9,7 +10,6 @@ variants:
     price: 99
   - label: "L（34-39公分）"
     price: 99
-variant_label: "尺寸"
 brand: 愛民
 offering:
   - 線上選購

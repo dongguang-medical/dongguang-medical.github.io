@@ -2,6 +2,7 @@
 name: 拐杖腳墊腳套 通用型
 taxonomy: 行動輔具/助行器配件
 price: ""
+has_variants: true
 variants:
   - label: "【適用四腳拐】1.4公分"
     price: 20
@@ -15,7 +16,6 @@ variants:
     price: 30
   - label: "【適用腋下拐】2公分"
     price: 50
-variant_label: "尺寸"
 brand: ""
 offering:
   - 線上選購

@@ -2,6 +2,7 @@
 name: 中衛 CSD 醫療平面口罩 一級／二級
 taxonomy: 照護耗材/口罩
 price: ""
+has_variants: true
 variants:
   - label: "一級粉一盒"
     price: 135
@@ -27,7 +28,6 @@ variants:
     price: 400
   - label: "一級綠三盒"
     price: 400
-variant_label: "規格"
 brand: 中衛
 offering:
   - 線上選購

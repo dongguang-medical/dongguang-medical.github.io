@@ -2,6 +2,7 @@
 name: 筆燈 附瞳孔尺標
 taxonomy: 其他/診所與醫護設備
 price: ""
+has_variants: true
 variants:
   - label: "筆燈(自帶燈泡1顆)"
     price: 119
@@ -15,7 +16,6 @@ variants:
     price: 259
   - label: "筆燈+替換燈泡5顆"
     price: 294
-variant_label: "規格"
 brand: ""
 offering:
   - 線上選購
