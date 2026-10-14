@@ -29,6 +29,10 @@ CMS.registerPreviewStyle(
 // 預覽框比較窄，留點邊；說明條與網站內容區隔開
 CMS.registerPreviewStyle(
   `body { background: var(--color-bg, #fff); }
+  /* 後台的「同步捲動」會跟著預覽頁面的捲動去捲左邊的欄位，捲預覽時左邊亂跳。
+     把頁面本身鎖住、改由內層的框捲動，就不會牽動左邊 */
+  html, body { height: 100%; overflow: hidden; }
+  .pv-scroll { height: 100vh; overflow-y: auto; overscroll-behavior: contain; }
   .cat-main { padding-top: 0; }
   .cat-section { padding-top: 16px; }
   .pv-note { margin: 0 0 12px; padding: 8px 12px; border-radius: 8px;
@@ -319,7 +323,7 @@ ${hidden}<p class="pv-note">這是預覽，儲存後約 1～3 分鐘網站才會
 ${productPage(product)}
 </div></div></main>`;
 
-  return window.h('div', { dangerouslySetInnerHTML: { __html: html } });
+  return window.h('div', { className: 'pv-scroll', dangerouslySetInnerHTML: { __html: html } });
 }
 
 CMS.registerPreviewTemplate('products', ProductPreview);

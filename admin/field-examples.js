@@ -1,0 +1,54 @@
+// ============================================================
+// 欄位裡的灰色範例字（placeholder）
+//
+// Sveltia CMS 的欄位設定沒有 placeholder 選項，這裡在畫面長出欄位後補上。
+// 對應方式是欄位外層的 data-typed-key-path（就是 config.yml 的欄位 name，
+// 清單裡的子欄位寫成「清單名.*.子欄位名」；純文字清單如標籤則直接是清單名），
+// 不依賴畫面上的中文標籤。
+// 欄位已經有內容時範例字不會顯示，不影響存檔的資料。
+// ============================================================
+
+const EXAMPLES = {
+  name: '例：鋁合金四輪助行車',
+  price: '例：3500',
+  variant_label: '例：尺寸',
+  'variants.*.label': '例：M',
+  'variants.*.price': '例：450',
+  regulatory: [
+    '例：',
+    '許可證字號：衛署醫器製壹字第000000號',
+    '許可證品名：○○○（未滅菌）',
+    '持證藥商：○○股份有限公司',
+    '製造廠：○○股份有限公司',
+    '製造廠地址：○○市○○區○○路○號',
+  ].join('\n'),
+  rental_price: '例：800/月',
+  shopee_url: '例：https://shopee.tw/…（整段網址貼上）',
+  tags: '例：台灣製造',
+  'specs.*.label': '例：承重',
+  'specs.*.value': '例：100 公斤',
+};
+
+function applyExamples(root) {
+  for (const field of root.querySelectorAll('[data-typed-key-path]')) {
+    const example = EXAMPLES[field.dataset.typedKeyPath];
+    if (!example) continue;
+    // 只填這個欄位自己的輸入框，不碰巢狀在裡面的其他欄位
+    for (const input of field.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), textarea')) {
+      if (input.closest('[data-typed-key-path]') === field && !input.placeholder) {
+        input.placeholder = example;
+      }
+    }
+  }
+}
+
+// 後台是單頁應用，欄位會隨開啟商品、新增清單項目而陸續出現
+let queued = false;
+new MutationObserver(() => {
+  if (queued) return;
+  queued = true;
+  requestAnimationFrame(() => {
+    queued = false;
+    applyExamples(document);
+  });
+}).observe(document.documentElement, { childList: true, subtree: true });
