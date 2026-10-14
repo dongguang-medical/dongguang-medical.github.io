@@ -9,24 +9,23 @@
 // ============================================================
 
 const EXAMPLES = {
-  name: '例：鋁合金四輪助行車',
-  price: '例：3500',
-  variant_label: '例：尺寸',
-  'variants.*.label': '例：M',
-  'variants.*.price': '例：450',
+  name: '鋁合金四輪助行車',
+  price: '3500',
+  variant_label: '尺寸',
+  'variants.*.label': 'M',
+  'variants.*.price': '450',
   regulatory: [
-    '例：',
     '許可證字號：衛署醫器製壹字第000000號',
     '許可證品名：○○○（未滅菌）',
     '持證藥商：○○股份有限公司',
     '製造廠：○○股份有限公司',
     '製造廠地址：○○市○○區○○路○號',
   ].join('\n'),
-  rental_price: '例：800/月',
-  shopee_url: '例：https://shopee.tw/…（整段網址貼上）',
-  tags: '例：台灣製造',
-  'specs.*.label': '例：承重',
-  'specs.*.value': '例：100 公斤',
+  rental_price: '800/月',
+  shopee_url: 'https://shopee.tw/…（整段網址貼上）',
+  tags: '台灣製造',
+  'specs.*.label': '承重',
+  'specs.*.value': '100 公斤',
 };
 
 function applyExamples(root) {
