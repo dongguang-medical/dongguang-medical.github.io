@@ -57,7 +57,6 @@ collections:
         name: name
         widget: string
         required: true
-        hint: 顯示在網站上的商品名稱
 
       # 品牌改為關聯欄位：只能從「品牌」清單挑選，打不出錯字，
       # 也讓品牌本身能帶原廠窗口、圖片素材狀態等資訊
@@ -69,7 +68,6 @@ collections:
         display_fields: [name]
         value_field: slug
         required: false
-        hint: 找不到品牌時，請先到左側「品牌」新增一筆
 
       # 主分類與子分類合併為單一欄位，避免選出「行動輔具＋氣墊床」這種
       # 不存在的組合。下拉可直接打字篩選：輸入「行動」只剩該類、輸入
@@ -203,7 +201,6 @@ collections:
         name: regulatory
         widget: text
         required: false
-        hint: 依序填許可證字號、許可證品名、持證藥商、製造廠、製造廠地址。非管制品（碗盤、保健食品等）請留空
 
       # 像蝦皮的「開啟商品規格」：關著只看到價格，打開才換成規格與價格清單。
       # 欄位的顯示／隱藏由 admin/field-rules.js 依這個開關切換（Sveltia 沒有條件顯示設定）；
@@ -212,7 +209,6 @@ collections:
         name: has_variants
         widget: boolean
         default: false
-        hint: 不同尺寸、顏色、款式賣不同價錢時打開，改成一列一個規格填價格
 
       # 只填數字，網站上的「NT$」與千分位由產生器加。存成數字後台才排得動序，
       # 存字串的話「NT$12,800」會排在「NT$170」前面。
@@ -222,7 +218,6 @@ collections:
         value_type: int
         min: 0
         required: false
-        hint: 只填數字，例 3500（網站會顯示成 NT$3,500）。留空會顯示「歡迎洽詢」
 
       # 多規格商品：一列一個規格，各自綁自己的價格。網站顯示的價格區間
       # （NT$450～630）由這份清單自動算出來。
@@ -232,7 +227,6 @@ collections:
         required: false
         label_singular: 規格
         summary: "{{fields.label}}　NT${{fields.price}}"
-        hint: 一列一個規格，例如 S／M／L 或 紅色／藍色，各填自己的價格
         fields:
           - { label: 規格, name: label, widget: string }
           - { label: 價格, name: price, widget: number, value_type: int, min: 0 }
@@ -242,13 +236,11 @@ collections:
         name: rentable
         widget: boolean
         default: false
-        hint: 開啟後會出現在網站的租賃專區，商品卡也會顯示「可租賃」
 
       - label: 租金
         name: rental_price
         widget: string
         required: false
-        hint: 例 800/月、1500/季（會原樣顯示）。留空會顯示「依租期而定，歡迎來電詢價」
 
       - label: 可申請補助
         name: subsidy
@@ -258,7 +250,6 @@ collections:
         options:
           - 長照2.0輔具補助
           - 身障輔具補助
-        hint: 可複選，沒有就不用勾
 
       - label: 提供方式
         name: offering
@@ -269,7 +260,6 @@ collections:
         options:
           - 線上選購
           - 門市洽詢
-        hint: 可複選。勾選「線上選購」會出現選購連結，請一併填寫
 
       # 只有「提供方式」勾了網購的商品才需要填，商品頁會據此顯示蝦皮購買按鈕
       - label: 選購連結
@@ -279,19 +269,16 @@ collections:
         pattern:
           - '^(https://shopee\.tw/.+)?$'
           - 請填完整的蝦皮商品網址，需以 https://shopee.tw/ 開頭
-        hint: 商品頁會顯示「到蝦皮下單」按鈕
 
       - label: 上架顯示
         name: published
         widget: boolean
         default: true
-        hint: 關閉後商品不會出現在網站上（不用刪除商品）
 
       - label: 熱銷精選
         name: featured
         widget: boolean
         default: false
-        hint: 開啟後會出現在首頁「熱銷精選」輪播
 
   # ── 品牌 ────────────────────────────────────────────────
   # 商品的品牌欄位由此清單提供選項。除了避免打錯字，也把原廠聯絡窗口
