@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2565415319
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸字第000965號
   許可證品名：“歐姆龍” 體重體脂計

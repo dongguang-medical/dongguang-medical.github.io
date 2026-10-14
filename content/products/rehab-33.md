@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044792028
 subsidy: []
-tags: []
 specs:
   - label: 圓球形／橄欖球型
     value: "約七公分大小，高密度泡棉製"

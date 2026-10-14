@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6319672088
 subsidy: []
-tags: []
 specs:
   - label: 主要成份
     value: "不織布、純水"

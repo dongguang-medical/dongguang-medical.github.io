@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/9857076033
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製字第001169號
   許可證品名：熱映光電紅外線耳溫槍

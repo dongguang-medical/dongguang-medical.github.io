@@ -21,7 +21,6 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
   name(必填)、category(必填，九選一)、subcategory、price、brand、
   has_variants(布林，後台「有多種價格」開關；關閉時忽略 variants)、
   variants(label/price 清單，多規格商品用；有填則 price 由此推導)、
-  tags(字串清單)、
   specs(label/value 清單)、images(路徑清單，相對網站根目錄)、published(預設 true)
 """
 
@@ -389,7 +388,6 @@ def load_products(brands, taxonomy=None):
             price = price_max = parse_price(fm.get("price"))
         images = [str(p).lstrip("/") for p in fm.get("images", []) or []
                   if isinstance(p, str) and p.strip()]
-        tags = [t for t in fm.get("tags", []) or [] if isinstance(t, str) and t]
 
         offering = [o for o in fm.get("offering", []) or [] if o in OFFERINGS] \
             or ["門市洽詢"]
@@ -418,7 +416,6 @@ def load_products(brands, taxonomy=None):
             "rentable": str(fm.get("rentable", "false")).strip().lower()
                         in ("true", "yes", "1"),
             "subsidy": subsidy,
-            "tags": tags,
             "specs": specs,
             "images": images,
             "featured": str(fm.get("featured", "false")).strip().lower()
@@ -813,7 +810,7 @@ def price_html(product, big=False):
 
 
 def badge_spans(product):
-    """租賃／補助等關鍵標記。與一般標籤同列同尺寸，僅「可租賃」以實心橘突出。"""
+    """租賃／補助等關鍵標記，同列同尺寸，僅「可租賃」以實心橘突出。"""
     marks = []
     if product["rentable"]:
         marks.append('<span class="cat-badge cat-badge-rent">可租賃</span>')
@@ -833,11 +830,8 @@ def thumb_path(img_path):
 
 
 def product_card(product):
-    # 標記與行銷標籤合併為同一列 pill，行銷標籤最多兩個避免過長
     pills = badge_spans(product)
-    plain = [t for t in product["tags"] if t not in ("可租賃", "可申請補助")]
-    pills += [f'<span class="cat-tag">{esc(t)}</span>' for t in plain[:2]]
-    tags = f'<div class="cat-tags">{"".join(pills)}</div>' if pills else ""
+    badges = f'<div class="cat-tags">{"".join(pills)}</div>' if pills else ""
     brand = (f'<div class="cat-card-brand">{esc(product["brand"])}</div>'
              if product["brand"] else "")
     cover = cover_of(product)
@@ -855,7 +849,7 @@ def product_card(product):
   <div class="cat-card-body">
     <h3>{esc(product['name'])}</h3>
     {brand}
-    {tags}
+    {badges}
     {price_html(product)}
   </div>
 </a>"""
@@ -881,11 +875,6 @@ CATALOG_SEARCH_JS = """  <script>
       }
 
       function card(p) {
-        var tags = (p.tags || []).filter(function (t) {
-          return t !== '可租賃' && t !== '可申請補助';
-        }).slice(0, 2).map(function (t) {
-          return '<span class="cat-tag">' + esc(t) + '</span>';
-        }).join('');
         var badges = '';
         if (p.rentable) {
           badges += '<span class="cat-badge cat-badge-rent">可租賃</span>';
@@ -900,7 +889,7 @@ CATALOG_SEARCH_JS = """  <script>
           + '<div class="cat-card-photo"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" width="400" height="300"></div>'
           + '<div class="cat-card-body"><h3>' + esc(p.name) + '</h3>'
           + (p.brand ? '<div class="cat-card-brand">' + esc(p.brand) + '</div>' : '')
-          + ((badges || tags) ? '<div class="cat-tags">' + badges + tags + '</div>' : '')
+          + (badges ? '<div class="cat-tags">' + badges + '</div>' : '')
           + (p.price_text ? '<div class="cat-card-price">' + esc(p.price_text) + '</div>'
                      : '<div class="cat-card-price cat-price-ask">歡迎洽詢</div>')
           + '</div></a>';
@@ -916,8 +905,7 @@ CATALOG_SEARCH_JS = """  <script>
         }
         if (!index) return;
         var hits = index.filter(function (p) {
-          var hay = [p.name, p.brand, p.category, p.subcategory]
-            .concat(p.tags || []).join(' ').toLowerCase();
+          var hay = [p.name, p.brand, p.category, p.subcategory].join(' ').toLowerCase();
           return q.split(/\\s+/).every(function (w) { return hay.indexOf(w) !== -1; });
         });
         grid.innerHTML = hits.map(card).join('');
@@ -1289,7 +1277,7 @@ def build_home_page(products):
         </div>
         <div class="cat-search">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="search" id="cat-search-input" placeholder="搜尋商品名稱、品牌或標籤…" aria-label="搜尋商品">
+          <input type="search" id="cat-search-input" placeholder="搜尋商品名稱或品牌…" aria-label="搜尋商品">
         </div>
         <div id="cat-search-results" hidden>
           <div class="cat-grid" id="cat-results-grid"></div>
@@ -1849,14 +1837,6 @@ def build_product_pages(products):
         # 商品頁不放租賃／補助標記：下方的資訊列講得更精確（租金怎麼算、
         # 是哪一種補助），標記只會讓同一件事在一個畫面出現兩次。
         # 標記留在商品卡片上——那裡沒有空間放資訊列，才需要它來快速掃視。
-        plain_tags = [t for t in product["tags"]
-                      if t not in ("可租賃", "可申請補助")]
-        tags_html = ""
-        if plain_tags:
-            tags_html = ('<div class="cat-tags">'
-                         + "".join(f'<span class="cat-tag">{esc(t)}</span>'
-                                   for t in plain_tags)
-                         + "</div>")
 
         # 提供方式：只留資訊列講不完的細節。「購買方式」本身已由下方的
         # 電話按鈕與蝦皮按鈕表達，不再重複一行。
@@ -1933,7 +1913,6 @@ def build_product_pages(products):
             {brand_html}
             {price_html(product, big=True)}
             {price_note}
-            {tags_html}
             {offer_html}
             <div class="cat-cta">
               <div class="cat-cta-actions">
@@ -2274,7 +2253,6 @@ def build_search_index(products):
             {
                 "name": p["name"],
                 "brand": p["brand"],
-                "tags": p["tags"],
                 "category": p["category"],
                 "subcategory": p["subcategory"],
                 "offering": p["offering"],

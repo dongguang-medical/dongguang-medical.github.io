@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2159630858
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第016810號
   持證藥商：台灣明尼蘇達礦業製造股份有限公司

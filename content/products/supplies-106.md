@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/9058215345
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第002476號
   持證藥商：華新橡膠工業股份有限公司

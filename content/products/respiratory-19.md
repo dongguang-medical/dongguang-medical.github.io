@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 產品特點
     value: 1袋60小包，一包配500ML的水

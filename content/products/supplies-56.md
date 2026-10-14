@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/44280164752
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第008436號
   許可證品名：多倍檢診手套(無粉)(未滅菌)

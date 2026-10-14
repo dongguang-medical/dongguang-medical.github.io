@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3500398976
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005205號
   許可證品名：安適康皙佳疤痕護理矽凝膠(未滅菌)

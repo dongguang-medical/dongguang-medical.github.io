@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/5156652239
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第004515號
   許可證品名："杰奇" 肢體裝具 (未滅菌)

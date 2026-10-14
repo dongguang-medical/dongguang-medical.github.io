@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/178628141
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸字第000705號
   許可證品名：OMRON歐姆龍體重體脂計HBF-217

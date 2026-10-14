@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047638714
 subsidy: []
-tags: []
 specs:
   - label: 總長
     value: "16CM"

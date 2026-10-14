@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044845368
 subsidy: []
-tags: []
 specs: []
 images:
   - /assets/uploads/misc-25-1.jpg

@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/473818851
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第000495號
   許可證品名：萊潔舒適坐浴盆組(未滅菌)

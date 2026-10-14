@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "33410 : 10X10cm｜33413 : 15X15cm｜33416 : 20X20cm"

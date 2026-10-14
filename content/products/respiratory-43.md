@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1045116434
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第003106號
   許可證品名：“士康”洗鼻器 (未滅菌)

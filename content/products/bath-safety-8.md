@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 免沖洗
 specs: []
 images: []
 published: false

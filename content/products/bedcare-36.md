@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3942495206
 subsidy: []
-tags: []
 specs:
   - label: 刷毛材質
     value: "＂一般軟毛＂ 毛刷"

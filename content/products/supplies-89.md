@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1440608300
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第001990號
   許可證品名：瑞特採血筆 (未滅菌)

@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/5017004617
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第003716號
   許可證品名：中衛棉棒-普通15CM-100PCS／中衛棉棒-沖洗15CM-100PCS

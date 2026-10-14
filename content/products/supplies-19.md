@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "M 20片(1箱4包)｜L 16片(1箱4包)"

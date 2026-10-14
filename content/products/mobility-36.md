@@ -9,8 +9,6 @@ rentable: false
 rental_price: ""
 subsidy:
   - 長照2.0輔具補助
-tags:
-  - 可申請補助
 specs:
   - label: 規格選項
     value: "百合白｜消光灰"

@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 防水材質
 specs:
   - label: 規格選項
     value: "藏藍｜綠｜寶藍"

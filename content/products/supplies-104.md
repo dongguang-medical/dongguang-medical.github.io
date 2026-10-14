@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3318747733
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署成製字第1014771號
   許可證品名：克司博 75% 酒精液

@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 透氣設計
 specs: []
 images: []
 published: false

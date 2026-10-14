@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047560030
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第000749號
   許可證品名：3M 宜拉膠帶(未滅菌)

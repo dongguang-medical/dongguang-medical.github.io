@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044984598
 subsidy: []
-tags: []
 specs: []
 images:
   - /assets/uploads/bedcare-41-1.jpg

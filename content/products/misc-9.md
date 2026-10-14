@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 台灣製造
 specs:
   - label: 產地
     value: 台灣製造

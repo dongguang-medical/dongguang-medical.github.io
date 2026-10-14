@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/14306632143
 subsidy: []
-tags: []
 specs:
   - label: 包裝
     value: "10pcs/包"

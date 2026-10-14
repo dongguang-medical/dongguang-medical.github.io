@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/25257355551
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005066號（新豐抽痰管）／衛署醫器製壹字第000212號（抽痰杯）
   許可證品名：新豐 抽痰管 - 氣管支氣管抽吸導管包(滅菌)／"怡安" 廢液收集袋

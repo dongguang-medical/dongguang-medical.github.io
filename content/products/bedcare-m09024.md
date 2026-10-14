@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/5351322386
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005058號
   許可證品名：太平洋灌腸袋(未滅菌)

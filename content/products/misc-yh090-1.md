@@ -8,9 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 台灣製造
-  - 高度可調
 specs:
   - label: 型號
     value: YH090-1

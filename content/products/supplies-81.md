@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/973809289
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器輸壹字第018644號
   許可證品名：Leukoplast"旭昇"抗水透氣醫用膠帶(未滅菌)

@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/217514841
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第000087號
   許可證品名：芬蒂思透氣膠帶 (未滅菌)

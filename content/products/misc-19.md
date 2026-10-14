@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "直雙尖 [00586]｜直雙圓 [01965]｜直尖圓｜彎雙尖｜眼科剪刀 直 11.5cm｜眼科剪刀 反11.5cm…等"

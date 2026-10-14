@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/7246424934
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "聚丙烯(PP)"

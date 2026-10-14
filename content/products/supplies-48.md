@@ -36,7 +36,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4466220634
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第001177號（一級）／衛署醫器製字第001286號（二級）
   許可證品名：中衛醫療口罩

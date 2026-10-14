@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 連線功能
     value: 支援藍牙傳輸

@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "彈簧條款 / SP6220A：約26公分｜彈簧條款 / SP6230A：約19公分｜無彈簧條款 / SP6630：約19公分…等"

@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "YH224-2(10x12)｜YH224-3(10x18)｜YH224-4(10x24)｜YH224-5(24x7)弧型"

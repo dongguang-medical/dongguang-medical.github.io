@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3850832389
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第007143號
   許可證品名：國發約束帶

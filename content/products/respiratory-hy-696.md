@@ -8,8 +8,6 @@ offering:
 rentable: true
 rental_price: ""
 subsidy: []
-tags:
-  - 可租賃
 specs:
   - label: 型號
     value: HY-696

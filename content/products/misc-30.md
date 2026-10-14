@@ -24,7 +24,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047527578
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第004061號
   持證藥商：宏春貿易有限公司

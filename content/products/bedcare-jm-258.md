@@ -9,10 +9,6 @@ rentable: true
 rental_price: ""
 subsidy:
   - 長照2.0輔具補助
-tags:
-  - 可租賃
-  - 可申請補助
-  - 台灣製造
 specs:
   - label: 型號
     value: JM-258

@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/5853154293
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005342號
   許可證品名：“愛民” 手臂吊帶 (未滅菌)

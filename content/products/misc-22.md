@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "鑷子 12cm [00593]｜鑷子 14cm [00594]｜鑷子 18cm [00595]｜鑷子 24cm [00596]｜鼻科鑷子14cm…等"

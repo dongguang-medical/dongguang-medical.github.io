@@ -24,7 +24,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/40910445739
 subsidy: []
-tags: []
 specs: []
 images:
   - /assets/uploads/mobility-50-1.jpg

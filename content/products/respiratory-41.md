@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4051309155
 subsidy: []
-tags: []
 specs:
   - label: 長度
     value: "15公分／節"

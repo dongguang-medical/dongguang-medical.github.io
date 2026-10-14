@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2159774852
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第002944號
   許可證品名："和豐國際" 洗鼻器 (未滅菌)

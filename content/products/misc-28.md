@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3656634496
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "PVC,布料"

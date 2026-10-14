@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/5118769626
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署成製字第015564號
   許可證品名：乾洗手 消毒潔手溶液 75%

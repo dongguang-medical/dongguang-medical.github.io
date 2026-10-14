@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "涼感 / 12ml｜涼感 / 65ml｜溫感 / 12ml｜溫感 / 65ml"

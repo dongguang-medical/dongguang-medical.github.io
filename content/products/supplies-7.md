@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/16182571347
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第000403號
   許可證品名：“康威”適透膜膠(未滅菌)

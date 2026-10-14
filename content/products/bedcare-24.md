@@ -21,9 +21,6 @@ rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3456488636
 subsidy:
   - 長照2.0輔具補助
-tags:
-  - 可租賃
-  - 可申請補助
 regulatory: |
   許可證字號：衛署醫器製壹字第003725號
   許可證品名：“杰奇”病患移位裝置 (未滅菌)

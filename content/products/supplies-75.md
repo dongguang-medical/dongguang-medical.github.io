@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/18139865305
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第003765號
   持證藥商：蓓莉雅股份有限公司

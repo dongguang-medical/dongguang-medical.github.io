@@ -34,7 +34,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/192984855
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第002476號（華新）／衛部醫器陸輸壹字第003849號（三花）／衛部醫器陸輸壹字第002824號（和豐）
   許可證品名：三花牌 無粉塑膠手套(未滅菌)／”和豐”醫用檢診手套(未滅菌)

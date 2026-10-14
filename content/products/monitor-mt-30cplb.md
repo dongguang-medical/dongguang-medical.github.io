@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/11303233285
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製字第005789號
   許可證品名：“日本精密”迷你耳溫槍

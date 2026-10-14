@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1296691657
 subsidy: []
-tags: []
 specs:
   - label: 成份
     value: "凡士林"

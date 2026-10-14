@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2639364153
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第006174號
   許可證品名：三樂事 電動吸鼻器 (未滅菌)

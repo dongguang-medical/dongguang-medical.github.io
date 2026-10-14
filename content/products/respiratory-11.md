@@ -8,9 +8,6 @@ offering:
 rentable: true
 rental_price: ""
 subsidy: []
-tags:
-  - 可租賃
-  - 低噪音
 specs: []
 images: []
 published: false

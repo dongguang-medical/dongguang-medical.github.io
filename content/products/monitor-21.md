@@ -30,7 +30,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/28560169805
 subsidy: []
-tags: []
 specs: []
 images:
   - /assets/uploads/monitor-21-1.jpg

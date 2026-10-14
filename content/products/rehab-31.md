@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1296616099
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005319號
   許可證品名：帝通 冷熱敷袋 (未滅菌)

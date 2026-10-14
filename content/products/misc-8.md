@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/368265770
 subsidy: []
-tags: []
 specs:
   - label: 產地
     value: "台灣製造"

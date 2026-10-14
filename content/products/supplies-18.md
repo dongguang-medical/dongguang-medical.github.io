@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "M 28片(腰圍 28~46寸)x4包｜L 24片(腰圍38~61寸)x4包"

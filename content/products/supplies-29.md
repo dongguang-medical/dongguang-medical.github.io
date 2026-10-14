@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 加大尺寸
 specs: []
 images: []
 published: false

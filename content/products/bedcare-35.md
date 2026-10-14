@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2164326393
 subsidy: []
-tags: []
 specs:
   - label: 滅菌狀態
     value: "已滅菌"

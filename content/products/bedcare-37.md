@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6992702559
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第004470號
   許可證品名：美莉達牙科手用器械(滅菌)

@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "S-M 適用腰圍：22-35吋｜L-XL 適用腰圍：32-48吋"

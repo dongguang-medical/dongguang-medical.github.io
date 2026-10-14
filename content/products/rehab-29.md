@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4946456288
 subsidy: []
-tags: []
 specs: []
 images:
   - /assets/uploads/rehab-29-1.jpg

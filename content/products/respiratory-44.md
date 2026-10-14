@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2303797141
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製字第006331號
   許可證品名：士康洗鼻鹽

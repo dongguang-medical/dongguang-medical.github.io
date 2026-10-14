@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/13972269442
 subsidy: []
-tags: []
 specs:
   - label: 尺寸
     value: "長 42cm／寬 39cm／高 4.5cm"

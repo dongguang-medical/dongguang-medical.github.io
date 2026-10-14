@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/15426799825
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第001977號
   許可證品名："愛樂康" 造口術用袋及其附件 (未滅菌)

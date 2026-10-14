@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/18652116614
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005369號
   許可證品名："昭惠" 治療用陰道灌洗器 (未滅菌)

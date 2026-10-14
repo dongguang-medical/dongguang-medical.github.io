@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/8852348251
 subsidy: []
-tags: []
 regulatory: |
   製造廠：日本大王製紙株式會社
   製造廠地址：日本國東京都新宿區早稻田町70-1

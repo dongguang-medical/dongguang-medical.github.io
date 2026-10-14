@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/16637127600
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第002546號
   持證藥商：佾岳股份有限公司

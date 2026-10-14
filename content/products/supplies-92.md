@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1450119984
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器陸輸壹字第000666號
   許可證品名：瑞特BIONIME採血針(50支/盒)

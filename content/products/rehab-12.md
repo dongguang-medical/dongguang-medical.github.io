@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1297063581
 subsidy: []
-tags: []
 specs:
   - label: 產品尺寸
     value: "35*29*22公分"

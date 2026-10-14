@@ -24,7 +24,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/8708224564
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第002595號
   許可證品名：〝永猷〞醫療用口罩 (未滅菌)

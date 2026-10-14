@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047578202
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第001148號
   許可證品名：愛樂康 醫用黏性繃帶 (未滅菌)

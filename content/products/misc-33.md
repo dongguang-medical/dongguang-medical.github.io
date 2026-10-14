@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3846568885
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "底座:鐵製+烤漆／中柱:不鏽鋼／弧型墊:皮墊包覆高密度泡棉"

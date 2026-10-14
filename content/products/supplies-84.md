@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/210082873
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "不鏽鋼"

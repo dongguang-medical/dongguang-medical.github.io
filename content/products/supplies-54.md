@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3318747733
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署成製字第016844號
   許可證品名：醫強75%酒精液

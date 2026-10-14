@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/11067874156
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005348號
   許可證品名：“愛民” 軀幹裝具

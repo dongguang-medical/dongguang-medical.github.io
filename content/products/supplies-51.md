@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/50741955
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製字第002150號
   許可證品名：“中衛”酒精棉片

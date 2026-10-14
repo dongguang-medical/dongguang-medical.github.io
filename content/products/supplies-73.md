@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1440680126
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第002032號
   許可證品名：“佑合”不織布紗布墊（未滅菌）

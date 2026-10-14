@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 防水材質
 specs:
   - label: 產品特點
     value: 台灣製造，非人為損壞，保固1年

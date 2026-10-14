@@ -10,8 +10,6 @@ rental_price: ""
 subsidy:
   - 長照2.0輔具補助
   - 身障輔具補助
-tags:
-  - 可申請補助
 specs:
   - label: 型號
     value: FZK-3428

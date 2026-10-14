@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/14026145748
 subsidy: []
-tags: []
 specs:
   - label: 數量
     value: "M：16片／L：14片／XL：12片"

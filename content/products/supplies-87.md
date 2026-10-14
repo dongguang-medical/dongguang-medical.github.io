@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/240338218
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第016453號
   許可證品名：3M 透氣膠帶嬰幼兒專用 (未滅菌)

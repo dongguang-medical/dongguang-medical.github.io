@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 產品特點
     value: 適合大部分單人醫療床，厚度10公分，另有厚度5公分可另外預定。；實品可能會有有色差，商品圖僅供參考，請以實物為準，謝謝

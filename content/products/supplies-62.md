@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/9754469041
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "高密度聚乙烯"

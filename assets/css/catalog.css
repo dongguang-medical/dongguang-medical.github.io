@@ -288,19 +288,7 @@
   margin-top: 6px;
 }
 
-.cat-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-primary-dark);
-  background: var(--color-primary-pale);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.18);
-  padding: 1px 8px;
-  border-radius: var(--radius-full);
-  white-space: nowrap;
-}
-
-/* ── 租賃／補助標記：與一般標籤同列同尺寸，僅以顏色深淺區分 ── */
+/* ── 租賃／補助標記：同列同尺寸，僅以顏色深淺區分 ── */
 .cat-badge {
   display: inline-block;
   font-size: 11px;
@@ -496,15 +484,6 @@
   font-size: 12px;
   color: var(--color-text-muted);
   margin-bottom: 16px;
-}
-
-.cat-product-info .cat-tags {
-  margin: 0 0 22px;
-}
-
-.cat-product-info .cat-tag {
-  font-size: 12px;
-  padding: 3px 12px;
 }
 
 /* CTA */

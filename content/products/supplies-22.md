@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 透氣設計
 specs:
   - label: 規格選項
     value: "M:20片 (腰圍 : 24-51吋)｜L號：16片 (腰圍 : 30-59吋)"

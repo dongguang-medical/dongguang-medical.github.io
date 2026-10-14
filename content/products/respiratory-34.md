@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/7350531719
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005066號
   許可證品名：“新豐” 氣管支氣管抽吸導管包 (滅菌)

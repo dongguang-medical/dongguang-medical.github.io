@@ -10,9 +10,6 @@ rental_price: ""
 subsidy:
   - 長照2.0輔具補助
   - 身障輔具補助
-tags:
-  - 可租賃
-  - 可申請補助
 specs:
   - label: 驅動方式
     value: 電動

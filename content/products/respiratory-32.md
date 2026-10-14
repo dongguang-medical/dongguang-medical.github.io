@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/40680609551
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器陸輸壹字第000596號
   許可證品名：“三花牌”抽痰包 (滅菌)

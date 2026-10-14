@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/5854602691
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器陸輸壹字第002231號
   許可證品名：富廣採血針 (滅菌)

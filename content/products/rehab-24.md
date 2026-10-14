@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "TP80單人款150 x 80 cm｜TP88xxl雙人雙控款150x140cm"

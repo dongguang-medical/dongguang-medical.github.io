@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/8953788424
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器輸字第028199號
   許可證品名：百靈耳溫槍

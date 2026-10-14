@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4248377938
 subsidy: []
-tags: []
 specs:
   - label: 容量
     value: "500cc"

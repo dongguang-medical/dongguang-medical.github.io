@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 產品特點
     value: 屬消耗品燈泡，適用部分紅外線治療儀，例如：井上紅外線治療儀JS300T

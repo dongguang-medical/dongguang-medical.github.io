@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/19554473943
 subsidy: []
-tags: []
 specs:
   - label: 孔徑
     value: "約1.9公分"

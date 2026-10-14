@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044868041
 subsidy: []
-tags: []
 specs:
   - label: 用途功能
     value: "遮光使用"

@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6551508451
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第000212號
   許可證品名：怡安 廢液收集袋 (未滅菌)

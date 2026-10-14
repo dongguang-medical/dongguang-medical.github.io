@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/3548457723
 subsidy: []
-tags: []
 specs:
   - label: 長
     value: "72cm"

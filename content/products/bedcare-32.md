@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6950743776
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第006869號
   許可證品名："保衛" 肢體裝具 (未滅菌)

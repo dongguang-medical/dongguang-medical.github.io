@@ -8,9 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 防水材質
-  - 透氣設計
 specs:
   - label: 型號
     value: PU01

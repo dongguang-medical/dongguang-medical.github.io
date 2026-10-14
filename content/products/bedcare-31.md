@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/11917043390
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第007078號
   許可證品名："中衛"病患用潤滑膏 (滅菌/未滅菌)

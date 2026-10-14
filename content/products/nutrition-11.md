@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 產品特點
     value: "高單位維他命C錠1000mg,緩慢釋放7~10小時持續吸收,一罐60錠"

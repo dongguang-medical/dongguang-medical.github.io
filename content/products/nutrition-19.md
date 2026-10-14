@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 產品特點
     value: 無糖健康少負擔；無糖不甜、低GI(GI值44.2)；調節生理機能、增強體力；金盞花萃取、Omega-3、葡萄萃取物、鉻、膳食纖維

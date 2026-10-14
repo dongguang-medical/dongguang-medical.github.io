@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6358166188
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "EVA 樹脂"

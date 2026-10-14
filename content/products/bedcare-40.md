@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/17241508058
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器輸壹字第017130號
   許可證品名："雃博" 皮膚減壓墊

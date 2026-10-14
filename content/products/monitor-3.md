@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047684596
 subsidy: []
-tags: []
 regulatory: |
   製造廠：MITSUMI PHILIPPINES INC
 specs:

@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6996109993
 subsidy: []
-tags: []
 specs:
   - label: 適用國際電壓
     value: "100-240V"

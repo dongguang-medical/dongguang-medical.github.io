@@ -10,9 +10,6 @@ rental_price: ""
 subsidy:
   - 長照2.0輔具補助
   - 身障輔具補助
-tags:
-  - 可租賃
-  - 可申請補助
 specs:
   - label: 產品特點
     value: 1. 台灣製造，保固3年；2. TPU耐水解管條，24管日式方管；3. 3管交替

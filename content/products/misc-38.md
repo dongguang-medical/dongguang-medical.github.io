@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047544895
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第004061號
   許可證品名："愛美格" 外科器械 (未滅菌)

@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 德國原裝進口
 specs:
   - label: 產地
     value: 德國原裝進口

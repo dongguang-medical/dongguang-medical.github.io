@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/160184998
 subsidy: []
-tags: []
 specs:
   - label: 靠背
     value: 大靠背

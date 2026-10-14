@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1317279185
 subsidy: []
-tags: []
 specs:
   - label: 材質
     value: "棉球：脫脂棉／軸：紙類／抗菌劑：棉表面、軸表面"

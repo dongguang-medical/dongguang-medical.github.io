@@ -20,7 +20,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/192961188
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器輸壹字第000353號
   許可證品名：多倍乳膠檢診手套(未滅菌)

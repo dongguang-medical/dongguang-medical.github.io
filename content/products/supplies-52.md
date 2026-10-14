@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/6700309323
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署成製字第012736號
   持證藥商：恆安製藥工業股份有限公司

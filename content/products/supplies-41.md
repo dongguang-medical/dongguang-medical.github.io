@@ -8,9 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 法國進口
-  - 透氣設計
 specs:
   - label: 產地
     value: 法國進口

@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 產品特點
     value: "- 推拉箱整台為木製材質。；-站立桌專用皮帶長約153x寬約6公分；★顏色以實品為準"

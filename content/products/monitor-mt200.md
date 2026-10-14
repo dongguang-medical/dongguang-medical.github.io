@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/8159356699
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器陸輸字第000130號
   許可證品名：百略醫學電子體溫計

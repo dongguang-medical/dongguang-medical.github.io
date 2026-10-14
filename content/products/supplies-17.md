@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "Ｍ (11片)｜Ｌ (10片)｜XL (8片)"

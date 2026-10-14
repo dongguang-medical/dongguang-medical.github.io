@@ -10,9 +10,6 @@ rental_price: ""
 subsidy:
   - 長照2.0輔具補助
   - 身障輔具補助
-tags:
-  - 可租賃
-  - 可申請補助
 specs:
   - label: 產品特點
     value: 符合補助「輪椅B款 附加功能A+B+C+擺位D」；符合身障補助：輕量化量產型

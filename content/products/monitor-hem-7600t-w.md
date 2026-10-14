@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 日本製造
 specs:
   - label: 型號
     value: HEM-7600T-W

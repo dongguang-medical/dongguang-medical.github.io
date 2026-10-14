@@ -10,9 +10,6 @@ rental_price: ""
 subsidy:
   - 長照2.0輔具補助
   - 身障輔具補助
-tags:
-  - 可申請補助
-  - 高度可調
 specs:
   - label: 收納方式
     value: 可折疊

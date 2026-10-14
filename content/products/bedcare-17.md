@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1044904539
 subsidy: []
-tags: []
 specs:
   - label: 用途
     value: "口腔清潔，去除口腔異味"

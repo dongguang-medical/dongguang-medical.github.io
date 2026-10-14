@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 防水材質
 specs:
   - label: 型號
     value: TV-109

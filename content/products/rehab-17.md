@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 防水材質
 specs:
   - label: 規格選項
     value: "EG-0320 腿部｜EG-0310手部"

@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "小輪(3吋)直徑約7.6公分｜大輪(5吋)直徑約12.7公分"

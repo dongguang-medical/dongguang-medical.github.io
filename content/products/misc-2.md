@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "視力表 (沒有架子）｜視力表架 (只有架子）｜視力表+視力表架"

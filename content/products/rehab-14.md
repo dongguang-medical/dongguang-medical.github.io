@@ -8,7 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags: []
 specs:
   - label: 規格選項
     value: "YH234-1 平行桿(200cm)｜YH234 平行桿(300cm)"

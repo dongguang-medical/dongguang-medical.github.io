@@ -16,7 +16,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/10818507313
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器製壹字第000366號（貝斯美德）／衛部醫器製壹字第007586號（醫技）
   許可證品名：貝斯美德 氧氣面罩組／醫技 氧氣面罩組

@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/2606354898
 subsidy: []
-tags: []
 specs:
   - label: 本體尺寸
     value: "35x20x15cm"

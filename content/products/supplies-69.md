@@ -30,7 +30,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4850928895
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛部醫器製壹字第005346號
   許可證品名：“愛民”繃帶 (未滅菌)

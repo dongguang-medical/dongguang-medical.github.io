@@ -132,7 +132,6 @@ function toProduct(data, brandName, imageUrl) {
     shopeeUrl: str(data.shopee_url),
     rentable: truthy(data.rentable ?? false),
     subsidy: (data.subsidy || []).filter((x) => SUBSIDIES.includes(x)),
-    tags: (data.tags || []).filter((t) => typeof t === 'string' && t),
     specs: (data.specs || []).filter((d) => d && d.label),
     images: (data.images || []).filter((p) => typeof p === 'string' && p.trim()).map(imageUrl),
     body: data.body || '',
@@ -158,11 +157,9 @@ function badgeSpans(p) {
   return marks;
 }
 
-const plainTags = (p) => p.tags.filter((t) => t !== '可租賃' && t !== '可申請補助');
-
 function productCard(p) {
-  const pills = badgeSpans(p).concat(plainTags(p).slice(0, 2).map((t) => `<span class="cat-tag">${esc(t)}</span>`));
-  const tags = pills.length ? `<div class="cat-tags">${pills.join('')}</div>` : '';
+  const pills = badgeSpans(p);
+  const badges = pills.length ? `<div class="cat-tags">${pills.join('')}</div>` : '';
   const brand = p.brand ? `<div class="cat-card-brand">${esc(p.brand)}</div>` : '';
   const cover = p.images[0] || PLACEHOLDER;
   return `<div class="cat-card">
@@ -172,7 +169,7 @@ function productCard(p) {
   <div class="cat-card-body">
     <h3>${esc(p.name)}</h3>
     ${brand}
-    ${tags}
+    ${badges}
     ${priceHtml(p)}
   </div>
 </div>`;
@@ -221,9 +218,6 @@ function productPage(p) {
       .join('')}</div>`
     : '';
 
-  const tags = plainTags(p);
-  const tagsHtml = tags.length ? `<div class="cat-tags">${tags.map((t) => `<span class="cat-tag">${esc(t)}</span>`).join('')}</div>` : '';
-
   const offerRows = [];
   if (p.rentable) offerRows.push(['租金', p.rentalPrice || '依租期而定，歡迎來電詢價']);
   if (p.subsidy.length) offerRows.push(['補助', p.subsidy.join('、')]);
@@ -264,7 +258,6 @@ function productPage(p) {
     ${brandHtml}
     ${priceHtml(p, true)}
     ${priceNote}
-    ${tagsHtml}
     ${offerHtml}
     <div class="cat-cta">
       <div class="cat-cta-actions">

@@ -18,7 +18,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/1047781754
 subsidy: []
-tags: []
 regulatory: |
   許可證字號：衛署醫器陸輸壹字第000393號（3X6）／衛署醫器製壹字第000122號（中衛 4X8）／衛部醫器陸輸壹字第003765號（蓓莉雅 4X8）
   持證藥商：建齊股份有限公司／中國衛生材料生產中心股份有限公司／蓓莉雅股份有限公司

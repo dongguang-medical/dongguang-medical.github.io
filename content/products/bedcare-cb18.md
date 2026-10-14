@@ -8,8 +8,6 @@ offering:
 rentable: false
 rental_price: ""
 subsidy: []
-tags:
-  - 透氣設計
 specs:
   - label: 型號
     value: CB18

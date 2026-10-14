@@ -10,7 +10,6 @@ rentable: false
 rental_price: ""
 shopee_url: https://shopee.tw/product/8642264/4751314627
 subsidy: []
-tags: []
 specs:
   - label: 適用機型
     value: "雃博抽痰機"
