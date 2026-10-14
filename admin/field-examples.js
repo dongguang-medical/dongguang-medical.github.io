@@ -7,7 +7,8 @@
 // 欄位已經有內容時範例字不會顯示，不影響存檔的資料。
 // ============================================================
 
-const EXAMPLES = {
+// 商品編輯頁
+const PRODUCT_EXAMPLES = {
   name: '鋁合金四輪助行車',
   price: '3500',
   'variants.*.label': 'M',
@@ -25,12 +26,24 @@ const EXAMPLES = {
   'specs.*.value': '100 公斤',
 };
 
+// 品牌編輯頁：用店裡實際有的中英文品牌名
+const BRAND_EXAMPLES = {
+  name: '安適康 AnsCare',
+};
+
+// 商品與品牌都有 name 欄位，依目前開的是哪一種編輯頁挑範例。
+// 商品頁以「多種價格」欄位判斷（同 index.html 分區標題的判斷）
+function examplesFor(root) {
+  if (root.querySelector('[data-typed-key-path="has_variants"]')) return PRODUCT_EXAMPLES;
+  if (location.hash.includes('/collections/brands/')) return BRAND_EXAMPLES;
+  return null;
+}
+
 function applyExamples(root) {
-  // 範例字是給商品用的；品牌也有 name 欄位，不能出現「鋁合金四輪助行車」。
-  // 以「多種價格」欄位判斷目前是商品編輯頁（同 index.html 分區標題的判斷）
-  if (!root.querySelector('[data-typed-key-path="has_variants"]')) return;
+  const examples = examplesFor(root);
+  if (!examples) return;
   for (const field of root.querySelectorAll('[data-typed-key-path]')) {
-    const example = EXAMPLES[field.dataset.typedKeyPath];
+    const example = examples[field.dataset.typedKeyPath];
     if (!example) continue;
     // 只填這個欄位自己的輸入框，不碰巢狀在裡面的其他欄位
     for (const input of field.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]), textarea')) {
