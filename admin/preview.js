@@ -27,14 +27,13 @@ for (const css of ['design-system.css', 'intro.css', 'catalog.css']) {
 CMS.registerPreviewStyle(
   'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap',
 );
-// 預覽框比較窄，留點邊；說明條與網站內容區隔開
+// 預覽框比較窄，留點邊；「商品卡」「商品頁」小標與網站內容區隔開
 CMS.registerPreviewStyle(
   `body { background: var(--color-bg, #fff); }
   .cat-main { padding-top: 0; }
   .cat-section { padding-top: 16px; }
-  .pv-note { margin: 0 0 12px; padding: 8px 12px; border-radius: 8px;
-    background: #fff7e6; color: #7a4b00; font-size: 13px; line-height: 1.6; }
   .pv-label { margin: 24px 0 8px; font-size: 13px; font-weight: 700; color: #666; }
+  .pv-label:first-child { margin-top: 0; }
   .pv-card-wrap { max-width: 260px; }
   .pv-card-wrap .cat-card { pointer-events: none; }
   /* 預覽裡點連結會讓預覽框跳走，一律停用 */
@@ -301,11 +300,7 @@ function ProductPreview({ entry, getAsset, getCollection }) {
   };
   const product = toProduct(data, brandName, imageUrl);
 
-  const hidden = data.published === false
-    ? '<p class="pv-note">「上架顯示」目前是關閉的：儲存後這個商品不會出現在網站上。</p>'
-    : '';
   const html = `<main class="cat-main"><div class="cat-section"><div class="cat-container">
-${hidden}<p class="pv-note">這是預覽，儲存後約 1～3 分鐘網站才會更新。</p>
 <p class="pv-label">商品卡（分類頁、首頁上看到的樣子）</p>
 <div class="pv-card-wrap">${productCard(product)}</div>
 <p class="pv-label">商品頁</p>

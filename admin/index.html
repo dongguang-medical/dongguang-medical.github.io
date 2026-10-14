@@ -43,6 +43,15 @@
         content: "價格資訊";
         margin-top: 32px;
       }
+
+      /*
+        法定標示通常有五、六行（許可證字號、品名、藥商、製造廠、地址），
+        Sveltia 預設只有約四行高，範例字會被截掉。加高到約八行，內容更長時照樣自動長高。
+      */
+      /* 多加 .field 提高優先權：Sveltia 自己的 textarea 樣式比這裡晚載入，同優先權會蓋掉這條 */
+      .field[data-typed-key-path="regulatory"] textarea {
+        min-height: 216px;
+      }
     </style>
   </head>
   <body>
@@ -56,10 +65,10 @@
     -->
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
     <!-- 商品編輯的即時預覽樣板；要排在 CMS 之後才拿得到 window.CMS -->
-    <script src="preview.js?v=988437910b" type="module"></script>
+    <script src="preview.js?v=0d5f3e06ba" type="module"></script>
     <!-- 欄位裡的灰色範例字（Sveltia 沒有 placeholder 設定，由這支補上） -->
-    <script src="field-examples.js?v=988437910b" type="module"></script>
+    <script src="field-examples.js?v=0d5f3e06ba" type="module"></script>
     <!-- 依開關顯示／隱藏欄位（例如「多種價格」打開才出現規格與價格） -->
-    <script src="field-rules.js?v=988437910b" type="module"></script>
+    <script src="field-rules.js?v=0d5f3e06ba" type="module"></script>
   </body>
 </html>

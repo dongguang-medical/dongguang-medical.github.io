@@ -39,10 +39,13 @@ jobs:
           # 這裡要涵蓋 build_catalog.py 產出的每一個路徑，漏掉的線上就不會更新。
           # 產生器會 rmtree 重建 catalog/category/product/rental/brand/subsidy，
           # 並覆寫根目錄 index.html（首頁＝商品目錄）與 sitemap.xml。
+          # about/index.html 是手刻頁，但頁首選單（依有上架商品的子分類）與頁尾
+          # 由產生器同步，也要一起提交，不然關於我們頁的選單會落後其他頁。
           git add -A catalog category product rental brand subsidy \
                      index.html sitemap.xml robots.txt \
                      assets/images/placeholder.svg assets/thumbs \
-                     admin/preview-constants.js admin/index.html
+                     admin/preview-constants.js admin/index.html \
+                     about/index.html
           git diff --staged --quiet && echo "No changes to commit." || \
             git commit -m "chore: 自動建置商品目錄 [skip ci]"
           git push
