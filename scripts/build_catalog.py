@@ -85,6 +85,9 @@ STORE_REGULATORY = """
 消費者使用前應詳閱產品說明書。
 """
 
+# 商品頁電話按鈕下方的門市提示（後台的商品預覽也用這一行）
+PRODUCT_CTA_SUB = "門市：崇德路 677 號（台南市立醫院對面）・營業 9:30–21:30"
+
 # 蝦皮總開關。關閉時全站不出現任何蝦皮連結（頁首資訊列、頁尾圖示、商品頁
 # 下單按鈕），商品卡片的「線上可購」標記也一併隱藏——沒有可下單的去處時，
 # 那個標記等於在騙人。商品的 shopee_url 資料不動，改回 True 就全部回來。
@@ -1758,6 +1761,8 @@ def product_jsonld(product, bc):
 
 
 def build_product_pages(products):
+    # ⚠️ 後台的商品預覽（admin/preview.js）照這裡的版面用 JS 再畫一次，
+    #    改了商品頁的結構或顯示規則，記得一併改那邊。
     for product in products:
         images = product["images"] or [PLACEHOLDER]
         main_img = images[0]
@@ -1934,7 +1939,7 @@ def build_product_pages(products):
                   電話洽詢
                 </a>
 {shopee_cta}              </div>
-              <p class="cat-cta-sub">門市：崇德路 677 號（台南市立醫院對面）・營業 9:30–21:30</p>
+              <p class="cat-cta-sub">{esc(PRODUCT_CTA_SUB)}</p>
             </div>
           </div>
         </div>
@@ -1967,6 +1972,27 @@ def build_product_pages(products):
         out = ROOT / "product" / product["slug"] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html_out, encoding="utf-8")
+
+
+def build_admin_preview_constants():
+    """後台商品預覽（admin/preview.js）用到的店家資料與顯示開關。
+
+    預覽是照商品頁用 JavaScript 再畫一次，這些值由這裡輸出，
+    改營業時間、藥商資訊或蝦皮開關時預覽會跟著變，不必兩邊各改一次。
+    """
+    consts = {
+        "SHOPEE_ENABLED": SHOPEE_ENABLED,
+        "PLACEHOLDER": "/" + PLACEHOLDER,
+        "OFFERINGS": OFFERINGS,
+        "SUBSIDIES": SUBSIDIES,
+        "STORE_REGULATORY": STORE_REGULATORY.strip(),
+        "PRODUCT_CTA_SUB": PRODUCT_CTA_SUB,
+    }
+    lines = ["// 由 scripts/build_catalog.py 產生，請勿手改。", ""]
+    lines += [f"export const {k} = {json.dumps(v, ensure_ascii=False)};"
+              for k, v in consts.items()]
+    (ROOT / "admin" / "preview-constants.js").write_text(
+        "\n".join(lines) + "\n", encoding="utf-8")
 
 
 def build_brand_pages(products, brands):
@@ -2359,6 +2385,7 @@ def main():
     build_sitemap(products, brand_slugs)
     build_robots()
     sync_about_chrome()
+    build_admin_preview_constants()
 
     rentable = sum(1 for p in products if p["rentable"])
     pages = 4 + len(CATEGORIES) + len(brand_slugs) + len(products)

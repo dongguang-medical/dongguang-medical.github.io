@@ -49,9 +49,9 @@ collections:
     # 檔名樣板：日期 + 短亂數 ID，保證是英文/數字檔名，
     # 不會因中文商品名產生中文檔名（{{uuid_short}} 為 Sveltia 支援的標籤）
     slug: "{{year}}{{month}}{{day}}-{{uuid_short}}"
-    # 保持介面極簡：關閉編輯預覽面板（網站無對應預覽樣板，開著只會佔空間）
+    # 編輯時右半邊即時預覽網站上的商品卡與商品頁（樣板在 admin/preview.js）
     editor:
-      preview: false
+      preview: true
     fields:
       - label: 商品名稱
         name: name
