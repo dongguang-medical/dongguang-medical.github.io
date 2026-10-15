@@ -1,11 +1,11 @@
 // ============================================================
 // 商品編輯的即時預覽樣板
 //
-// 後台右半邊的預覽，畫成網站上「商品卡」與「商品頁」的樣子，
+// 後台右半邊的預覽，畫成網站上「商品頁」的樣子，
 // 店員邊打字就能看到上架後大概長怎樣。
 //
-// ⚠️ 版面是照 scripts/build_catalog.py 的 product_card() 與
-//    build_product_pages() 用 JavaScript 再寫一份。那邊改了商品頁的
+// ⚠️ 版面是照 scripts/build_catalog.py 的 build_product_pages()
+//    用 JavaScript 再寫一份。那邊改了商品頁的
 //    結構或顯示規則（價格、標記、規格表…），這裡要跟著改，
 //    不然預覽會跟實際網站對不起來。樣式直接沿用網站的 CSS，不必另外維護。
 //    頁首頁尾、相關商品這些跟單一商品無關的部分不畫。
@@ -27,15 +27,11 @@ for (const css of ['design-system.css', 'intro.css', 'catalog.css']) {
 CMS.registerPreviewStyle(
   'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap',
 );
-// 預覽框比較窄，留點邊；「商品卡」「商品頁」小標與網站內容區隔開
+// 預覽框裡沒有網站頁首，拿掉替頁首預留的空白
 CMS.registerPreviewStyle(
   `body { background: var(--color-bg, #fff); }
   .cat-main { padding-top: 0; }
   .cat-section { padding-top: 16px; }
-  .pv-label { margin: 24px 0 8px; font-size: 13px; font-weight: 700; color: #666; }
-  .pv-label:first-child { margin-top: 0; }
-  .pv-card-wrap { max-width: 260px; }
-  .pv-card-wrap .cat-card { pointer-events: none; }
   /* 預覽裡點連結會讓預覽框跳走，一律停用 */
   a { pointer-events: none; }`,
   { raw: true },
@@ -137,41 +133,12 @@ function toProduct(data, brandName, imageUrl) {
   };
 }
 
-// ── 版面（對應 price_html / badge_spans / product_card / build_product_pages） ──
+// ── 版面（對應 price_html / build_product_pages） ──
 
-function priceHtml(p, big = false) {
-  const cls = big ? 'cat-product-price' : 'cat-card-price';
+function priceHtml(p) {
   return p.priceText
-    ? `<div class="${cls}">${esc(p.priceText)}</div>`
-    : `<div class="${cls} cat-price-ask">歡迎洽詢</div>`;
-}
-
-function badgeSpans(p) {
-  const marks = [];
-  if (p.rentable) marks.push('<span class="cat-badge cat-badge-rent">可租賃</span>');
-  if (SHOPEE_ENABLED && p.offering.includes('線上選購')) {
-    marks.push('<span class="cat-badge cat-badge-online">線上可購</span>');
-  }
-  if (p.subsidy.length) marks.push('<span class="cat-badge cat-badge-subsidy">可申請補助</span>');
-  return marks;
-}
-
-function productCard(p) {
-  const pills = badgeSpans(p);
-  const badges = pills.length ? `<div class="cat-tags">${pills.join('')}</div>` : '';
-  const brand = p.brand ? `<div class="cat-card-brand">${esc(p.brand)}</div>` : '';
-  const cover = p.images[0] || PLACEHOLDER;
-  return `<div class="cat-card">
-  <div class="cat-card-photo">
-    <img src="${esc(cover)}" alt="${esc(p.name)}" width="400" height="300">
-  </div>
-  <div class="cat-card-body">
-    <h3>${esc(p.name)}</h3>
-    ${brand}
-    ${badges}
-    ${priceHtml(p)}
-  </div>
-</div>`;
+    ? `<div class="cat-product-price">${esc(p.priceText)}</div>`
+    : '<div class="cat-product-price cat-price-ask">歡迎洽詢</div>';
 }
 
 function specsHtml(p) {
@@ -255,7 +222,7 @@ function productPage(p) {
   <div class="cat-product-info">
     <h1>${esc(p.name || '（尚未填商品名稱）')}</h1>
     ${brandHtml}
-    ${priceHtml(p, true)}
+    ${priceHtml(p)}
     ${priceNote}
     ${offerHtml}
     <div class="cat-cta">
@@ -301,9 +268,6 @@ function ProductPreview({ entry, getAsset, getCollection }) {
   const product = toProduct(data, brandName, imageUrl);
 
   const html = `<main class="cat-main"><div class="cat-section"><div class="cat-container">
-<p class="pv-label">商品卡（分類頁、首頁上看到的樣子）</p>
-<div class="pv-card-wrap">${productCard(product)}</div>
-<p class="pv-label">商品頁</p>
 ${productPage(product)}
 </div></div></main>`;
 

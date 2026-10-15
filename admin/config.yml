@@ -52,7 +52,7 @@ collections:
     # 檔名樣板：日期 + 短亂數 ID，保證是英文/數字檔名，
     # 不會因中文商品名產生中文檔名（{{uuid_short}} 為 Sveltia 支援的標籤）
     slug: "{{year}}{{month}}{{day}}-{{uuid_short}}"
-    # 編輯時右半邊即時預覽網站上的商品卡與商品頁（樣板在 admin/preview.js）
+    # 編輯時右半邊即時預覽網站上的商品頁（樣板在 admin/preview.js）
     editor:
       preview: true
     fields:
