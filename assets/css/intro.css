@@ -31,8 +31,8 @@
 }
 
 .intro-header-inner {
-  /* 1140 = 內容 1100 + 左右各 20 內距，讓內容寬度與主畫面、頁尾（1100）對齊 */
-  max-width: 1140px;
+  /* 內容寬度 + 左右各 20 內距，讓內容與主畫面、頁尾對齊 */
+  max-width: calc(var(--content-max-width) + 40px);
   margin: 0 auto;
   padding: 0 20px;
   height: 64px;
@@ -49,7 +49,7 @@
 }
 
 .intro-infobar-inner {
-  max-width: 1140px;
+  max-width: calc(var(--content-max-width) + 40px);
   margin: 0 auto;
   padding: 0 20px;
   height: 100%;
@@ -455,7 +455,7 @@
 }
 
 .intro-container {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -893,7 +893,7 @@
 }
 
 .intro-footer-inner {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
@@ -1051,7 +1051,7 @@
 }
 
 .intro-footer-bottom {
-  max-width: 1100px;
+  max-width: var(--content-max-width);
   margin: 18px auto 0;
   display: flex;
   justify-content: center;
