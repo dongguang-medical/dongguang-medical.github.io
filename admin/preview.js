@@ -328,6 +328,13 @@ function articleCardsHtml(data, title, imageUrl) {
 </div>`;
 }
 
+// 文章頁顯示的是最後更新日期（產生器由 git 算出），存檔那天就是更新日，預覽直接顯示今天
+function articleUpdatedHtml(rawDate) {
+  if (!/^\d{4}-\d{2}-\d{2}/.test(String(rawDate ?? '').trim())) return articleDateHtml(rawDate);
+  const d = new Date();
+  return `最後更新日期：<time>${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日</time>`;
+}
+
 function ArticlePreview({ entry, getAsset }) {
   const data = toJS(entry.get('data')) || {};
   const imageUrl = (path) => {
@@ -345,7 +352,7 @@ ${draft}${articleCardsHtml(data, title, imageUrl)}
 <div class="art-page"><article class="art-article">
   <header class="art-head">
     <h1>${esc(title)}</h1>
-    <div class="art-date">${articleDateHtml(data.date)}</div>
+    <div class="art-date">${articleUpdatedHtml(data.date)}</div>
   </header>
   <div class="cat-desc art-body">${mdToHtml(data.body || '', 2, imageUrl)}</div>
 </article></div>

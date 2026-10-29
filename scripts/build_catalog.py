@@ -26,7 +26,8 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
   specs(label/value 清單)、images(路徑清單，相對網站根目錄)、published(預設 true)
 
 文章 frontmatter（content/articles/<slug>.md，內文為 Markdown）：
-  title(必填)、date(必填，YYYY-MM-DD)、cover(封面圖路徑，只用在列表與分享縮圖)、
+  title(必填)、date(必填，YYYY-MM-DD，列表排序用；文章頁改顯示由 git 算出的最後更新日期)、
+  cover(封面圖路徑，只用在列表與分享縮圖)、
   summary(列表與搜尋結果的摘要，空白時取內文開頭)、
   related_products(相關商品的代碼清單，即 content/products/ 的檔名)、published(預設 true)
 """
@@ -36,8 +37,9 @@ import html
 import json
 import re
 import shutil
+import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
@@ -446,6 +448,29 @@ def load_products(brands, taxonomy=None):
     return products
 
 
+TAIPEI = timezone(timedelta(hours=8))
+
+
+def git_last_modified(path):
+    """檔案最後一次提交的日期（台灣時間）。後台每次存檔都是一次提交，這就是文章的
+    「最後更新日期」，不必另開欄位讓店員填。
+
+    還沒提交或有未提交的修改（本機編輯中）就算今天；不在 git 裡、或 git 不能用時回傳 None。
+    CI 的 checkout 必須抓完整歷史（fetch-depth: 0），淺層 clone 會把舊檔案都算成最近一次提交的日期。
+    """
+    rel = str(path.relative_to(ROOT))
+    try:
+        dirty = subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT,
+                               capture_output=True, text=True, check=True).stdout.strip()
+        if dirty:
+            return datetime.now(TAIPEI).date()
+        ts = subprocess.run(["git", "log", "-1", "--format=%ct", "--", rel], cwd=ROOT,
+                            capture_output=True, text=True, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return datetime.fromtimestamp(int(ts), TAIPEI).date() if ts else None
+
+
 def load_articles():
     """已發布的文章，新的在前。同一天的依檔名排，順序才不會每次建置亂跳。"""
     articles = []
@@ -479,7 +504,8 @@ def load_articles():
         articles.append({
             "slug": md_file.stem,
             "title": title,
-            "date": pub_date,
+            "date": pub_date,            # 發布日期：列表排序與列表卡片用
+            "updated": git_last_modified(md_file) or pub_date,  # 文章頁顯示的最後更新日期
             "cover": cover,
             "summary": summary,
             "related": related,   # 右欄「相關商品」，存商品代碼（檔名）
@@ -2103,8 +2129,8 @@ def build_brand_pages(products, brands):
 
 # ── 文章（/articles/） ────────────────────────────────────────────
 
-def article_date_html(article):
-    d = article["date"]
+def article_date_html(article, key="date"):
+    d = article[key]
     return (f'<time datetime="{d.isoformat()}">'
             f'{d.year} 年 {d.month} 月 {d.day} 日</time>')
 
@@ -2270,17 +2296,6 @@ def article_products(article, products_by_slug):
             f'<div class="art-prods">{"".join(cards)}</div></div>')
 
 
-# 文章結尾的店家簡介（像部落格的作者介紹），每篇都一樣
-ARTICLE_STORE_NOTE = f"""<section class="art-store">
-          <img src="/{LOGO}" alt="" width="44" height="44" loading="lazy">
-          <div>
-            <div class="art-store-name">{SITE_NAME_FULL}</div>
-            <p>超過二十年在地服務的醫療輔具行，門市在崇德路 677 號（台南市立醫院對面）。<br>
-            有問題歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 或 <a href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener">LINE 詢問</a>。</p>
-          </div>
-        </section>"""
-
-
 def article_others(article, articles):
     others = [o for o in articles if o["slug"] != article["slug"]][:ARTICLE_OTHERS_COUNT]
     if not others:
@@ -2314,13 +2329,12 @@ def build_article_pages(articles, products):
         <article class="art-article">
           <header class="art-head">
             <h1>{esc(a['title'])}</h1>
-            <div class="art-date">{article_date_html(a)}</div>
+            <div class="art-date">最後更新日期：{article_date_html(a, "updated")}</div>
           </header>
           <div class="cat-desc art-body">
 {body_html}
           </div>
         </article>
-        {ARTICLE_STORE_NOTE}
         <div class="art-back"><a href="/articles/">← 回{ARTICLES_TITLE}</a></div>
         </div>
         <aside class="art-rail art-rail-r">
@@ -2340,6 +2354,7 @@ def build_article_pages(articles, products):
                     "@type": "Article",
                     "headline": a["title"],
                     "datePublished": a["date"].isoformat(),
+                    "dateModified": a["updated"].isoformat(),
                     "image": og_image,
                     "url": BASE_URL + a["url"],
                     "publisher": {"@type": "Organization", "name": SITE_NAME_FULL},

@@ -1177,43 +1177,8 @@
   text-decoration: underline;
 }
 
-/* 文章結尾的店家簡介：上下細線，不用色塊，融入文章 */
-.art-store {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  margin-top: 36px;
-  padding: 18px 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.art-store img {
-  flex: none;
-  border-radius: 50%;
-}
-
-.art-store-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 2px;
-}
-
-.art-store p {
-  font-size: 14px;
-  line-height: 1.85;
-  color: var(--color-text-secondary);
-}
-
-.art-store a {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 .art-back {
-  margin-top: 24px;
+  margin-top: 56px;
   text-align: center;
 }
 
