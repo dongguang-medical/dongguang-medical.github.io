@@ -27,7 +27,6 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
 
 文章 frontmatter（content/articles/<slug>.md，內文為 Markdown）：
   title(必填)、date(必填，YYYY-MM-DD)、cover(封面圖路徑，只用在列表與分享縮圖)、
-  cover_position(封面裁切時保留的位置：center/top/bottom/left/right，預設 center)、
   summary(列表與搜尋結果的摘要，空白時取內文開頭)、published(預設 true)
 """
 
@@ -47,8 +46,6 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "products"
 ARTICLES_DIR = ROOT / "content" / "articles"
 ARTICLES_TITLE = "文章專區"  # 列表頁標題、麵包屑與頁尾連結共用
-# 封面在列表卡片裡固定比例裁切，cover_position 決定保留哪一邊（對應 CSS object-position）
-COVER_POSITIONS = ("center", "top", "bottom", "left", "right")
 BASE_URL = "https://dongguang-medical.com"
 
 def _content_hash(paths):
@@ -471,9 +468,6 @@ def load_articles():
                   file=sys.stderr)
             continue
         cover = str(fm.get("cover", "") or "").strip().lstrip("/")
-        cover_position = str(fm.get("cover_position", "") or "").strip()
-        if cover_position not in COVER_POSITIONS:
-            cover_position = "center"
         # 沒寫摘要時取內文第一段（略過開頭的標題、圖片），不把整篇擠成一行
         first_para = next((b for b in re.split(r"\n\s*\n", body)
                            if md_to_text(b) and not b.lstrip().startswith("#")), "")
@@ -484,7 +478,6 @@ def load_articles():
             "title": title,
             "date": pub_date,
             "cover": cover,
-            "cover_position": cover_position,
             "summary": summary,
             "body": body,
             "url": f"/articles/{quote(md_file.stem)}/",
@@ -2125,7 +2118,6 @@ def article_card(article):
     if article["cover"]:
         cover = (f'<div class="art-card-cover"><img src="{url_path(article["cover"])}" '
                  f'alt="{esc(article["title"])}" loading="lazy" decoding="async" '
-                 f'style="object-position:{article["cover_position"]}" '
                  'width="400" height="225"></div>')
     return f"""<a class="art-card" href="{article['url']}">
   {cover}
@@ -2187,7 +2179,7 @@ def build_article_pages(articles):
     for a in articles:
         bc = [("首頁", "/"), (ARTICLES_TITLE, "/articles/"), (a["title"], None)]
         main = f"""    <div class="cat-section">
-      <div class="cat-container">
+      <div class="cat-container art-page">
         {breadcrumb(bc)}
         <article class="art-article">
           <header class="art-head">

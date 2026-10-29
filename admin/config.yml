@@ -346,34 +346,18 @@ collections:
         time_format: false
         default: "{{now}}"
         required: true
-        hint: 列表依這個日期排序，新的在前。
 
       - label: 封面圖
         name: cover
         widget: image
         required: false
-        hint: 顯示在文章列表，分享到 LINE、Facebook 時也會用這張（文章內頁不顯示）。建議橫式、500KB 以內。
-
-      # 列表卡片的封面是固定比例裁切（電腦 4:3、手機 16:9），這裡選裁切時保留哪一邊。
-      # 右邊預覽最上面會即時顯示裁出來的樣子
-      - label: 封面裁切位置
-        name: cover_position
-        widget: select
-        required: false
-        default: center
-        hint: 封面在列表上會被裁成固定比例，選要保留照片的哪個部分。右邊預覽最上方可看到裁切結果。
-        options:
-          - { label: 置中, value: center }
-          - { label: 保留上方, value: top }
-          - { label: 保留下方, value: bottom }
-          - { label: 保留左邊, value: left }
-          - { label: 保留右邊, value: right }
+        # 列表卡片的封面固定 4:3 置中裁切（catalog.css 的 .art-card-cover），尺寸建議照這個比例
+        hint: 建議尺寸 1200 × 900（橫式 4:3），500KB 以內。
 
       - label: 摘要
         name: summary
         widget: text
         required: false
-        hint: 列表上標題下方的一兩句介紹。不填的話自動取內文開頭。
 
       - label: 內文
         name: body
@@ -384,4 +368,3 @@ collections:
         name: published
         widget: boolean
         default: true
-        hint: 關掉就先不顯示在網站上（可當草稿）。

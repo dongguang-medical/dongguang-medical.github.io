@@ -40,7 +40,7 @@ CMS.registerPreviewStyle(
   .art-card.art-preview-row { flex-direction: row; }
   .art-card.art-preview-row .art-card-cover { flex: 0 0 240px; aspect-ratio: 4 / 3; }
   .art-card.art-preview-stack { flex-direction: column; }
-  .art-card.art-preview-stack .art-card-cover { flex: none; aspect-ratio: 16 / 9; }
+  .art-card.art-preview-stack .art-card-cover { flex: none; }
   .art-preview-phone { max-width: 360px; }`,
   { raw: true },
 );
@@ -304,14 +304,11 @@ function articleDateHtml(raw) {
   return `<time>${+m[1]} 年 ${+m[2]} 月 ${+m[3]} 日</time>`;
 }
 
-const COVER_POSITIONS = ['center', 'top', 'bottom', 'left', 'right'];
-
-// 列表卡片（對應 article_card）：電腦版橫排 4:3、手機版直排 16:9，兩種都畫出來，
-// 店員選封面裁切位置時能直接看到裁出來的樣子
+// 列表卡片（對應 article_card）：電腦版橫排、手機版直排，兩種都畫出來，
+// 店員上傳封面時能直接看到列表上裁出來的樣子
 function articleCardsHtml(data, title, imageUrl) {
-  const position = COVER_POSITIONS.includes(str(data.cover_position)) ? str(data.cover_position) : 'center';
   const cover = str(data.cover)
-    ? `<div class="art-card-cover"><img src="${esc(imageUrl(str(data.cover)))}" alt="" style="object-position:${position}"></div>`
+    ? `<div class="art-card-cover"><img src="${esc(imageUrl(str(data.cover)))}" alt=""></div>`
     : '';
   const summary = str(data.summary) || '（沒填摘要時，網站會取內文第一段）';
   const card = (cls) => `<div class="art-card ${cls}">
@@ -345,13 +342,13 @@ function ArticlePreview({ entry, getAsset }) {
   const html = `<main class="cat-main"><div class="cat-section"><div class="cat-container">
 <nav class="cat-breadcrumb"><span>首頁</span><span class="cat-bc-sep">›</span><span>文章專區</span><span class="cat-bc-sep">›</span><span class="cat-bc-current">${esc(title)}</span></nav>
 ${draft}${articleCardsHtml(data, title, imageUrl)}
-<article class="art-article">
+<div class="art-page"><article class="art-article">
   <header class="art-head">
     <h1>${esc(title)}</h1>
     <div class="art-date">${articleDateHtml(data.date)}</div>
   </header>
   <div class="cat-desc art-body">${mdToHtml(data.body || '', 2, imageUrl)}</div>
-</article>
+</article></div>
 </div></div></main>`;
 
   return window.h('div', { dangerouslySetInnerHTML: { __html: html } });

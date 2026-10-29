@@ -854,7 +854,13 @@
 }
 
 
-/* ── 文章專區（/articles/）：寬度沿用 .cat-container，與其他頁一致 ── */
+/* ── 文章專區（/articles/）：列表沿用 .cat-container 的全站寬度；
+      文章內頁收窄成閱讀寬度，內文照片才不會在電腦上放得太大 ── */
+.art-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .art-list {
   display: flex;
   flex-direction: column;
@@ -879,8 +885,9 @@
   box-shadow: var(--shadow-hover);
 }
 
+/* 封面固定 4:3 置中裁切；後台的封面尺寸建議（admin/config.yml）照這個比例 */
 .art-card-cover {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   background: var(--color-border-light);
   overflow: hidden;
 }
@@ -913,13 +920,6 @@
 .art-date {
   font-size: 13px;
   color: var(--color-text-muted);
-}
-
-.art-article {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 24px 20px 32px;
 }
 
 .art-head {
@@ -991,10 +991,5 @@
 
   .art-card-cover {
     flex: 0 0 240px;
-    aspect-ratio: 4 / 3;
-  }
-
-  .art-article {
-    padding: 36px 40px 44px;
   }
 }
