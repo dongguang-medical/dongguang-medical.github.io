@@ -617,6 +617,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
     <div class="intro-footer-inner">
       <div class="intro-footer-col intro-footer-brand-col">
         <div class="intro-footer-brand">
+          <img src="/{LOGO}" alt="{SITE_NAME_FULL}" loading="lazy" width="36" height="36">
           <span class="intro-footer-brand-name">{SITE_NAME_FULL}</span>
         </div>
         <div class="intro-footer-social" aria-label="社群與購物連結">
