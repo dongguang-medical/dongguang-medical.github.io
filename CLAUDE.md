@@ -4,11 +4,12 @@
 
 ## 網站怎麼組成
 
-- 首頁、分類頁、品牌頁、商品頁、租借頁、補助頁與 `sitemap.xml` 都由 `scripts/build_catalog.py` 產生（Python 標準庫）。
+- 首頁、分類頁、品牌頁、商品頁、租借頁、補助頁、文章頁與 `sitemap.xml` 都由 `scripts/build_catalog.py` 產生（Python 標準庫）。
   這些頁面的文字與版面要改產生器，不要直接改產出的 HTML——下次建置會被覆蓋。
 - `about/index.html`（關於我們）是手刻頁，內容直接改它；頁首頁尾由產生器的 `sync_about_chrome()` 同步。
 - 樣式在 `assets/css/`；改了樣式，產生器會自動更新版本號。
 - 商品資料在 `content/products/*.md`，由後台（Sveltia CMS，`admin/`）維護，欄位契約見產生器開頭註解與 `docs/商品內容整理規則.md`。
+- 文章專區（`/articles/`）的文章在 `content/articles/*.md`，同樣由後台維護、由產生器產生列表頁與文章頁。
 - 改完可跑 `python3 scripts/build_catalog.py` 重建；main 上的 CI 也會自動重建並提交產出。
 
 ## LINE 修改請求守則

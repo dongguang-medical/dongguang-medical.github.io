@@ -12,7 +12,9 @@ build_catalog.py
   catalog/search-index.json     前端搜尋用輕量索引
   category/<分類名>/index.html   分類頁（九大分類各一頁，含空分類）
   product/<slug>/index.html     商品頁（圖庫、價格、規格表、說明、CTA、麵包屑、相關商品）
-  sitemap.xml                   首頁 + 分類 + 品牌 + 商品頁
+  articles/index.html           文章列表（讀 content/articles/*.md，新的在前）
+  articles/<slug>/index.html    文章頁
+  sitemap.xml                   首頁 + 分類 + 品牌 + 商品頁 + 文章
 
 用法：
   python3 scripts/build_catalog.py        # 在 repo 任意位置執行皆可
@@ -22,6 +24,10 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
   has_variants(布林，後台「有多種價格」開關；關閉時忽略 variants)、
   variants(label/price 清單，多規格商品用；有填則 price 由此推導)、
   specs(label/value 清單)、images(路徑清單，相對網站根目錄)、published(預設 true)
+
+文章 frontmatter（content/articles/<slug>.md，內文為 Markdown）：
+  title(必填)、date(必填，YYYY-MM-DD)、cover(封面圖路徑)、
+  summary(列表與搜尋結果的摘要，空白時取內文開頭)、published(預設 true)
 """
 
 import hashlib
@@ -38,6 +44,8 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "products"
+ARTICLES_DIR = ROOT / "content" / "articles"
+ARTICLES_TITLE = "文章專區"  # 列表頁標題、麵包屑與頁尾連結共用
 BASE_URL = "https://dongguang-medical.com"
 
 def _content_hash(paths):
@@ -241,6 +249,7 @@ def parse_frontmatter(text):
 # ── Markdown → HTML（段落／粗體／清單／子標題） ─────────────────
 
 _BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
+_IMG_RE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
 _LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")
 _UL_ITEM_RE = re.compile(r"^[-*]\s+")
 _OL_ITEM_RE = re.compile(r"^\d+[.、]\s*")
@@ -249,11 +258,15 @@ _OL_ITEM_RE = re.compile(r"^\d+[.、]\s*")
 def _inline(text):
     out = esc(text)
     out = _BOLD_RE.sub(r"<strong>\1</strong>", out)
+    # 圖片要比連結先換：![說明](網址) 去掉驚嘆號後就是連結的寫法
+    out = _IMG_RE.sub(r'<img src="\2" alt="\1" loading="lazy" decoding="async">', out)
     out = _LINK_RE.sub(r'<a href="\2">\1</a>', out)
     return out
 
 
-def md_to_html(md):
+def md_to_html(md, min_heading=3):
+    """min_heading：內文標題最大能到幾級。商品頁的商品名是 h1、區塊標題是 h2，
+    內文從 h3 起；文章頁只有文章標題是 h1，內文可以用 h2。"""
     if not md:
         return ""
     blocks = re.split(r"\n\s*\n", md.strip())
@@ -271,8 +284,8 @@ def md_to_html(md):
                 f"<li>{_inline(_OL_ITEM_RE.sub('', ln))}</li>" for ln in lines)
             parts.append(f"<ol>{items}</ol>")
         elif lines[0].startswith("#"):
-            level = min(len(lines[0]) - len(lines[0].lstrip("#")) + 1, 4)
-            level = max(level, 3)  # 商品名已是 h1、區塊標題是 h2
+            hashes = len(lines[0]) - len(lines[0].lstrip("#"))
+            level = max(min(hashes + min_heading - 2, 4), min_heading)
             text = lines[0].lstrip("#").strip()
             parts.append(f"<h{level}>{_inline(text)}</h{level}>")
         else:
@@ -282,7 +295,9 @@ def md_to_html(md):
 
 def md_to_text(md, limit=150):
     """給 meta description 用的純文字摘要。"""
-    text = re.sub(r"[#*>`\[\]()\-]", "", md or "")
+    text = _IMG_RE.sub("", md or "")
+    text = _LINK_RE.sub(r"\1", text)   # 連結只留文字，不把網址印進摘要
+    text = re.sub(r"[#*>`\[\]()\-]", "", text)
     text = re.sub(r"\s+", "", text)
     return text[:limit]
 
@@ -425,6 +440,48 @@ def load_products(brands, taxonomy=None):
     return products
 
 
+def load_articles():
+    """已發布的文章，新的在前。同一天的依檔名排，順序才不會每次建置亂跳。"""
+    articles = []
+    if not ARTICLES_DIR.is_dir():
+        return articles
+    for md_file in sorted(ARTICLES_DIR.glob("*.md")):
+        fm, body = parse_frontmatter(md_file.read_text(encoding="utf-8"))
+        published = str(fm.get("published", "true")).strip().lower()
+        if published in ("false", "no", "0"):
+            continue
+        title = str(fm.get("title", "") or "").strip()
+        if not title:
+            print(f"⚠️  articles/{md_file.name}：缺少 title，略過", file=sys.stderr)
+            continue
+        # 後台存的是 YYYY-MM-DD；手寫時若帶了時間（2026-10-29T10:00）只取日期
+        raw_date = str(fm.get("date", "") or "").strip()[:10]
+        try:
+            pub_date = date.fromisoformat(raw_date)
+        except ValueError:
+            print(f"⚠️  articles/{md_file.name}：日期「{raw_date}」不是 YYYY-MM-DD，略過",
+                  file=sys.stderr)
+            continue
+        cover = str(fm.get("cover", "") or "").strip().lstrip("/")
+        # 沒寫摘要時取內文第一段（略過開頭的標題、圖片），不把整篇擠成一行
+        first_para = next((b for b in re.split(r"\n\s*\n", body)
+                           if md_to_text(b) and not b.lstrip().startswith("#")), "")
+        summary = (str(fm.get("summary", "") or "").strip()
+                   or md_to_text(first_para, 80))
+        articles.append({
+            "slug": md_file.stem,
+            "title": title,
+            "date": pub_date,
+            "cover": cover,
+            "summary": summary,
+            "body": body,
+            "url": f"/articles/{quote(md_file.stem)}/",
+        })
+    articles.sort(key=lambda a: a["slug"])
+    articles.sort(key=lambda a: a["date"], reverse=True)
+    return articles
+
+
 # ── 共用頁面外框（與 index.html 形象頁同一設計語彙） ──────────────
 
 MAPS_URL = "https://maps.app.goo.gl/oTmmQYBDbMYAwQVXA"
@@ -500,13 +557,14 @@ def page_header(active_url=""):
         else:
             items.append(f'<div class="intro-nav-item">{link}</div>')
     desktop = "\n        ".join(items)
-    # 行動版：導覽列的電話按鈕在 900px 以下會隱藏，因此補一個撥號項目
+    # 行動版：導覽列的電話按鈕在 900px 以下會隱藏，因此補一個撥號項目。
+    # 手機版頁尾不顯示文字連結，文章專區改放在選單最後
     mobile = "\n    ".join(
         '<a href="{u}"{cls} onclick="closeMobileNav()">{t}</a>'.format(
             u=u, t=esc(t),
             cls=(' class="mob-home"' if u == "/"
                  else ' class="nav-rental"' if u == "/rental/" else ""))
-        for t, u in nav_links())
+        for t, u in nav_links() + [(ARTICLES_TITLE, "/articles/")])
     return f"""  <header class="intro-header">
     <div class="intro-header-inner">
       <a href="/" class="intro-logo" aria-label="{SITE_NAME_FULL} 首頁">
@@ -572,6 +630,7 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
           </a>
         </div>
         <a class="intro-footer-about intro-footer-about-desktop" href="/subsidy/">長照輔具補助試算</a>
+        <a class="intro-footer-about intro-footer-about-desktop" href="/articles/">{ARTICLES_TITLE}</a>
         <a class="intro-footer-about intro-footer-about-desktop" href="/about/">關於我們</a>
       </div>
       <div class="intro-footer-col">
@@ -2041,6 +2100,126 @@ def build_brand_pages(products, brands):
     return made
 
 
+# ── 文章（/articles/） ────────────────────────────────────────────
+
+def article_date_html(article):
+    d = article["date"]
+    return (f'<time datetime="{d.isoformat()}">'
+            f'{d.year} 年 {d.month} 月 {d.day} 日</time>')
+
+
+def article_card(article):
+    cover = ""
+    if article["cover"]:
+        cover = (f'<div class="art-card-cover"><img src="{url_path(article["cover"])}" '
+                 f'alt="{esc(article["title"])}" loading="lazy" decoding="async" '
+                 'width="400" height="225"></div>')
+    return f"""<a class="art-card" href="{article['url']}">
+  {cover}
+  <div class="art-card-body">
+    <div class="art-date">{article_date_html(article)}</div>
+    <h2>{esc(article['title'])}</h2>
+    <p>{esc(article['summary'])}</p>
+  </div>
+</a>"""
+
+
+def build_articles_page(articles):
+    """文章列表：全部文章一頁列完，新的在前。"""
+    body = (f'<div class="art-list">\n{chr(10).join(article_card(a) for a in articles)}\n</div>'
+            if articles else '<div class="cat-empty">文章準備中，敬請期待。</div>')
+    bc = [("首頁", "/"), (ARTICLES_TITLE, None)]
+    main = f"""    <div class="cat-section">
+      <div class="cat-container art-container">
+        {breadcrumb(bc)}
+        <div class="cat-page-head">
+          <h1>{ARTICLES_TITLE}</h1>
+          <p>輔具挑選、居家照護與補助申請的實用資訊</p>
+        </div>
+        {body}
+      </div>
+    </div>
+"""
+    desc = (f"{SITE_NAME}{ARTICLES_TITLE}：輔具挑選、居家照護與長照補助申請的實用資訊，"
+            "台南在地醫療器材行整理分享。")
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                "name": f"{ARTICLES_TITLE} — {SITE_NAME}",
+                "url": BASE_URL + "/articles/",
+                "description": desc,
+            },
+            breadcrumb_jsonld(bc),
+        ],
+    }
+    html_out = render_page(
+        title=f"{ARTICLES_TITLE} — {SITE_NAME}",
+        description=desc,
+        path="articles/",
+        og_type="website",
+        og_image=f"{BASE_URL}/{LOGO}",
+        jsonld=jsonld,
+        main_html=main,
+    )
+    out = ROOT / "articles" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html_out, encoding="utf-8")
+
+
+def build_article_pages(articles):
+    for a in articles:
+        bc = [("首頁", "/"), (ARTICLES_TITLE, "/articles/"), (a["title"], None)]
+        cover = (f'<img class="art-cover" src="{url_path(a["cover"])}" '
+                 f'alt="{esc(a["title"])}">' if a["cover"] else "")
+        main = f"""    <div class="cat-section">
+      <div class="cat-container art-container">
+        {breadcrumb(bc)}
+        <article class="art-article">
+          <header class="art-head">
+            <h1>{esc(a['title'])}</h1>
+            <div class="art-date">{article_date_html(a)}</div>
+          </header>
+          {cover}
+          <div class="cat-desc art-body">
+{md_to_html(a['body'], min_heading=2)}
+          </div>
+        </article>
+        <div class="art-back"><a href="/articles/">← 回{ARTICLES_TITLE}</a></div>
+      </div>
+    </div>
+"""
+        og_image = (BASE_URL + url_path(a["cover"]) if a["cover"]
+                    else f"{BASE_URL}/{LOGO}")
+        jsonld = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Article",
+                    "headline": a["title"],
+                    "datePublished": a["date"].isoformat(),
+                    "image": og_image,
+                    "url": BASE_URL + a["url"],
+                    "publisher": {"@type": "Organization", "name": SITE_NAME_FULL},
+                },
+                breadcrumb_jsonld(bc),
+            ],
+        }
+        html_out = render_page(
+            title=f"{a['title']} — {SITE_NAME}",
+            description=a["summary"],
+            path=f"articles/{a['slug']}/",
+            og_type="article",
+            og_image=og_image,
+            jsonld=jsonld,
+            main_html=main,
+        )
+        out = ROOT / "articles" / a["slug"] / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html_out, encoding="utf-8")
+
+
 # ── 長照輔具補助試算（/subsidy/） ────────────────────────────────────
 #
 # 給付項目、購置價格上限、最低使用年限：
@@ -2210,14 +2389,15 @@ def build_subsidy_page():
     out.write_text(html_out, encoding="utf-8")
 
 
-def build_sitemap(products, brand_slugs=()):
+def build_sitemap(products, brand_slugs=(), articles=()):
     today = date.today().isoformat()
-    paths = ["", "category/", "rental/", "about/", "subsidy/"]
+    paths = ["", "category/", "rental/", "about/", "subsidy/", "articles/"]
     paths += [f"category/{c}/" for c in CATEGORY_NAMES]
     paths += [f"category/{c}/{sub}/"
               for c in CATEGORY_NAMES for sub in NAV_SUBS.get(c, [])]
     paths += [f"brand/{s}/" for s in brand_slugs]
     paths += [f"product/{p['slug']}/" for p in products]
+    paths += [f"articles/{a['slug']}/" for a in articles]
     entries = "\n".join(
         f"  <url>\n    <loc>{BASE_URL}{url_path(p) if p else '/'}</loc>\n"
         f"    <lastmod>{today}</lastmod>\n  </url>"
@@ -2352,12 +2532,14 @@ def main():
 
     brands = load_brands()
     products = load_products(brands)
-    print(f"讀取 {len(products)} 項已發布商品、{len(brands)} 個品牌")
+    articles = load_articles()
+    print(f"讀取 {len(products)} 項已發布商品、{len(brands)} 個品牌、{len(articles)} 篇文章")
 
     NAV_SUBS.update(compute_nav_subs(products))
 
     # 重建產出目錄（皆為純產生內容，可安全清除）
-    for d in ("catalog", "category", "product", "rental", "brand", "subsidy"):
+    for d in ("catalog", "category", "product", "rental", "brand", "subsidy",
+              "articles"):
         shutil.rmtree(ROOT / d, ignore_errors=True)
 
     build_home_page(products)
@@ -2369,17 +2551,20 @@ def main():
     build_subsidy_page()
     brand_slugs = build_brand_pages(products, brands)
     build_product_pages(products)
+    build_articles_page(articles)
+    build_article_pages(articles)
     build_search_index(products)
-    build_sitemap(products, brand_slugs)
+    build_sitemap(products, brand_slugs, articles)
     build_robots()
     sync_about_chrome()
     build_admin_preview_constants()
     sync_admin_scripts()
 
     rentable = sum(1 for p in products if p["rentable"])
-    pages = 4 + len(CATEGORIES) + len(brand_slugs) + len(products)
+    pages = 5 + len(CATEGORIES) + len(brand_slugs) + len(products) + len(articles)
     print(f"✅ 產生完成：{pages} 個頁面（首頁 + 1 分類總覽 + 1 租賃專區 + 1 補助試算 + "
-          f"{len(CATEGORIES)} 分類 + {len(brand_slugs)} 品牌 + {len(products)} 商品）、"
+          f"1 文章列表 + {len(CATEGORIES)} 分類 + {len(brand_slugs)} 品牌 + "
+          f"{len(products)} 商品 + {len(articles)} 文章）、"
           "sitemap.xml、search-index.json")
     print(f"   其中可租賃 {rentable} 項")
 

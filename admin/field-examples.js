@@ -31,11 +31,18 @@ const BRAND_EXAMPLES = {
   name: '安適康 AnsCare',
 };
 
+// 文章編輯頁
+const ARTICLE_EXAMPLES = {
+  title: '輪椅怎麼挑？選購前要量的 3 個尺寸',
+  summary: '座寬、座深、椅背高度沒量好，坐久了容易不舒服。這篇整理門市最常被問到的挑選重點。',
+};
+
 // 商品與品牌都有 name 欄位，依目前開的是哪一種編輯頁挑範例。
 // 商品頁以「多種價格」欄位判斷（同 index.html 分區標題的判斷）
 function examplesFor(root) {
   if (root.querySelector('[data-typed-key-path="has_variants"]')) return PRODUCT_EXAMPLES;
   if (location.hash.includes('/collections/brands/')) return BRAND_EXAMPLES;
+  if (location.hash.includes('/collections/articles/')) return ARTICLE_EXAMPLES;
   return null;
 }
 

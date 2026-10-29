@@ -309,3 +309,63 @@ collections:
         widget: string
         required: true
         hint: 顯示在網站上的名稱，可隨時修改
+
+  # ── 文章 ────────────────────────────────────────────────
+  # 網站「文章專區」（/articles/）的文章，由 scripts/build_catalog.py 產生頁面。
+  # 檔名同商品用「日期＋亂數」，標題改了網址也不會變。
+  - name: articles
+    label: 文章
+    label_singular: 文章
+    folder: content/articles
+    create: true
+    delete: true
+    format: frontmatter
+    extension: md
+    identifier_field: title
+    summary: "{{date}}｜{{title}}"
+    sortable_fields: [date, title]
+    view_filters:
+      - label: 尚未發布
+        field: published
+        pattern: false
+    slug: "{{year}}{{month}}{{day}}-{{uuid_short}}"
+    editor:
+      preview: false
+    fields:
+      - label: 標題
+        name: title
+        widget: string
+        required: true
+
+      - label: 發布日期
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: YYYY-MM-DD
+        time_format: false
+        default: "{{now}}"
+        required: true
+        hint: 列表依這個日期排序，新的在前。
+
+      - label: 封面圖
+        name: cover
+        widget: image
+        required: false
+        hint: 顯示在文章列表與文章開頭，分享到 LINE、Facebook 時也會用這張。建議橫式、500KB 以內。
+
+      - label: 摘要
+        name: summary
+        widget: text
+        required: false
+        hint: 列表上標題下方的一兩句介紹。不填的話自動取內文開頭。
+
+      - label: 內文
+        name: body
+        widget: markdown
+        required: true
+
+      - label: 發布
+        name: published
+        widget: boolean
+        default: true
+        hint: 關掉就先不顯示在網站上（可當草稿）。
