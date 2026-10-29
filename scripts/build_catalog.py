@@ -2135,13 +2135,15 @@ def build_articles_page(articles):
             if articles else '<div class="cat-empty">文章準備中，敬請期待。</div>')
     bc = [("首頁", "/"), (ARTICLES_TITLE, None)]
     main = f"""    <div class="cat-section">
-      <div class="cat-container art-page">
+      <div class="cat-container">
         {breadcrumb(bc)}
         <div class="cat-page-head">
           <h1>{ARTICLES_TITLE}</h1>
           <p>輔具挑選、居家照護與補助申請的實用資訊</p>
         </div>
-        {body}
+        <div class="art-page">
+          {body}
+        </div>
       </div>
     </div>
 """
@@ -2173,24 +2175,126 @@ def build_articles_page(articles):
     out.write_text(html_out, encoding="utf-8")
 
 
+ARTICLE_OTHERS_COUNT = 5   # 右欄「其他文章」最多列幾篇
+
+ARTICLE_JS = """  <script>
+    (function () {
+      // 分享欄的「複製連結」：不支援剪貼簿的瀏覽器改跳出網址讓人自己複製
+      var copy = document.querySelector('[data-copy-url]');
+      if (copy) {
+        copy.addEventListener('click', function () {
+          var url = copy.getAttribute('data-copy-url');
+          var done = function () {
+            copy.textContent = '已複製';
+            setTimeout(function () { copy.textContent = '複製連結'; }, 2000);
+          };
+          var ask = function () { window.prompt('複製這個網址', url); };
+          if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, ask);
+          else ask();
+        });
+      }
+      // 目錄：捲到哪一段就亮哪一段
+      var links = [].slice.call(document.querySelectorAll('.art-toc a'));
+      if (!links.length) return;
+      var heads = links.map(function (a) {
+        return document.getElementById(a.getAttribute('href').slice(1));
+      });
+      function update() {
+        var cur = 0;
+        heads.forEach(function (h, i) {
+          if (h && h.getBoundingClientRect().top <= 160) cur = i;
+        });
+        links.forEach(function (a, i) { a.classList.toggle('active', i === cur); });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+"""
+
+
+def article_toc(body_html):
+    """替內文的 h2 加上錨點，回傳 (加好錨點的內文, 左欄目錄 HTML)。沒有小標題就沒有目錄。"""
+    items = []
+
+    def add_id(m):
+        anchor = f"sec-{len(items) + 1}"
+        items.append(f'<li><a href="#{anchor}">{re.sub(r"<[^>]+>", "", m.group(1))}</a></li>')
+        return f'<h2 id="{anchor}">{m.group(1)}</h2>'
+
+    body_html = re.sub(r"<h2>(.*?)</h2>", add_id, body_html)
+    toc = (f'<div class="art-rail-block"><div class="art-rail-h">本文目錄</div>'
+           f'<ul class="art-toc">{"".join(items)}</ul></div>' if items else "")
+    return body_html, toc
+
+
+def article_share(article):
+    url = BASE_URL + article["url"]
+    enc = quote(url, safe="")
+    return f"""<div class="art-rail-block">
+            <div class="art-rail-h">分享</div>
+            <div class="art-share">
+              <a class="art-share-line" href="https://social-plugins.line.me/lineit/share?url={enc}" target="_blank" rel="noopener">LINE</a>
+              <a class="art-share-fb" href="https://www.facebook.com/sharer/sharer.php?u={enc}" target="_blank" rel="noopener">Facebook</a>
+              <button type="button" class="art-share-copy" data-copy-url="{esc(url)}">複製連結</button>
+            </div>
+          </div>"""
+
+
+def article_contact():
+    return f"""<div class="art-rail-block art-contact">
+            <div class="art-rail-h">不確定怎麼挑？</div>
+            <p>歡迎來電或到門市詢問<br>崇德路 677 號<br>（台南市立醫院對面）</p>
+            <a class="art-contact-tel" href="tel:{PHONE_TEL}">電話洽詢</a>
+            <a class="art-contact-line" href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener">LINE 詢問</a>
+          </div>"""
+
+
+def article_others(article, articles):
+    others = [o for o in articles if o["slug"] != article["slug"]][:ARTICLE_OTHERS_COUNT]
+    if not others:
+        return ""
+    items = "".join(
+        f'<li><a href="{o["url"]}">{esc(o["title"])}</a>'
+        f'<span class="art-date">{article_date_html(o)}</span></li>'
+        for o in others)
+    return (f'<div class="art-rail-block"><div class="art-rail-h">其他文章</div>'
+            f'<ul class="art-others">{items}</ul></div>')
+
+
 def build_article_pages(articles):
-    # ⚠️ 後台的文章預覽（admin/preview.js 的 ArticlePreview）照這裡的版面用 JS 再畫一次，
-    #    這裡改了版面，那邊要跟著改
+    """文章頁：中間是閱讀寬度的文章，電腦上左欄放目錄與分享、右欄放門市洽詢與其他文章；
+    螢幕不夠寬時左欄收起，右欄移到文章下方。"""
+    # ⚠️ 後台的文章預覽（admin/preview.js 的 ArticlePreview）照這裡的文章版面用 JS 再畫一次，
+    #    這裡改了文章本身的版面，那邊要跟著改（左右欄不畫）
     for a in articles:
         bc = [("首頁", "/"), (ARTICLES_TITLE, "/articles/"), (a["title"], None)]
+        body_html, toc = article_toc(md_to_html(a["body"], min_heading=2))
         main = f"""    <div class="cat-section">
-      <div class="cat-container art-page">
+      <div class="cat-container">
         {breadcrumb(bc)}
+        <div class="art-layout">
+        <aside class="art-rail art-rail-l">
+          {toc}
+          {article_share(a)}
+        </aside>
+        <div class="art-main">
         <article class="art-article">
           <header class="art-head">
             <h1>{esc(a['title'])}</h1>
             <div class="art-date">{article_date_html(a)}</div>
           </header>
           <div class="cat-desc art-body">
-{md_to_html(a['body'], min_heading=2)}
+{body_html}
           </div>
         </article>
         <div class="art-back"><a href="/articles/">← 回{ARTICLES_TITLE}</a></div>
+        </div>
+        <aside class="art-rail art-rail-r">
+          {article_contact()}
+          {article_others(a, articles)}
+        </aside>
+        </div>
       </div>
     </div>
 """
@@ -2218,6 +2322,7 @@ def build_article_pages(articles):
             og_image=og_image,
             jsonld=jsonld,
             main_html=main,
+            extra_js=ARTICLE_JS,
         )
         out = ROOT / "articles" / a["slug"] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)

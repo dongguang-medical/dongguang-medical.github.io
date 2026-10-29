@@ -854,11 +854,161 @@
 }
 
 
-/* ── 文章專區（/articles/）：整頁（含麵包屑）收窄成閱讀寬度置中，
-      麵包屑與內文左緣對齊；內文照片也不會在電腦上放得太大 ── */
+/* ── 文章專區（/articles/）：麵包屑沿用全站寬度；文章列表與文章內容收窄成閱讀寬度置中，
+      內文照片才不會在電腦上放得太大 ── */
 .art-page {
   max-width: 720px;
   margin: 0 auto;
+}
+
+/* 文章頁：手機與窄螢幕只有一欄（左欄收起、右欄排到文章下方）；
+   夠寬時三欄 160 + 720 + 160，左右欄邊緣對齊全站內容寬度 */
+.art-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 720px;
+  margin: 40px auto 0;
+}
+
+.art-rail-l {
+  display: none;
+}
+
+.art-rail-r {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.art-rail-block {
+  font-size: 13px;
+}
+
+.art-rail-h {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.art-toc a {
+  display: block;
+  padding: 6px 0 6px 10px;
+  border-left: 2px solid var(--color-border);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.art-toc a:hover {
+  color: var(--color-primary-dark);
+}
+
+.art-toc a.active {
+  border-left-color: var(--color-primary);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+.art-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.art-share a,
+.art-share button {
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.art-share-line { background: #06C755; }
+.art-share-fb { background: #1877F2; }
+.art-share-copy { background: var(--color-text-secondary); }
+
+.art-contact {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.art-contact p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.art-contact-tel,
+.art-contact-line {
+  display: block;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.art-contact-tel { background: var(--color-primary); }
+.art-contact-line { background: #06C755; }
+
+.art-others li + li {
+  margin-top: 12px;
+}
+
+.art-others a {
+  display: block;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.art-others a:hover {
+  color: var(--color-primary-dark);
+}
+
+.art-others .art-date {
+  font-size: 12px;
+}
+
+@media (min-width: 1160px) {
+  .art-layout {
+    max-width: none;
+    grid-template-columns: 160px minmax(0, 720px) 160px;
+    justify-content: space-between;
+    column-gap: 20px;
+  }
+
+  .art-rail {
+    position: sticky;
+    top: calc(var(--header-total) + 24px);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .art-rail-l { grid-column: 1; grid-row: 1; }
+  .art-main { grid-column: 2; grid-row: 1; }
+
+  .art-rail-r {
+    grid-column: 3;
+    grid-row: 1;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
 }
 
 .art-list {

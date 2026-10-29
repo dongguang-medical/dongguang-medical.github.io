@@ -70,9 +70,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/design-system.css?v=cb66a89d08">
-  <link rel="stylesheet" href="/assets/css/intro.css?v=cb66a89d08">
-  <link rel="stylesheet" href="/assets/css/catalog.css?v=cb66a89d08">
+  <link rel="stylesheet" href="/assets/css/design-system.css?v=036ceb988f">
+  <link rel="stylesheet" href="/assets/css/intro.css?v=036ceb988f">
+  <link rel="stylesheet" href="/assets/css/catalog.css?v=036ceb988f">
 </head>
 <body>
 
@@ -136,8 +136,21 @@
 
   <main class="cat-main">
     <div class="cat-section">
-      <div class="cat-container art-page">
+      <div class="cat-container">
         <nav class="cat-breadcrumb" aria-label="麵包屑"><a href="/">首頁</a><span class="cat-bc-sep">›</span><a href="/articles/">文章專區</a><span class="cat-bc-sep">›</span><span class="cat-bc-current">拐杖腳墊多久該換？3 個自己就能檢查的地方</span></nav>
+        <div class="art-layout">
+        <aside class="art-rail art-rail-l">
+          <div class="art-rail-block"><div class="art-rail-h">本文目錄</div><ul class="art-toc"><li><a href="#sec-1">一、看底部紋路</a></li><li><a href="#sec-2">二、摸摸看橡膠有沒有變硬</a></li><li><a href="#sec-3">三、確認尺寸與鬆緊</a></li></ul></div>
+          <div class="art-rail-block">
+            <div class="art-rail-h">分享</div>
+            <div class="art-share">
+              <a class="art-share-line" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fdongguang-medical.com%2Farticles%2F20261029-7193f74c8164%2F" target="_blank" rel="noopener">LINE</a>
+              <a class="art-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdongguang-medical.com%2Farticles%2F20261029-7193f74c8164%2F" target="_blank" rel="noopener">Facebook</a>
+              <button type="button" class="art-share-copy" data-copy-url="https://dongguang-medical.com/articles/20261029-7193f74c8164/">複製連結</button>
+            </div>
+          </div>
+        </aside>
+        <div class="art-main">
         <article class="art-article">
           <header class="art-head">
             <h1>拐杖腳墊多久該換？3 個自己就能檢查的地方</h1>
@@ -145,13 +158,13 @@
           </header>
           <div class="cat-desc art-body">
 <p>拐杖、四腳拐和助行器底下的橡膠腳墊，是整支輔具和地面唯一接觸的地方。腳墊一旦磨損，走在磁磚、浴室這類光滑地面時就容易打滑。腳墊不貴，但常常被忽略，建議<strong>每個月花一分鐘</strong>檢查一次。</p>
-<h2>一、看底部紋路</h2>
+<h2 id="sec-1">一、看底部紋路</h2>
 <p>把拐杖倒過來看腳墊底部：</p>
 <ul><li>止滑紋路還清楚 → 可以繼續使用</li><li>紋路變淺、局部已經磨平 → 建議準備更換</li><li>底部磨到變薄、甚至看得到裡面的金屬管 → <em>請立刻更換</em>，不要再使用</li></ul>
-<h2>二、摸摸看橡膠有沒有變硬</h2>
+<h2 id="sec-2">二、摸摸看橡膠有沒有變硬</h2>
 <p>橡膠用久了會老化，摸起來變硬、表面出現細小裂痕，抓地力也會跟著下降。就算紋路還在，橡膠硬化、龜裂也一樣要換。</p>
 <p><img src="/assets/uploads/mobility-49-1.jpg" alt="四爪拐杖用的防滑腳墊" loading="lazy" decoding="async"></p>
-<h2>三、確認尺寸與鬆緊</h2>
+<h2 id="sec-3">三、確認尺寸與鬆緊</h2>
 <p>腳墊要緊緊套住管子，用手轉不太動才對。如果會晃動、轉圈，或走路時有「喀喀」聲，可能是尺寸不合或已經撐鬆了。</p>
 <p>購買新腳墊前，請先量<strong>管子外徑</strong>，或直接把拐杖帶來門市比對，最準確。</p>
 <h3>小提醒</h3>
@@ -160,6 +173,17 @@
           </div>
         </article>
         <div class="art-back"><a href="/articles/">← 回文章專區</a></div>
+        </div>
+        <aside class="art-rail art-rail-r">
+          <div class="art-rail-block art-contact">
+            <div class="art-rail-h">不確定怎麼挑？</div>
+            <p>歡迎來電或到門市詢問<br>崇德路 677 號<br>（台南市立醫院對面）</p>
+            <a class="art-contact-tel" href="tel:062907244">電話洽詢</a>
+            <a class="art-contact-line" href="https://line.me/ti/p/~062907244" target="_blank" rel="noopener">LINE 詢問</a>
+          </div>
+          
+        </aside>
+        </div>
       </div>
     </div>
 
@@ -297,6 +321,39 @@
           }
         }
       }, { passive: true });
+    })();
+  </script>
+  <script>
+    (function () {
+      // 分享欄的「複製連結」：不支援剪貼簿的瀏覽器改跳出網址讓人自己複製
+      var copy = document.querySelector('[data-copy-url]');
+      if (copy) {
+        copy.addEventListener('click', function () {
+          var url = copy.getAttribute('data-copy-url');
+          var done = function () {
+            copy.textContent = '已複製';
+            setTimeout(function () { copy.textContent = '複製連結'; }, 2000);
+          };
+          var ask = function () { window.prompt('複製這個網址', url); };
+          if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, ask);
+          else ask();
+        });
+      }
+      // 目錄：捲到哪一段就亮哪一段
+      var links = [].slice.call(document.querySelectorAll('.art-toc a'));
+      if (!links.length) return;
+      var heads = links.map(function (a) {
+        return document.getElementById(a.getAttribute('href').slice(1));
+      });
+      function update() {
+        var cur = 0;
+        heads.forEach(function (h, i) {
+          if (h && h.getBoundingClientRect().top <= 160) cur = i;
+        });
+        links.forEach(function (a, i) { a.classList.toggle('active', i === cur); });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
   </script>
 
