@@ -86,6 +86,9 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* 一律預留捲軸的位置：短到不用捲動的頁面（沒有捲軸）才不會比其他頁寬一條捲軸，
+     換頁時頁首、橘色資訊列裡置中的內容就不會左右跳動 */
+  scrollbar-gutter: stable;
 }
 
 body {
