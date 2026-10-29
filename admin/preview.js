@@ -319,7 +319,7 @@ function articleCardsHtml(data, title, imageUrl) {
     <p>${esc(summary)}</p>
   </div>
 </div>`;
-  return `<div class="art-preview-cards">
+  return `<div class="art-preview-cards art-page">
   <p class="art-preview-label">文章列表上的樣子（電腦版）</p>
   ${card('art-preview-row')}
   <p class="art-preview-label">文章列表上的樣子（手機版）</p>
