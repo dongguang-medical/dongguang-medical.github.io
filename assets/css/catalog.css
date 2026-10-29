@@ -854,11 +854,7 @@
 }
 
 
-/* ── 文章專區（/articles/） ── */
-.art-container {
-  max-width: 760px;
-}
-
+/* ── 文章專區（/articles/）：寬度沿用 .cat-container，與其他頁一致 ── */
 .art-list {
   display: flex;
   flex-direction: column;
@@ -945,6 +941,8 @@
   display: block;
   width: 100%;
   height: auto;
+  max-height: 520px;   /* 全寬時橫圖不至於佔掉整個畫面 */
+  object-fit: cover;
   border-radius: var(--radius-md);
   margin-bottom: 24px;
 }

@@ -2135,7 +2135,7 @@ def build_articles_page(articles):
             if articles else '<div class="cat-empty">文章準備中，敬請期待。</div>')
     bc = [("首頁", "/"), (ARTICLES_TITLE, None)]
     main = f"""    <div class="cat-section">
-      <div class="cat-container art-container">
+      <div class="cat-container">
         {breadcrumb(bc)}
         <div class="cat-page-head">
           <h1>{ARTICLES_TITLE}</h1>
@@ -2179,7 +2179,7 @@ def build_article_pages(articles):
         cover = (f'<img class="art-cover" src="{url_path(a["cover"])}" '
                  f'alt="{esc(a["title"])}">' if a["cover"] else "")
         main = f"""    <div class="cat-section">
-      <div class="cat-container art-container">
+      <div class="cat-container">
         {breadcrumb(bc)}
         <article class="art-article">
           <header class="art-head">
