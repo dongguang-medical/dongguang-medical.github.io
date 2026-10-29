@@ -2135,15 +2135,13 @@ def build_articles_page(articles):
             if articles else '<div class="cat-empty">文章準備中，敬請期待。</div>')
     bc = [("首頁", "/"), (ARTICLES_TITLE, None)]
     main = f"""    <div class="cat-section">
-      <div class="cat-container">
+      <div class="cat-container art-page">
         {breadcrumb(bc)}
         <div class="cat-page-head">
           <h1>{ARTICLES_TITLE}</h1>
           <p>輔具挑選、居家照護與補助申請的實用資訊</p>
         </div>
-        <div class="art-page">
-          {body}
-        </div>
+        {body}
       </div>
     </div>
 """
@@ -2181,9 +2179,8 @@ def build_article_pages(articles):
     for a in articles:
         bc = [("首頁", "/"), (ARTICLES_TITLE, "/articles/"), (a["title"], None)]
         main = f"""    <div class="cat-section">
-      <div class="cat-container">
+      <div class="cat-container art-page">
         {breadcrumb(bc)}
-        <div class="art-page">
         <article class="art-article">
           <header class="art-head">
             <h1>{esc(a['title'])}</h1>
@@ -2194,7 +2191,6 @@ def build_article_pages(articles):
           </div>
         </article>
         <div class="art-back"><a href="/articles/">← 回{ARTICLES_TITLE}</a></div>
-        </div>
       </div>
     </div>
 """
