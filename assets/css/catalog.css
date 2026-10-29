@@ -1043,6 +1043,12 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    transition: top 0.28s ease;   /* 與頁首收起／滑回同速 */
+  }
+
+  /* 往下捲、頁首收起時，兩側欄跟著往上貼到畫面頂端 */
+  .intro-header.header-hidden ~ .cat-main .art-rail {
+    top: 24px;
   }
 
   .art-rail-l { grid-column: 1; grid-row: 1; }
