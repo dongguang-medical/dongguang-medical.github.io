@@ -667,13 +667,6 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
         </ul>
       </div>
       <div class="intro-footer-col intro-footer-map-col">
-        <h4>門市位置</h4>
-        <ul class="intro-footer-addr">
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <a href="{MAPS_URL}" target="_blank" rel="noopener">701 台南市東區崇德路 677 &amp; 679 號</a>
-          </li>
-        </ul>
         <div class="intro-footer-map">
           <iframe
             src="https://maps.google.com/maps?q=%E6%9D%B1%E5%85%89%E5%84%80%E5%99%A8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&t=&z=16&ie=UTF8&iwloc=&output=embed"

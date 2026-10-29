@@ -972,11 +972,6 @@
   gap: 20px;
 }
 
-/* 頁尾「門市位置」：地址一行，下方接地圖 */
-.intro-footer-addr {
-  margin-bottom: 12px;
-}
-
 /* 頁尾地圖（桌面） */
 .intro-footer-map iframe {
   display: block;
