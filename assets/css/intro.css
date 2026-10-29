@@ -972,6 +972,11 @@
   gap: 20px;
 }
 
+/* 頁尾「門市位置」：地址一行，下方接地圖 */
+.intro-footer-addr {
+  margin-bottom: 12px;
+}
+
 /* 頁尾地圖（桌面） */
 .intro-footer-map iframe {
   display: block;
@@ -1622,7 +1627,7 @@
   .intro-footer-social a.intro-footer-social-mobile { display: inline-flex; }
   .intro-footer-social a.intro-footer-social-desktop { display: none; }
   .intro-footer-col li.intro-footer-phone-li { display: none; }
-  .intro-footer-loc-col { display: none; }
+  .intro-footer-links-col { display: none; }
   .intro-footer-map-col { display: none; }
   .intro-footer-contact-h4 { display: none; }
   .intro-footer-about-desktop { display: none; }

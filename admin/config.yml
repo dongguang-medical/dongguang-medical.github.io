@@ -364,6 +364,17 @@ collections:
         widget: markdown
         required: true
 
+      # 文章頁右欄的「相關商品」：照片、名稱、價格連到商品頁。存的是商品代碼（檔名）
+      - label: 相關商品
+        name: related_products
+        widget: relation
+        collection: products
+        search_fields: [name]
+        display_fields: [name]
+        value_field: "{{slug}}"
+        multiple: true
+        required: false
+
       - label: 發布
         name: published
         widget: boolean

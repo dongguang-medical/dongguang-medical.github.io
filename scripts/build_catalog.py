@@ -27,7 +27,8 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
 
 文章 frontmatter（content/articles/<slug>.md，內文為 Markdown）：
   title(必填)、date(必填，YYYY-MM-DD)、cover(封面圖路徑，只用在列表與分享縮圖)、
-  summary(列表與搜尋結果的摘要，空白時取內文開頭)、published(預設 true)
+  summary(列表與搜尋結果的摘要，空白時取內文開頭)、
+  related_products(相關商品的代碼清單，即 content/products/ 的檔名)、published(預設 true)
 """
 
 import hashlib
@@ -473,12 +474,15 @@ def load_articles():
                            if md_to_text(b) and not b.lstrip().startswith("#")), "")
         summary = (str(fm.get("summary", "") or "").strip()
                    or md_to_text(first_para, 80))
+        related = [str(x).strip() for x in fm.get("related_products", []) or []
+                   if isinstance(x, str) and x.strip()]
         articles.append({
             "slug": md_file.stem,
             "title": title,
             "date": pub_date,
             "cover": cover,
             "summary": summary,
+            "related": related,   # 右欄「相關商品」，存商品代碼（檔名）
             "body": body,
             "url": f"/articles/{quote(md_file.stem)}/",
         })
@@ -634,9 +638,6 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </a>
         </div>
-        <a class="intro-footer-about intro-footer-about-desktop" href="/subsidy/">長照輔具補助試算</a>
-        <a class="intro-footer-about intro-footer-about-desktop" href="/articles/">{ARTICLES_TITLE}</a>
-        <a class="intro-footer-about intro-footer-about-desktop" href="/about/">關於我們</a>
       </div>
       <div class="intro-footer-col">
         <h4 class="intro-footer-contact-h4">聯絡資訊</h4>
@@ -657,20 +658,22 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
         </ul>
         </div>
       </div>
-      <div class="intro-footer-col intro-footer-loc-col">
-        <h4>門市位置</h4>
+      <div class="intro-footer-col intro-footer-links-col">
+        <h4>更多資訊</h4>
         <ul>
+          <li><a href="/subsidy/">長照輔具補助試算</a></li>
+          <li><a href="/articles/">{ARTICLES_TITLE}</a></li>
+          <li><a href="/about/">關於我們</a></li>
+        </ul>
+      </div>
+      <div class="intro-footer-col intro-footer-map-col">
+        <h4>門市位置</h4>
+        <ul class="intro-footer-addr">
           <li>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <a href="{MAPS_URL}" target="_blank" rel="noopener">701 台南市東區崇德路 677 &amp; 679 號</a>
           </li>
-          <li>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="visibility:hidden"><circle cx="12" cy="12" r="10"/></svg>
-            <span>台南市立醫院對面</span>
-          </li>
         </ul>
-      </div>
-      <div class="intro-footer-col intro-footer-map-col">
         <div class="intro-footer-map">
           <iframe
             src="https://maps.google.com/maps?q=%E6%9D%B1%E5%85%89%E5%84%80%E5%99%A8%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&t=&z=16&ie=UTF8&iwloc=&output=embed"
@@ -2184,9 +2187,10 @@ ARTICLE_JS = """  <script>
       if (copy) {
         copy.addEventListener('click', function () {
           var url = copy.getAttribute('data-copy-url');
+          // 圖示按鈕沒有文字，複製成功時在按鈕旁亮出「已複製」兩秒
           var done = function () {
-            copy.textContent = '已複製';
-            setTimeout(function () { copy.textContent = '複製連結'; }, 2000);
+            copy.classList.add('is-copied');
+            setTimeout(function () { copy.classList.remove('is-copied'); }, 2000);
           };
           var ask = function () { window.prompt('複製這個網址', url); };
           if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, ask);
@@ -2228,26 +2232,49 @@ def article_toc(body_html):
     return body_html, toc
 
 
+# 分享圖示（LINE、Facebook 與頁尾同一組圖形）
+SHARE_ICON_LINE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>'
+SHARE_ICON_FB = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>'
+SHARE_ICON_LINK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
+
+
 def article_share(article):
     url = BASE_URL + article["url"]
     enc = quote(url, safe="")
     return f"""<div class="art-rail-block">
             <div class="art-rail-h">分享</div>
             <div class="art-share">
-              <a class="art-share-line" href="https://social-plugins.line.me/lineit/share?url={enc}" target="_blank" rel="noopener">LINE</a>
-              <a class="art-share-fb" href="https://www.facebook.com/sharer/sharer.php?u={enc}" target="_blank" rel="noopener">Facebook</a>
-              <button type="button" class="art-share-copy" data-copy-url="{esc(url)}">複製連結</button>
+              <a class="art-share-line" href="https://social-plugins.line.me/lineit/share?url={enc}" target="_blank" rel="noopener" aria-label="分享到 LINE" title="分享到 LINE">{SHARE_ICON_LINE}</a>
+              <a class="art-share-fb" href="https://www.facebook.com/sharer/sharer.php?u={enc}" target="_blank" rel="noopener" aria-label="分享到 Facebook" title="分享到 Facebook">{SHARE_ICON_FB}</a>
+              <button type="button" class="art-share-copy" data-copy-url="{esc(url)}" aria-label="複製連結" title="複製連結">{SHARE_ICON_LINK}</button>
             </div>
           </div>"""
 
 
-def article_contact():
-    return f"""<div class="art-rail-block art-contact">
-            <div class="art-rail-h">不確定怎麼挑？</div>
-            <p>歡迎來電或到門市詢問<br>崇德路 677 號<br>（台南市立醫院對面）</p>
-            <a class="art-contact-tel" href="tel:{PHONE_TEL}">電話洽詢</a>
-            <a class="art-contact-line" href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener">LINE 詢問</a>
-          </div>"""
+def article_products(article, products_by_slug):
+    """右欄「相關商品」：照片＋名稱＋價格，連到商品頁。下架或刪掉的商品略過。"""
+    cards = []
+    for slug in article["related"]:
+        p = products_by_slug.get(slug)
+        if not p:
+            print(f"⚠️  articles/{article['slug']}.md：相關商品「{slug}」不存在或未上架，略過",
+                  file=sys.stderr)
+            continue
+        cover = cover_of(p)
+        thumb = thumb_path(cover)
+        img = (f'<img src="{url_path(cover)}" alt="{esc(p["name"])}" '
+               'loading="lazy" decoding="async" width="400" height="300">')
+        photo = (f'<picture><source srcset="{thumb}" type="image/webp">{img}</picture>'
+                 if thumb else img)
+        price = (f'<span class="art-prod-price">{esc(p["price_text"])}</span>' if p["price_text"]
+                 else '<span class="art-prod-price art-prod-ask">歡迎洽詢</span>')
+        cards.append(f'<a class="art-prod" href="{p["url"]}">'
+                     f'<span class="art-prod-photo">{photo}</span>'
+                     f'<span class="art-prod-name">{esc(p["name"])}</span>{price}</a>')
+    if not cards:
+        return ""
+    return (f'<div class="art-rail-block"><div class="art-rail-h">相關商品</div>'
+            f'<div class="art-prods">{"".join(cards)}</div></div>')
 
 
 def article_others(article, articles):
@@ -2262,11 +2289,12 @@ def article_others(article, articles):
             f'<ul class="art-others">{items}</ul></div>')
 
 
-def build_article_pages(articles):
-    """文章頁：中間是閱讀寬度的文章，電腦上左欄放目錄與分享、右欄放門市洽詢與其他文章；
+def build_article_pages(articles, products):
+    """文章頁：中間是閱讀寬度的文章，電腦上左欄放目錄與分享、右欄放相關商品與其他文章；
     螢幕不夠寬時左欄收起，右欄移到文章下方。"""
     # ⚠️ 後台的文章預覽（admin/preview.js 的 ArticlePreview）照這裡的文章版面用 JS 再畫一次，
     #    這裡改了文章本身的版面，那邊要跟著改（左右欄不畫）
+    products_by_slug = {p["slug"]: p for p in products}
     for a in articles:
         bc = [("首頁", "/"), (ARTICLES_TITLE, "/articles/"), (a["title"], None)]
         body_html, toc = article_toc(md_to_html(a["body"], min_heading=2))
@@ -2291,7 +2319,7 @@ def build_article_pages(articles):
         <div class="art-back"><a href="/articles/">← 回{ARTICLES_TITLE}</a></div>
         </div>
         <aside class="art-rail art-rail-r">
-          {article_contact()}
+          {article_products(a, products_by_slug)}
           {article_others(a, articles)}
         </aside>
         </div>
@@ -2661,7 +2689,7 @@ def main():
     brand_slugs = build_brand_pages(products, brands)
     build_product_pages(products)
     build_articles_page(articles)
-    build_article_pages(articles)
+    build_article_pages(articles, products)
     build_search_index(products)
     build_sitemap(products, brand_slugs, articles)
     build_robots()
