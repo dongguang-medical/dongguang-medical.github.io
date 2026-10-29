@@ -617,7 +617,6 @@ PAGE_FOOTER = f"""  <footer class="intro-footer">
     <div class="intro-footer-inner">
       <div class="intro-footer-col intro-footer-brand-col">
         <div class="intro-footer-brand">
-          <img src="/{LOGO}" alt="{SITE_NAME_FULL}" loading="lazy" width="36" height="36">
           <span class="intro-footer-brand-name">{SITE_NAME_FULL}</span>
         </div>
         <div class="intro-footer-social" aria-label="社群與購物連結">
@@ -2270,6 +2269,17 @@ def article_products(article, products_by_slug):
             f'<div class="art-prods">{"".join(cards)}</div></div>')
 
 
+# 文章結尾的店家簡介（像部落格的作者介紹），每篇都一樣
+ARTICLE_STORE_NOTE = f"""<section class="art-store">
+          <img src="/{LOGO}" alt="" width="44" height="44" loading="lazy">
+          <div>
+            <div class="art-store-name">{SITE_NAME_FULL}</div>
+            <p>超過二十年在地服務的醫療輔具行，門市在崇德路 677 號（台南市立醫院對面）。<br>
+            有問題歡迎來電 <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> 或 <a href="https://line.me/ti/p/~{PHONE_TEL}" target="_blank" rel="noopener">LINE 詢問</a>。</p>
+          </div>
+        </section>"""
+
+
 def article_others(article, articles):
     others = [o for o in articles if o["slug"] != article["slug"]][:ARTICLE_OTHERS_COUNT]
     if not others:
@@ -2309,6 +2319,7 @@ def build_article_pages(articles, products):
 {body_html}
           </div>
         </article>
+        {ARTICLE_STORE_NOTE}
         <div class="art-back"><a href="/articles/">← 回{ARTICLES_TITLE}</a></div>
         </div>
         <aside class="art-rail art-rail-r">
