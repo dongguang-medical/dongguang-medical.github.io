@@ -249,7 +249,11 @@ def parse_frontmatter(text):
 # ── Markdown → HTML（段落／粗體／清單／子標題） ─────────────────
 
 _BOLD_RE = re.compile(r"\*\*(.+?)\*\*")
-_IMG_RE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
+# 後台插入圖片時可能帶標題：![說明](網址 "標題")，標題不顯示，但要認得
+_IMG_RE = re.compile(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
+_IMG_ESC_RE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)(?:\s+&quot;.*?&quot;)?\)")
+# 斜體：後台的斜體鈕存成 _文字_ 或 *文字*；前後不能緊貼英數字（中文可以），網址、檔名裡的底線才不會被誤判
+_ITALIC_RE = re.compile(r"(?<![\w*])([*_])(?=\S)(.+?)(?<=\S)\1(?![\w*])", re.ASCII)
 _LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")
 _UL_ITEM_RE = re.compile(r"^[-*]\s+")
 _OL_ITEM_RE = re.compile(r"^\d+[.、]\s*")
@@ -258,8 +262,9 @@ _OL_ITEM_RE = re.compile(r"^\d+[.、]\s*")
 def _inline(text):
     out = esc(text)
     out = _BOLD_RE.sub(r"<strong>\1</strong>", out)
+    out = _ITALIC_RE.sub(r"<em>\2</em>", out)
     # 圖片要比連結先換：![說明](網址) 去掉驚嘆號後就是連結的寫法
-    out = _IMG_RE.sub(r'<img src="\2" alt="\1" loading="lazy" decoding="async">', out)
+    out = _IMG_ESC_RE.sub(r'<img src="\2" alt="\1" loading="lazy" decoding="async">', out)
     out = _LINK_RE.sub(r'<a href="\2">\1</a>', out)
     return out
 
