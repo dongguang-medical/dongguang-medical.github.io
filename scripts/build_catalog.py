@@ -26,10 +26,10 @@ frontmatter 欄位契約（與內容編輯流程共用，勿任意更改）：
   specs(label/value 清單)、images(路徑清單，相對網站根目錄)、published(預設 true)
 
 文章 frontmatter（content/articles/<slug>.md，內文為 Markdown）：
-  title(必填)、date(必填，YYYY-MM-DD，列表排序用；文章頁改顯示由 git 算出的最後更新日期)、
-  cover(封面圖路徑，只用在列表與分享縮圖)、
+  title(必填)、cover(封面圖路徑，只用在列表與分享縮圖)、
   summary(列表與搜尋結果的摘要，空白時取內文開頭)、
-  related_products(相關商品的代碼清單，即 content/products/ 的檔名)、published(預設 true)
+  related_products(相關商品的代碼清單，即 content/products/ 的檔名)、published(預設 true)。
+  沒有日期欄位：建立日期（排序）與最後更新日期（顯示）都由 git 紀錄算出，見 git_dates()
 """
 
 import hashlib
@@ -451,28 +451,37 @@ def load_products(brands, taxonomy=None):
 TAIPEI = timezone(timedelta(hours=8))
 
 
-def git_last_modified(path):
-    """檔案最後一次提交的日期（台灣時間）。後台每次存檔都是一次提交，這就是文章的
-    「最後更新日期」，不必另開欄位讓店員填。
+def git_dates(path):
+    """文章的 (建立日期, 最後更新日期)，台灣時間，由 git 紀錄算出。後台每次存檔都是一次提交，
+    所以不必讓店員填日期：第一次提交是建立日、最後一次提交是更新日。
 
-    還沒提交或有未提交的修改（本機編輯中）就算今天；不在 git 裡、或 git 不能用時回傳 None。
+    還沒提交或有未提交的修改（本機編輯中）時，更新日算今天（沒提交過的話建立日也是今天）。
+    不在 git 裡、或 git 不能用時回傳 (None, None)。
     CI 的 checkout 必須抓完整歷史（fetch-depth: 0），淺層 clone 會把舊檔案都算成最近一次提交的日期。
     """
     rel = str(path.relative_to(ROOT))
+
+    def git(*args):
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True,
+                              text=True, check=True).stdout.split()
+
+    def day(ts):
+        return datetime.fromtimestamp(int(ts), TAIPEI).date()
+
     try:
-        dirty = subprocess.run(["git", "status", "--porcelain", "--", rel], cwd=ROOT,
-                               capture_output=True, text=True, check=True).stdout.strip()
-        if dirty:
-            return datetime.now(TAIPEI).date()
-        ts = subprocess.run(["git", "log", "-1", "--format=%ct", "--", rel], cwd=ROOT,
-                            capture_output=True, text=True, check=True).stdout.strip()
+        dirty = git("status", "--porcelain", "--", rel)
+        stamps = git("log", "--follow", "--format=%ct", "--", rel)   # 新到舊
     except (OSError, subprocess.CalledProcessError):
-        return None
-    return datetime.fromtimestamp(int(ts), TAIPEI).date() if ts else None
+        return None, None
+    today = datetime.now(TAIPEI).date()
+    created = day(stamps[-1]) if stamps else today
+    updated = today if dirty or not stamps else day(stamps[0])
+    return created, updated
 
 
 def load_articles():
-    """已發布的文章，新的在前。同一天的依檔名排，順序才不會每次建置亂跳。"""
+    """已發布的文章，依建立日期新的在前（不依更新日期，改個錯字不會讓舊文章跳到最上面）。
+    同一天的依檔名排，順序才不會每次建置亂跳。"""
     articles = []
     if not ARTICLES_DIR.is_dir():
         return articles
@@ -485,14 +494,12 @@ def load_articles():
         if not title:
             print(f"⚠️  articles/{md_file.name}：缺少 title，略過", file=sys.stderr)
             continue
-        # 後台存的是 YYYY-MM-DD；手寫時若帶了時間（2026-10-29T10:00）只取日期
-        raw_date = str(fm.get("date", "") or "").strip()[:10]
-        try:
-            pub_date = date.fromisoformat(raw_date)
-        except ValueError:
-            print(f"⚠️  articles/{md_file.name}：日期「{raw_date}」不是 YYYY-MM-DD，略過",
-                  file=sys.stderr)
-            continue
+        created, updated = git_dates(md_file)
+        if created is None:
+            # git 不能用時退回檔名開頭的日期（後台新增的文章檔名是 YYYYMMDD-亂數）
+            m = re.match(r"(\d{4})(\d{2})(\d{2})-", md_file.stem)
+            created = updated = (date(int(m[1]), int(m[2]), int(m[3])) if m
+                                 else datetime.now(TAIPEI).date())
         cover = str(fm.get("cover", "") or "").strip().lstrip("/")
         # 沒寫摘要時取內文第一段（略過開頭的標題、圖片），不把整篇擠成一行
         first_para = next((b for b in re.split(r"\n\s*\n", body)
@@ -504,8 +511,8 @@ def load_articles():
         articles.append({
             "slug": md_file.stem,
             "title": title,
-            "date": pub_date,            # 發布日期：列表排序與列表卡片用
-            "updated": git_last_modified(md_file) or pub_date,  # 文章頁顯示的最後更新日期
+            "created": created,   # 建立日期：列表排序用
+            "updated": updated,   # 最後更新日期：頁面上顯示的日期
             "cover": cover,
             "summary": summary,
             "related": related,   # 右欄「相關商品」，存商品代碼（檔名）
@@ -513,7 +520,7 @@ def load_articles():
             "url": f"/articles/{quote(md_file.stem)}/",
         })
     articles.sort(key=lambda a: a["slug"])
-    articles.sort(key=lambda a: a["date"], reverse=True)
+    articles.sort(key=lambda a: a["created"], reverse=True)
     return articles
 
 
@@ -2129,8 +2136,8 @@ def build_brand_pages(products, brands):
 
 # ── 文章（/articles/） ────────────────────────────────────────────
 
-def article_date_html(article, key="date"):
-    d = article[key]
+def article_date_html(article):
+    d = article["updated"]
     return (f'<time datetime="{d.isoformat()}">'
             f'{d.year} 年 {d.month} 月 {d.day} 日</time>')
 
@@ -2329,7 +2336,7 @@ def build_article_pages(articles, products):
         <article class="art-article">
           <header class="art-head">
             <h1>{esc(a['title'])}</h1>
-            <div class="art-date">最後更新日期：{article_date_html(a, "updated")}</div>
+            <div class="art-date">最後更新日期：{article_date_html(a)}</div>
           </header>
           <div class="cat-desc art-body">
 {body_html}
@@ -2353,7 +2360,7 @@ def build_article_pages(articles, products):
                 {
                     "@type": "Article",
                     "headline": a["title"],
-                    "datePublished": a["date"].isoformat(),
+                    "datePublished": a["created"].isoformat(),
                     "dateModified": a["updated"].isoformat(),
                     "image": og_image,
                     "url": BASE_URL + a["url"],

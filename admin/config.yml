@@ -322,8 +322,8 @@ collections:
     format: frontmatter
     extension: md
     identifier_field: title
-    summary: "{{date}}｜{{title}}"
-    sortable_fields: [date, title]
+    summary: "{{title}}"
+    sortable_fields: [title]
     view_filters:
       - label: 尚未發布
         field: published
@@ -336,15 +336,6 @@ collections:
       - label: 標題
         name: title
         widget: string
-        required: true
-
-      - label: 發布日期
-        name: date
-        widget: datetime
-        format: YYYY-MM-DD
-        date_format: YYYY-MM-DD
-        time_format: false
-        default: "{{now}}"
         required: true
 
       - label: 封面圖

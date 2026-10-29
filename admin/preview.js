@@ -297,11 +297,10 @@ CMS.registerPreviewTemplate('products', ProductPreview);
 
 // ── 文章（對應 load_articles / build_article_pages） ──────────
 
-// 後台存的是 YYYY-MM-DD；沒填或格式不對時，網站會略過這篇，預覽也照實提醒
-function articleDateHtml(raw) {
-  const m = String(raw ?? '').trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if (!m) return '<span style="color:#c00">（尚未填發布日期，網站不會顯示這篇）</span>';
-  return `<time>${+m[1]} 年 ${+m[2]} 月 ${+m[3]} 日</time>`;
+// 網站上顯示的是最後更新日期（產生器由 git 算出），存檔那天就是更新日，預覽直接顯示今天
+function articleDateHtml() {
+  const d = new Date();
+  return `<time>${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日</time>`;
 }
 
 // 列表卡片（對應 article_card）：電腦版橫排、手機版直排，兩種都畫出來，
@@ -314,7 +313,7 @@ function articleCardsHtml(data, title, imageUrl) {
   const card = (cls) => `<div class="art-card ${cls}">
   ${cover}
   <div class="art-card-body">
-    <div class="art-date">${articleDateHtml(data.date)}</div>
+    <div class="art-date">${articleDateHtml()}</div>
     <h2>${esc(title)}</h2>
     <p>${esc(summary)}</p>
   </div>
@@ -326,13 +325,6 @@ function articleCardsHtml(data, title, imageUrl) {
   <div class="art-preview-phone">${card('art-preview-stack')}</div>
   <p class="art-preview-label">文章內頁</p>
 </div>`;
-}
-
-// 文章頁顯示的是最後更新日期（產生器由 git 算出），存檔那天就是更新日，預覽直接顯示今天
-function articleUpdatedHtml(rawDate) {
-  if (!/^\d{4}-\d{2}-\d{2}/.test(String(rawDate ?? '').trim())) return articleDateHtml(rawDate);
-  const d = new Date();
-  return `最後更新日期：<time>${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日</time>`;
 }
 
 function ArticlePreview({ entry, getAsset }) {
@@ -352,7 +344,7 @@ ${draft}${articleCardsHtml(data, title, imageUrl)}
 <div class="art-page"><article class="art-article">
   <header class="art-head">
     <h1>${esc(title)}</h1>
-    <div class="art-date">${articleUpdatedHtml(data.date)}</div>
+    <div class="art-date">最後更新日期：${articleDateHtml()}</div>
   </header>
   <div class="cat-desc art-body">${mdToHtml(data.body || '', 2, imageUrl)}</div>
 </article></div>
