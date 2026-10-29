@@ -329,8 +329,9 @@ collections:
         field: published
         pattern: false
     slug: "{{year}}{{month}}{{day}}-{{uuid_short}}"
+    # 編輯時右半邊即時預覽網站上的文章頁（樣板在 admin/preview.js）
     editor:
-      preview: false
+      preview: true
     fields:
       - label: 標題
         name: title

@@ -2174,6 +2174,8 @@ def build_articles_page(articles):
 
 
 def build_article_pages(articles):
+    # ⚠️ 後台的文章預覽（admin/preview.js 的 ArticlePreview）照這裡的版面用 JS 再畫一次，
+    #    這裡改了版面，那邊要跟著改
     for a in articles:
         bc = [("首頁", "/"), (ARTICLES_TITLE, "/articles/"), (a["title"], None)]
         cover = (f'<img class="art-cover" src="{url_path(a["cover"])}" '

@@ -1,11 +1,11 @@
 // ============================================================
-// 商品編輯的即時預覽樣板
+// 商品與文章編輯的即時預覽樣板
 //
-// 後台右半邊的預覽，畫成網站上「商品頁」的樣子，
+// 後台右半邊的預覽，畫成網站上「商品頁」「文章頁」的樣子，
 // 店員邊打字就能看到上架後大概長怎樣。
 //
-// ⚠️ 版面是照 scripts/build_catalog.py 的 build_product_pages()
-//    用 JavaScript 再寫一份。那邊改了商品頁的
+// ⚠️ 版面是照 scripts/build_catalog.py 的 build_product_pages()、
+//    build_article_pages() 用 JavaScript 再寫一份。那邊改了頁面的
 //    結構或顯示規則（價格、標記、規格表…），這裡要跟著改，
 //    不然預覽會跟實際網站對不起來。樣式直接沿用網站的 CSS，不必另外維護。
 //    頁首頁尾、相關商品這些跟單一商品無關的部分不畫。
@@ -64,29 +64,40 @@ function formatPrice(value, valueMax = null) {
 }
 
 const BOLD_RE = /\*\*(.+?)\*\*/g;
+// 斜體：前後不能緊貼英數字（JS 的 \w 本來就只算英數），網址裡的底線才不會被誤判
+const ITALIC_RE = /(?<![\w*])([*_])(?=\S)(.+?)(?<=\S)\1(?![\w*])/g;
+// 圖片在跳脫後比對，標題的引號已變成 &quot;
+const IMG_ESC_RE = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+&quot;.*?&quot;)?\)/g;
 const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 const UL_ITEM_RE = /^[-*]\s+/;
 const OL_ITEM_RE = /^\d+[.、]\s*/;
 
-const inline = (text) =>
-  esc(text).replace(BOLD_RE, '<strong>$1</strong>').replace(LINK_RE, '<a href="$2">$1</a>');
+// imageUrl：把內文圖片路徑換成預覽框看得到的網址（剛上傳、還沒存檔的圖片）
+const inline = (text, imageUrl = (src) => src) =>
+  esc(text)
+    .replace(BOLD_RE, '<strong>$1</strong>')
+    .replace(ITALIC_RE, '<em>$2</em>')
+    .replace(IMG_ESC_RE, (_, alt, src) => `<img src="${esc(imageUrl(src))}" alt="${alt}">`)
+    .replace(LINK_RE, '<a href="$2">$1</a>');
 
-function mdToHtml(md) {
+// minHeading：商品頁內文從 h3 起；文章頁只有標題是 h1，內文可用 h2（同 md_to_html）
+function mdToHtml(md, minHeading = 3, imageUrl = undefined) {
+  const inl = (text) => inline(text, imageUrl);
   if (!md) return '';
   const parts = [];
   for (const block of md.trim().split(/\n\s*\n/)) {
     const lines = block.split('\n').filter((ln) => ln.trim()).map((ln) => ln.trimEnd());
     if (!lines.length) continue;
     if (lines.every((ln) => UL_ITEM_RE.test(ln))) {
-      parts.push(`<ul>${lines.map((ln) => `<li>${inline(ln.replace(UL_ITEM_RE, ''))}</li>`).join('')}</ul>`);
+      parts.push(`<ul>${lines.map((ln) => `<li>${inl(ln.replace(UL_ITEM_RE, ''))}</li>`).join('')}</ul>`);
     } else if (lines.every((ln) => OL_ITEM_RE.test(ln))) {
-      parts.push(`<ol>${lines.map((ln) => `<li>${inline(ln.replace(OL_ITEM_RE, ''))}</li>`).join('')}</ol>`);
+      parts.push(`<ol>${lines.map((ln) => `<li>${inl(ln.replace(OL_ITEM_RE, ''))}</li>`).join('')}</ol>`);
     } else if (lines[0].startsWith('#')) {
       const hashes = lines[0].length - lines[0].replace(/^#+/, '').length;
-      const level = Math.max(Math.min(hashes + 1, 4), 3);
-      parts.push(`<h${level}>${inline(lines[0].replace(/^#+/, '').trim())}</h${level}>`);
+      const level = Math.max(Math.min(hashes + minHeading - 2, 4), minHeading);
+      parts.push(`<h${level}>${inl(lines[0].replace(/^#+/, '').trim())}</h${level}>`);
     } else {
-      parts.push(`<p>${lines.map(inline).join('<br>\n')}</p>`);
+      parts.push(`<p>${lines.map(inl).join('<br>\n')}</p>`);
     }
   }
   return parts.join('\n');
@@ -275,3 +286,43 @@ ${productPage(product)}
 }
 
 CMS.registerPreviewTemplate('products', ProductPreview);
+
+// ── 文章（對應 load_articles / build_article_pages） ──────────
+
+// 後台存的是 YYYY-MM-DD；沒填或格式不對時，網站會略過這篇，預覽也照實提醒
+function articleDateHtml(raw) {
+  const m = String(raw ?? '').trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return '<span style="color:#c00">（尚未填發布日期，網站不會顯示這篇）</span>';
+  return `<time>${+m[1]} 年 ${+m[2]} 月 ${+m[3]} 日</time>`;
+}
+
+function ArticlePreview({ entry, getAsset }) {
+  const data = toJS(entry.get('data')) || {};
+  const imageUrl = (path) => {
+    const asset = getAsset(path);
+    return asset ? String(asset) : path;
+  };
+  const title = str(data.title) || '（尚未填標題）';
+  const cover = str(data.cover)
+    ? `<img class="art-cover" src="${esc(imageUrl(str(data.cover)))}" alt="${esc(title)}">`
+    : '';
+  const draft = truthy(data.published ?? true)
+    ? ''
+    : '<p class="cat-rental-note" style="margin-bottom:16px">「發布」目前關著，存檔後網站上不會出現這篇。</p>';
+
+  const html = `<main class="cat-main"><div class="cat-section"><div class="cat-container">
+<nav class="cat-breadcrumb"><span>首頁</span><span class="cat-bc-sep">›</span><span>文章專區</span><span class="cat-bc-sep">›</span><span class="cat-bc-current">${esc(title)}</span></nav>
+${draft}<article class="art-article">
+  <header class="art-head">
+    <h1>${esc(title)}</h1>
+    <div class="art-date">${articleDateHtml(data.date)}</div>
+  </header>
+  ${cover}
+  <div class="cat-desc art-body">${mdToHtml(data.body || '', 2, imageUrl)}</div>
+</article>
+</div></div></main>`;
+
+  return window.h('div', { dangerouslySetInnerHTML: { __html: html } });
+}
+
+CMS.registerPreviewTemplate('articles', ArticlePreview);
