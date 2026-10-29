@@ -937,16 +937,6 @@
   margin-bottom: 8px;
 }
 
-.art-cover {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 520px;   /* 全寬時橫圖不至於佔掉整個畫面 */
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  margin-bottom: 24px;
-}
-
 .art-body {
   font-size: 16px;
   color: var(--color-text-primary);

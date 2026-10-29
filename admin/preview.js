@@ -33,7 +33,15 @@ CMS.registerPreviewStyle(
   .cat-main { padding-top: 0; }
   .cat-section { padding-top: 16px; }
   /* 預覽裡點連結會讓預覽框跳走，一律停用 */
-  a { pointer-events: none; }`,
+  a { pointer-events: none; }
+  /* 文章預覽上方的列表卡片：不論預覽框多寬，電腦版、手機版兩種排法都畫出來 */
+  .art-preview-label { font-size: 13px; font-weight: 700; color: var(--color-text-secondary); margin: 16px 0 8px; }
+  .art-preview-label:first-child { margin-top: 0; }
+  .art-card.art-preview-row { flex-direction: row; }
+  .art-card.art-preview-row .art-card-cover { flex: 0 0 240px; aspect-ratio: 4 / 3; }
+  .art-card.art-preview-stack { flex-direction: column; }
+  .art-card.art-preview-stack .art-card-cover { flex: none; aspect-ratio: 16 / 9; }
+  .art-preview-phone { max-width: 360px; }`,
   { raw: true },
 );
 
@@ -296,6 +304,33 @@ function articleDateHtml(raw) {
   return `<time>${+m[1]} 年 ${+m[2]} 月 ${+m[3]} 日</time>`;
 }
 
+const COVER_POSITIONS = ['center', 'top', 'bottom', 'left', 'right'];
+
+// 列表卡片（對應 article_card）：電腦版橫排 4:3、手機版直排 16:9，兩種都畫出來，
+// 店員選封面裁切位置時能直接看到裁出來的樣子
+function articleCardsHtml(data, title, imageUrl) {
+  const position = COVER_POSITIONS.includes(str(data.cover_position)) ? str(data.cover_position) : 'center';
+  const cover = str(data.cover)
+    ? `<div class="art-card-cover"><img src="${esc(imageUrl(str(data.cover)))}" alt="" style="object-position:${position}"></div>`
+    : '';
+  const summary = str(data.summary) || '（沒填摘要時，網站會取內文第一段）';
+  const card = (cls) => `<div class="art-card ${cls}">
+  ${cover}
+  <div class="art-card-body">
+    <div class="art-date">${articleDateHtml(data.date)}</div>
+    <h2>${esc(title)}</h2>
+    <p>${esc(summary)}</p>
+  </div>
+</div>`;
+  return `<div class="art-preview-cards">
+  <p class="art-preview-label">文章列表上的樣子（電腦版）</p>
+  ${card('art-preview-row')}
+  <p class="art-preview-label">文章列表上的樣子（手機版）</p>
+  <div class="art-preview-phone">${card('art-preview-stack')}</div>
+  <p class="art-preview-label">文章內頁</p>
+</div>`;
+}
+
 function ArticlePreview({ entry, getAsset }) {
   const data = toJS(entry.get('data')) || {};
   const imageUrl = (path) => {
@@ -303,21 +338,18 @@ function ArticlePreview({ entry, getAsset }) {
     return asset ? String(asset) : path;
   };
   const title = str(data.title) || '（尚未填標題）';
-  const cover = str(data.cover)
-    ? `<img class="art-cover" src="${esc(imageUrl(str(data.cover)))}" alt="${esc(title)}">`
-    : '';
   const draft = truthy(data.published ?? true)
     ? ''
     : '<p class="cat-rental-note" style="margin-bottom:16px">「發布」目前關著，存檔後網站上不會出現這篇。</p>';
 
   const html = `<main class="cat-main"><div class="cat-section"><div class="cat-container">
 <nav class="cat-breadcrumb"><span>首頁</span><span class="cat-bc-sep">›</span><span>文章專區</span><span class="cat-bc-sep">›</span><span class="cat-bc-current">${esc(title)}</span></nav>
-${draft}<article class="art-article">
+${draft}${articleCardsHtml(data, title, imageUrl)}
+<article class="art-article">
   <header class="art-head">
     <h1>${esc(title)}</h1>
     <div class="art-date">${articleDateHtml(data.date)}</div>
   </header>
-  ${cover}
   <div class="cat-desc art-body">${mdToHtml(data.body || '', 2, imageUrl)}</div>
 </article>
 </div></div></main>`;

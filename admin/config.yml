@@ -352,7 +352,22 @@ collections:
         name: cover
         widget: image
         required: false
-        hint: 顯示在文章列表與文章開頭，分享到 LINE、Facebook 時也會用這張。建議橫式、500KB 以內。
+        hint: 顯示在文章列表，分享到 LINE、Facebook 時也會用這張（文章內頁不顯示）。建議橫式、500KB 以內。
+
+      # 列表卡片的封面是固定比例裁切（電腦 4:3、手機 16:9），這裡選裁切時保留哪一邊。
+      # 右邊預覽最上面會即時顯示裁出來的樣子
+      - label: 封面裁切位置
+        name: cover_position
+        widget: select
+        required: false
+        default: center
+        hint: 封面在列表上會被裁成固定比例，選要保留照片的哪個部分。右邊預覽最上方可看到裁切結果。
+        options:
+          - { label: 置中, value: center }
+          - { label: 保留上方, value: top }
+          - { label: 保留下方, value: bottom }
+          - { label: 保留左邊, value: left }
+          - { label: 保留右邊, value: right }
 
       - label: 摘要
         name: summary
