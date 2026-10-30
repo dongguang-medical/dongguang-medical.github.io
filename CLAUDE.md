@@ -12,6 +12,11 @@
 - 文章專區（`/articles/`）的文章在 `content/articles/*.md`，同樣由後台維護、由產生器產生列表頁與文章頁。
 - 改完可跑 `python3 scripts/build_catalog.py` 重建；main 上的 CI 也會自動重建並提交產出。
 
+## 分支
+
+修改直接提交並推送到 main，不用另開分支、也不用開 PR（推上 main 就會上線）。
+LINE 修改請求不適用這條，照下方守則與它自己的預覽流程走。
+
 ## LINE 修改請求守則
 
 > 只適用於 `.github/workflows/line-request.yml`（店裡的人透過 LINE 提出修改）執行時。
