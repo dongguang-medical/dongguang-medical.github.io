@@ -21,8 +21,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # 文章頁的「最後更新日期」由 git log 算出，要完整歷史；淺層 clone 會全部算成今天
+          # 文章的建立／更新日期由 git log 算出，要完整的提交歷史；淺層 clone 會全部算成同一天。
+          # blob:none 只抓提交與目錄紀錄，不下載歷史裡的舊檔案內容（主要是照片），
+          # repo 變大後建置也不會跟著變慢；目前版本的檔案照常完整取出
           fetch-depth: 0
+          filter: blob:none
 
       # 卡片縮圖要先產生，build_catalog.py 才找得到並輸出 <picture>；
       # 找不到縮圖時它會退回原圖，不會壞，但圖會變很重

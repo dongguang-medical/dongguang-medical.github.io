@@ -457,7 +457,8 @@ def git_dates(path):
 
     還沒提交或有未提交的修改（本機編輯中）時，更新日算今天（沒提交過的話建立日也是今天）。
     不在 git 裡、或 git 不能用時回傳 (None, None)。
-    CI 的 checkout 必須抓完整歷史（fetch-depth: 0），淺層 clone 會把舊檔案都算成最近一次提交的日期。
+    CI 的 checkout 必須抓完整歷史（fetch-depth: 0；可搭配 filter: blob:none），
+    淺層 clone 會把舊檔案都算成最近一次提交的日期。
     """
     rel = str(path.relative_to(ROOT))
 
@@ -470,7 +471,9 @@ def git_dates(path):
 
     try:
         dirty = git("status", "--porcelain", "--", rel)
-        stamps = git("log", "--follow", "--format=%ct", "--", rel)   # 新到舊
+        # 不加 --follow：追改名要比對舊檔內容，CI 的 blob:none clone 會為此逐一下載舊檔。
+        # 文章檔名（代碼）建立後不會變，用不到追改名
+        stamps = git("log", "--format=%ct", "--", rel)   # 新到舊
     except (OSError, subprocess.CalledProcessError):
         return None, None
     today = datetime.now(TAIPEI).date()

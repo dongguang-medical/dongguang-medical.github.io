@@ -23,6 +23,18 @@ display_url: https://dongguang-medical.com
 media_folder: assets/uploads        # 存進 repo 的實際資料夾
 public_folder: /assets/uploads      # 網頁上引用的公開路徑
 
+# 上傳時在瀏覽器裡先把照片縮小、轉成 WebP 再存進 repo：手機原圖動輒 3～5MB，
+# git 會永遠留著每個版本，不先壓小 repo 會越長越大。最長邊 1600px 足夠商品圖庫與文章；
+# 比這小的不會被放大。iPhone 的 HEIC 也會一併轉成網頁看得到的格式。
+# 只列 JPEG／PNG／HEIC：用 raster_image 會連 GIF 也轉，動圖就不會動了。
+media_libraries:
+  default:
+    config:
+      transformations:
+        jpeg: { format: webp, quality: 80, width: 1600, height: 1600 }
+        png: { format: webp, quality: 80, width: 1600, height: 1600 }
+        heic: { format: webp, quality: 80, width: 1600, height: 1600 }
+
 # 檔名（slug）產生規則：保留中文、去除重音符號。
 # 只影響後台新增項目時的檔名：商品用下方的「日期＋亂數」樣板，本來就是英數；
 # 品牌用名稱當檔名，中文名稱就是中文代碼（品牌頁網址 /brand/均佳/），
