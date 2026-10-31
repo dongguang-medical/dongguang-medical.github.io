@@ -101,9 +101,9 @@ jobs:
           REFUSED: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).refused }}
           CANCEL: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).cancel }}
         run: |
-          # 禁區：後台、CI 設定、守則本身、網域、robots.txt。
+          # 禁區：後台、CI 設定、守則本身、網域、robots.txt、商品資料（改用商品管理後台）。
           # 就算 Claude 動了也一律還原（守則之外的第二道保險）
-          BLOCKED_PATHS="admin .github CLAUDE.md CNAME robots.txt"
+          BLOCKED_PATHS="admin .github CLAUDE.md CNAME robots.txt content/products"
           blocked=$(git status --porcelain -- $BLOCKED_PATHS | wc -l)
           if [ "$blocked" -gt 0 ]; then
             for p in $BLOCKED_PATHS; do
@@ -225,7 +225,7 @@ jobs:
             fi
             if [ "$BLOCKED" = "true" ]; then
               echo
-              echo "※ 有碰到後台、系統設定、網域或搜尋引擎設定的改動，已自動擋下，這部分沒有套用。"
+              echo "※ 有碰到商品資料、後台、系統設定、網域或搜尋引擎設定的改動，已自動擋下，這部分沒有套用（商品資料請改用商品管理後台）。"
             fi
           } > /tmp/report.md
           gh issue comment "$ISSUE" --body-file /tmp/report.md
