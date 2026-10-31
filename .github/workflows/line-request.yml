@@ -101,11 +101,18 @@ jobs:
           REFUSED: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).refused }}
           CANCEL: ${{ steps.claude.outputs.structured_output && fromJSON(steps.claude.outputs.structured_output).cancel }}
         run: |
-          # 禁區：後台與 CI 設定。就算 Claude 動了也一律還原（守則之外的第二道保險）
-          blocked=$(git status --porcelain -- admin .github | wc -l)
+          # 禁區：後台、CI 設定、守則本身、網域、robots.txt。
+          # 就算 Claude 動了也一律還原（守則之外的第二道保險）
+          BLOCKED_PATHS="admin .github CLAUDE.md CNAME robots.txt"
+          blocked=$(git status --porcelain -- $BLOCKED_PATHS | wc -l)
           if [ "$blocked" -gt 0 ]; then
-            git checkout -- admin .github 2>/dev/null || true
-            git clean -fdq -- admin .github
+            for p in $BLOCKED_PATHS; do
+              # 原本就在 repo 裡的還原；新加的檔案刪掉
+              if git ls-files --error-unmatch -- "$p" >/dev/null 2>&1; then
+                git checkout -- "$p"
+              fi
+              git clean -fdq -- "$p"
+            done
             echo "blocked=true" >> "$GITHUB_OUTPUT"
           fi
           if [ "$REFUSED" = "true" ] || [ "$CANCEL" = "true" ]; then
@@ -218,7 +225,7 @@ jobs:
             fi
             if [ "$BLOCKED" = "true" ]; then
               echo
-              echo "※ 有碰到後台或系統設定的改動，已自動擋下，這部分沒有套用。"
+              echo "※ 有碰到後台、系統設定、網域或搜尋引擎設定的改動，已自動擋下，這部分沒有套用。"
             fi
           } > /tmp/report.md
           gh issue comment "$ISSUE" --body-file /tmp/report.md
