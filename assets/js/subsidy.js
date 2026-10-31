@@ -211,6 +211,17 @@
   var BED_ADDONS = ["居家用照顧床-附加功能A款（床面升降功能）",
                     "居家用照顧床-附加功能B款（電動升降功能）"];
 
+  /* 產品廠牌選單：由這台裝置產生過的證明書累積（每次下載 Word 時記下
+     品項與廠牌），同品項用過的排前面，其餘廠牌接在後面。
+     沒有紀錄時先用門市送件範例裡出現過的廠牌墊底。欄位仍可自行輸入。 */
+  var BRAND_KEY = "dongguang.subsidy.brands";
+  var BRAND_SEED = {
+    "帶輪型助步車（助行椅）": ["光星"],
+    "居家無障礙設備-床邊扶手(單處)": ["富致康"]
+  };
+  var BRAND_PER_ITEM = 20;
+  var brandHist = {};
+
   var MAX_ROWS = 8;
   var VENDOR_KEY = "dongguang.subsidy.vendor";
   /* 常用品項：存這台裝置的品項名稱（名稱在 ITEMS 中唯一），
@@ -253,6 +264,54 @@
     try { localStorage.removeItem(VENDOR_KEY); } catch (e) { /* 同上 */ }
   }
 
+  /* ── 產品廠牌歷史 ────────────────────────────────────────────────── */
+  function loadBrands() {
+    var raw;
+    try { raw = localStorage.getItem(BRAND_KEY); } catch (e) { return; }
+    if (!raw) return;
+    try {
+      var data = JSON.parse(raw);
+      if (!data || typeof data !== "object") return;
+      Object.keys(data).forEach(function (k) {
+        if (Array.isArray(data[k])) {
+          brandHist[k] = data[k].filter(function (b) { return typeof b === "string" && b; });
+        }
+      });
+    } catch (e) { /* 資料壞掉就當作沒有 */ }
+  }
+
+  /* 產生證明書時記下每列的品項與廠牌，最近用的排最前面 */
+  function rememberBrands(rows) {
+    rows.forEach(function (row) {
+      if (!row.brand) return;
+      var list = (brandHist[row.itemName] || []).filter(function (b) { return b !== row.brand; });
+      list.unshift(row.brand);
+      brandHist[row.itemName] = list.slice(0, BRAND_PER_ITEM);
+    });
+    try { localStorage.setItem(BRAND_KEY, JSON.stringify(brandHist)); } catch (e) { /* 無痕視窗等 */ }
+    document.querySelectorAll(".sub-row").forEach(function (box) {
+      var r = Number(box.id.replace("sbBox", ""));
+      var sel = $("sbItem" + r);
+      fillBrandList(r, sel && sel.value !== "" ? ITEMS[sel.value].n : null);
+    });
+  }
+
+  function fillBrandList(r, itemName) {
+    var list = $("sbBrandList" + r);
+    if (!list) return;
+    var out = [];
+    function add(b) { if (b && out.indexOf(b) === -1) out.push(b); }
+    if (itemName) {
+      (brandHist[itemName] || []).forEach(add);
+      (BRAND_SEED[itemName] || []).forEach(add);
+    }
+    Object.keys(brandHist).forEach(function (k) { brandHist[k].forEach(add); });
+    Object.keys(BRAND_SEED).forEach(function (k) { BRAND_SEED[k].forEach(add); });
+    list.innerHTML = out.map(function (b) {
+      return '<option value="' + esc(b) + '"></option>';
+    }).join("");
+  }
+
   /* ── 常用品項與品項選擇器 ──────────────────────────────────────────
      原生 select 的選項裡放不了可點擊的元素，改用自訂清單：
      每個品項右邊一顆星，點星星釘選、點名稱選取。品項有 74 個，
@@ -284,6 +343,24 @@
     document.querySelectorAll(".sub-row").forEach(function (box) {
       renderPickerList(Number(box.id.replace("sbBox", "")));
     });
+  }
+
+  /* 居家無障礙環境改善（F 碼） */
+  function isBarrierFree(it) {
+    return it.c.charAt(0) === "F";
+  }
+
+  /* 證明書上的「輔具/修繕項目名稱」：
+     固定式扶手以十公分為一單位，寫成「(6單位60公分)」；
+     其他居家無障礙品項數量超過 1 時接「(X處)」；
+     一般輔具維持「×數量單位」。 */
+  var FIXED_RAIL = "FA22";
+  function certItemName(it, qty) {
+    if (it.c === FIXED_RAIL) {
+      return "居家無障礙修繕-固定式扶手(" + qty + "單位" + (qty * 10) + "公分)";
+    }
+    if (qty <= 1) return it.n;
+    return isBarrierFree(it) ? it.n + "(" + qty + "處)" : it.n + "　×" + qty + it.u;
   }
 
   function itemLabel(it) {
@@ -439,7 +516,10 @@
         '</div>' +
       '</div>' +
       '<div class="sub-grid sub-g4" style="margin-top:12px">' +
-        '<div><label for="sbBrand' + r + '">產品廠牌</label><input id="sbBrand' + r + '" placeholder="廠牌" data-prod="' + r + '"></div>' +
+        '<div><label for="sbBrand' + r + '">產品廠牌</label>' +
+          '<input id="sbBrand' + r + '" placeholder="廠牌，可直接輸入" data-prod="' + r + '"' +
+            ' list="sbBrandList' + r + '" autocomplete="off">' +
+          '<datalist id="sbBrandList' + r + '"></datalist></div>' +
         '<div><label for="sbModel' + r + '">產品型號</label>' +
           '<input id="sbModel' + r + '" placeholder="型號，可直接輸入" data-prod="' + r + '"' +
             ' list="sbModelList' + r + '" autocomplete="off">' +
@@ -457,6 +537,7 @@
         '<div class="sub-stat sub-stat-over"><div class="k">其中超額自費</div><div class="v" id="sbROver' + r + '">0 元</div></div>' +
       '</div>';
     $("sbRows").appendChild(box);
+    fillBrandList(r, null);
     pickerLabel(r);
     renderPickerList(r);
     renumber();
@@ -507,6 +588,7 @@
 
     if (sel.value === "") {
       fillModelList(r, null);
+      fillBrandList(r, null);
       meta.textContent = "";
       limit.value = "";
       limit.dataset.auto = "1";
@@ -522,6 +604,7 @@
     limit.value = it.p * qty;
     limit.dataset.auto = "1";
     fillModelList(r, it.n);
+    fillBrandList(r, it.n);
     if (it.n === BED_BASE) addBedAddons(r);
     calculate(false);
   }
@@ -677,21 +760,26 @@
       return null;
     }
     var rows = lastResult.rows.map(function (row, i) {
+      var barrierFree = isBarrierFree(row.item);
       return {
         no: i + 1,
         /* 碼別只作為資料鍵，不出現在網頁與產出的文件上 */
-        name: row.item.n + (row.qty > 1 ? "　×" + row.qty + row.item.u : ""),
+        name: certItemName(row.item, row.qty),
+        /* 照片頁沿用品項原名（見居家無障礙的送件範例） */
+        photoName: barrierFree ? row.item.n : certItemName(row.item, row.qty),
         itemName: row.item.n,
+        barrierFree: barrierFree,
         photoGroup: row.item.pg || null,
         brand: row.brand,
         model: row.model,
         serial: row.serial,
-        /* 台南市範本沒有超額自費欄，註記要求購買金額＝給付金額＋部分負擔。
-           購買金額印實際成交金額；部分負擔＝購買金額－給付金額，
-           超出核定給付上限或額度的部分一併落在民眾部分負擔裡。 */
+        /* 註1：購買金額＝申請給付金額＋民眾部分負擔金額＋超額自費。
+           民眾部分負擔只算核定範圍內依比率負擔的那一段，
+           超出核定給付上限或額度的部分列在超額自費。 */
         price: row.price,
         gov: row.gov,
-        self: row.self
+        self: row.base - row.gov,
+        over: row.over
       };
     });
     var today = new Date();
@@ -848,165 +936,155 @@
     return true;
   }
 
-  /* ── 頁面高度的調節閥 ──────────────────────────────────────────────
-     範本的第一頁是「剛好填滿」的：明細表兩列空白時，日期正好落在頁尾，
-     照片頁才會從第二頁乾淨地開始。明細多一列就往下擠一列，少一列就往上
-     縮一列，於是一筆時照片頁的個案姓名跑上第一頁，三筆時日期被擠到第二頁。
+  /* ── 第一頁的高度 ──────────────────────────────────────────────────
+     新版樣式（115 年 11 月起）的明細表列高不固定，跟著內容長高。
+     範本兩筆明細時，「註3」與「此致」之間留兩行空白，日期落在第一頁下方；
+     居家無障礙的送件範例（三筆）是每多一列就拿掉一行空白，這裡照做：
 
-     實件的做法是拿「台南市政府衛生局」到「立契約人」中間的空白去吸收，
-     這裡照做：把那幾行空白併成一行，改用固定行高，明細每多一列就少一列
-     的高度。空白用完（約五列）才會真的溢出，那時改用分頁符號收尾。
+       1. 先估每一列要幾行（項目名稱欄與廠牌/型號/序號欄取較多的那個）
+       2. 比範本兩列高出多少，就從那兩行空白扣掉
+       3. 空白扣完還放不下，才一級一級降字級，降到 8pt 為止
 
-     兩個數字都是拿 Word 量範本得到的：空白段落 23.5pt、明細列 38.35pt
-     （trHeight 767）。空白段落改成固定行高後高度才可控，所以用量到的值，
-     不用字型度量去推算。 */
-  var GAP_BASE = 1856;
-  var GAP_ROW = 767;
-  var GAP_BASE_ROWS = 2;
-
-  /* ── 明細表自動縮排 ──────────────────────────────────────────────
-     範本只留兩列、列高固定 767 twip，項目名稱一長就會被切掉，筆數一多
-     就把日期擠到第二頁。這裡改成先估每一列要幾行，再決定列高與字級：
-
-       1. 列高先取「平均分配後的高度」，上限維持範本的 767
-       2. 名稱放不下就把產品序號欄的餘裕借給名稱欄（序號通常十來個字元）
-       3. 還是放不下才一級一級降字級，降到 8pt 為止
-
-     估字寬用最粗的近似：全形字約一個字級寬，半形算一半。官方表單欄寬
-     是固定的，寧可估寬一點讓它提早換行，也不要被切掉。 */
+     估字寬用最粗的近似：全形字約一個字級寬，半形算一半；行高約字級的
+     1.3 倍。官方表單欄寬固定，寧可估寬一點，也不要把日期擠到第二頁。 */
   var TBL_SZ_MIN = 16;                  /* 最小 8pt */
-  var TBL_NAME_COL = 1;                 /* 項目名稱欄 */
-  var TBL_LEND_COL = 4;                 /* 產品序號欄，寬度借給名稱欄 */
-  var TBL_LEND_MIN = 1000;              /* 序號欄至少留 50pt */
-  var TBL_CELL_PAD = 216;               /* 左右內距合計 */
-  var TBL_ROW_PAD = 80;                 /* 列高扣掉文字後的餘裕 */
+  var TBL_FIT_COLS = [1, 2];            /* 會換行的欄：項目名稱、廠牌/型號/序號 */
+  var TBL_ROW_PAD = 60;                 /* 每列上下框線與餘裕 */
+  var TBL_BASE_ROWS = 2;                /* 範本的列數 */
+  var TBL_BASE_LINES = 3;               /* 範本每列的行數（範例兩筆都是三行） */
+  var TBL_SLACK = 650;                  /* 日期下方原本就有的餘裕（量範例約 690） */
+  var TBL_SAFETY = 1.05;                /* 估算偏低的補償 */
 
-  function textTwips(text, sz) {
-    var w = 0;
-    for (var i = 0; i < text.length; i++) {
-      w += text.charCodeAt(i) > 0x2E80 ? sz * 10 : sz * 5;
-    }
-    return w;
+  function charTwips(code, sz) {
+    return code > 0x2E80 ? sz * 10 : sz * 5;
   }
+
+  /* 依欄寬模擬換行，回傳行數 */
+  function lineCount(text, sz, usable) {
+    var lines = 1, w = 0;
+    for (var i = 0; i < text.length; i++) {
+      var cw = charTwips(text.charCodeAt(i), sz);
+      if (w + cw > usable && w > 0) { lines += 1; w = cw; } else { w += cw; }
+    }
+    return lines;
+  }
+
+  function lineTwips(sz) { return sz * 13; }
 
   function gridCols(tbl) {
     var grid = childNamed(tbl, "tblGrid");
     return grid ? elemChildren(grid, "gridCol") : [];
   }
 
-  /* 範本資料列原本的字級（這份範本是 11pt，不是內文的 16pt） */
-  function baseRowSize(tbl) {
-    var rows = elemChildren(tbl, "tr");
-    var sz = rows[1] && tagged(rows[1], "sz")[0];
-    return sz ? Number(sz.getAttribute("w:val")) || 22 : 22;
-  }
-
-  /* 某個字級與名稱欄寬之下，每一列需要的高度 */
-  function rowHeights(names, sz, nameColW, budget) {
-    var usable = Math.max(200, nameColW - TBL_CELL_PAD);
-    var target = Math.min(GAP_ROW, Math.floor(budget / names.length));
-    return names.map(function (name) {
-      var lines = Math.max(1, Math.ceil(textTwips(name, sz) / usable));
-      return Math.max(lines * sz * 12 + TBL_ROW_PAD, target);
-    });
-  }
-
-  /* 估算難免偏低（Word 的行距、標點擠壓都會多一點），留一成餘裕，
-     寧可空白多留一點，也不要把日期擠到第二頁 */
-  var TBL_SAFETY = 1.1;
-
-  function sum(list) {
-    return Math.round(list.reduce(function (a, b) { return a + b; }, 0) * TBL_SAFETY);
-  }
-
-  function setColWidth(tbl, cols, index, width) {
-    cols[index].setAttribute("w:w", String(width));
-    elemChildren(tbl, "tr").forEach(function (tr) {
-      var tc = elemChildren(tr, "tc")[index];
-      var pr = tc && childNamed(tc, "tcPr");
-      var w = pr && childNamed(pr, "tcW");
-      if (w) w.setAttribute("w:w", String(width));
-    });
-  }
-
-  /* 依筆數與名稱長度調整表格，回傳這張表實際佔用的高度 */
-  function fitDetailTable(tbl, rows) {
+  /* 某一欄扣掉段落左右縮排後可用的寬度 */
+  function usableWidth(tbl, colIndex) {
     var cols = gridCols(tbl);
-    var names = rows.map(function (r) { return r.name; });
-    if (!cols.length || !names.length) return GAP_BASE_ROWS * GAP_ROW;
-
-    var nameW = Number(cols[TBL_NAME_COL].getAttribute("w:w")) || 0;
-    var lendW = Number(cols[TBL_LEND_COL].getAttribute("w:w")) || 0;
-    var budget = GAP_BASE + GAP_BASE_ROWS * GAP_ROW;
-    var baseSz = baseRowSize(tbl);
-
-    var borrow = 0;
-    var sz = baseSz;
-    var heights = rowHeights(names, sz, nameW, budget);
-    if (sum(heights) > budget && lendW > TBL_LEND_MIN) {
-      borrow = lendW - TBL_LEND_MIN;
-      heights = rowHeights(names, sz, nameW + borrow, budget);
+    var w = cols[colIndex] ? Number(cols[colIndex].getAttribute("w:w")) || 0 : 0;
+    var tr = elemChildren(tbl, "tr")[1];
+    var tc = tr && elemChildren(tr, "tc")[colIndex];
+    var p = tc && childNamed(tc, "p");
+    var pPr = p && childNamed(p, "pPr");
+    var ind = pPr && childNamed(pPr, "ind");
+    if (ind) {
+      w -= Number(ind.getAttribute("w:left")) || 0;
+      w -= Number(ind.getAttribute("w:right")) || 0;
     }
-    while (sum(heights) > budget && sz - 2 >= TBL_SZ_MIN) {
-      sz -= 2;
-      heights = rowHeights(names, sz, nameW + borrow, budget);
-    }
-
-    if (borrow) {
-      setColWidth(tbl, cols, TBL_NAME_COL, nameW + borrow);
-      setColWidth(tbl, cols, TBL_LEND_COL, lendW - borrow);
-    }
-
-    elemChildren(tbl, "tr").slice(1).forEach(function (tr, idx) {
-      if (idx >= names.length) return;
-      var pr = childNamed(tr, "trPr");
-      var th = pr && childNamed(pr, "trHeight");
-      if (th) {
-        th.setAttribute("w:val", String(heights[idx]));
-        /* 估算難免有誤差，改成最小高度，字真的放不下時讓 Word 自己長高 */
-        th.setAttribute("w:hRule", "atLeast");
-      }
-      if (sz !== baseSz) {
-        tagged(tr, "sz").forEach(function (n) { n.setAttribute("w:val", String(sz)); });
-        tagged(tr, "szCs").forEach(function (n) { n.setAttribute("w:val", String(sz)); });
-      }
-    });
-    return sum(heights);
+    return Math.max(400, w);
   }
 
-  function setExactLine(para, twips) {
-    var doc = para.ownerDocument;
-    var pPr = childNamed(para, "pPr");
-    if (!pPr) {
-      pPr = doc.createElementNS(W_NS, "w:pPr");
-      para.insertBefore(pPr, para.firstChild);
-    }
-    var sp = childNamed(pPr, "spacing");
-    if (!sp) {
-      sp = doc.createElementNS(W_NS, "w:spacing");
-      pPr.insertBefore(sp, pPr.firstChild);
-    }
-    sp.setAttribute("w:line", String(twips));
-    sp.setAttribute("w:lineRule", "exact");
-  }
-
-  function tuneBottomGap(pDept, sigTbl, tableHeight) {
-    if (!pDept || !sigTbl || pDept.parentNode !== sigTbl.parentNode) return;
-    var kids = Array.prototype.slice.call(pDept.parentNode.childNodes);
-    var gaps = kids.slice(kids.indexOf(pDept) + 1, kids.indexOf(sigTbl))
-      .filter(function (n) {
-        return n.nodeType === 1 && n.localName === "p" && !nodeText(n).trim();
+  /* cellLines：每列每個會換行的欄位的文字行（一格可能有兩段） */
+  function tableHeight(cellLines, sz, widths) {
+    var total = 0;
+    cellLines.forEach(function (cells) {
+      var most = 1;
+      cells.forEach(function (paras, ci) {
+        var n = paras.reduce(function (s, t) { return s + lineCount(t, sz, widths[ci]); }, 0);
+        if (n > most) most = n;
       });
-    if (!gaps.length) return;
+      total += most * lineTwips(sz) + TBL_ROW_PAD;
+    });
+    return Math.round(total * TBL_SAFETY);
+  }
 
-    var want = GAP_BASE - (tableHeight - GAP_BASE_ROWS * GAP_ROW);
-    gaps.slice(1).forEach(function (n) { n.parentNode.removeChild(n); });
-    if (want <= 0) {
-      /* 空白全用完了（約五列以上），日期只能落到第二頁 */
-      gaps[0].parentNode.removeChild(gaps[0]);
-      return;
+  /* 空白段落的高度：段前距＋行距（範本是 line=212 auto） */
+  function blankParaHeight(p) {
+    var pPr = childNamed(p, "pPr");
+    var sp = pPr && childNamed(pPr, "spacing");
+    var rPr = pPr && childNamed(pPr, "rPr");
+    var szEl = rPr && childNamed(rPr, "sz");
+    var sz = szEl ? Number(szEl.getAttribute("w:val")) || 24 : 24;
+    var before = sp ? Number(sp.getAttribute("w:before")) || 0 : 0;
+    var line = sp ? Number(sp.getAttribute("w:line")) || 240 : 240;
+    return before + Math.round(lineTwips(sz) * line / 240);
+  }
+
+  /* 「註3」與「此致」之間的空白段落 */
+  function notesGap(body) {
+    var all = Array.prototype.slice.call(body.childNodes).filter(function (n) {
+      return n.nodeType === 1;
+    });
+    var from = -1, to = -1;
+    all.forEach(function (n, i) {
+      if (n.localName !== "p") return;
+      var t = nodeText(n).replace(/\s/g, "");
+      if (t.indexOf("註") === 0) from = i;
+      if (to === -1 && t === "此致") to = i;
+    });
+    if (from < 0 || to < 0 || to < from) return [];
+    return all.slice(from + 1, to).filter(function (n) {
+      return n.localName === "p" && !nodeText(n).trim();
+    });
+  }
+
+  function setRunSize(run, sz) {
+    var doc = run.ownerDocument;
+    var rPr = childNamed(run, "rPr");
+    if (!rPr) {
+      rPr = doc.createElementNS(W_NS, "w:rPr");
+      run.insertBefore(rPr, run.firstChild);
     }
-    setExactLine(gaps[0], want);
+    ["sz", "szCs"].forEach(function (name) {
+      var el = childNamed(rPr, name);
+      if (!el) {
+        el = doc.createElementNS(W_NS, "w:" + name);
+        /* rPr 子元素有固定順序：sz 在 szCs 前面 */
+        var szCs = name === "sz" ? childNamed(rPr, "szCs") : null;
+        if (szCs) rPr.insertBefore(el, szCs); else rPr.appendChild(el);
+      }
+      el.setAttribute("w:val", String(sz));
+    });
+  }
+
+  /* 依筆數與名稱長度決定字級、扣掉多少空白 */
+  function fitDetailTable(body, tbl, cellLines) {
+    if (!cellLines.length) return;
+    var widths = TBL_FIT_COLS.map(function (c) { return usableWidth(tbl, c); });
+    var baseSz = 24;
+    var baseH = Math.round(TBL_BASE_ROWS * (TBL_BASE_LINES * lineTwips(baseSz) + TBL_ROW_PAD) * TBL_SAFETY);
+    var gaps = notesGap(body);
+    var gapH = gaps.reduce(function (s, p) { return s + blankParaHeight(p); }, 0);
+    var budget = baseH + gapH + TBL_SLACK;
+
+    var sz = baseSz;
+    var h = tableHeight(cellLines, sz, widths);
+    while (h > budget && sz - 2 >= TBL_SZ_MIN) {
+      sz -= 2;
+      h = tableHeight(cellLines, sz, widths);
+    }
+
+    /* 比範本高出的部分，從空白段落扣 */
+    var extra = h - baseH;
+    gaps.forEach(function (p) {
+      if (extra <= 0) return;
+      extra -= blankParaHeight(p);
+      p.parentNode.removeChild(p);
+    });
+
+    if (sz !== baseSz) {
+      elemChildren(tbl, "tr").slice(1).forEach(function (tr) {
+        tagged(tr, "r").forEach(function (run) { setRunSize(run, sz); });
+      });
+    }
   }
 
   /* 表格儲存格裡的底線欄位：只有一段，填第一組底線 */
@@ -1038,6 +1116,60 @@
     t.textContent = value;
     run.appendChild(t);
     p.appendChild(run);
+  }
+
+  /* 廠牌/型號/序號欄：照範例寫成兩段「廠牌/ 型號」「/序號」 */
+  function productLines(row) {
+    var first = row.brand && row.model ? row.brand + "/ " + row.model
+                                       : (row.brand || row.model);
+    var lines = [];
+    if (first) lines.push(first);
+    if (row.serial) lines.push("/" + row.serial);
+    return lines;
+  }
+
+  /* 一格多段：沿用第一段的格式，段數不足就複製，多的刪掉 */
+  function setCellParas(tc, lines) {
+    var paras = elemChildren(tc, "p");
+    if (!paras.length) return;
+    var want = Math.max(1, lines.length);
+    while (paras.length < want) {
+      var copy = paras[0].cloneNode(true);
+      tc.appendChild(copy);
+      paras.push(copy);
+    }
+    paras.slice(want).forEach(function (p) { tc.removeChild(p); });
+    paras.slice(0, want).forEach(function (p, i) {
+      tagged(p, "r").forEach(function (r) { r.parentNode.removeChild(r); });
+      var value = lines[i];
+      if (!value) return;
+      var doc = tc.ownerDocument;
+      var run = doc.createElementNS(W_NS, "w:r");
+      var pPr = childNamed(p, "pPr");
+      var rPr = pPr && childNamed(pPr, "rPr");
+      if (rPr) run.appendChild(rPr.cloneNode(true));
+      var t = doc.createElementNS(W_NS, "w:t");
+      t.setAttribute("xml:space", "preserve");
+      t.textContent = value;
+      run.appendChild(t);
+      p.appendChild(run);
+    });
+  }
+
+  /* 照片黏貼框改成上下兩格，總高度照居家無障礙的送件範例（每格 5978 twip） */
+  var PHOTO_HALF = 5978;
+  function splitPhotoTable(tbl) {
+    var rows = elemChildren(tbl, "tr");
+    if (rows.length !== 1) return;
+    var setH = function (tr) {
+      var pr = childNamed(tr, "trPr");
+      var th = pr && childNamed(pr, "trHeight");
+      if (th) th.setAttribute("w:val", String(PHOTO_HALF));
+    };
+    setH(rows[0]);
+    var copy = rows[0].cloneNode(true);
+    tagged(copy, "r").forEach(function (r) { r.parentNode.removeChild(r); });
+    tbl.appendChild(copy);
   }
 
   function fillDocumentXml(xml, cert) {
@@ -1101,9 +1233,10 @@
     }
 
     /* 購買明細表：範本給兩列空白，不足則複製。
-       編號欄是 Word 的自動編號（numPr），不要自己填。 */
+       編號欄是 Word 的自動編號（numPr），不要自己填。
+       欄位：編號／項目名稱／廠牌/型號/序號／購買金額／申請給付金額／
+             民眾部分負擔金額／超額自費 */
     var mainTbl = null;
-    var tblHeight = GAP_BASE_ROWS * GAP_ROW;
     tagged(body, "tbl").forEach(function (t) {
       if (!mainTbl && nodeText(t).indexOf("編號") > -1) mainTbl = t;
     });
@@ -1114,30 +1247,26 @@
         mainTbl.appendChild(clone);
         blanks.push(clone);
       }
-      /* 多出來的空白列刪掉，與列印版一致 */
+      /* 多出來的空白列刪掉 */
       blanks.slice(cert.rows.length).forEach(function (tr) {
         if (tr.parentNode) tr.parentNode.removeChild(tr);
       });
       blanks = blanks.slice(0, cert.rows.length);
+      var cellLines = [];
       cert.rows.forEach(function (row, idx) {
         var cells = elemChildren(blanks[idx], "tc");
-        if (cells.length < 8) return;
+        if (cells.length < 7) return;
+        var prod = productLines(row);
         setCellText(cells[1], row.name);
-        setCellText(cells[2], row.brand);
-        setCellText(cells[3], row.model);
-        setCellText(cells[4], row.serial);
-        setCellText(cells[5], money(row.price));
-        setCellText(cells[6], money(row.gov));
-        setCellText(cells[7], money(row.self));
+        setCellParas(cells[2], prod);
+        setCellText(cells[3], money(row.price));
+        setCellText(cells[4], money(row.gov));
+        setCellText(cells[5], money(row.self));
+        setCellText(cells[6], money(row.over));
+        cellLines.push([[row.name], prod]);
       });
-      tblHeight = fitDetailTable(mainTbl, cert.rows);
+      fitDetailTable(body, mainTbl, cellLines);
     }
-
-    /* 調節第一頁的高度，讓日期不論幾筆明細都停在頁尾原本的位置 */
-    var pDept = findPara(paras, function (t) {
-      return t.replace(/\s/g, "") === "台南市政府衛生局";
-    });
-    tuneBottomGap(pDept, sigTbl, tblHeight);
 
     /* 照片黏貼頁：範本內建兩頁，依項目數整塊增減 */
     var starts = paras.filter(function (p) { return nodeText(p).indexOf("個案姓名") > -1; });
@@ -1194,6 +1323,12 @@
 
       blocks.slice(0, want).forEach(function (block, bi) {
         var items = groups[bi];
+        /* 居家無障礙的照片頁：黏貼框上下分成兩格（施工前、後各一張） */
+        if (items.some(function (it) { return it.barrierFree; })) {
+          block.forEach(function (node) {
+            if (node.nodeType === 1 && node.localName === "tbl") splitPhotoTable(node);
+          });
+        }
         block.forEach(function (node) {
           if (node.nodeType !== 1 || node.localName !== "p") return;
           var txt = nodeText(node);
@@ -1201,14 +1336,14 @@
             fillUnderlineGroup(node, 0, cert.applicant);
           } else if (txt.indexOf("購買項目") > -1) {
             var runs = tagged(node, "r");
-            if (runs.length) setRunText(runs[runs.length - 1], " " + items[0].name);
+            if (runs.length) setRunText(runs[runs.length - 1], " " + items[0].photoName);
             /* 同組的其他品項：複製這一段，去掉「購買項目：」只留品項名 */
             var anchor = node;
             items.slice(1).forEach(function (it) {
               var clone = node.cloneNode(true);
               var cr = tagged(clone, "r");
               cr.forEach(function (r, i) {
-                setRunText(r, i === cr.length - 1 ? it.name : "");
+                setRunText(r, i === cr.length - 1 ? it.photoName : "");
               });
               anchor.parentNode.insertBefore(clone, anchor.nextSibling);
               anchor = clone;
@@ -1264,6 +1399,7 @@
     var btn = $("sbWord");
     btn.disabled = true;
     setStatus("正在依範本產生 Word 檔…");
+    rememberBrands(cert.rows);
     buildDocx(cert).then(function (blob) {
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
@@ -1292,6 +1428,7 @@
 
     loadVendor();
     loadPins();
+    loadBrands();
     addRow();
 
     document.addEventListener("click", function (e) {
@@ -1350,6 +1487,15 @@
       else if (d.price) calculate(false);
       else if (d.prod) syncBedFields(Number(d.prod));
     });
+
+    /* 數量、核定給付上限、實際購買金額：滑鼠滾輪不改數字。
+       欄位有焦點時瀏覽器會把滾輪當成加減，捲頁時很容易誤改金額；
+       這裡在滾輪事件時先移開焦點，頁面照常捲動。 */
+    document.addEventListener("wheel", function (e) {
+      var t = e.target;
+      var d = t && t.dataset;
+      if (d && (d.qty || d.limit || d.price) && document.activeElement === t) t.blur();
+    }, { passive: true });
 
     VENDOR_FIELDS.forEach(function (id) {
       $(id).addEventListener("input", saveVendor);
