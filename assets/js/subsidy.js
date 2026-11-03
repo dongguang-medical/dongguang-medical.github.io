@@ -793,6 +793,7 @@
       year: $("sbY").value.trim() || String(today.getFullYear() - 1911),
       month: $("sbM").value.trim() || String(today.getMonth() + 1),
       day: $("sbD").value.trim() || String(today.getDate()),
+      kaohsiung: !!($("sbKaohsiung") && $("sbKaohsiung").checked),
       rows: rows
     };
   }
@@ -1230,6 +1231,14 @@
       replaceParaText(pDate,
         "中   華   民   國    " + cert.year + "    年    " + cert.month +
         "    月    " + cert.day + "    日");
+    }
+
+    /* 高雄購買：「台南市政府衛生局」改成「高雄 縣（市）政府」，格式沿用 */
+    if (cert.kaohsiung) {
+      var pTo = findPara(paras, function (t) {
+        return t.replace(/\s/g, "").indexOf("市政府衛生局") > -1;
+      });
+      if (pTo) replaceParaText(pTo, "高雄 縣（市）政府");
     }
 
     /* 購買明細表：範本給兩列空白，不足則複製。

@@ -2413,6 +2413,7 @@ def build_subsidy_page():
 
           <header class="sub-intro">
             <h1>台南長照輔具補助試算</h1>
+            <label class="sub-kh"><input type="checkbox" id="sbKaohsiung"> 高雄購買（Word 檔「此致」改為「高雄 縣（市）政府」）</label>
             <p>依中央「長期照顧服務申請及給付辦法」試算長照輔具及居家無障礙環境改善服務（第一組 E、F 碼）的購買與修繕補助金額，並可產生台南市格式的「長照輔具服務給付證明暨契約書」Word 檔。</p>
             <div class="sub-basis">
               <span>第一組 E、F 碼</span>
