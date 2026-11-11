@@ -754,6 +754,15 @@ NAV_JS = """  <script>
 """
 
 
+# 輔具補助問答懸浮球：程式在 RAG 專案的 widget/ 打包後複製到 assets/js/rag-widget.js，
+# 後端是 Render 上的問答服務。版本號用內容雜湊，換新版時訪客不會拿到舊快取
+RAG_WIDGET_TAG = (
+    '  <script src="/assets/js/rag-widget.js?v='
+    + _content_hash(["assets/js/rag-widget.js"])
+    + '" data-api="https://tainan-aid-rag.onrender.com" defer></script>\n'
+)
+
+
 GA_EVENTS_JS = """  <script>
     // GA4 的加強型評估會自動記錄外部連結點擊，但 tel: 不算外部連結、不會被
     // 記錄——而撥電話正是本站最主要的成交動作，所以在這裡自己送。
@@ -828,8 +837,7 @@ def render_page(*, title, description, path, og_type, og_image, jsonld,
   </main>
 
 {PAGE_FOOTER}
-{NAV_JS}{GA_EVENTS_JS}{extra_js}
-</body>
+{NAV_JS}{GA_EVENTS_JS}{extra_js}{RAG_WIDGET_TAG}</body>
 </html>
 """
 
@@ -2659,6 +2667,10 @@ def sync_about_chrome():
 
     if "PATTERNS[i][0].test(href)" not in text:
         text = text.replace("</body>", GA_EVENTS_JS.rstrip() + "\n</body>", 1)
+
+    # 問答懸浮球：已存在就換成最新版本號，沒有就加在 </body> 前
+    text = re.sub(r'  <script src="/assets/js/rag-widget\.js[^>]*></script>\n', "", text)
+    text = text.replace("</body>", RAG_WIDGET_TAG + "</body>", 1)
 
     # CSS 版本號同步（避免 about 頁拿到舊快取樣式）
     text = re.sub(r'(href="/assets/css/[\w-]+\.css)(\?v=\w+)?"',
