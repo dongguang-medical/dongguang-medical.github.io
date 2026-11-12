@@ -24,7 +24,7 @@
 .ball, .panel { font-family: var(--tac-font); color: var(--tac-ink); }
 * { box-sizing: border-box; }
 button { font: inherit; cursor: pointer; }
-button:focus-visible, textarea:focus-visible, a:focus-visible {
+button:focus-visible, a:focus-visible {
   outline: 3px solid var(--tac-accent-text); outline-offset: 2px;
 }
 
@@ -52,9 +52,7 @@ header {
   display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 16px;
   background: var(--tac-accent); color: var(--tac-accent-ink);
 }
-header .titles { flex: 1; min-width: 0; }
-header h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.3; }
-header p { margin: 0; font-size: 12.5px; opacity: .85; }
+header h2 { flex: 1; min-width: 0; margin: 0; font-size: 16px; font-weight: 700; line-height: 1.3; }
 .close { border: 0; background: transparent; color: inherit; width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; }
 .close svg { width: 20px; height: 20px; }
 .close:hover { background: rgba(255,255,255,.15); }
@@ -91,6 +89,8 @@ textarea {
   border: 1px solid var(--tac-line); border-radius: 10px; padding: 8px 10px; max-height: 120px; line-height: 1.5;
   overflow-y: hidden; /* 高度會跟著內容長；只有超過 max-height 才出現捲軸，見 onInput */
 }
+/* 點進輸入框時只把框線換成品牌橘，不加外圈 */
+textarea:focus { outline: none; border-color: var(--tac-accent); }
 .send { flex: none; width: 42px; height: 42px; border: 0; border-radius: 10px; background: var(--tac-accent); color: var(--tac-accent-ink); display: grid; place-items: center; }
 .send svg { width: 20px; height: 20px; }
 .send:disabled { opacity: .4; cursor: default; }
@@ -106,18 +106,15 @@ textarea {
       <button class="ball" type="button" aria-label="開啟輔具補助問答" aria-expanded="false">${p}</button>
       <section class="panel" role="dialog" aria-label="輔具補助問答" hidden>
         <header>
-          <div class="titles">
-            <h2>輔具補助小幫手</h2>
-            <p>臺南市身心障礙者輔具補助問答</p>
-          </div>
+          <h2>臺南輔具補助小幫手</h2>
           <button class="close" type="button" aria-label="關閉">${m}</button>
         </header>
         <div class="log" aria-live="polite"></div>
         <form>
-          <textarea id="tac-input" rows="1" maxlength="500" placeholder="例如：電動輪椅可以補助多少？" aria-label="輸入問題"></textarea>
+          <textarea id="tac-input" rows="1" maxlength="500" aria-label="輸入問題"></textarea>
           <button class="send" type="submit" aria-label="送出" disabled>${h}</button>
         </form>
-        <div class="foot">回答僅供參考，以臺南市政府社會局核定為準。對話不會被儲存。</div>
-      </section>`;let e=e=>this.root.querySelector(e);this.els={ball:e(`.ball`),panel:e(`.panel`),log:e(`.log`),form:e(`form`),input:e(`textarea`),send:e(`.send`)},this.els.ball.addEventListener(`click`,()=>this.toggle()),e(`.close`).addEventListener(`click`,()=>this.toggle(!1)),this.els.panel.addEventListener(`keydown`,e=>{e.key===`Escape`&&this.toggle(!1)}),this.els.input.addEventListener(`input`,()=>this.onInput()),this.els.input.addEventListener(`keydown`,e=>{e.key===`Enter`&&!e.shiftKey&&!e.isComposing&&(e.preventDefault(),this.els.form.requestSubmit())}),this.els.form.addEventListener(`submit`,e=>{e.preventDefault(),this.ask(this.els.input.value)}),this.showWelcome()}toggle(e=this.els.panel.hidden){this.els.panel.hidden=!e,this.els.ball.setAttribute(`aria-expanded`,String(e)),this.els.ball.setAttribute(`aria-label`,e?`關閉輔具補助問答`:`開啟輔具補助問答`),e?this.els.input.focus():this.els.ball.focus()}onInput(){let{input:e,send:t}=this.els;e.style.height=`auto`;let n=e.offsetHeight-e.clientHeight,r=parseFloat(getComputedStyle(e).maxHeight)||1/0,i=e.scrollHeight+n;e.style.height=`${Math.min(i,r)}px`,e.style.overflowY=i>r?`auto`:`hidden`;let a=e.value.trim().length;t.disabled=this.busy||a===0}showWelcome(){let e=this.addBubble(`bot`);e.innerHTML=`<p>您好！我可以回答<strong>臺南市身心障礙者輔具補助</strong>的問題，例如補助金額、申請資格、流程和文件。回答會附上法規出處。</p>
+        <div class="foot">回答僅供參考，以臺南市政府社會局核定為準。</div>
+      </section>`;let e=e=>this.root.querySelector(e);this.els={ball:e(`.ball`),panel:e(`.panel`),log:e(`.log`),form:e(`form`),input:e(`textarea`),send:e(`.send`)},this.els.ball.addEventListener(`click`,()=>this.toggle()),e(`.close`).addEventListener(`click`,()=>this.toggle(!1)),this.els.panel.addEventListener(`keydown`,e=>{e.key===`Escape`&&this.toggle(!1)}),this.els.input.addEventListener(`input`,()=>this.onInput()),this.els.input.addEventListener(`keydown`,e=>{e.key===`Enter`&&!e.shiftKey&&!e.isComposing&&(e.preventDefault(),this.els.form.requestSubmit())}),this.els.form.addEventListener(`submit`,e=>{e.preventDefault(),this.ask(this.els.input.value)}),document.addEventListener(`pointerdown`,e=>{!this.els.panel.hidden&&!e.composedPath().includes(this)&&this.toggle(!1,!1)}),this.showWelcome()}toggle(e=this.els.panel.hidden,t=!0){this.els.panel.hidden=!e,this.els.ball.setAttribute(`aria-expanded`,String(e)),this.els.ball.setAttribute(`aria-label`,e?`關閉輔具補助問答`:`開啟輔具補助問答`),e?this.els.input.focus():t&&this.els.ball.focus()}onInput(){let{input:e,send:t}=this.els;e.style.height=`auto`;let n=e.offsetHeight-e.clientHeight,r=parseFloat(getComputedStyle(e).maxHeight)||1/0,i=e.scrollHeight+n;e.style.height=`${Math.min(i,r)}px`,e.style.overflowY=i>r?`auto`:`hidden`;let a=e.value.trim().length;t.disabled=this.busy||a===0}showWelcome(){let e=this.addBubble(`bot`);e.innerHTML=`<p>您好！我可以回答<strong>臺南市身心障礙者輔具補助</strong>的問題，例如補助金額、申請資格、流程和文件。回答會附上法規出處。</p>
       <p>請不要輸入身分證字號、電話等個人資料。</p>
       <div class="chips">${f.map(e=>`<button type="button" class="chip">${i(e)}</button>`).join(``)}</div>`,e.querySelectorAll(`.chip`).forEach(e=>e.addEventListener(`click`,()=>void this.ask(e.textContent??``)))}addBubble(e){let t=document.createElement(`div`);return t.className=`msg ${e}`,this.els.log.append(t),this.scrollToEnd(),t}scrollToEnd(){this.els.log.scrollTop=this.els.log.scrollHeight}setBusy(e){this.busy=e,this.els.input.disabled=e,this.onInput()}async ask(e){let t=e.trim().slice(0,500);if(!t||this.busy)return;if(!this.api){this.addBubble(`error`).textContent=`尚未設定問答服務網址（data-api）。`;return}this.els.input.value=``,this.addBubble(`user`).textContent=t;let n=this.addBubble(`bot`);n.innerHTML=`<span class="typing" aria-label="正在回答"><i></i><i></i><i></i></span>`,this.setBusy(!0);let i=this.messages.slice(-19),a=``,o=await r(this.api,[...i,{role:`user`,content:t}],{onToken:e=>{a+=e,n.innerHTML=c(a),this.scrollToEnd()}});if(o.error)a||n.remove(),this.addBubble(`error`).textContent=o.error;else{let e=this.sourcesHtml(o.citations);e&&(n.innerHTML=c(d(a))+e),o.limited||this.messages.push({role:`user`,content:t},{role:`assistant`,content:a})}this.setBusy(!1),this.scrollToEnd(),this.els.input.focus()}sourcesHtml(e){let t=e.filter(e=>/^https?:\/\//.test(e.url));return t.length?`<div class="sources"><b>出處</b><ul>${t.map(e=>`<li><a href="${i(e.url)}" target="_blank" rel="noopener noreferrer">${i(e.title)}</a></li>`).join(``)}</ul></div>`:``}},v=`tainan-aid-chat`;customElements.get(v)||customElements.define(v,_);var y=document.currentScript?.dataset.api;function b(){if(!y||document.querySelector(v))return;let e=document.createElement(v);e.setAttribute(`api`,y),document.body.append(e)}document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,b):b()})();
